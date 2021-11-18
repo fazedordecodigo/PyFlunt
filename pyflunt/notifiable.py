@@ -1,8 +1,9 @@
 """Module Notifiable."""
+from abc import ABC
 from notification import Notification
 
 
-class Notifiable(Notification):
+class Notifiable(Notification, ABC):
     """Class Notifiable."""
 
     def __init__(self) -> None:
