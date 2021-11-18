@@ -1,0 +1,11 @@
+.venv/
+build/
+Documents/
+.idea/
+.vscode/
+__pycache__/
+.mypy_cache/
+.ipynb_checkpoints/
+*.pyc
+appsettings.json
+
