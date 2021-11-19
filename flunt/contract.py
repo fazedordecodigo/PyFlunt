@@ -1,6 +1,6 @@
 """Module Contract."""
-from pyflunt.notification import Notification
-from pyflunt.notifiable import Notifiable
+from flunt.notification import Notification
+from flunt.notifiable import Notifiable
 import re
 
 

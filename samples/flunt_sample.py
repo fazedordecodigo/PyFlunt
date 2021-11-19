@@ -1,5 +1,5 @@
-from pyflunt.notifiable import Notifiable
-from pyflunt.contract import Contract
+from flunt.notifiable import Notifiable
+from flunt.contract import Contract
 
 
 class Email(Notifiable):

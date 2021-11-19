@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "PyFlunt"
+name = "Flunt"
 version = "0.1.0"
-description = ""
+description = "Python implementation of Domain Notification Pattern based in Flunt (.NET) developed by @andrebaltieri"
 authors = ["Emerson Delatorre <38289677+Delatorrea@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
