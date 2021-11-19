@@ -1,5 +1,9 @@
-# PyFlunt
+# PyFlunt: Python implementation of Domain Notification Pattern
+
 Python implementation of Domain Notification Pattern based in [Flunt](https://github.com/andrebaltieri/flunt) (.NET) developed by @andrebaltieri
+
+[![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
+[![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
 
 ## Python Version
 
@@ -74,3 +78,7 @@ if not nome.is_valid():
         print(notification)
 
 ````
+
+## License
+
+This project contains the MIT license. See the file [LICENSE](LICENSE).
