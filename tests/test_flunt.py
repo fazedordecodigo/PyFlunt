@@ -1,4 +1,4 @@
-from pyflunt import __version__
+from flunt import __version__
 
 
 def test_version():
