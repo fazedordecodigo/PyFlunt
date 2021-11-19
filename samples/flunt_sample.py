@@ -20,13 +20,13 @@ class Name(Notifiable):
                 value=self.first_name,
                 minimum=3,
                 field='first_name',
-                message='invalid first name'
+                message='Mínimo de 3 caracteres'
             )
             .has_min_len(
                 value=self.last_name,
                 minimum=3,
                 field='last_name',
-                message='invalid last name'
+                message='Mínimo de 3 caracteres'
             )
         )
 
