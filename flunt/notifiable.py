@@ -1,41 +1,59 @@
 """Module Notifiable."""
-from abc import ABC
 from flunt.notification import Notification
 
 
-class Notifiable(Notification, ABC):
+class Notifiable(Notification):
     """Class Notifiable."""
 
     def __init__(self) -> None:
         """Found 'Constructor'."""
-        self.__notification: list = []
+        self._notifications: list = []
 
     def add_notification(self, notification: Notification):
         """Add a new notification.
 
         :param notification: Notification
         """
-        self.__notification.append(notification)
+        self._notifications.append(notification)
 
-    def get_notifications(self) -> str:
+    def add_notifications_of_contract(self, *notifications):
+        self._notifications += self._filter_and_map_notifiables(notifications)
+        # self._notifications += self._filter_notifications(notifications)
+
+    def _filter_and_map_notifiables(self, notifications):
+        return [
+            notification
+            for notifiable in notifications
+            if isinstance(notifiable, Notifiable)
+            for notification in notifiable._notifications
+        ]
+
+    def _filter_notifications(self, notifications):
+        return [
+            notification
+            for notification in notifications
+            if isinstance(notification, Notification)
+        ]
+
+    def get_notifications(self) -> list:
         """Get all notifications.
 
-        :return: string
+        :return: list
         """
-        msg = ''
-        for notification in self.__notification:
-            msg = msg + notification.message + '\n'
-        return msg
+        return self._notifications
 
     def clear(self):
         """Clear all existing notifications."""
-        self.__notification.clear()
+        self._notifications.clear()
 
     def is_valid(self) -> bool:
         """Return if notifiable is valid, if not notified.
 
         :return: bool
         """
-        if len(self.__notification) <= 0:
+        if len(self._notifications) <= 0:
             return True
         return False
+
+    def __str__(self):
+        return self._notifications.__str__()
