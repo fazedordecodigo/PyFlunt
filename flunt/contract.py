@@ -18,7 +18,9 @@ class Contract(Notifiable):
         :return: self
         """
         if not value or len(value) < minimum:
-            self.add_notification(Notification(field, message))
+            self.add_notification(
+                Notification(field, message)
+            )
 
         return self
 
@@ -32,20 +34,30 @@ class Contract(Notifiable):
         :return: self
         """
         if not self._valid_email(value):
-            self.add_notification(Notification(field, message))
+            self.add_notification(
+                Notification(field, message)
+            )
 
         return self
 
-    def _valid_email(value):
+    def _valid_email(self, value):
         return re.match(
             r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
             value,
             re.IGNORECASE
         )
 
-    def requires(self):
+    def requires(self, value, field):
         """Require.
+
+        :param value: attribute
+        :param field: str
 
         :return: self
         """
+        if not value:
+            self.add_notification(
+                Notification(field, 'Campo preenchimento obrigatório')
+            )
+
         return self
