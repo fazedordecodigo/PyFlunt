@@ -1,1 +1,2 @@
-__version__ = '0.1.0'
+"""Version Software."""
+__version__ = "0.1.1"

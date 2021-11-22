@@ -1,7 +1,8 @@
 """Module Contract."""
-from flunt.notification import Notification
-from flunt.notifiable import Notifiable
 import re
+
+from flunt.notifiable import Notifiable
+from flunt.notification import Notification
 
 
 class Contract(Notifiable):
@@ -18,9 +19,7 @@ class Contract(Notifiable):
         :return: self
         """
         if not value or len(value) < minimum:
-            self.add_notification(
-                Notification(field, message)
-            )
+            self.add_notification(Notification(field, message))
 
         return self
 
@@ -34,18 +33,13 @@ class Contract(Notifiable):
         :return: self
         """
         if not self._valid_email(value):
-            self.add_notification(
-                Notification(field, message)
-            )
+            self.add_notification(Notification(field, message))
 
         return self
 
     def _valid_email(self, value):
-        return re.match(
-            r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
-            value,
-            re.IGNORECASE
-        )
+        regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+        return re.match(regex, value, re.IGNORECASE)
 
     def requires(self, value, field):
         """Require.
@@ -57,7 +51,7 @@ class Contract(Notifiable):
         """
         if not value:
             self.add_notification(
-                Notification(field, 'Campo preenchimento obrigatório')
+                Notification(field, "Campo preenchimento obrigatório")
             )
 
         return self

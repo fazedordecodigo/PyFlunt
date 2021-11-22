@@ -17,8 +17,8 @@ class Notifiable(Notification):
         self._notifications.append(notification)
 
     def add_notifications_of_contract(self, *notifications):
+        """Add notification of contract object."""
         self._notifications += self._filter_and_map_notifiables(notifications)
-        # self._notifications += self._filter_notifications(notifications)
 
     def _filter_and_map_notifiables(self, notifications):
         return [
@@ -56,4 +56,5 @@ class Notifiable(Notification):
         return False
 
     def __str__(self):
+        """Print object string."""
         return self._notifications.__str__()

@@ -5,6 +5,12 @@ Python implementation of Domain Notification Pattern based in [Flunt](https://gi
 [![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
 
+Flunt é uma forma de implementar um padrão de notificações em sua aplicação para concentrar erros e mudança em determinadas ações e entidades.
+
+O Flunt nasceu de duas necessidades, a implementação do Domain Notification Pattern para substituir Exceptions a nível de domínio na aplicação e para reduzir a quantidade de IFs (Complexidade) utilizando uma abordagem por contratos.
+
+Desta forma, basicamente o que Flunt faz é adicionar uma lista de Notification (Notificações) a sua classe e diversos métodos para interagir com ela.
+
 ## Python Version
 
 - [Python 3.10](https://www.python.org/)

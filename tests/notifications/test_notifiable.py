@@ -1,16 +1,9 @@
 """Module Test Notifiable."""
-from flunt.notification import Notification
 from tests.models.vo import Name
-import unittest
 
 
-class NotifiableTests(unittest.TestCase):
-    """Class Notifiable Test."""
+def test_vo_deve_ser_valido():
+    """Test Is Valid."""
+    nome = Name('Emerson', 'Delatorre')
 
-    def setUp(self):
-        """Execute Setup Test."""
-        self._name = Name('Emerson', 'Delatorre')
-
-    def test_deve_ser_true_instanciado_vo(self):
-        """Test Is Valid."""
-        self.assertTrue(self._name.is_valid())
+    assert nome.is_valid()
