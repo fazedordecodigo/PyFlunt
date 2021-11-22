@@ -1,7 +1,10 @@
-name: Upload Python Package
+name: CI
 
 on:
   push:
+    branches: [ dev ]
+
+  workflow_dispatch:
 
 jobs:
   executa_black:
