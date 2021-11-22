@@ -70,3 +70,31 @@ class Contract(Notifiable):
             )
 
         return self
+
+    def is_false(self, value, field, message):
+        """Require.
+
+        :param value: attribute
+        :param field: str
+        :param message: str
+
+        :return: self
+        """
+        if value:
+            self.add_notification(Notification(field, message))
+
+        return self
+
+    def is_true(self, value, field, message):
+        """Require.
+
+        :param value: attribute
+        :param field: str
+        :param message: str
+
+        :return: self
+        """
+        if not value:
+            self.add_notification(Notification(field, message))
+
+        return self
