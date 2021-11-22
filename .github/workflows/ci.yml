@@ -12,15 +12,15 @@ jobs:
     steps:
 
     - name: Realiza o checkout
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
     - name: Set up Python
-    - uses: actions/setup-python@v2
+      uses: actions/setup-python@v2
       with:
         python-version: '3.10'
 
     - name: Instala Poetry
-    - uses: Gr1N/setup-poetry@v7
+      uses: Gr1N/setup-poetry@v7
 
     - name: Instala dependências
       run: poetry install
@@ -32,15 +32,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Set up Python
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
       - name: Instala Poetry
-      - uses: Gr1N/setup-poetry@v7
+        uses: Gr1N/setup-poetry@v7
 
       - name: Instala dependências
         run: poetry install
@@ -52,15 +52,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Set up Python
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
       - name: Instala Poetry
-      - uses: Gr1N/setup-poetry@v7
+        uses: Gr1N/setup-poetry@v7
 
       - name: Instala dependências
         run: poetry install
@@ -72,15 +72,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Realiza o checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Set up Python
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
       - name: Instala Poetry
-      - uses: Gr1N/setup-poetry@v7
+        uses: Gr1N/setup-poetry@v7
 
       - name: Instala dependências
         run: poetry install
