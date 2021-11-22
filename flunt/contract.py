@@ -23,6 +23,21 @@ class Contract(Notifiable):
 
         return self
 
+    def has_max_len(self, value, maximum, field, message):
+        """Maximum length.
+
+        :param value: attribute
+        :param maximum: int
+        :param field: str
+        :param message: str
+
+        :return: self
+        """
+        if not value or len(value) > maximum:
+            self.add_notification(Notification(field, message))
+
+        return self
+
     def is_email(self, value, field, message):
         """Check if it's email.
 
