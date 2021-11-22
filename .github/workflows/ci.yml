@@ -31,62 +31,59 @@ jobs:
   executa_isort:
     runs-on: ubuntu-latest
     steps:
+      - name: Realiza o checkout
+      - uses: actions/checkout@v2
 
-    - name: Realiza o checkout
-    - uses: actions/checkout@v2
+      - name: Set up Python
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
 
-    - name: Set up Python
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+      - name: Instala Poetry
+      - uses: Gr1N/setup-poetry@v7
 
-    - name: Instala Poetry
-    - uses: Gr1N/setup-poetry@v7
+      - name: Instala dependências
+        run: poetry install
 
-    - name: Instala dependências
-      run: poetry install
-
-    - name: Executa isort
-      run: poetry run isort --check flunt
+      - name: Executa isort
+        run: poetry run isort --check flunt
 
   executa_pydocstyle:
     runs-on: ubuntu-latest
     steps:
+      - name: Realiza o checkout
+      - uses: actions/checkout@v2
 
-    - name: Realiza o checkout
-    - uses: actions/checkout@v2
+      - name: Set up Python
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
 
-    - name: Set up Python
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+      - name: Instala Poetry
+      - uses: Gr1N/setup-poetry@v7
 
-    - name: Instala Poetry
-    - uses: Gr1N/setup-poetry@v7
+      - name: Instala dependências
+        run: poetry install
 
-    - name: Instala dependências
-      run: poetry install
-
-    - name: Executa pydocstyle
-      run: poetry run pydocstyle flunt
+      - name: Executa pydocstyle
+        run: poetry run pydocstyle flunt
 
   executa_pytest:
     runs-on: ubuntu-latest
     steps:
+      - name: Realiza o checkout
+      - uses: actions/checkout@v2
 
-    - name: Realiza o checkout
-    - uses: actions/checkout@v2
+      - name: Set up Python
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
 
-    - name: Set up Python
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+      - name: Instala Poetry
+      - uses: Gr1N/setup-poetry@v7
 
-    - name: Instala Poetry
-    - uses: Gr1N/setup-poetry@v7
+      - name: Instala dependências
+        run: poetry install
 
-    - name: Instala dependências
-      run: poetry install
-
-    - name: Executa test
-      run: poetry run pytest
+      - name: Executa test
+        run: poetry run pytest
