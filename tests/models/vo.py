@@ -6,7 +6,7 @@ from flunt.contract import Contract
 class Name(Notifiable):
     """Class Value Object Name."""
 
-    def __init__(self, first_name, last_name):
+    def __init__(self, first_name: str, last_name: str) -> None:
         """Found 'Constructor'."""
         super().__init__()
         self.first_name = first_name
@@ -22,11 +22,44 @@ class Name(Notifiable):
                 field='first_name',
                 message='Mínimo de 3 caracteres'
             )
+            .has_max_len(
+                value=self.first_name,
+                maximum=50,
+                field='first_name',
+                message='Máximo de 50 caracteres'
+            )
             .has_min_len(
                 value=self.last_name,
                 minimum=3,
                 field='last_name',
                 message='Mínimo de 3 caracteres'
+            )
+            .has_max_len(
+                value=self.last_name,
+                maximum=50,
+                field='last_name',
+                message='Máximo de 50 caracteres'
+            )
+        )
+
+        self.add_notifications_of_contract(self.contract)
+
+
+class Email(Notifiable):
+    """Class Value Object E-mail."""
+
+    def __init__(self, address: str) -> None:
+        """Found 'Constructor'."""
+        super().__init__()
+        self.address = address
+
+        self.contract = (
+            Contract()
+            .requires(self.address, 'E-mail address')
+            .is_email(
+                self.address,
+                'address',
+                'Este Campo aceita apenas texto no formato e-mail'
             )
         )
 
