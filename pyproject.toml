@@ -6,9 +6,12 @@ authors = ["Emerson Delatorre <38289677+Delatorrea@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+isort = "^5.10.1"
+black = "^21.11b1"
+pydocstyle = "^6.1.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
