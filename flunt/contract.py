@@ -72,7 +72,7 @@ class Contract(Notifiable):
         return self
 
     def is_false(self, value, field, message):
-        """Require.
+        """Check if It's False.
 
         :param value: attribute
         :param field: str
@@ -86,7 +86,7 @@ class Contract(Notifiable):
         return self
 
     def is_true(self, value, field, message):
-        """Require.
+        """Check if It's true.
 
         :param value: attribute
         :param field: str
@@ -95,6 +95,34 @@ class Contract(Notifiable):
         :return: self
         """
         if not value:
+            self.add_notification(Notification(field, message))
+
+        return self
+
+    def is_not_none(self, value, field, message):
+        """Check if It's not None.
+
+        :param value: attribute
+        :param field: str
+        :param message: str
+
+        :return: self
+        """
+        if value is None:
+            self.add_notification(Notification(field, message))
+
+        return self
+
+    def is_none(self, value, field, message):
+        """Check if It's None.
+
+        :param value: attribute
+        :param field: str
+        :param message: str
+
+        :return: self
+        """
+        if value is not None:
             self.add_notification(Notification(field, message))
 
         return self
