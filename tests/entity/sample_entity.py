@@ -1,5 +1,5 @@
 """Module Sample Entity."""
-from flunt.notification import Notification
+from flunt.notifications.notification import Notification
 
 
 class SampleEntity(Notification):

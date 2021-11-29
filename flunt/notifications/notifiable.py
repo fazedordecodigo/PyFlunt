@@ -1,5 +1,5 @@
 """Module Notifiable."""
-from flunt.notification import Notification
+from flunt.notifications.notification import Notification
 
 
 class Notifiable(Notification):

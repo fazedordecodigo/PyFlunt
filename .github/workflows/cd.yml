@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  executa_black:
+  executa_build:
     runs-on: ubuntu-latest
     steps:
 

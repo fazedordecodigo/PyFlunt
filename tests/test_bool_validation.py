@@ -1,5 +1,5 @@
 from tests.entity.sample_entity import SampleEntity
-from flunt.contract import Contract
+from flunt.validations.contract import Contract
 import pytest
 
 

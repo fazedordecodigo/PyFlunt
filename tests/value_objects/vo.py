@@ -1,6 +1,6 @@
 """Module Value Objects."""
-from flunt.notifiable import Notifiable
-from flunt.contract import Contract
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 
 class Name(Notifiable):
