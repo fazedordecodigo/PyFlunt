@@ -1,6 +1,7 @@
 .venv/
 build/
 dist/
+htmlcov/
 Documents/
 .idea/
 .vscode/
@@ -9,3 +10,4 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 appsettings.json
+.coverage
