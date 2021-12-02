@@ -1,21 +1,23 @@
 """Module Value Objects."""
-from flunt.notifiable import Notifiable
-from flunt.contract import Contract
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 
-class Name(Notifiable):
+class Pessoa(Notifiable):
     """Class Value Object Name."""
 
-    def __init__(self, first_name, last_name):
+    def __init__(self, first_name, last_name, email):
         """Found 'Constructor'."""
         super().__init__()
         self.first_name = first_name
         self.last_name = last_name
+        self.email = email
 
         self.contract = (
             Contract()
             .requires(self.first_name, 'first name')
             .requires(self.last_name, 'last name')
+            .requires(self.email, 'e-mail')
             .has_min_len(
                 value=self.first_name,
                 minimum=3,
@@ -28,12 +30,17 @@ class Name(Notifiable):
                 field='last_name',
                 message='Mínimo de 3 caracteres'
             )
+            .is_email(
+                value=self.email,
+                field='email',
+                message='email errado'
+            )
         )
 
         self.add_notifications_of_contract(self.contract)
 
 
-nome = Name('Emerson', 'Delatorre')
+nome = Pessoa('Emerson', 'Delatorre', 'emerson@delatorre.dev')
 if not nome.is_valid():
     for notification in nome.get_notifications():
         print(notification)
