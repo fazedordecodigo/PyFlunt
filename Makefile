@@ -11,16 +11,15 @@ instalar: ## instala programa usando poetry, poetry precisa estar instalado
 
 ## @ programa
 .PHONY: rodar
-rodar: saida.txt ## roda programa verificando dependencias em programa.py e entrada.txt
-saida.txt: programa.py entrada.txt
-	${POETRY} python programa.py
+rodar: ## roda programa
+	${POETRY}  sample
 
 ## @ testes
 .PHONY: teste cobertura
 teste: ## Roda teste
-	${POETRY} pytest ${TEST_TARGET}
+	${POETRY} pytest
 cobertura: ##roda cobertura de testes
-	${POETRY} pytest --cov=. --cov-report=html $(TEST_TARGET)
+	${POETRY} pytest --cov=. --cov-report=html
 
 ## @ analise
 .PHONY: lint_black flake mypy lint_isort analise
