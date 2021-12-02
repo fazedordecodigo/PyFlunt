@@ -15,37 +15,33 @@ class Pessoa(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.first_name, 'first name')
-            .requires(self.last_name, 'last name')
-            .requires(self.email, 'e-mail')
+            .requires(self.first_name, "first name")
+            .requires(self.last_name, "last name")
+            .requires(self.email, "e-mail")
             .has_min_len(
                 value=self.first_name,
                 minimum=3,
-                field='first_name',
-                message='Mínimo de 3 caracteres'
+                field="first_name",
+                message="Mínimo de 3 caracteres",
             )
             .has_min_len(
                 value=self.last_name,
                 minimum=3,
-                field='last_name',
-                message='Mínimo de 3 caracteres'
+                field="last_name",
+                message="Mínimo de 3 caracteres",
             )
-            .is_email(
-                value=self.email,
-                field='email',
-                message='email errado'
-            )
+            .is_email(value=self.email, field="email", message="email errado")
         )
 
         self.add_notifications_of_contract(self.contract)
 
 
 def main():
-    nome = Pessoa('Emerson', 'Delatorre', 'emerson@delatorre.dev')
+    nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
     if not nome.is_valid():
         for notification in nome.get_notifications():
             print(notification)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
