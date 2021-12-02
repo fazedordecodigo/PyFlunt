@@ -40,7 +40,12 @@ class Pessoa(Notifiable):
         self.add_notifications_of_contract(self.contract)
 
 
-nome = Pessoa('Emerson', 'Delatorre', 'emerson@delatorre.dev')
-if not nome.is_valid():
-    for notification in nome.get_notifications():
-        print(notification)
+def main():
+    nome = Pessoa('Emerson', 'Delatorre', 'emerson@delatorre.dev')
+    if not nome.is_valid():
+        for notification in nome.get_notifications():
+            print(notification)
+
+
+if __name__ == '__main__':
+    main()
