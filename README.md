@@ -4,16 +4,16 @@ Python implementation of Domain Notification Pattern based in [Flunt](https://gi
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
+[![Documentation](https://readthedocs.org/projects/pyflunt/badge/?style=flat)](https://readthedocs.org/projects/pyflunt)
+[![GitHub Actions Status](https://github.com/delatorrea/pyflunt/actions/workflows/ci.yml/badge.svg)](https://github.com/delatorrea/pyflunt/actions)
+[![Supported versions](https://img.shields.io/pypi/pyversions/flunt.svg)](https://pypi.org/project/flunt)
 
+ 
 Flunt é uma forma de implementar um padrão de notificações em sua aplicação para concentrar erros e mudança em determinadas ações e entidades.
 
 O Flunt nasceu de duas necessidades, a implementação do Domain Notification Pattern para substituir Exceptions a nível de domínio na aplicação e para reduzir a quantidade de IFs (Complexidade) utilizando uma abordagem por contratos.
 
 Desta forma, basicamente o que Flunt faz é adicionar uma lista de Notification (Notificações) a sua classe e diversos métodos para interagir com ela.
-
-## Python Version
-
-- [Python 3.10](https://www.python.org/)
 
 ## How to use
 
@@ -32,7 +32,7 @@ from flunt.notification import Notification
 class Name(Notifiable):
     def __init__(self, name):
         super().__init__()
-        
+
         if len(name) > 3:
             self.add_notification(
                 Notification(field='name', message='invalid name')
@@ -88,3 +88,9 @@ if not nome.is_valid():
 ## License
 
 This project contains the MIT license. See the file [LICENSE](LICENSE).
+
+## Contributor Guide
+
+````powershell
+make ajuda
+````

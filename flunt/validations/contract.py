@@ -1,9 +1,9 @@
 """Module Contract."""
 import re
 
+from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
-from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 
 
 class Contract(Notifiable):
@@ -54,11 +54,7 @@ class Contract(Notifiable):
         return self
 
     def _valid_email(self, value):
-        return re.match(
-                    FluntRegexPatterns().email_regex_pattern,
-                    value,
-                    re.IGNORECASE
-                )
+        return re.match(FluntRegexPatterns().email_regex_pattern, value, re.IGNORECASE)
 
     def requires(self, value, field):
         """Require.

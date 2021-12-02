@@ -1,6 +1,6 @@
 """Module Flunt Regex Patterns."""
 
-REGEX_EMAIL = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'
+REGEX_EMAIL = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 REGEX_CPF_CNPJ = r"""
 ([0-9]{2}[\.]?[0-9]{3}[\.]?
 [0-9]{3}[\/]?[0-9]{4}[-]?
@@ -11,7 +11,7 @@ REGEX_CPF_CNPJ = r"""
 """
 
 
-class FluntRegexPatterns():
+class FluntRegexPatterns:
     """Class Notifiable."""
 
     def __init__(self) -> None:

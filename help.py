@@ -1,5 +1,6 @@
 from rich.console import Console
 
+
 console = Console()
 console.print("\npra rodar comandos: [bold]make alvo[/bold]")
 
