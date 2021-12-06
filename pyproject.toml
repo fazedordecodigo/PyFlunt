@@ -9,6 +9,7 @@ python = "^3.10"
 isort = "^5.10.1"
 black = "^21.11b1"
 pydocstyle = "^6.1.1"
+python-interface = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

@@ -37,10 +37,12 @@ class Pessoa(Notifiable):
 
 
 def main():
-    nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
+    nome = Pessoa("Emerson", "Delatorre", "emersondelatorre.dev")
     if not nome.is_valid():
         for notification in nome.get_notifications():
             print(notification)
+    else:
+        print("sem notificações")
 
 
 if __name__ == "__main__":
