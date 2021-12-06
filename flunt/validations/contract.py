@@ -54,7 +54,11 @@ class Contract(Notifiable):
         return self
 
     def _valid_email(self, value):
-        return re.match(FluntRegexPatterns().email_regex_pattern, value, re.IGNORECASE)
+        return re.match(
+                        FluntRegexPatterns().email_regex_pattern,
+                        value,
+                        re.IGNORECASE
+                        )
 
     def requires(self, value, field):
         """Require.
