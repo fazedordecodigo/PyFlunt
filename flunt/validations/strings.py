@@ -4,10 +4,10 @@ from flunt.notifications.notification import Notification
 
 
 class StringValidationContract(Notifiable):
-    """Class Contract."""
+    """Class String Validation Contract."""
 
     def is_lower_than(self, value: str, compare: int, key: str, message: str):
-        """Requires a string len is lower than
+        """Require a string len is lower than.
 
         :param value
         :param compare
@@ -31,7 +31,7 @@ class StringValidationContract(Notifiable):
         key: str,
         message: str
     ):
-        """Requires a string len is lower or equals than
+        """Require a string len is lower or equals than.
 
         :param value
         :param compare
@@ -55,7 +55,7 @@ class StringValidationContract(Notifiable):
         key: str,
         message: str
     ):
-        """Requires a string is greater than.
+        """Require a string is greater than.
 
         :param value
         :param comparer
@@ -79,7 +79,7 @@ class StringValidationContract(Notifiable):
         key: str,
         message: str
     ):
-        """Requires a string len is greater or equals than
+        """Require a string len is greater or equals than.
 
         :param value
         :param comparer
@@ -97,7 +97,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def is_none(self, value: str, key: str, message: str):
-        """Requires a string is not none
+        """Require a string is not none.
 
         :param value
         :param key
@@ -111,7 +111,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def is_not_none(self, value: str, key: str, message: str):
-        """Requires a string is not none
+        """Require a string is not none.
 
         :param value
         :param key
@@ -125,7 +125,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def is_not_none_or_white_space(self, value: str, key: str, message: str):
-        """Requires a string is not null or white space
+        """Require a string is not null or white space.
 
         :param value
         :param key
@@ -139,7 +139,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def are_equals(self, value: str, compare: str, key: str, message: str):
-        """Requires two strings are equals
+        """Require two strings are equals.
 
         :param value
         :param key
@@ -153,7 +153,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def are_not_equals(self, value: str, compare: str, key: str, message: str):
-        """Requires two strings are not equals
+        """Require two strings are not equals.
 
         :param value
         :param key
@@ -167,7 +167,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def contains(self, value: str, compare: str, key: str, message: str):
-        """Requires a string contains
+        """Require a string contains.
 
         :param value
         :param key
@@ -175,14 +175,13 @@ class StringValidationContract(Notifiable):
 
         :return
         """
-
         if value.find(compare) > -1:
             self.add_notification(Notification(key, message))
 
         return self
 
     def not_contains(self, value: str, compare: str, key: str, message: str):
-        """Requires a string not contains
+        """Require a string not contains.
 
         :param value
         :param key
@@ -190,7 +189,6 @@ class StringValidationContract(Notifiable):
 
         :return
         """
-
         if value.find(compare) == -1:
             self.add_notification(Notification(key, message))
 

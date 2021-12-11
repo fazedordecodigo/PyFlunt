@@ -7,8 +7,10 @@ from flunt.notifications.notification import Notification
 
 
 class EmailValidationContract(Notifiable):
+    """Class Email Validation Contract."""
+
     def is_email(self, value: str, key: str, message: str):
-        """Requires a string is an email
+        """Require a string is an email.
 
         :param value
         :param key
@@ -22,7 +24,7 @@ class EmailValidationContract(Notifiable):
         return self
 
     def is_not_email(self, value: str, key: str, message: str):
-        """Requires a string is not an email
+        """Require a string is not an email.
 
         :param value
         :param key

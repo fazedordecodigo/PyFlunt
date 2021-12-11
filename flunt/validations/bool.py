@@ -4,8 +4,10 @@ from flunt.notifications.notification import Notification
 
 
 class BoolValidationContract(Notifiable):
+    """Class Bool Validation Contract."""
+
     def is_false(self, value: bool, key: str, message: str):
-        """Requires that a bool is false
+        """Require that a bool is false.
 
         :param value
         :param key
@@ -19,7 +21,7 @@ class BoolValidationContract(Notifiable):
         return self
 
     def is_true(self, value: bool, key: str, message: str):
-        """Requires that a bool is true
+        """Require that a bool is true.
 
         :param value
         :param key

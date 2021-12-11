@@ -12,6 +12,8 @@ class Contract(
     BoolValidationContract,
     Notifiable
 ):
+    """Class Contract."""
+
     def requires(self, value: str, key: str):
         """Require.
 
