@@ -6,17 +6,18 @@ authors = ["Emerson Delatorre <38289677+Delatorrea@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-isort = "^5.10.1"
-black = "^21.11b1"
-pydocstyle = "^6.1.1"
 python-interface = "^1.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 rich = "^10.14.0"
+isort = "^5.10.1"
+black = "^21.11b1"
+pydocstyle = "^6.1.1"
 pytest-cov = "^3.0.0"
 mypy = "^0.910"
 flake8 = "^4.0.1"
+ipdb = "^0.13.9"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
