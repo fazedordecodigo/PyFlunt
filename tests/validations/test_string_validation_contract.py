@@ -72,3 +72,21 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_e
     )
     assert contract.is_valid() is False
     assert len(contract.get_notifications()) == 1
+
+
+def test_should_be_valid_when_is_none():
+    contract = (
+        Contract()
+        .is_none(None, "first_name", "any message")
+    )
+    assert contract.is_valid()
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_be_invalid_and_return_once_notification_when_not_is_none(entityMock):
+    contract = (
+        Contract()
+        .is_none(entityMock.first_name, "first_name", "any message")
+    )
+    assert contract.is_valid() is False
+    assert len(contract.get_notifications()) == 1
