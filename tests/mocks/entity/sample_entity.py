@@ -12,3 +12,5 @@ class SampleEntity(Notification):
         self.bool_none_property = None
         self.email_valid = "any@any.com"
         self.email_invalid = "any"
+        self.first_name = "any_first_name"
+        self.last_name = "any_last_name"
