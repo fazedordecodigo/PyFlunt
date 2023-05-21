@@ -36,3 +36,21 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equ
     )
     assert contract.is_valid() is False
     assert len(contract.get_notifications()) == 1
+
+
+def test_should_be_valid_when_is_greater_then_10(entityMock):
+    contract = (
+        Contract()
+        .is_greater_than(entityMock.first_name, 10, "first_name", "any message")
+    )
+    assert contract.is_valid()
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_be_invalid_and_return_once_notification_when_not_is_greater_then_15(entityMock):
+    contract = (
+        Contract()
+        .is_greater_than(entityMock.first_name, 15, "first_name", "any message")
+    )
+    assert contract.is_valid() is False
+    assert len(contract.get_notifications()) == 1
