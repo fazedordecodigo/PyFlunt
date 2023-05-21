@@ -1,7 +1,7 @@
 """Module Contract."""
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
-from flunt.validations.bool import BoolValidationContract
+from flunt.validations.bool_validation_contract import BoolValidationContract
 from flunt.validations.email import EmailValidationContract
 from flunt.validations.strings import StringValidationContract
 

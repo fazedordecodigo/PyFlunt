@@ -1,7 +1,7 @@
 from flunt.validations.contract import Contract
 
 
-def test_quando_bool_e_true_deve_ser_valido(entityMock):
+def test_should_be_valid_when_is_true(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -10,7 +10,7 @@ def test_quando_bool_e_true_deve_ser_valido(entityMock):
     assert contract.is_valid()
 
 
-def test_quando_bool_e_false_deve_ser_valido(entityMock):
+def test_should_be_valid_when_is_false(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -19,7 +19,7 @@ def test_quando_bool_e_false_deve_ser_valido(entityMock):
     assert contract.is_valid()
 
 
-def test_quando_bool_e_true_e_invalido_deve_conter_1_notificacao(entityMock):
+def test_should_return_a_once_notification_when_is_true_is_invalid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -28,7 +28,7 @@ def test_quando_bool_e_true_e_invalido_deve_conter_1_notificacao(entityMock):
     assert len(contract.get_notifications()) == 1
 
 
-def test_quando_bool_e_false_e_invalido_deve_conter_1_notificacao(entityMock):
+def test_should_return_a_once_notification_when_is_false_is_invalid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -37,7 +37,7 @@ def test_quando_bool_e_false_e_invalido_deve_conter_1_notificacao(entityMock):
     assert len(contract.get_notifications()) == 1
 
 
-def test_quando_bool_e_none_deve_ser_valido(entityMock):
+def test_should_return_valid_when_is_none_is_valid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -46,7 +46,7 @@ def test_quando_bool_e_none_deve_ser_valido(entityMock):
     assert contract.is_valid()
 
 
-def test_quando_bool_e_none_e_invalido_deve_conter_1_notificacao(entityMock):
+def test_should_return_a_once_notification_when_is_none_is_invalid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -55,7 +55,7 @@ def test_quando_bool_e_none_e_invalido_deve_conter_1_notificacao(entityMock):
     assert len(contract.get_notifications()) == 1
 
 
-def test_quando_bool_nao_e_none_deve_ser_valido(entityMock):
+def test_should_return_valid_when_is_not_none_is_valid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
@@ -64,7 +64,7 @@ def test_quando_bool_nao_e_none_deve_ser_valido(entityMock):
     assert contract.is_valid()
 
 
-def test_quando_bool_nao_e_none_e_invalido_deve_conter_1_notificacao(entityMock):
+def test_should_return_a_once_notification_when_is_not_none_is_invalid(entityMock):
     contract = (
         Contract()
         .requires(entityMock.bool_true_property, "Bool")
