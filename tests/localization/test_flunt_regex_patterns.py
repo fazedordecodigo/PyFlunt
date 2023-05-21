@@ -58,3 +58,27 @@ def test_should_identify_a_invalid_cnpj_without_points_returning_none(regex):
     actual = "2671084500016"
     expected = re.match(regex.cnpj_regex_pattern, actual)
     assert expected is None
+
+
+def test_should_identify_a_valid_url_returning_not_none(regex):
+    actual = "https://www.any.com"
+    expected = re.match(regex.url_regex_pattern, actual)
+    assert expected is not None
+
+
+def test_should_identify_a_invalid_url_returning_none(regex):
+    actual = "any_text"
+    expected = re.match(regex.url_regex_pattern, actual)
+    assert expected is None
+
+
+def test_should_identify_only_numbers_returning_not_none(regex):
+    actual: str = "10000"
+    expected = re.match(regex.only_number_regex_pattern, actual)
+    assert expected is not None
+
+
+def test_should_identify_only_numbers_returning_none(regex):
+    actual: str = "AB01"
+    expected = re.match(regex.only_number_regex_pattern, actual)
+    assert expected is None
