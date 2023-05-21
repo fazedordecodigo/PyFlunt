@@ -94,3 +94,15 @@ def test_should_identify_letters_and_numbers_returning_none(regex):
     actual: str = str()
     expected = re.match(regex.only_letters_and_numbers_regex_pattern, actual)
     assert expected is None
+
+
+def test_should_identify_a_valid_passport_returning_not_none(regex):
+    actual: str = "JM112035"
+    expected = re.match(regex.passport_regex_pattern, actual)
+    assert expected is not None
+
+
+def test_should_identify_a_invalid_passport_returning_none(regex):
+    actual: str = "any"
+    expected = re.match(regex.passport_regex_pattern, actual)
+    assert expected is not None
