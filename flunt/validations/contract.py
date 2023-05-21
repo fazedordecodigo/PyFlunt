@@ -27,4 +27,4 @@ class Contract(
                 Notification(key, "Campo preenchimento obrigatório")
             )
 
-        return self.is_non
+        return self
