@@ -3,7 +3,7 @@ from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 from flunt.validations.bool_validation_contract import BoolValidationContract
 from flunt.validations.email_validation_contract import EmailValidationContract
-from flunt.validations.strings import StringValidationContract
+from flunt.validations.strings_validation_contract import StringValidationContract
 
 
 class Contract(
