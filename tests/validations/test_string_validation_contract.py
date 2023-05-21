@@ -2,7 +2,7 @@
 from flunt.validations.contract import Contract
 
 
-def test_should_be_valid_when_is_lower_then_20(entityMock):
+def test_should_be_valid_when_is_lower_than_20(entityMock):
     contract = (
         Contract()
         .is_lower_than(entityMock.first_name, 20, "first_name", "any message")
@@ -11,7 +11,7 @@ def test_should_be_valid_when_is_lower_then_20(entityMock):
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_is_lower_then_5(entityMock):
+def test_should_be_invalid_and_return_once_notification_when_not_is_lower_than_5(entityMock):
     contract = (
         Contract()
         .is_lower_than(entityMock.first_name, 5, "first_name", "any message")
@@ -20,7 +20,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_lower_then_5
     assert len(contract.get_notifications()) == 1
 
 
-def test_should_be_valid_when_is_lower_or_equals_then_20(entityMock):
+def test_should_be_valid_when_is_lower_or_equals_than_20(entityMock):
     contract = (
         Contract()
         .is_lower_or_equals_than(entityMock.first_name, 20, "first_name", "any message")
@@ -29,7 +29,7 @@ def test_should_be_valid_when_is_lower_or_equals_then_20(entityMock):
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equals_then_14(entityMock):
+def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equals_than_14(entityMock):
     contract = (
         Contract()
         .is_lower_or_equals_than(entityMock.first_name, 14, "first_name", "any message")
@@ -38,7 +38,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equ
     assert len(contract.get_notifications()) == 1
 
 
-def test_should_be_valid_when_is_greater_then_10(entityMock):
+def test_should_be_valid_when_is_greater_than_10(entityMock):
     contract = (
         Contract()
         .is_greater_than(entityMock.first_name, 10, "first_name", "any message")
@@ -47,7 +47,7 @@ def test_should_be_valid_when_is_greater_then_10(entityMock):
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_is_greater_then_15(entityMock):
+def test_should_be_invalid_and_return_once_notification_when_not_is_greater_than_15(entityMock):
     contract = (
         Contract()
         .is_greater_than(entityMock.first_name, 15, "first_name", "any message")
@@ -56,7 +56,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_then
     assert len(contract.get_notifications()) == 1
 
 
-def test_should_be_valid_when_is_greater_or_equals_then_13(entityMock):
+def test_should_be_valid_when_is_greater_or_equals_than_13(entityMock):
     contract = (
         Contract()
         .is_greater_or_equals_than(entityMock.first_name, 13, "first_name", "any message")
@@ -65,7 +65,7 @@ def test_should_be_valid_when_is_greater_or_equals_then_13(entityMock):
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_equals_then_14(entityMock):
+def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_equals_than_14(entityMock):
     contract = (
         Contract()
         .is_greater_or_equals_than(entityMock.first_name, 14, "first_name", "any message")
