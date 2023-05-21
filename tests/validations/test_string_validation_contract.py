@@ -109,3 +109,30 @@ def test_should_be_invalid_and_return_once_notification_when_not_none():
     )
     assert contract.is_valid() is False
     assert len(contract.get_notifications()) == 1
+
+
+def test_should_be_valid_when_is_not_none_or_whit_space(entityMock):
+    contract = (
+        Contract()
+        .is_not_none_or_white_space(entityMock.first_name, "first_name", "any message")
+    )
+    assert contract.is_valid()
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_be_invalid_and_return_once_notification_when_not_none():
+    contract = (
+        Contract()
+        .is_not_none_or_white_space(None, "first_name", "any message")
+    )
+    assert contract.is_valid() is False
+    assert len(contract.get_notifications()) == 1
+
+
+def test_should_be_invalid_and_return_once_notification_when_white_space():
+    contract = (
+        Contract()
+        .is_not_none_or_white_space(" ", "first_name", "any message")
+    )
+    assert contract.is_valid() is False
+    assert len(contract.get_notifications()) == 1
