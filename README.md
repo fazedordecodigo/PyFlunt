@@ -5,25 +5,25 @@ Python implementation of Domain Notification Pattern based in [Flunt](https://gi
 [![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
 
-Flunt é uma forma de implementar um padrão de notificações em sua aplicação para concentrar erros e mudança em determinadas ações e entidades.
+Flunt is a way to implement a notification pattern in your application to centralize errors and changes in certain actions and entities.
 
-O Flunt nasceu de duas necessidades, a implementação do Domain Notification Pattern para substituir Exceptions a nível de domínio na aplicação e para reduzir a quantidade de IFs (Complexidade) utilizando uma abordagem por contratos.
+Flunt was born out of two needs: implementing the Domain Notification Pattern to replace domain-level exceptions in the application and reducing the amount of IFs (complexity) by using a contract-based approach.
 
-Desta forma, basicamente o que Flunt faz é adicionar uma lista de Notification (Notificações) a sua classe e diversos métodos para interagir com ela.
+Thus, basically what Flunt does is add a list of Notifications to your class and various methods to interact with it.
 
-## Python Version
+## 🐍 Python Version
 
 - [Python 3.10](https://www.python.org/)
 
-## How to use
+## ➡️ How to use
 
-### Installation
+### 🔧 Installation
 
 ````bash
 pip install flunt
 ````
 
-### Notifiable
+### 🔔 Notifiable
 
 ````python
 from flunt.notifiable import Notifiable
@@ -41,7 +41,7 @@ class Name(Notifiable):
         self._name = name
 ````
 
-### Contract
+### 📜 Contract
 ````python
 """Module Value Objects."""
 from flunt.notifiable import Notifiable
@@ -85,6 +85,6 @@ if not nome.is_valid():
 
 ````
 
-## License
+## 📄 License
 
 This project contains the MIT license. See the file [LICENSE](LICENSE).
