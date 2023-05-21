@@ -1,4 +1,4 @@
-from tests.value_objects.vo import Email, Name
+from tests.mocks.value_objects.vo import Email, Name
 
 
 def test_quando_nome_possuir_mais_que_2_e_menos_que_51_caracteres_deve_ser_valido():
