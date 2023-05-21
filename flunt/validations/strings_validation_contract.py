@@ -14,29 +14,18 @@ class StringValidationContract(Notifiable):
         N/A
 
     Methods:
-        is_lower_than(value, comparer, key, message): Checks if the length of a string value is lower than a given number.
-
-        is_lower_or_equals_than(value, comparer, key, message): Checks if the length of a string value is lower or equal to a given number.
-
-        is_greater_than(value, comparer, key, message): Checks if the length of a string value is greater than a given number.
-
-        is_greater_or_equals_than(value, comparer, key, message): Checks if the length of a string value is greater or equal to a given number.
-
-        is_none(value, key, message): Checks if a string value is None.
-
-        is_not_none(value, key, message): Checks if a string value is not None.
-
-        is_not_none_or_white_space(value, key, message): Checks if a string value is not None or whitespace.
-
-        are_equals(value, comparer, key, message): Checks if two string values are equal.
-
-        are_not_equals(value, comparer, key, message): Checks if two string values are not equal.
-
-        contains(value, comparer, key, message): Checks if a string contains a specific substring.
-
-        not_contains(value, comparer, key, message): Checks if a string does not contain a specific substring.
-
-        is_between(value, min, max, key, message): Checks if the length of a string is between a minimum and maximum value.
+        - is_lower_than(value, comparer, key, message): Checks if the length of a string value is lower than a given number.
+        - is_lower_or_equals_than(value, comparer, key, message): Checks if the length of a string value is lower or equal to a given number.
+        - is_greater_than(value, comparer, key, message): Checks if the length of a string value is greater than a given number.
+        - is_greater_or_equals_than(value, comparer, key, message): Checks if the length of a string value is greater or equal to a given number.
+        - is_none(value, key, message): Checks if a string value is None.
+        - is_not_none(value, key, message): Checks if a string value is not None.
+        - is_not_none_or_white_space(value, key, message): Checks if a string value is not None or whitespace.
+        - are_equals(value, comparer, key, message): Checks if two string values are equal.
+        - are_not_equals(value, comparer, key, message): Checks if two string values are not equal.
+        - contains(value, comparer, key, message): Checks if a string contains a specific substring.
+        - not_contains(value, comparer, key, message): Checks if a string does not contain a specific substring.
+        - is_between(value, min, max, key, message): Checks if the length of a string is between a minimum and maximum value.
 
     Example:
         contract = StringValidationContract()
@@ -58,9 +47,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is an empty string or None, no notification is added.
-
-            If the length of 'value' is greater than 'comparer', a notification is added to the current instance
+            - If the 'value' is an empty string or None, no notification is added.
+            - If the length of 'value' is greater than 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:
@@ -92,9 +80,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is an empty string or None, no notification is added.
-
-            If the length of 'value' is greater than or equal to 'comparer', a notification is added to the current instance
+            - If the 'value' is an empty string or None, no notification is added.
+            - If the length of 'value' is greater than or equal to 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:
@@ -124,9 +111,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is an empty string or None, no notification is added.
-
-            If the length of 'value' is smaller than 'comparer', a notification is added to the current instance
+            - If the 'value' is an empty string or None, no notification is added.
+            - If the length of 'value' is smaller than 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:
@@ -158,9 +144,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is an empty string or None, no notification is added.
-
-            If the length of 'value' is smaller than or equal to 'comparer', a notification is added to the current instance
+            - If the 'value' is an empty string or None, no notification is added.
+            - If the length of 'value' is smaller than or equal to 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:
@@ -189,9 +174,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is not None, no notification is added.
-
-            If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
+            - If the 'value' is not None, no notification is added.
+            - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
 
         Example:
             obj = MyClass()
@@ -216,8 +200,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
-            If the 'value' is not None, no notification is added.
+            - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
+            - If the 'value' is not None, no notification is added.
 
         Example:
             obj = MyClass()
@@ -241,9 +225,9 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is None or consists only of whitespace characters (spaces, tabs, newlines, etc.),
+            - If the 'value' is None or consists only of whitespace characters (spaces, tabs, newlines, etc.),
             a notification is added to the current instance with the provided 'key' and 'message'.
-            If the 'value' is not None and contains at least one non-whitespace character, no notification is added.
+            - If the 'value' is not None and contains at least one non-whitespace character, no notification is added.
 
         Example:
             obj = MyClass()
@@ -268,7 +252,7 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is not equal to 'comparer', a notification is added to the current instance
+            - If the 'value' is not equal to 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'. Otherwise, no notification is added.
 
         Example:
@@ -294,7 +278,7 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
         
         Note:
-            If the 'value' is equal to 'comparer', a notification is added to the current instance
+            - If the 'value' is equal to 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'. Otherwise, no notification is added.
 
         Example:
@@ -320,9 +304,9 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' contains the 'comparer' string, a notification is added to the current instance
-            with the provided 'key' and 'message'. If the 'value' does not contain the 'comparer' string,
-            no notification is added.
+            - If the 'value' contains the 'comparer' string, a notification is added to the current instance
+            with the provided 'key' and 'message'. 
+            - If the 'value' does not contain the 'comparer' string, no notification is added.
 
         Example:
             obj = MyClass()
@@ -348,9 +332,8 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' does not contain the 'comparer' substring, no notification is added.
-
-            If the 'value' contains the 'comparer' substring, a notification is added to the current instance
+            - If the 'value' does not contain the 'comparer' substring, no notification is added.
+            - If the 'value' contains the 'comparer' substring, a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:
@@ -379,11 +362,9 @@ class StringValidationContract(Notifiable):
             self: The current instance with potential notifications added.
 
         Note:
-            If the 'value' is empty, the function returns the current instance without adding any notifications.
-
-            If the 'value' is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
-
-            If the length of 'value' is less than 'min' or greater than 'max', a notification is added to the current instance
+            - If the 'value' is empty, the function returns the current instance without adding any notifications.
+            - If the 'value' is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
+            - If the length of 'value' is less than 'min' or greater than 'max', a notification is added to the current instance
             with the provided 'key' and 'message'.
 
         Example:

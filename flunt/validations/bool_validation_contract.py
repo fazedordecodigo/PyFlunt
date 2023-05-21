@@ -4,16 +4,39 @@ from flunt.notifications.notification import Notification
 
 
 class BoolValidationContract(Notifiable):
-    """Class Bool Validation Contract."""
+    """
+    Class Bool Validation Contract.
+
+    This class provides methods for validating boolean values and adding notifications based on the validation results.
+
+    Methods:
+        - is_false(value: bool, key: str, message: str) -> self:
+            Checks if the provided boolean value is False and adds a notification if it is True.
+
+        - is_true(value: bool, key: str, message: str) -> self:
+            Checks if the provided boolean value is True and adds a notification if it is False.
+    """
 
     def is_false(self, value: bool, key: str, message: str):
-        """Require that a bool is false.
+        """
+        Checks if the provided boolean value is False and adds a notification if it is True.
 
-        :param value
-        :param key
-        :param message
+        Args:
+            value (bool): The boolean value to be checked.
+            key (str): The key or identifier associated with the notification.
+            message (str): The message of the notification to be added.
 
-        :return
+        Returns:
+            self: The current instance of the class.
+
+        Note:
+            - If the provided value is True, a notification is added to the current instance using the provided key and message.
+            - If the provided value is False, no notification is added.
+
+        Example:
+            obj = MyClass()
+
+            obj.is_false(False, "BoolCheck", "Value should return true")
         """
         if value:
             self.add_notification(Notification(key, message))
@@ -21,13 +44,25 @@ class BoolValidationContract(Notifiable):
         return self
 
     def is_true(self, value: bool, key: str, message: str):
-        """Require that a bool is true.
+        """
+        Checks if the provided boolean value is True and adds a notification if it is True.
 
-        :param value
-        :param key
-        :param message
+        Args:
+            value (bool): The boolean value to be checked.
+            key (str): The key or identifier associated with the notification.
+            message (str): The message of the notification to be added.
 
-        :return
+        Returns:
+            self: The current instance of the class.
+
+        Note:
+            - If the provided value is False, a notification is added to the current instance using the provided key and message.
+            - If the provided value is True, no notification is added.
+
+        Example:
+            obj = MyClass()
+
+            obj.is_true(True, "BoolCheck", "Value should return true")
         """
         if not value:
             self.add_notification(Notification(key, message))
