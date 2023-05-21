@@ -118,3 +118,6 @@ def test_should_be_invalid_and_return_once_notification_when_white_space():
     contract = Contract().is_not_none_or_white_space(" ", "first_name", "any message")
     assert contract.is_valid() is False
     assert len(contract.get_notifications()) == 1
+
+
+# TODO: Create tests Equal, Not Equal, Contain, Not Contain and Between
