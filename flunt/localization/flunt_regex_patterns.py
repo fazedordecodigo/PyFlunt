@@ -18,4 +18,3 @@ class FluntRegexPatterns:
         self.only_number_regex_pattern = REGEX_ONLY_NUMBERS
         self.only_letters_and_numbers_regex_pattern = REGEX_ONLY_LETTERS_AND_NUMBERS
         self.passport_regex_pattern = REGEX_PASSPORT
-

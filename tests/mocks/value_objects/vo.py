@@ -21,14 +21,14 @@ class Name(Notifiable):
                 min=3,
                 max=50,
                 key="first_name",
-                message="Mínimo de 3 e máximo de 50 caracteres"
+                message="Mínimo de 3 e máximo de 50 caracteres",
             )
             .is_between(
                 value=self.last_name,
                 min=3,
                 max=50,
                 key="last_name",
-                message="Mínimo de 3 e máximo de 50 caracteres"
+                message="Mínimo de 3 e máximo de 50 caracteres",
             )
         )
 

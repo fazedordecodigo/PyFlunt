@@ -25,11 +25,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def is_lower_or_equals_than(
-        self,
-        value: str,
-        comparer: int,
-        key: str,
-        message: str
+        self, value: str, comparer: int, key: str, message: str
     ):
         """Require a string len is lower or equals than.
 
@@ -48,13 +44,7 @@ class StringValidationContract(Notifiable):
 
         return self
 
-    def is_greater_than(
-        self,
-        value: str,
-        comparer: int,
-        key: str,
-        message: str
-    ):
+    def is_greater_than(self, value: str, comparer: int, key: str, message: str):
         """Require a string is greater than.
 
         :param value
@@ -73,11 +63,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def is_greater_or_equals_than(
-        self,
-        value: str,
-        comparer: int,
-        key: str,
-        message: str
+        self, value: str, comparer: int, key: str, message: str
     ):
         """Require a string len is greater or equals than.
 
@@ -197,7 +183,7 @@ class StringValidationContract(Notifiable):
             self.add_notification(Notification(key, message))
 
         return self
-    
+
     def is_between(self, value: str, min: int, max: int, key: str, message: str):
         """Requires a string len is between.
 
