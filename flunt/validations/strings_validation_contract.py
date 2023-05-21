@@ -276,7 +276,7 @@ class StringValidationContract(Notifiable):
 
         Returns:
             self: The current instance with potential notifications added.
-        
+
         Note:
             - If the 'value' is equal to 'comparer', a notification is added to the current instance
             with the provided 'key' and 'message'. Otherwise, no notification is added.
@@ -305,7 +305,7 @@ class StringValidationContract(Notifiable):
 
         Note:
             - If the 'value' contains the 'comparer' string, a notification is added to the current instance
-            with the provided 'key' and 'message'. 
+            with the provided 'key' and 'message'.
             - If the 'value' does not contain the 'comparer' string, no notification is added.
 
         Example:
@@ -369,7 +369,7 @@ class StringValidationContract(Notifiable):
 
         Example:
             obj = MyClass()
-            
+
             obj.is_between("Hello", 3, 6, "LengthCheck", "Value length should be between 3 and 6")
         """
         if not value:

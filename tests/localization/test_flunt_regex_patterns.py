@@ -36,6 +36,7 @@ def test_should_identify_a_invalid_cpf_without_points_returning_none(regex):
     expected = re.match(regex.cpf_regex_pattern, actual)
     assert expected is None
 
+
 def test_should_identify_a_valid_cnpj_with_points_returning_not_none(regex):
     actual: str = "26.710.845/0001-64"
     expected = re.match(regex.cnpj_regex_pattern, actual)

@@ -1,4 +1,3 @@
-
 from flunt.validations.contract import Contract
 from tests.mocks.value_objects.vo import Email
 
