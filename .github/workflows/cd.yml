@@ -7,8 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  executa_build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
 
     - name: Realiza o checkout
@@ -23,7 +24,23 @@ jobs:
       uses: Gr1N/setup-poetry@v7
 
     - name: Instala dependências
-      run: poetry install
+      run: poetry install --no-dev
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+      with:
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: Release ${{ steps.get_version.outputs.version }}
+        body: |
+          Release ${{ steps.get_version.outputs.version }}
+
+    - name: Get Version
+      id: get_version
+      run: |
+        echo "::set-output name=version::$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')"
 
     - name: Build and publish to pypi
       uses: JRubics/poetry-publish@v1.9
