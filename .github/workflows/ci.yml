@@ -46,7 +46,7 @@ jobs:
         run: poetry install
 
       - name: Executa isort
-        run: poetry run isort --check flunt
+        run: poetry run isort --profile=black --lines-after-import=2 --check flunt
 
   executa_pydocstyle:
     runs-on: ubuntu-latest

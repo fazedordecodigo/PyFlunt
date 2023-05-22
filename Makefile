@@ -30,7 +30,7 @@ flake:
 mypy:
 	${POETRY} mypy .
 lint_isort:
-	${POETRY} isort ${ISORT_FLAGS} --check .
+	${POETRY} isort ${ISORT_FLAGS} --check flunt.
 analise: lint_black flake mypy lint_isort ## roda analise estatica: black, flake, mypy e isort
 
 ## @ formatacao
@@ -38,7 +38,7 @@ analise: lint_black flake mypy lint_isort ## roda analise estatica: black, flake
 black:
 	${POETRY} black .
 isort:
-	${POETRY} isort ${ISORT_FLAGS} .
+	${POETRY} isort ${ISORT_FLAGS}.
 formatar: isort black ## roda formatacao nos arquivos da pasta usando black e isort
 
 .PHONY: ajuda
