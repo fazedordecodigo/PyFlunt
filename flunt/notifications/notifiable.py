@@ -1,8 +1,11 @@
 """Module Notifiable."""
+from interface import implements
+
+from flunt.notifications.interface import INotifiable
 from flunt.notifications.notification import Notification
 
 
-class Notifiable(Notification):
+class Notifiable(implements(INotifiable), Notification):
     """Class Notifiable."""
 
     def __init__(self) -> None:

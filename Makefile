@@ -11,36 +11,37 @@ instalar: ## instala programa usando poetry, poetry precisa estar instalado
 
 ## @ programa
 .PHONY: rodar
-rodar: saida.txt ## roda programa verificando dependencias em programa.py e entrada.txt
-saida.txt: programa.py entrada.txt
-	${POETRY} python programa.py
+rodar: ## roda programa
+	${POETRY}  sample
 
 ## @ testes
 .PHONY: teste cobertura
 teste: ## Roda teste
-	${POETRY} pytest ${TEST_TARGET}
+	${POETRY} pytest
 cobertura: ##roda cobertura de testes
-	${POETRY} pytest --cov=. --cov-report=html $(TEST_TARGET)
+	${POETRY} pytest --cov=. --cov-report=html
 
 ## @ analise
 .PHONY: lint_black flake mypy lint_isort analise
 lint_black:
-	${POETRY} black --check .
+	${POETRY} black --check flunt
 flake:
-	${POETRY} flake8 ${FLAKE8_FLAGS} .
+	${POETRY} flake8 ${FLAKE8_FLAGS} flunt
 mypy:
-	${POETRY} mypy .
+	${POETRY} mypy flunt
 lint_isort:
-	${POETRY} isort ${ISORT_FLAGS} --check .
+	${POETRY} isort ${ISORT_FLAGS} --check flunt
 analise: lint_black flake mypy lint_isort ## roda analise estatica: black, flake, mypy e isort
 
 ## @ formatacao
 .PHONY: black isort formatar
 black:
-	${POETRY} black .
+	${POETRY} black flunt
 isort:
-	${POETRY} isort ${ISORT_FLAGS} .
-formatar: isort black ## roda formatacao nos arquivos da pasta usando black e isort
+	${POETRY} isort ${ISORT_FLAGS} flunt
+dockstyle:
+	${POETRY} pydocstyle flunt
+formatar: isort black dockstyle ## roda formatacao nos arquivos da pasta usando black e isort
 
 .PHONY: ajuda
 ajuda:

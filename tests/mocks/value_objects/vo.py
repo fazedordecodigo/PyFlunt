@@ -14,31 +14,21 @@ class Name(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.first_name, 'first name')
-            .requires(self.last_name, 'last name')
-            .has_min_len(
+            .requires(self.first_name, "first name")
+            .requires(self.last_name, "last name")
+            .is_between(
                 value=self.first_name,
-                minimum=3,
-                field='first_name',
-                message='Mínimo de 3 caracteres'
+                min=3,
+                max=50,
+                key="first_name",
+                message="Mínimo de 3 e máximo de 50 caracteres",
             )
-            .has_max_len(
-                value=self.first_name,
-                maximum=50,
-                field='first_name',
-                message='Máximo de 50 caracteres'
-            )
-            .has_min_len(
+            .is_between(
                 value=self.last_name,
-                minimum=3,
-                field='last_name',
-                message='Mínimo de 3 caracteres'
-            )
-            .has_max_len(
-                value=self.last_name,
-                maximum=50,
-                field='last_name',
-                message='Máximo de 50 caracteres'
+                min=3,
+                max=50,
+                key="last_name",
+                message="Mínimo de 3 e máximo de 50 caracteres",
             )
         )
 
@@ -55,11 +45,11 @@ class Email(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.address, 'E-mail address')
+            .requires(self.address, "E-mail address")
             .is_email(
                 self.address,
-                'address',
-                'Este Campo aceita apenas texto no formato e-mail'
+                "address",
+                "Este Campo aceita apenas texto no formato e-mail",
             )
         )
 
