@@ -9,7 +9,7 @@ documentation = "https://github.com/Delatorrea/PyFlunt"
 license = "MIT"
 keywords = ["flunt", "domain-notification", "validation", "notification"]
 classifiers = ["Topic :: Utilities", "Topic :: Software Development", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11"]
-readme = "https://github.com/Delatorrea/PyFlunt/blob/main/README.md"
+readme = "./README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
