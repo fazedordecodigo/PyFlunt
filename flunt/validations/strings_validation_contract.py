@@ -35,7 +35,7 @@ class StringValidationContract(Notifiable):
 
     def is_lower_than(self, value: str, comparer: int, key: str, message: str):
         """
-        Checks if the length of a string value is lower than a given number and adds a notification if it's greater.
+        Check if the length of a string value is lower than a given number and adds a notification if it's greater.
 
         Args:
             value (str): The string value to compare.
@@ -68,7 +68,7 @@ class StringValidationContract(Notifiable):
         self, value: str, comparer: int, key: str, message: str
     ):
         """
-        Checks if the length of a string value is lower or equal to a given number and adds a notification if it exceeds.
+        Check if the length of a string value is lower or equal to a given number and adds a notification if it exceeds.
 
         Args:
             value (str): The string value to compare.
@@ -99,7 +99,7 @@ class StringValidationContract(Notifiable):
 
     def is_greater_than(self, value: str, comparer: int, key: str, message: str):
         """
-        Checks if the length of a string value is greater than a given number and adds a notification if it's smaller.
+        Check if the length of a string value is greater than a given number and adds a notification if it's smaller.
 
         Args:
             value (str): The string value to compare.
@@ -132,7 +132,7 @@ class StringValidationContract(Notifiable):
         self, value: str, comparer: int, key: str, message: str
     ):
         """
-        Checks if the length of a string value is greater than or equal to a given number and adds a notification if it's smaller.
+        Check if the length of a string value is greater than or equal to a given number and adds a notification if it's smaller.
 
         Args:
             value (str): The string value to compare.
@@ -163,7 +163,7 @@ class StringValidationContract(Notifiable):
 
     def is_none(self, value: str, key: str, message: str):
         """
-        Checks if a string value is not None and adds a notification if it is.
+        Check if a string value is not None and adds a notification if it is.
 
         Args:
             value (str): The string value to be checked.
@@ -189,7 +189,7 @@ class StringValidationContract(Notifiable):
 
     def is_not_none(self, value: str, key: str, message: str):
         """
-        Checks if a string value is not None and adds a notification if it is.
+        Check if a string value is not None and adds a notification if it is.
 
         Args:
             value (str): The string value to be checked.
@@ -214,7 +214,7 @@ class StringValidationContract(Notifiable):
 
     def is_not_none_or_white_space(self, value: str, key: str, message: str):
         """
-        Checks if a string value is not None or whitespace and adds a notification if it is.
+        Check if a string value is not None or whitespace and adds a notification if it is.
 
         Args:
             value (str): The string value to be checked.
@@ -240,7 +240,7 @@ class StringValidationContract(Notifiable):
 
     def are_equals(self, value: str, comparer: str, key: str, message: str):
         """
-        Checks if two string values are equal and adds a notification if they are not equal.
+        Check if two string values are equal and adds a notification if they are not equal.
 
         Args:
             value (str): The first string value to compare.
@@ -292,7 +292,7 @@ class StringValidationContract(Notifiable):
 
     def contains(self, value: str, comparer: str, key: str, message: str):
         """
-        Checks if a string value contains another string and adds a notification if it does.
+        Check if a string value contains another string and adds a notification if it does.
 
         Args:
             value (str): The string value to be checked.
@@ -320,7 +320,7 @@ class StringValidationContract(Notifiable):
 
     def not_contains(self, value: str, comparer: str, key: str, message: str):
         """
-        Checks if a string value does not contain a specified substring and adds a notification if it does.
+        Check if a string value does not contain a specified substring and adds a notification if it does.
 
         Args:
             value (str): The string value to be checked.
@@ -348,8 +348,7 @@ class StringValidationContract(Notifiable):
 
     def is_between(self, value: str, min: int, max: int, key: str, message: str):
         """
-        Requires a string value to have a length between a minimum and maximum value (inclusive),
-        and adds a notification if the length is outside the specified range.
+        Require a string value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
 
         Args:
             value (str): The string value to be checked.

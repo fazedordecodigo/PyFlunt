@@ -19,7 +19,7 @@ class BoolValidationContract(Notifiable):
 
     def is_false(self, value: bool, key: str, message: str):
         """
-        Checks if the provided boolean value is False and adds a notification if it is True.
+        Check if the provided boolean value is False and adds a notification if it is True.
 
         Args:
             value (bool): The boolean value to be checked.
@@ -45,7 +45,7 @@ class BoolValidationContract(Notifiable):
 
     def is_true(self, value: bool, key: str, message: str):
         """
-        Checks if the provided boolean value is True and adds a notification if it is True.
+        Check if the provided boolean value is True and adds a notification if it is True.
 
         Args:
             value (bool): The boolean value to be checked.

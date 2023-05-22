@@ -25,7 +25,7 @@ class EmailValidationContract(Notifiable):
 
     def is_email(self, value: str, key: str, message: str):
         """
-        Checks if the provided value is a valid email address and adds a notification if it is not.
+        Check if the provided value is a valid email address and adds a notification if it is not.
 
         Args:
             value (str): The value to be checked as an email address.
@@ -53,7 +53,7 @@ class EmailValidationContract(Notifiable):
 
     def is_not_email(self, value: str, key: str, message: str):
         """
-        Checks if the provided value is not a valid email address and adds a notification if it is.
+        Check if the provided value is not a valid email address and adds a notification if it is.
 
         Args:
             value (str): The value to be checked as an email address.
@@ -79,7 +79,7 @@ class EmailValidationContract(Notifiable):
 
     def _valid_email(self, value):
         """
-        Checks if the provided value matches the valid email address pattern.
+        Check if the provided value matches the valid email address pattern.
 
         Args:
             value (str): The value to be checked as an email address.

@@ -80,7 +80,9 @@ def test_should_be_valid_when_is_none():
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_is_none(entityMock: SampleEntity):
+def test_should_be_invalid_and_return_once_notification_when_not_is_none(
+    entityMock: SampleEntity,
+):
     contract = Contract().is_none(entityMock.first_name, "first_name", "any message")
     assert contract.is_valid() is False
     assert len(contract.get_notifications()) == 1
