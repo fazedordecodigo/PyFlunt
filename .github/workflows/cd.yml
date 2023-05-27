@@ -3,7 +3,8 @@ name: CD
 on:
   pull_request:
       branches: [ main ]
-
+      types:
+      - synchronize
   workflow_dispatch:
 
 jobs:
@@ -13,18 +14,23 @@ jobs:
     steps:
 
     - name: Realiza o checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10'
 
     - name: Instala Poetry
-      uses: Gr1N/setup-poetry@v7
+      uses: Gr1N/setup-poetry@v8
 
     - name: Instala dependências
       run: poetry install --no-dev
+    
+    - name: Get Version
+      id: get_version
+      run: |
+        echo "::set-output name=version::$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')"
     
     - name: Create Release
       id: create_release
@@ -37,12 +43,7 @@ jobs:
         body: |
           Release ${{ steps.get_version.outputs.version }}
 
-    - name: Get Version
-      id: get_version
-      run: |
-        echo "::set-output name=version::$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')"
-
     - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v1.9
+      uses: JRubics/poetry-publish@v1.17
       with:
         pypi_token: ${{ secrets.TOKEN_PYPI_PYFLUNT }}
