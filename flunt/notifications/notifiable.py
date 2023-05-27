@@ -20,7 +20,9 @@ class Notifiable(Notification):
         """Add notification of contract object."""
         self._notifications += self._filter_and_map_notifiables(notifications)
 
-    def _filter_and_map_notifiables(self, *notifications: list[Notification]) -> list[Notification]:
+    def _filter_and_map_notifiables(
+        self, *notifications: list[Notification]
+    ) -> list[Notification]:
         return [
             notification
             for notifiable in notifications
@@ -28,7 +30,9 @@ class Notifiable(Notification):
             for notification in notifiable._notifications
         ]
 
-    def _filter_notifications(self, notifications: list[Notification]) -> list[Notification]:
+    def _filter_notifications(
+        self, notifications: list[Notification]
+    ) -> list[Notification]:
         return [
             notification
             for notification in notifications
