@@ -13,21 +13,24 @@ readme = "./README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-python-interface = "^1.6.1"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
 rich = "^10.14.0"
 isort = "^5.10.1"
-black = "^21.11b1"
 pydocstyle = "^6.1.1"
 pytest-cov = "^3.0.0"
 mypy = "^0.910"
 flake8 = "^4.0.1"
 ipdb = "^0.13.9"
-
-[tool.poetry.group.dev.dependencies]
 ipykernel = "^6.23.1"
+taskipy = "^1.11.0"
+blue = "^0.9.1"
+
+[tool.poetry.group.doc.dependencies]
+mkdocs-material = "^9.1.14"
+mkdocstrings = "^0.22.0"
+mkdocstrings-python = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
