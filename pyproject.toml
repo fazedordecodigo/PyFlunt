@@ -27,6 +27,7 @@ ipykernel = "^6.23.1"
 taskipy = "^1.11.0"
 blue = "^0.9.1"
 
+
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.1.14"
 mkdocstrings = "^0.22.0"
@@ -38,3 +39,21 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 sample = "samples.flunt_sample:main"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules"
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.flake8]
+extend-ignore = ["W503", "E501"]
+max-doc-length = 72
+
+[tool.taskipy.tasks]
+lint = "blue --check --diff . && isort --check --diff . && flake8 . && mypy . && pydocstyle ."
+docs = "mkdocs serve"
+pre_test = "task lint"
+test = "pytest -x --cov=flunt -vv"
+post_test = "coverage html"
