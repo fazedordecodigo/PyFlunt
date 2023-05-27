@@ -11,5 +11,5 @@ class Notification:
 
     def __str__(self):
         """Print object string."""
-        string = '{}field: {}, message: {}{}'
-        return string.format('{', self.field, self.message, '}')
+        string = "{}field: {}, message: {}{}"
+        return string.format("{", self.field, self.message, "}")

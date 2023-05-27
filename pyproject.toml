@@ -16,7 +16,6 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^6.2.5"
-rich = "^10.14.0"
 isort = "^5.10.1"
 pydocstyle = "^6.1.1"
 pytest-cov = "^3.0.0"
@@ -25,7 +24,7 @@ flake8 = "^4.0.1"
 ipdb = "^0.13.9"
 ipykernel = "^6.23.1"
 taskipy = "^1.11.0"
-blue = "^0.9.1"
+black = "^23.3.0"
 
 
 [tool.poetry.group.doc.dependencies]
@@ -43,16 +42,19 @@ sample = "samples.flunt_sample:main"
 [tool.pytest.ini_options]
 addopts = "--doctest-modules"
 
+[tool.black]
+line-length = 88
+
 [tool.isort]
 profile = "black"
-line_length = 79
+line_length = 88
 
-[tool.flake8]
+[flake8]
 extend-ignore = ["W503", "E501"]
-max-doc-length = 72
+max-line-length = 88
 
 [tool.taskipy.tasks]
-lint = "blue --check --diff . && isort --check --diff . && flake8 . && mypy . && pydocstyle ."
+lint = "black --check --diff . && isort --check --diff . && flake8 --max-line-length 88 --extend-ignore=W503,E501 . && mypy . && pydocstyle ."
 docs = "mkdocs serve"
 pre_test = "task lint"
 test = "pytest -x --cov=flunt -vv"

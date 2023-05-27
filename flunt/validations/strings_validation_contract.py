@@ -97,9 +97,7 @@ class StringValidationContract(Notifiable):
 
         return self
 
-    def is_greater_than(
-        self, value: str, comparer: int, key: str, message: str
-    ):
+    def is_greater_than(self, value: str, comparer: int, key: str, message: str):
         """
         Check if the length of a string value is greater than a given number and adds a notification if it's smaller.
 
@@ -266,9 +264,7 @@ class StringValidationContract(Notifiable):
 
         return self
 
-    def are_not_equals(
-        self, value: str, comparer: str, key: str, message: str
-    ):
+    def are_not_equals(self, value: str, comparer: str, key: str, message: str):
         """
         Require two strings are not equals.
 
@@ -350,9 +346,7 @@ class StringValidationContract(Notifiable):
 
         return self
 
-    def is_between(
-        self, value: str, min: int, max: int, key: str, message: str
-    ):
+    def is_between(self, value: str, min: int, max: int, key: str, message: str):
         """
         Require a string value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
 
