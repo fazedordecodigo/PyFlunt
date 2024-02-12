@@ -44,7 +44,7 @@ class CreditCardValidationContract(Notifiable):
         ):
             self.add_notification(Notification(key, message))
             return self
-        
+
         even = False
         checksum = 0
 
