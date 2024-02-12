@@ -7,54 +7,69 @@ class StringValidationContract(Notifiable):
     """
     Class for validating string values and adding notifications based on various comparisons.
 
-    Args:
-        Notifiable: The base class providing notification functionality.
-
-    Attributes:
+    Parameters
+    ----------
         N/A
 
-    Methods:
-        - is_lower_than(value, comparer, key, message): Checks if the length of a string value is lower than a given number.
-        - is_lower_or_equals_than(value, comparer, key, message): Checks if the length of a string value is lower or equal to a given number.
-        - is_greater_than(value, comparer, key, message): Checks if the length of a string value is greater than a given number.
-        - is_greater_or_equals_than(value, comparer, key, message): Checks if the length of a string value is greater or equal to a given number.
-        - is_none(value, key, message): Checks if a string value is None.
-        - is_not_none(value, key, message): Checks if a string value is not None.
-        - is_not_none_or_white_space(value, key, message): Checks if a string value is not None or whitespace.
-        - are_equals(value, comparer, key, message): Checks if two string values are equal.
-        - are_not_equals(value, comparer, key, message): Checks if two string values are not equal.
-        - contains(value, comparer, key, message): Checks if a string contains a specific substring.
-        - not_contains(value, comparer, key, message): Checks if a string does not contain a specific substring.
-        - is_between(value, min, max, key, message): Checks if the length of a string is between a minimum and maximum value.
+    Attributes
+    ----------
+        N/A
 
-    Example:
-        contract = StringValidationContract()
+    Methods
+    -------
+    - is_lower_than(value, comparer, key, message): Checks if the length of a string value is lower than a given number.
+    - is_lower_or_equals_than(value, comparer, key, message): Checks if the length of a string value is lower or equal to a given number.
+    - is_greater_than(value, comparer, key, message): Checks if the length of a string value is greater than a given number.
+    - is_greater_or_equals_than(value, comparer, key, message): Checks if the length of a string value is greater or equal to a given number.
+    - is_none(value, key, message): Checks if a string value is None.
+    - is_not_none(value, key, message): Checks if a string value is not None.
+    - is_not_none_or_white_space(value, key, message): Checks if a string value is not None or whitespace.
+    - are_equals(value, comparer, key, message): Checks if two string values are equal.
+    - are_not_equals(value, comparer, key, message): Checks if two string values are not equal.
+    - contains(value, comparer, key, message): Checks if a string contains a specific substring.
+    - not_contains(value, comparer, key, message): Checks if a string does not contain a specific substring.
+    - is_between(value, min, max, key, message): Checks if the length of a string is between a minimum and maximum value.
 
-        contract.is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+    Examples
+    --------
+    >>> contract = StringValidationContract()
+
+    >>> contract.is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+
     """
 
     def is_lower_than(self, value: str, comparer: int, key: str, message: str):
         """
         Check if the length of a string value is lower than a given number and adds a notification if it's greater.
 
-        Args:
-            value (str): The string value to compare.
-            comparer (int): The maximum length allowed for the value.
-            key (str): The key or identifier associated with the comparison.
-            message (str): The notification message to be added if the length exceeds the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to compare.
+        comparer: int
+            The maximum length allowed for the value.
+        key: str
+            The key or identifier associated with the comparison.
+        message: str
+            The notification message to be added if the length exceeds the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is an empty string or None, no notification is added.
-            - If the length of 'value' is greater than 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is an empty string or None, no notification is added.
+        - If the length of 'value' is greater than 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+        >>> obj.is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+
         """
         if not value:
             return self
@@ -70,24 +85,34 @@ class StringValidationContract(Notifiable):
         """
         Check if the length of a string value is lower or equal to a given number and adds a notification if it exceeds.
 
-        Args:
-            value (str): The string value to compare.
-            comparer (int): The maximum length allowed for the value.
-            key (str): The key or identifier associated with the comparison.
-            message (str): The notification message to be added if the length exceeds the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to compare.
+        comparer: int
+            The maximum length allowed for the value.
+        key: str
+            The key or identifier associated with the comparison.
+        message: str
+            The notification message to be added if the length exceeds the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is an empty string or None, no notification is added.
-            - If the length of 'value' is greater than or equal to 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is an empty string or None, no notification is added.
+        - If the length of 'value' is greater than or equal to 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
+        >>> obj.is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
+
         """
         if not value:
             return self
@@ -101,24 +126,34 @@ class StringValidationContract(Notifiable):
         """
         Check if the length of a string value is greater than a given number and adds a notification if it's smaller.
 
-        Args:
-            value (str): The string value to compare.
-            comparer (int): The minimum length required for the value.
-            key (str): The key or identifier associated with the comparison.
-            message (str): The notification message to be added if the length is smaller than the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to compare.
+        comparer: int
+            The minimum length required for the value.
+        key: str
+            The key or identifier associated with the comparison.
+        message: str
+            The notification message to be added if the length is smaller than the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is an empty string or None, no notification is added.
-            - If the length of 'value' is smaller than 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is an empty string or None, no notification is added.
+        - If the length of 'value' is smaller than 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.is_greater_than("Hello", 3, "LengthCheck", "Value should have a length greater than 3")
+        >>> obj.is_greater_than("Hello", 3, "LengthCheck", "Value should have a length greater than 3")
+
         """
         if not value:
             return self
@@ -134,24 +169,33 @@ class StringValidationContract(Notifiable):
         """
         Check if the length of a string value is greater than or equal to a given number and adds a notification if it's smaller.
 
-        Args:
-            value (str): The string value to compare.
-            comparer (int): The minimum length required for the value.
-            key (str): The key or identifier associated with the comparison.
-            message (str): The notification message to be added if the length is smaller than the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to compare.
+        comparer: int
+            The minimum length required for the value.
+        key: str
+            The key or identifier associated with the comparison.
+        message: str
+            The notification message to be added if the length is smaller than the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is an empty string or None, no notification is added.
-            - If the length of 'value' is smaller than or equal to 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is an empty string or None, no notification is added.
+        - If the length of 'value' is smaller than or equal to 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
         Example:
-            obj = MyClass()
+        >>> obj = StringValidationContract()
 
-            obj.is_greater_or_equals_than("Hello", 3, "LengthCheck", "Value should have a length greater than or equal to 3")
+        >>> obj.is_greater_or_equals_than("Hello", 3, "LengthCheck", "Value should have a length greater than or equal to 3")
+
         """
         if not value:
             return self
@@ -165,22 +209,31 @@ class StringValidationContract(Notifiable):
         """
         Check if a string value is not None and adds a notification if it is.
 
-        Args:
-            value (str): The string value to be checked.
-            key (str): The key or identifier associated with the check.
-            message (str): The notification message to be added if the value is None.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        key: str
+            The key or identifier associated with the check.
+        message: str
+            The notification message to be added if the value is None.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is not None, no notification is added.
-            - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is not None, no notification is added.
+        - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.is_none("Hello", "ValueCheck", "Value should not be None")
+        >>> obj.is_none("Hello", "ValueCheck", "Value should not be None")
+
         """
         if value is not None:
             self.add_notification(Notification(key, message))
@@ -191,21 +244,31 @@ class StringValidationContract(Notifiable):
         """
         Check if a string value is not None and adds a notification if it is.
 
-        Args:
-            value (str): The string value to be checked.
-            key (str): The key or identifier associated with the check.
-            message (str): The notification message to be added if the value is None.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        key: str
+            The key or identifier associated with the check.
+        message: str
+            The notification message to be added if the value is None.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
-            - If the 'value' is not None, no notification is added.
+        Notes
+        -----
+        - If the 'value' is None, a notification is added to the current instance with the provided 'key' and 'message'.
+        - If the 'value' is not None, no notification is added.
 
-        Example:
-            obj = MyClass()
-            obj.is_not_none("Hello", "ValueCheck", "Value should not be None")
+        Examples
+        --------
+        >>> obj = StringValidationContract()
+
+        >>> obj.is_not_none("Hello", "ValueCheck", "Value should not be None")
+
         """
         if value is None:
             self.add_notification(Notification(key, message))
@@ -216,22 +279,32 @@ class StringValidationContract(Notifiable):
         """
         Check if a string value is not None or whitespace and adds a notification if it is.
 
-        Args:
-            value (str): The string value to be checked.
-            key (str): The key or identifier associated with the check.
-            message (str): The notification message to be added if the value is None or whitespace.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        key: str
+            The key or identifier associated with the check.
+        message: str
+            The notification message to be added if the value is None or whitespace.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is None or consists only of whitespace characters (spaces, tabs, newlines, etc.),
-            a notification is added to the current instance with the provided 'key' and 'message'.
-            - If the 'value' is not None and contains at least one non-whitespace character, no notification is added.
+        Notes
+        -----
+        - If the 'value' is None or consists only of whitespace characters (spaces, tabs, newlines, etc.),
+        a notification is added to the current instance with the provided 'key' and 'message'.
+        - If the 'value' is not None and contains at least one non-whitespace character, no notification is added.
 
-        Example:
-            obj = MyClass()
-            obj.is_not_none_or_white_space("Hello", "ValueCheck", "Value should not be None or whitespace")
+        Examples
+        --------
+        >>> obj = StringValidationContract()
+
+        >>> obj.is_not_none_or_white_space("Hello", "ValueCheck", "Value should not be None or whitespace")
+
         """
         if value is None or value.isspace():
             self.add_notification(Notification(key, message))
@@ -242,22 +315,33 @@ class StringValidationContract(Notifiable):
         """
         Check if two string values are equal and adds a notification if they are not equal.
 
-        Args:
-            value (str): The first string value to compare.
-            comparer (str): The second string value to compare with the first value.
-            key (str): The key or identifier associated with the comparison.
-            message (str): The notification message to be added if the values are not equal.
+        Parameters
+        ----------
+        value: str
+            The first string value to compare.
+        comparer: str
+            The second string value to compare with the first value.
+        key: str
+            The key or identifier associated with the comparison.
+        message: str
+            The notification message to be added if the values are not equal.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is not equal to 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'. Otherwise, no notification is added.
+        Notes
+        -----
+        - If the 'value' is not equal to 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'. Otherwise, no notification is added.
 
-        Example:
-            obj = MyClass()
-            obj.are_equals("Hello", "Hello", "Comparison", "Values should be equal")
+        Examples
+        --------
+        >>> obj = StringValidationContract()
+            
+        >>> obj.are_equals("Hello", "Hello", "Comparison", "Values should be equal")
+
         """
         if value != comparer:
             self.add_notification(Notification(key, message))
@@ -268,22 +352,33 @@ class StringValidationContract(Notifiable):
         """
         Require two strings are not equals.
 
-        Args:
-            value (str): The value to be compared.
-            comparer (str): The value to compare with `value`.
-            key (str): The key or identifier related to the comparison.
-            message (str): The notification message in case of equal values.
+        Parameters
+        ----------
+        value: str
+            The value to be compared.
+        comparer: str
+            The value to compare with `value`.
+        key: str
+            The key or identifier related to the comparison.
+        message: str
+            The notification message in case of equal values.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is equal to 'comparer', a notification is added to the current instance
-            with the provided 'key' and 'message'. Otherwise, no notification is added.
+        Notes
+        -----
+        - If the 'value' is equal to 'comparer', a notification is added to the current instance
+        with the provided 'key' and 'message'. Otherwise, no notification is added.
 
-        Example:
-            obj = MyClass()
-            obj.are_not_equals("Hello", "World", "Comparison", "Values should not be equal")
+        Examples
+        --------
+        >>> obj = StringValidationContract()
+
+        >>> obj.are_not_equals("Hello", "World", "Comparison", "Values should not be equal")
+
         """
         if value == comparer:
             self.add_notification(Notification(key, message))
@@ -294,24 +389,34 @@ class StringValidationContract(Notifiable):
         """
         Check if a string value contains another string and adds a notification if it does.
 
-        Args:
-            value (str): The string value to be checked.
-            comparer (str): The string to search for within the value.
-            key (str): The key or identifier associated with the check.
-            message (str): The notification message to be added if the value contains the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        comparer: str
+            The string to search for within the value.
+        key: str
+            The key or identifier associated with the check.
+        message: str
+            The notification message to be added if the value contains the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' contains the 'comparer' string, a notification is added to the current instance
-            with the provided 'key' and 'message'.
-            - If the 'value' does not contain the 'comparer' string, no notification is added.
+        Notes
+        -----
+        - If the 'value' contains the 'comparer' string, a notification is added to the current instance
+        with the provided 'key' and 'message'.
+        - If the 'value' does not contain the 'comparer' string, no notification is added.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.contains("Hello, world!", "world", "ContainsCheck", "Value should contain 'world'")
+        >>> obj.contains("Hello, world!", "world", "ContainsCheck", "Value should contain 'world'")
+
         """
         if value.find(comparer) > -1:
             self.add_notification(Notification(key, message))
@@ -322,24 +427,34 @@ class StringValidationContract(Notifiable):
         """
         Check if a string value does not contain a specified substring and adds a notification if it does.
 
-        Args:
-            value (str): The string value to be checked.
-            comparer (str): The substring to search for in the value.
-            key (str): The key or identifier associated with the check.
-            message (str): The notification message to be added if the value contains the comparer.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        comparer: str
+            The substring to search for in the value.
+        key: str
+            The key or identifier associated with the check.
+        message: str
+            The notification message to be added if the value contains the comparer.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' does not contain the 'comparer' substring, no notification is added.
-            - If the 'value' contains the 'comparer' substring, a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' does not contain the 'comparer' substring, no notification is added.
+        - If the 'value' contains the 'comparer' substring, a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.not_contains("Hello", "World", "Comparison", "Value should not contain 'World'")
+        >>> obj.not_contains("Hello", "World", "Comparison", "Value should not contain 'World'")
+
         """
         if value.find(comparer) == -1:
             self.add_notification(Notification(key, message))
@@ -350,26 +465,37 @@ class StringValidationContract(Notifiable):
         """
         Require a string value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
 
-        Args:
-            value (str): The string value to be checked.
-            min (int): The minimum allowed length for the value.
-            max (int): The maximum allowed length for the value.
-            key (str): The key or identifier associated with the length check.
-            message (str): The notification message to be added if the length is outside the range.
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        min: int
+            The minimum allowed length for the value.
+        max: int
+            The maximum allowed length for the value.
+        key: str
+            The key or identifier associated with the length check.
+        message: str
+            The notification message to be added if the length is outside the range.
 
-        Returns:
-            self: The current instance with potential notifications added.
+        Returns
+        -------
+        self
+            The current instance with potential notifications added.
 
-        Note:
-            - If the 'value' is empty, the function returns the current instance without adding any notifications.
-            - If the 'value' is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
-            - If the length of 'value' is less than 'min' or greater than 'max', a notification is added to the current instance
-            with the provided 'key' and 'message'.
+        Notes
+        -----
+        - If the 'value' is empty, the function returns the current instance without adding any notifications.
+        - If the 'value' is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
+        - If the length of 'value' is less than 'min' or greater than 'max', a notification is added to the current instance
+        with the provided 'key' and 'message'.
 
-        Example:
-            obj = MyClass()
+        Examples
+        --------
+        >>> obj = StringValidationContract()
 
-            obj.is_between("Hello", 3, 6, "LengthCheck", "Value length should be between 3 and 6")
+        >>> obj.is_between("Hello", 3, 6, "LengthCheck", "Value length should be between 3 and 6")
+
         """
         if not value:
             return self
