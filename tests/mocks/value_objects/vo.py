@@ -4,6 +4,7 @@ from flunt.validations.contract import Contract
 
 
 class Name(Notifiable):
+
     """Class Value Object Name."""
 
     def __init__(self, first_name: str, last_name: str) -> None:
@@ -14,8 +15,8 @@ class Name(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.first_name, "first name")
-            .requires(self.last_name, "last name")
+            .requires(self.first_name, "first name", "Nome é obrigatório")
+            .requires(self.last_name, "last name", "Sobrenome é obrigatório")
             .is_between(
                 value=self.first_name,
                 min=3,
@@ -32,7 +33,7 @@ class Name(Notifiable):
             )
         )
 
-        self.add_notifications_of_contract(self.contract)
+        self.add_notifications_of_contract(self.contract.get_notifications())
 
 
 class Email(Notifiable):
@@ -45,7 +46,7 @@ class Email(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.address, "E-mail address")
+            .requires(self.address, "E-mail address", "E-mail é obrigatório")
             .is_email(
                 self.address,
                 "address",
@@ -53,4 +54,4 @@ class Email(Notifiable):
             )
         )
 
-        self.add_notifications_of_contract(self.contract)
+        self.add_notifications_of_contract(self.contract.get_notifications())

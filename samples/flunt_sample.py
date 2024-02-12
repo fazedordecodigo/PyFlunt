@@ -15,9 +15,9 @@ class Pessoa(Notifiable):
 
         self.contract = (
             Contract()
-            .requires(self.first_name, "first name")
-            .requires(self.last_name, "last name")
-            .requires(self.email, "e-mail")
+            .requires(self.first_name, "first name", "Nome é obrigatório")
+            .requires(self.last_name, "last name", "Sobrenome é obrigatório")
+            .requires(self.email, "e-mail", "E-mail é obrigatório")
             .is_lower_than(
                 value=self.first_name,
                 comparer=3,
@@ -32,8 +32,7 @@ class Pessoa(Notifiable):
             )
             .is_email(value=self.email, key="email", message="email errado")
         )
-
-        self.add_notifications_of_contract(self.contract)
+        self.add_notifications_of_contract(self.contract.get_notifications())
 
 
 def main():
