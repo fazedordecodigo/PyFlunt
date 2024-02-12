@@ -16,17 +16,60 @@ class Contract(
     CreditCardValidationContract,
     Notifiable,
 ):
-    """Class Contract."""
+    """
+    Class repesents a contract for validating data..
 
-    def requires(self, value: str, key: str):
-        """Require.
+    Parameters
+    ----------
+        N/A
 
-        :param value
-        :param key
+    Attributes
+    ----------
+        N/A
 
-        :return
+    Methods
+    -------
+    - requires(value: str, key: str, message: str): Checks if the given value is empty and adds a notification if it is.
+
+    Examples
+    --------
+    >>> contract = StringValidationContract()
+
+    >>> contract.requeries("value", "key", "message")
+
+    """
+
+    def requires(self, value: str, key: str, message: str):
+        """
+        Check if the given value is empty and adds a notification if it is.
+
+        Parameters
+        ----------
+        value: str
+            The string value to be checked.
+        key: str
+            The key or identifier associated with the notification.
+        message: str
+            The message of the notification to be added.
+        
+        Returns
+        -------
+        self
+            The current instance of the class.
+        
+        Notes
+        -----
+        If the provided `value` is empty, a notification is added to the current instance using the provided `key` and `message`.
+        If the provided `value` is not empty, no notification is added.
+
+        Examples
+        --------
+        >>> contract = Contract()
+
+        >>> contract.requires("", "key", "message")
+
         """
         if not value:
-            self.add_notification(Notification(key, "Campo preenchimento obrigatório"))
+            self.add_notification(Notification(key, message))
 
         return self
