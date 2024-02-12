@@ -1,5 +1,6 @@
 import pytest
 from faker import Faker
+
 from flunt.validations.contract import Contract
 
 fake = Faker()
