@@ -13,9 +13,9 @@ readme = "./README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-faker = "^23.1.0"
 
 [tool.poetry.group.dev.dependencies]
+faker = "^23.1.0"
 pytest = "^6.2.5"
 isort = "^5.10.1"
 pydocstyle = "^6.1.1"
