@@ -1,4 +1,5 @@
 """Module Email Validation Contract."""
+
 import re
 
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
@@ -69,7 +70,7 @@ class EmailValidationContract(Notifiable):
 
         Parameters
         ----------
-        value: str 
+        value: str
             The value to be checked as an email address.
         key:str
             The key or identifier associated with the notification.
@@ -91,7 +92,7 @@ class EmailValidationContract(Notifiable):
         >>> obj = EmailValidationContract()
 
         >>> obj.is_not_email("example@example.com", "EmailCheck", "Value should not be a valid email address")
-    
+
         """
         if self._valid_email(value):
             self.add_notification(Notification(key, message))

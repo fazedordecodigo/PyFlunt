@@ -1,4 +1,5 @@
 """Module Contract."""
+
 import re
 
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
@@ -19,7 +20,7 @@ class CreditCardValidationContract(Notifiable):
 
     """
 
-    def is_credit_card(self, value: str, key: str, message: str): 
+    def is_credit_card(self, value: str, key: str, message: str):
         """
         Check if the provided str value is a Credt Card Number and adds a notification if it is not True.
 
@@ -34,7 +35,7 @@ class CreditCardValidationContract(Notifiable):
 
         Returns
         -------
-        self 
+        self
             The current instance of the class.
 
         Notes

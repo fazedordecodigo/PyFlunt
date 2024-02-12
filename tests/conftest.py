@@ -6,9 +6,11 @@ from tests.mocks.entity.sample_entity import SampleEntity
 
 @pytest.fixture(scope="module")
 def entityMock() -> SampleEntity:
+    """Fixture to return a SampleEntity instance."""
     return SampleEntity()
 
 
 @pytest.fixture(scope="module")
 def regex() -> FluntRegexPatterns:
+    """Fixture to return a FluntRegexPatterns instance."""
     return FluntRegexPatterns()

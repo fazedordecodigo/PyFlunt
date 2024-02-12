@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 
@@ -339,7 +340,7 @@ class StringValidationContract(Notifiable):
         Examples
         --------
         >>> obj = StringValidationContract()
-            
+
         >>> obj.are_equals("Hello", "Hello", "Comparison", "Values should be equal")
 
         """

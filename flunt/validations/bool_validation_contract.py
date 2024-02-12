@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 

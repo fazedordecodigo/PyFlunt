@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 from flunt.validations.bool_validation_contract import BoolValidationContract
@@ -51,12 +52,12 @@ class Contract(
             The key or identifier associated with the notification.
         message: str
             The message of the notification to be added.
-        
+
         Returns
         -------
         self
             The current instance of the class.
-        
+
         Notes
         -----
         If the provided `value` is empty, a notification is added to the current instance using the provided `key` and `message`.

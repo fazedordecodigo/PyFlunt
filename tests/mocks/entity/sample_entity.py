@@ -1,4 +1,5 @@
 """Module Sample Entity."""
+
 from flunt.notifications.notification import Notification
 
 

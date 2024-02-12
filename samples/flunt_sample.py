@@ -36,6 +36,7 @@ class Pessoa(Notifiable):
 
 
 def main():
+    """Run the main function."""	
     nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
     if not nome.is_valid():
         for notification in nome.get_notifications():

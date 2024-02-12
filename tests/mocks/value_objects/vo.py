@@ -1,11 +1,11 @@
 """Module Value Objects."""
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.validations.contract import Contract
 
 
 class Name(Notifiable):
-
-    """Class Value Object Name."""
+    """Value Object Name."""
 
     def __init__(self, first_name: str, last_name: str) -> None:
         """Found 'Constructor'."""
