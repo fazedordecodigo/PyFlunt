@@ -16,22 +16,21 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 faker = "^23.1.0"
-pytest = "^6.2.5"
-isort = "^5.10.1"
-pydocstyle = "^6.1.1"
-pytest-cov = "^3.0.0"
-mypy = "^0.910"
-flake8 = "^4.0.1"
-ipdb = "^0.13.9"
-ipykernel = "^6.23.1"
-taskipy = "^1.11.0"
-black = "^23.3.0"
-
+pytest = "^8.0.0"
+isort = "^5.13.2"
+pydocstyle = "^6.3.0"
+pytest-cov = "^4.1.0"
+mypy = "^1.8.0"
+flake8 = "^7.0.0"
+ipdb = "^0.13.13"
+ipykernel = "^6.29.2"
+taskipy = "^1.12.2"
+black = "^24.1.1"
 
 [tool.poetry.group.doc.dependencies]
-mkdocs-material = "^9.1.14"
-mkdocstrings = "^0.22.0"
-mkdocstrings-python = "^1.1.0"
+mkdocs-material = "^9.5.9"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -49,6 +48,9 @@ line-length = 88
 [tool.isort]
 profile = "black"
 line_length = 88
+
+[tool.pydocstyle]
+ignore = "D100,D104,D203,D212"
 
 [flake8]
 extend-ignore = ["W503", "E501"]
