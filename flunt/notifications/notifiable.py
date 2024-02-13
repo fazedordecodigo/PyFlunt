@@ -11,138 +11,137 @@ class Notifiable(Notification):
 
     Attributes
     ----------
-    _notifications: list[Notification]
-        A list to store notifications.
-
+    notifications: list[Notification]
+        A list of notifications.
+    is_valid: bool
+        A boolean indicating if there are any notifications.
     Methods
     -------
-    __init__ -> None
-        Initializes the Notifiable object.
-    add_notification -> None
-        Adds a single notification to the list of notifications.
-    add_notifications_of_contract -> None
-        Adds notifications from a list of contracts to the list of notifications.
-    _filter_and_map_notifiables -> list[Notification]
-        Filters and maps notifications from notifiable objects.
-    _filter_notifications -> list[Notification]
-        Filters notifications to ensure they are instances of Notification.
-    get_notifications -> list[Notification]
-        Returns the list of notifications.
-    clear -> None
-        Clears the list of notifications.
-    is_valid -> bool
-        Checks if there are any notifications.
-    __str__ -> str
-        Returns a string representation of the list of notifications.
-
+    - get_notification_instance
+    - add_notifications
+    - add_notification
+    - get_notifications
+    - clear
     """
 
     def __init__(self) -> None:
         """Initialize the Notifiable object."""
         self._notifications: list[Notification] = []
 
-    def add_notification(self, notification: Notification):
+    @property
+    def notifications(self) -> list[Notification]:
         """
-        Add a single notification to the list of notifications.
-
-        Parameters
-        ----------
-        notification: Notification
-            The notification to be added.
+        Return the list of notifications.
 
         Returns
         -------
-        None
+        `list[Notification]`
+            A list of notifications.
+        
+        Examples
+        --------
+        ```python
+        obj = Notifiable()
+        obj.notifications # []
+        ```
+
+        """
+        return self._notifications
+
+    @property
+    def is_valid(self) -> bool:
+        """
+        Check if there are any notifications.
+
+        Returns
+        -------
+        `bool`
+            True if there are no notifications, False otherwise.
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj.add_notification(Notification("key", "message"))
+        ```python
+        obj = Notifiable()
+        obj.is_valid() # True
+        ```
 
         """
-        self._notifications.append(notification)
+        return not self._notifications
 
-    def add_notifications_of_contract(self, notifications: list[Notification]):
+    def get_notification_instance(self, key: str, message: str) -> Notification:
+        """
+        Return a new instance of Notification.
+
+        Parameters
+        ----------
+        `key`: str
+            The key of the notification.
+        `message`: str
+            The message of the notification.
+        
+        Returns
+        -------
+        `Notification`
+            A new instance of Notification.
+        
+        Examples
+        --------
+        ```python
+        obj = Notifiable()
+        obj.get_notification_instance("key", "message")
+        obj.notifications # [Notification("key", "message")]
+        ```
+
+        """
+        return Notification(key, message)
+
+    def add_notifications(self, notifications: list[Notification]) -> None:
         """
         Add notifications from a list of contracts to the list of notifications.
 
         Parameters
         ----------
-        notifications: list[Notification]
+        `notifications`: list[Notification]
             A list of notifications to be added.
 
         Returns
         -------
-        None
+        `None`
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj.add_notifications_of_contract([Notification("key", "message")])
+        ```python
+        obj = Notifiable()
+        obj.add_notifications([Notification("key", "message")])
+        obj.notifications # [Notification("key", "message")]
+        ```
 
         """
-        self._notifications += self._filter_and_map_notifiables(notifications)
-
-    def _filter_and_map_notifiables(
-        self, *notifications: list[Notification]
-    ) -> list[Notification]:
+        self._notifications.extend(notifications)
+    
+    def add_notification(self, notification: Notification) -> None:
         """
-        Filter and maps notifications from notifiable objects.
+        Add a single notification to the list of notifications.
 
         Parameters
         ----------
-        notifications: list[Notification]
-            A list of notifications to be filtered and mapped.
+        `notification`: Notification
+            The notification to be added.
 
         Returns
         -------
-        list[Notification]
-            A list of notifications.
+        `None`
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj._filter_and_map_notifiables([Notification("key", "message")])
-
-        """
-        return [
-            notification
-            for notifiable in notifications
-            if isinstance(notifiable, Notifiable)
-            for notification in notifiable._notifications
-        ]
-
-    def _filter_notifications(
-        self, notifications: list[Notification]
-    ) -> list[Notification]:
-        """
-        Filter notifications to ensure they are instances of Notification.
-
-        Parameters
-        ----------
-        notifications: list[Notification]
-            A list of notifications to be filtered.
-
-        Returns
-        -------
-        list[Notification]
-            A list of notifications.
-
-        Examples
-        --------
-        >>> obj = Notifiable()
-
-        >>> obj._filter_notifications([Notification("key","message")])
+        ```python
+        obj = Notifiable()
+        obj.add_notification(Notification("key", "message"))
+        obj.notifications # [Notification("key", "message")]
+        ```
 
         """
-        return [
-            notification
-            for notification in notifications
-            if isinstance(notification, Notification)
-        ]
+        self._notifications.append(notification)
 
     def get_notifications(self) -> list[Notification]:
         """
@@ -150,54 +149,36 @@ class Notifiable(Notification):
 
         Returns
         -------
-        list[Notification]
+        `list[Notification]`
             A list of notifications.
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj.get_notifications()
+        ```python
+        obj = Notifiable()
+        obj.get_notifications() # []
+        ```
 
         """
         return self._notifications
 
-    def clear(self):
+    def clear(self) -> None:
         """
         Clear the list of notifications.
 
         Returns
         -------
-        None
+        `None`
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj.clear()
+        ```python
+        obj = Notifiable()
+        obj.clear() # []
+        ```
 
         """
         self._notifications.clear()
-
-    def is_valid(self) -> bool:
-        """
-        Check if there are any notifications.
-
-        Returns
-        -------
-        bool
-            True if there are no notifications, False otherwise.
-
-        Examples
-        --------
-        >>> obj = Notifiable()
-
-        >>> obj.is_valid()
-
-        """
-        if len(self._notifications) <= 0:
-            return True
-        return False
 
     def __str__(self) -> str:
         """
@@ -205,14 +186,14 @@ class Notifiable(Notification):
 
         Returns
         -------
-        str
+        `str`
             A string representation of the list of notifications.
 
         Examples
         --------
-        >>> obj = Notifiable()
-
-        >>> obj.__str__()
+        ```python
+        obj = Notifiable()
+        obj.__str__() # "[]"
 
         """
         return self._notifications.__str__()
