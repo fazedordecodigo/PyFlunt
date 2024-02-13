@@ -37,7 +37,7 @@ class Notifiable(Notification):
         -------
         `list[Notification]`
             A list of notifications.
-        
+
         Examples
         --------
         ```python
@@ -78,12 +78,12 @@ class Notifiable(Notification):
             The key of the notification.
         `message`: str
             The message of the notification.
-        
+
         Returns
         -------
         `Notification`
             A new instance of Notification.
-        
+
         Examples
         --------
         ```python
@@ -118,7 +118,7 @@ class Notifiable(Notification):
 
         """
         self._notifications.extend(notifications)
-    
+
     def add_notification(self, notification: Notification) -> None:
         """
         Add a single notification to the list of notifications.
