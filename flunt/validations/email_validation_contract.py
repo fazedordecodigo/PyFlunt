@@ -33,30 +33,32 @@ class EmailValidationContract(Notifiable):
 
         Parameters
         ----------
-        value: str
+        `value`: str
             The value to be checked as an email address.
-        key: str
+        `key`: str
             The key or identifier associated with the notification.
-        message: str
+        `message`: str
             The message of the notification to be added.
 
         Returns
         -------
-        self
+        `self`
             The current instance of the class.
 
         Notes
         -----
         - The validity of the email address is determined by the internal method `_valid_email`.
-        - If the provided value is not a valid email address, a notification is added to the current instance
+        - If the provided `value` is not a valid email address, a `notification` is added to the current instance
         using the provided key and message.
-        - If the provided value is a valid email address, no notification is added.
+        - If the provided `value` is a valid email address, no `notification` is added.
 
         Examples
         --------
-        >>> obj = EmailValidationContract()
-
-        >>> obj.is_email("example@example.com", "EmailCheck", "Please enter a valid email address")
+        ```python
+        obj = Contract()
+              .is_email("example@example.com", "EmailCheck", "Please enter a valid email address")
+        obj.is_valid # True
+        ```
 
         """
         if not self._valid_email(value):
@@ -70,28 +72,31 @@ class EmailValidationContract(Notifiable):
 
         Parameters
         ----------
-        value: str
+        `value`: str
             The value to be checked as an email address.
-        key:str
+        `key`:str
             The key or identifier associated with the notification.
-        message: str
+        `message`: str
             The message of the notification to be added.
 
         Returns
         -------
-        self
+        `self`
             The current instance of the class.
 
         Notes
         -----
-        - If the provided value matches the valid email address pattern, a notification is added to the current instance using the provided key and message.
-        - If the provided value does not match the valid email address pattern, no notification is added.
+        - If the provided `value` matches the valid email address pattern, a `notification`
+        is added to the current instance using the provided `key` and `message`.
+        - If the provided `value` does not match the valid email address pattern, no `notification` is added.
 
         Examples
         --------
-        >>> obj = EmailValidationContract()
-
-        >>> obj.is_not_email("example@example.com", "EmailCheck", "Value should not be a valid email address")
+        ```python
+        obj = Contract()
+              .is_not_email("example@example.com", "EmailCheck", "Value should not be a valid email address")
+        obj.is_valid # False
+        ```
 
         """
         if self._valid_email(value):
@@ -105,12 +110,12 @@ class EmailValidationContract(Notifiable):
 
         Parameters
         ----------
-        value: str
+        `value`: str
             The value to be checked as an email address.
 
         Returns
         -------
-        Match[str] | None
+        `Match[str]` | `None`
 
         """
         return re.match(
