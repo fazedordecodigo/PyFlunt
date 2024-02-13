@@ -13,18 +13,24 @@ readme = "./README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-python-interface = "^1.6.1"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-rich = "^10.14.0"
-isort = "^5.10.1"
-black = "^21.11b1"
-pydocstyle = "^6.1.1"
-pytest-cov = "^3.0.0"
-mypy = "^0.910"
-flake8 = "^4.0.1"
-ipdb = "^0.13.9"
+[tool.poetry.group.dev.dependencies]
+faker = "^23.1.0"
+pytest = "^8.0.0"
+isort = "^5.13.2"
+pydocstyle = "^6.3.0"
+pytest-cov = "^4.1.0"
+mypy = "^1.8.0"
+flake8 = "^7.0.0"
+ipdb = "^0.13.13"
+ipykernel = "^6.29.2"
+taskipy = "^1.12.2"
+black = "^24.1.1"
+
+[tool.poetry.group.doc.dependencies]
+mkdocs-material = "^9.5.9"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -32,3 +38,27 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 sample = "samples.flunt_sample:main"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules"
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pydocstyle]
+ignore = "D100,D104,D203,D212,D417"
+
+[flake8]
+extend-ignore = ["W503", "E501"]
+max-line-length = 88
+
+[tool.taskipy.tasks]
+lint = "black --check --diff . && isort --check --diff . && flake8 --max-line-length 88 --extend-ignore=W503,E501 . && mypy . && pydocstyle ."
+docs = "mkdocs serve"
+pre_test = "task lint"
+test = "pytest -x --cov=flunt -vv"
+post_test = "coverage html"

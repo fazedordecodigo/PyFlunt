@@ -1,21 +1,21 @@
 """Module Value Objects."""
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.validations.contract import Contract
 
 
 class Name(Notifiable):
-    """Class Value Object Name."""
+    """Value Object Name."""
 
     def __init__(self, first_name: str, last_name: str) -> None:
         """Found 'Constructor'."""
         super().__init__()
         self.first_name = first_name
         self.last_name = last_name
-
-        self.contract = (
+        self.add_notifications(
             Contract()
-            .requires(self.first_name, "first name")
-            .requires(self.last_name, "last name")
+            .requires(self.first_name, "first name", "Nome é obrigatório")
+            .requires(self.last_name, "last name", "Sobrenome é obrigatório")
             .is_between(
                 value=self.first_name,
                 min=3,
@@ -30,9 +30,8 @@ class Name(Notifiable):
                 key="last_name",
                 message="Mínimo de 3 e máximo de 50 caracteres",
             )
+            .get_notifications()
         )
-
-        self.add_notifications_of_contract(self.contract)
 
 
 class Email(Notifiable):
@@ -43,14 +42,13 @@ class Email(Notifiable):
         super().__init__()
         self.address = address
 
-        self.contract = (
+        self.add_notifications(
             Contract()
-            .requires(self.address, "E-mail address")
+            .requires(self.address, "E-mail address", "E-mail é obrigatório")
             .is_email(
                 self.address,
                 "address",
                 "Este Campo aceita apenas texto no formato e-mail",
             )
+            .get_notifications()
         )
-
-        self.add_notifications_of_contract(self.contract)

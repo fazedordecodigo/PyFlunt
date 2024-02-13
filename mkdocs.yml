@@ -1,0 +1,12 @@
+site_name: PyFlunt
+repo_url: https://github.com/Delatorrea/PyFlunt
+repo_name: PyFlunt
+edit_uri: tree/main/docs
+theme:
+  material
+
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - stylesheets/extra.css
