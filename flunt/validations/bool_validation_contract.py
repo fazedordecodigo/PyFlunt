@@ -1,6 +1,7 @@
 """Module Contract."""
 
 from typing import Self
+
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 
@@ -41,7 +42,7 @@ class BoolValidationContract(Notifiable):
 
         Notes
         -----
-        - If the provided `value` is ``True``, a notification is added to the current 
+        - If the provided `value` is ``True``, a notification is added to the current
         instance using the provided `key` and `message`.
         - If the provided `value` is ``False``, no notification is added.
 
@@ -79,7 +80,7 @@ class BoolValidationContract(Notifiable):
 
         Notes
         -----
-        - If the provided `value` is ``False``, a notification is added to the current 
+        - If the provided `value` is ``False``, a notification is added to the current
         instance using the provided `key` and `message`.
         - If the provided `value` is ``True``, no notification is added.
 
