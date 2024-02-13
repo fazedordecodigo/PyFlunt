@@ -1,32 +1,22 @@
-name: CD
+name: Realease
 
 on:
-  pull_request:
-      branches: [ main ]
-      types:
-      - synchronize
+  pull_request_target:
+    branches:
+      - master
+    types:
+      - closed
   workflow_dispatch:
+    inputs:
+      number:
+        description: PR number
+        required: true
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: 'false'
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Realiza o checkout
-      uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-
-    - name: Instala dependências
-      run: poetry install --no-dev
-
-    - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v2.0
-      with:
-        pypi_token: ${{ secrets.TOKEN_PYPI_PYFLUNT }}
-  
+jobs:  
   release:
     runs-on: ubuntu-latest
     permissions:
@@ -38,7 +28,7 @@ jobs:
     - name: Read version from pyproject.toml
       id: read-version
       run: |
-        version=$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["commitizen"]["version"])')
+        version=$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')
         printf "LITELLM_VERSION=%s" "$version" >> $GITHUB_ENV
   
     - name: Display version
