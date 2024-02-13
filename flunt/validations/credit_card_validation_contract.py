@@ -11,7 +11,8 @@ class CreditCardValidationContract(Notifiable):
     """
     Credit Card Validation Contract.
 
-    This class provides methods for validating Credit Card values and adding notifications based on the validation results.
+    This class provides methods for validating Credit Card values and adding notifications
+    based on the validation results.
 
     Methods
     -------
@@ -26,28 +27,31 @@ class CreditCardValidationContract(Notifiable):
 
         Parameters
         ----------
-        value: str
+        `value`: str
             The string value to be checked.
-        key: str
+        `key`: str
             The key or identifier associated with the notification.
-        message: str
+        `message`: str
             The message of the notification to be added.
 
         Returns
         -------
-        self
+        `self`
             The current instance of the class.
 
         Notes
         -----
-        If the provided `value` is not a Credit Card Number, a notification is added to the current instance using the provided `key` and `message`.
-        If the provided `value` is a Credit Card Number, no notification is added.
+        - If the provided `value` is not a Credit Card Number, a `notification` is added
+        to the current instance using the provided `key` and `message`.
+        - If the provided `value` is a Credit Card Number, no `notification` is added.
 
         Examples
         --------
-        >>> obj = CreditCardValidationContract()
-
-        >>> obj.is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
+        ```python
+        obj = Contract()
+              .is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
+        obj.is_valid # True
+        ```
 
         """
         if not re.match(
