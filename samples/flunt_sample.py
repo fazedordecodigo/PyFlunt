@@ -32,13 +32,13 @@ class Pessoa(Notifiable):
             )
             .is_email(value=self.email, key="email", message="email errado")
         )
-        self.add_notifications_of_contract(self.contract.get_notifications())
+        self.add_notifications(self.contract.get_notifications())
 
 
 def main():
-    """Run the main function."""	
+    """Run the main function."""
     nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
-    if not nome.is_valid():
+    if not nome.is_valid:
         for notification in nome.get_notifications():
             print(notification)
     else:
