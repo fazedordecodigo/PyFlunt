@@ -50,7 +50,7 @@ profile = "black"
 line_length = 88
 
 [tool.pydocstyle]
-ignore = "D100,D104,D203,D212"
+ignore = "D100,D104,D203,D212,D417"
 
 [flake8]
 extend-ignore = ["W503", "E501"]
