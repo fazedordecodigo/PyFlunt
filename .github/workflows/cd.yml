@@ -10,40 +10,54 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-
     - name: Realiza o checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
-    - name: Instala Poetry
-      uses: Gr1N/setup-poetry@v8
-
     - name: Instala dependências
       run: poetry install --no-dev
-    
-    - name: Get Version
-      id: get_version
-      run: |
-        echo "::set-output name=version::$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')"
-    
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-      with:
-        tag_name: v${{ steps.get_version.outputs.version }}
-        release_name: Release ${{ steps.get_version.outputs.version }}
-        body: |
-          Release ${{ steps.get_version.outputs.version }}
 
     - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v1.17
+      uses: JRubics/poetry-publish@v2.0
       with:
         pypi_token: ${{ secrets.TOKEN_PYPI_PYFLUNT }}
+  
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Install dependencies
+      run: pip install toml
+
+    - name: Read version from pyproject.toml
+      id: read-version
+      run: |
+        version=$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["commitizen"]["version"])')
+        printf "LITELLM_VERSION=%s" "$version" >> $GITHUB_ENV
+  
+    - name: Display version
+      run: echo "Current version is $LITELLM_VERSION"
+
+    - name: Create Release
+      id: create_release
+      uses: joutvhu/create-release@v1
+      with:
+        tag_name: v2.0.0
+        name: Release v2.0.0
+        body: |
+          # What's Changed
+          - Change in structure to closely follow the features available in the original Flunt implementation.
+          - Add new feature Credit Card Validation by @fazedordecodigo in #10
+          - Update Dockstrings by @fazedordecodigo in #17
+          - Update Readme by @fazedordecodigo in #21
+          - Update CD by @fazedordecodigo in #22
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
