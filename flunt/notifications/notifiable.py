@@ -15,6 +15,7 @@ class Notifiable(Notification):
         A list of notifications.
     is_valid: bool
         A boolean indicating if there are any notifications.
+
     Methods
     -------
     - get_notification_instance
@@ -22,6 +23,7 @@ class Notifiable(Notification):
     - add_notification
     - get_notifications
     - clear
+
     """
 
     def __init__(self) -> None:
