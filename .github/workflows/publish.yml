@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Realiza o checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    
+    - name: Instala Poetry
+      run: curl -sSL https://install.python-poetry.org | python3 -
+
+    - name: Instala dependências
+      run: poetry install --no-dev
+
+    - name: Build and publish to pypi
+      uses: JRubics/poetry-publish@v2.0
+      with:
+        pypi_token: ${{ secrets.TOKEN_PYPI_PYFLUNT }}
