@@ -56,8 +56,7 @@ class Name(Notifiable):
         super().__init__()
         self.first_name = first_name
         self.last_name = last_name
-
-        self.contract = (
+        self.add_notifications(
             Contract()
             .requires(self.first_name, 'first name')
             .requires(self.last_name, 'last name')
@@ -73,9 +72,8 @@ class Name(Notifiable):
                 key="last_name",
                 message="Mínimo de 3 caracteres",
             )
+            .get_notifications()
         )
-
-        self.add_notifications_of_contract(self.contract)
 
 
 nome = Name('Emerson', 'Delatorre')
@@ -88,3 +86,10 @@ if not nome.is_valid():
 ## 📄 License
 
 This project contains the MIT license. See the file [LICENSE](LICENSE).
+
+## Mods
+* [Flunt for C# (Original)](https://github.com/andrebaltieri/Flunt)
+* [Flunt.Br](https://github.com/lira92/flunt.br)
+* [Flunt for Java](https://github.com/carlosbritojun/jflunt)
+* [Flunt for JavaScript](https://github.com/jhonesgoncal/flunt)
+* [Flunt for PHP](https://github.com/matheusbloise/flunt-php)
