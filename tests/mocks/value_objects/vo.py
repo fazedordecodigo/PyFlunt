@@ -12,8 +12,7 @@ class Name(Notifiable):
         super().__init__()
         self.first_name = first_name
         self.last_name = last_name
-
-        self.contract = (
+        self.add_notifications(
             Contract()
             .requires(self.first_name, "first name", "Nome é obrigatório")
             .requires(self.last_name, "last name", "Sobrenome é obrigatório")
@@ -31,9 +30,8 @@ class Name(Notifiable):
                 key="last_name",
                 message="Mínimo de 3 e máximo de 50 caracteres",
             )
+            .get_notifications()
         )
-
-        self.add_notifications_of_contract(self.contract.get_notifications())
 
 
 class Email(Notifiable):
@@ -44,7 +42,7 @@ class Email(Notifiable):
         super().__init__()
         self.address = address
 
-        self.contract = (
+        self.add_notifications(
             Contract()
             .requires(self.address, "E-mail address", "E-mail é obrigatório")
             .is_email(
@@ -52,6 +50,5 @@ class Email(Notifiable):
                 "address",
                 "Este Campo aceita apenas texto no formato e-mail",
             )
+            .get_notifications()
         )
-
-        self.add_notifications_of_contract(self.contract.get_notifications())
