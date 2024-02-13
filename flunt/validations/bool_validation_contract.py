@@ -1,5 +1,6 @@
 """Module Contract."""
 
+from typing import Self
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 
@@ -20,34 +21,37 @@ class BoolValidationContract(Notifiable):
 
     """
 
-    def is_false(self, value: bool, key: str, message: str):
+    def is_false(self, value: bool, key: str, message: str) -> Self:
         """
         Check if the provided boolean value is False and adds a notification if it is True.
 
         Parameters
         ----------
-        value: bool
+        `value`: bool
             The boolean value to be checked.
-        key: str
+        `key`: str
             The key or identifier associated with the notification.
-        message: str
+        `message`: str
             The message of the notification to be added.
 
         Returns
         -------
-        self
+        `Self`
             The current instance of the class.
 
         Notes
         -----
-        - If the provided `value` is ``True``, a notification is added to the current instance using the provided `key` and `message`.
+        - If the provided `value` is ``True``, a notification is added to the current 
+        instance using the provided `key` and `message`.
         - If the provided `value` is ``False``, no notification is added.
 
         Examples
         --------
-        >>> obj = MyClass()
-
-        >>> obj.is_false(False, "BoolCheck", "Value should return true")
+        ```python
+        obj = Contract()
+              .is_false(False, "BoolCheck", "Value should return true")
+        obj.is_valid # True
+        ```
 
         """
         if value:
@@ -55,34 +59,37 @@ class BoolValidationContract(Notifiable):
 
         return self
 
-    def is_true(self, value: bool, key: str, message: str):
+    def is_true(self, value: bool, key: str, message: str) -> Self:
         """
         Check if the provided boolean value is True and adds a notification if it is True.
 
         Parameters
         ----------
-        value: bool
+        `value`: bool
             The boolean value to be checked.
-        key: str
+        `key`: str
             The key or identifier associated with the notification.
-        message: str
+        `message`: str
             The message of the notification to be added.
 
         Returns
         -------
-        self
+        `Self`
             The current instance of the class.
 
         Notes
         -----
-        - If the provided `value` is ``False``, a notification is added to the current instance using the provided `key` and `message`.
+        - If the provided `value` is ``False``, a notification is added to the current 
+        instance using the provided `key` and `message`.
         - If the provided `value` is ``True``, no notification is added.
 
         Examples
         --------
-        >>> obj = MyClass()
-
-        >>> obj.is_true(True, "BoolCheck", "Value should return true")
+        ```python
+        obj = Contract()
+              .is_true(True, "BoolCheck", "Value should return true")
+        obj.is_valid # True
+        ```
 
         """
         if not value:
