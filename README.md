@@ -4,6 +4,9 @@ Python implementation of Domain Notification Pattern based in [Flunt](https://gi
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
+[![Linters](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml)
+[![Realease](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml)
+[![Publish](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml)
 
 Flunt is a way to implement a notification pattern in your application to centralize errors and changes in certain actions and entities.
 
