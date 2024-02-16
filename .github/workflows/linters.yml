@@ -19,11 +19,8 @@ jobs:
       - name: Atualiza Pip
         run: python -m pip install --upgrade pip
 
-      - name: Instala Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 -
-
       - name: Instala dependências
-        run: poetry install
+        run: pip install -r requirements.txt
 
       - name: Executa Ruff
-        run: poetry lint-check
+        run: ruff check
