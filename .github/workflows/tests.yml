@@ -34,8 +34,8 @@ jobs:
         run: poetry install
 
       - name: Executa unit tests
-        run: pytest tests.py --doctest-modules --cov=com --cov-report=xml --cov-report=html
+        run: poetry test
         continue-on-error: true
 
       - name: Executa tox
-        run: tox -e py
+        run: poetry tox
