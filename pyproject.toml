@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Flunt"
-version = "2.0.0"
+version = "2.0.1"
 description = "Python implementation of Domain Notification Pattern based in Flunt (.NET) developed by @andrebaltieri"
 authors = ["Emerson Delatorre <38289677+Delatorrea@users.noreply.github.com>"]
 repository = "https://github.com/Delatorrea/PyFlunt"
@@ -12,20 +12,20 @@ classifiers = ["Topic :: Utilities", "Topic :: Software Development", "Programmi
 readme = "./README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9, <4.0"
 
 [tool.poetry.group.dev.dependencies]
 faker = "^23.1.0"
 pytest = "^8.0.0"
-isort = "^5.13.2"
-pydocstyle = "^6.3.0"
 pytest-cov = "^4.1.0"
-mypy = "^1.8.0"
-flake8 = "^7.0.0"
 ipdb = "^0.13.13"
 ipykernel = "^6.29.2"
-taskipy = "^1.12.2"
-black = "^24.1.1"
+ruff = "^0.2.1"
+tox = "^4.12.1"
+poethepoet = "^0.24.4"
+pre-commit = "^3.6.1"
+pre-commit-hooks = "^4.5.0"
+mypy = "^1.8.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
@@ -42,23 +42,47 @@ sample = "samples.flunt_sample:main"
 [tool.pytest.ini_options]
 addopts = "--doctest-modules"
 
-[tool.black]
+[tool.ruff]
 line-length = 88
+indent-width = 4
+extend-exclude = ["tests"]
 
-[tool.isort]
-profile = "black"
-line_length = 88
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
+docstring-code-format = true
+docstring-code-line-length = 30
 
-[tool.pydocstyle]
-ignore = "D100,D104,D203,D212,D417"
+[tool.ruff.lint]
+extend-select = [
+  "D",   # pydocstyle,
+  "I",   # isort
+  "B",   # flake8-bugbear
+]
+ignore = [
+  "D100",
+  "D104",
+  "D203",
+  "D206",
+  "D212",
+  "D417",
+  "E501"
+]
 
-[flake8]
-extend-ignore = ["W503", "E501"]
-max-line-length = 88
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
-[tool.taskipy.tasks]
-lint = "black --check --diff . && isort --check --diff . && flake8 --max-line-length 88 --extend-ignore=W503,E501 . && mypy . && pydocstyle ."
-docs = "mkdocs serve"
-pre_test = "task lint"
-test = "pytest -x --cov=flunt -vv"
-post_test = "coverage html"
+[tool.poe]
+poetry_command = ""
+
+[tool.poe.tasks]
+test = "pytest"
+test-verbose = "pytest -vv"
+test-cov = "pytest --doctest-modules --cov=. --cov-report=html"
+tox = "tox -e py"
+pre-commit = "pre-commit run --all-files"
+lint = ["_ruff-check", "_ruff-format", "_mypy"]
+
+_ruff-check = "poetry run ruff check --select I --fix ."
+_ruff-format = "poetry run ruff format ."
+_mypy = "poetry run mypy ."
