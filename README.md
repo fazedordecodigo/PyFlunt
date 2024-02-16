@@ -35,7 +35,7 @@ from flunt.notification import Notification
 class Name(Notifiable):
     def __init__(self, name):
         super().__init__()
-        
+
         if len(name) > 3:
             self.add_notification(
                 Notification(field='name', message='invalid name')
