@@ -1,22 +1,18 @@
 name: Realease
 
 on:
-  pull_request_target:
-    branches:
-      - master
+  pull_request:
     types:
       - closed
+    branches:
+      - 'main'
   workflow_dispatch:
     inputs:
       number:
         description: PR number
         required: true
-      debug_enabled:
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
-        required: false
-        default: 'false'
 
-jobs:  
+jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
@@ -27,9 +23,7 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
-    
+
     - name: Install dependencies
       run: pip install toml
 
@@ -38,7 +32,7 @@ jobs:
       run: |
         version=$(python -c 'import toml; print(toml.load("pyproject.toml")["tool"]["poetry"]["version"])')
         printf "LITELLM_VERSION=%s" "$version" >> $GITHUB_ENV
-  
+
     - name: Display version
       run: echo "Current version is $LITELLM_VERSION"
 
@@ -46,15 +40,11 @@ jobs:
       id: create_release
       uses: joutvhu/create-release@v1
       with:
-        tag_name: v2.0.0
-        name: Release v2.0.0
+        tag_name: "v$LITELLM_VERSION"
+        name: "Release v$LITELLM_VERSION"
         body: |
           # What's Changed
-          - Change in structure to closely follow the features available in the original Flunt implementation.
-          - Add new feature Credit Card Validation by @fazedordecodigo in #10
-          - Update Dockstrings by @fazedordecodigo in #17
-          - Update Readme by @fazedordecodigo in #21
-          - Update CD by @fazedordecodigo in #22
+          - Yml correction for library release and publication and general improvements. by fazedordecodigo in #34
         draft: false
         prerelease: false
       env:
