@@ -82,6 +82,7 @@ test-cov = "pytest --doctest-modules --cov=. --cov-report=html"
 tox = "tox -e py"
 pre-commit = "pre-commit run --all-files"
 lint = ["_ruff-check", "_ruff-format", "_mypy"]
+lint-check = "ruff check"
 
 _ruff-check = "poetry run ruff check --select I --fix ."
 _ruff-format = "poetry run ruff format ."
