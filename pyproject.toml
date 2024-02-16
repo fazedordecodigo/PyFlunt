@@ -11,8 +11,12 @@ keywords = ["flunt", "domain-notification", "validation", "notification"]
 classifiers = ["Topic :: Utilities", "Topic :: Software Development", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11"]
 readme = "./README.md"
 
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry.dependencies]
-python = ">=3.9, <4.0"
+python = "^3.12"
 poetry = "^1.7.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -26,15 +30,12 @@ poethepoet = "^0.24.4"
 pre-commit = "^3.6.1"
 pre-commit-hooks = "^4.5.0"
 mypy = "^1.8.0"
+tox = "*"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
 mkdocstrings = "^0.24.0"
 mkdocstrings-python = "^1.8.0"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 sample = "samples.flunt_sample:main"
@@ -81,7 +82,7 @@ test-verbose = "pytest -vv"
 test-cov = "pytest --doctest-modules --cov=. --cov-report=html"
 tox = "tox -e py"
 pre-commit = "pre-commit run --all-files"
-lint = ["_ruff-check", "_ruff-format", "_mypy"]
+lint = ["_ruff-check", "lint-check", "_ruff-format", "_mypy"]
 lint-check = "ruff check"
 
 _ruff-check = "poetry run ruff check --select I --fix ."
