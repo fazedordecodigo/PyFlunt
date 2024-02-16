@@ -1,20 +1,8 @@
 name: Publish
 
 on:
-  pull_request_target:
-    branches:
-      - master
-    types:
-      - closed
-  workflow_dispatch:
-    inputs:
-      number:
-        description: PR number
-        required: true
-      debug_enabled:
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
-        required: false
-        default: 'false'
+    release:
+      types: [published]
 
 jobs:
   publish:
@@ -25,9 +13,7 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    
+
     - name: Instala Poetry
       run: curl -sSL https://install.python-poetry.org | python3 -
 
