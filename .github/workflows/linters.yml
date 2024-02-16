@@ -26,4 +26,4 @@ jobs:
         run: poetry install
 
       - name: Executa Ruff
-        run: ruff check
+        run: poetry lint-check
