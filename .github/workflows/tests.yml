@@ -31,5 +31,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Executa unit tests
-        run: pytest --doctest-modules --cov=. --cov-report=html
-        continue-on-error: true
+        run: python -m pytest --doctest-modules --cov=. --cov-report=html
