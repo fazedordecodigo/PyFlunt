@@ -12,6 +12,5 @@ repos:
   - id: poetry-check
   - id: poetry-lock
   - id: poetry-export
-  - id: poetry-export
     args: [--dev]
   - id: poetry-install
