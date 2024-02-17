@@ -34,7 +34,7 @@ class FluntRegexPatterns:
 	    The regular expression pattern for only letters and numbers.
 	- passport_regex_pattern: str
 	    The regular expression pattern for passport.
-
+	TODO: Alterar de classe para outra estrutura de dados.
 	"""
 
 	def __init__(self) -> None:

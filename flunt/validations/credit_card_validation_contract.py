@@ -2,6 +2,8 @@
 
 import re
 
+from typing_extentions import Self
+
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
@@ -21,7 +23,7 @@ class CreditCardValidationContract(Notifiable):
 
 	"""
 
-	def is_credit_card(self, value: str, key: str, message: str):
+	def is_credit_card(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if the provided str value is a Credt Card Number and adds a notification if it is not True.
 

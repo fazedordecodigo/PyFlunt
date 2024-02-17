@@ -1,4 +1,5 @@
 """Module Contract."""
+from typing_extentions import Self
 
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
@@ -33,7 +34,7 @@ class StringValidationContract(Notifiable):
 
 	"""
 
-	def is_lower_than(self, value: str, comparer: int, key: str, message: str):
+	def is_lower_than(self, value: str, comparer: int, key: str, message: str) -> Self:
 		"""
 		Check if the length of a string value is lower than a given number and adds a notification if it's greater.
 
@@ -78,7 +79,7 @@ class StringValidationContract(Notifiable):
 
 	def is_lower_or_equals_than(
 		self, value: str, comparer: int, key: str, message: str
-	):
+	) -> Self:
 		"""
 		Check if the length of a string value is lower or equal to a given number and adds a notification if it exceeds.
 
@@ -121,7 +122,9 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_greater_than(self, value: str, comparer: int, key: str, message: str):
+	def is_greater_than(
+		self, value: str, comparer: int, key: str, message: str
+	) -> Self:
 		"""
 		Check if the length of a string value is greater than a given number and adds a notification if it's smaller.
 
@@ -166,7 +169,7 @@ class StringValidationContract(Notifiable):
 
 	def is_greater_or_equals_than(
 		self, value: str, comparer: int, key: str, message: str
-	):
+	) -> Self:
 		"""
 		Check if the length of a string value is greater than or equal to a given number and adds a notification if it's smaller.
 
@@ -209,7 +212,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_none(self, value: str, key: str, message: str):
+	def is_none(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value is not None and adds a notification if it is.
 
@@ -246,7 +249,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_not_none(self, value: str, key: str, message: str):
+	def is_not_none(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value is not None and adds a notification if it is.
 
@@ -283,7 +286,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_not_none_or_white_space(self, value: str, key: str, message: str):
+	def is_not_none_or_white_space(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value is not None or whitespace and adds a notification if it is.
 
@@ -321,7 +324,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def are_equals(self, value: str, comparer: str, key: str, message: str):
+	def are_equals(self, value: str, comparer: str, key: str, message: str) -> Self:
 		"""
 		Check if two string values are equal and adds a notification if they are not equal.
 
@@ -360,7 +363,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def are_not_equals(self, value: str, comparer: str, key: str, message: str):
+	def are_not_equals(self, value: str, comparer: str, key: str, message: str) -> Self:
 		"""
 		Require two strings are not equals.
 
@@ -399,7 +402,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def contains(self, value: str, comparer: str, key: str, message: str):
+	def contains(self, value: str, comparer: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value contains another string and adds a notification if it does.
 
@@ -439,7 +442,7 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def not_contains(self, value: str, comparer: str, key: str, message: str):
+	def not_contains(self, value: str, comparer: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value does not contain a specified substring and adds a notification if it does.
 
@@ -479,7 +482,9 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_between(self, value: str, min: int, max: int, key: str, message: str):
+	def is_between(
+		self, value: str, min: int, max: int, key: str, message: str
+	) -> Self:
 		"""
 		Require a string value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
 

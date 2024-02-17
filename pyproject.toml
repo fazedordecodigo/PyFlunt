@@ -7,8 +7,20 @@ repository = "https://github.com/Delatorrea/PyFlunt"
 homepage = "https://github.com/Delatorrea/PyFlunt"
 documentation = "https://github.com/Delatorrea/PyFlunt"
 license = "MIT"
-keywords = ["flunt", "domain-notification", "validation", "notification"]
-classifiers = ["Topic :: Utilities", "Topic :: Software Development", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11"]
+keywords = [
+  "flunt",
+  "domain-notification",
+  "validation",
+  "notification"
+]
+classifiers = [
+  "Topic :: Utilities",
+  "Topic :: Software Development",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
 readme = "./README.md"
 
 [build-system]
@@ -16,8 +28,9 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.9 <4.0"
 poetry = "^1.7.1"
+typing-extensions = "^4.9.0"
 
 [tool.poetry.group.dev.dependencies]
 faker = "^23.1.0"

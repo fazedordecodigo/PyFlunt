@@ -1,6 +1,6 @@
 """Module Contract."""
 
-from typing import Self
+from typing_extentions import Self
 
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification

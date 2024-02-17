@@ -12,7 +12,7 @@ repos:
   - id: poetry-check
   - id: poetry-lock
   - id: poetry-export
-    args: ["--dev", "-f", "requirements.txt", "-o", "requirements_dev.txt"]
+    args: ["--with", "dev", "-f", "requirements.txt", "-o", "requirements_dev.txt"]
   - id: poetry-install
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.2.1

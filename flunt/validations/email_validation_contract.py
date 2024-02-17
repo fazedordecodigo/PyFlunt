@@ -2,6 +2,8 @@
 
 import re
 
+from typing_extentions import Self
+
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
@@ -27,7 +29,7 @@ class EmailValidationContract(Notifiable):
 
 	"""
 
-	def is_email(self, value: str, key: str, message: str):
+	def is_email(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if the provided value is a valid email address and adds a notification if it is not.
 
@@ -66,7 +68,7 @@ class EmailValidationContract(Notifiable):
 
 		return self
 
-	def is_not_email(self, value: str, key: str, message: str):
+	def is_not_email(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if the provided value is not a valid email address and adds a notification if it is.
 
@@ -104,7 +106,7 @@ class EmailValidationContract(Notifiable):
 
 		return self
 
-	def _valid_email(self, value):
+	def _valid_email(self, value) -> Self:
 		"""
 		Check if the provided value matches the valid email address pattern.
 
