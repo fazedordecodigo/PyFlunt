@@ -2,7 +2,7 @@
 
 import re
 
-from typing_extentions import Self
+from typing_extensions import Self
 
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
@@ -106,7 +106,7 @@ class EmailValidationContract(Notifiable):
 
 		return self
 
-	def _valid_email(self, value) -> Self:
+	def _valid_email(self, value) -> re.Match[str] | None:
 		"""
 		Check if the provided value matches the valid email address pattern.
 
