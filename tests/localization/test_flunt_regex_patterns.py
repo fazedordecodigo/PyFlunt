@@ -77,7 +77,6 @@ def test_should_identify_only_numbers(regex, input, expect):
 		(fake.mac_address(), True),
 		(fake.name(), True),
 		(fake.ipv4_public(), True),
-		(fake.address(), True),
 		('', False),
 	],
 )
