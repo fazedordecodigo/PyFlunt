@@ -41,4 +41,4 @@ jobs:
           args: >
             -Dsonar.projectKey=fazedordecodigo_PyFlunt
             -Dsonar.organization=fazedordecodigo
-            -Dsonar.sources=coverage.xml
+            -Dsonar.python.coverage.reportPaths=coverage.xml
