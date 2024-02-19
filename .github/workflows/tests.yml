@@ -39,6 +39,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=PyFlunt
+            -Dsonar.projectKey=fazedordecodigo_PyFlunt
             -Dsonar.organization=fazedordecodigo
             -Dsonar.sources=coverage.xml
