@@ -199,5 +199,6 @@ class Notifiable(Notification):
 		--------
 		```python
 		obj = Notifiable()
-		obj.__str__()  # "[]"""
+		obj.__str__()
+		"""
 		return self._notifications.__str__()
