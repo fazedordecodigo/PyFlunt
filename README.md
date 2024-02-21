@@ -1,26 +1,32 @@
-# 🐍 PyFlunt: Python implementation of Domain Notification Pattern
+# 🐍 PyFlunt: Domain Notification Pattern
 
-Python implementation of Domain Notification Pattern based in [Flunt](https://github.com/andrebaltieri/flunt) (.NET) developed by @andrebaltieri
+Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET) desenvolvido por @andrebaltieri
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
+[![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
-[![Linters](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml)
-[![Realease](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml)
-[![Publish](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://matrix.to/#/#pyflunt:gitter.im)
 
-Flunt is a way to implement a notification pattern in your application to centralize errors and changes in certain actions and entities.
 
-Flunt was born out of two needs: implementing the Domain Notification Pattern to replace domain-level exceptions in the application and reducing the amount of IFs (complexity) by using a contract-based approach.
+[![Avaliação de Segurança](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Avaliação de Confiabilidade](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Avaliação de Manutenibilidade](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Vulnerabilidades](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
 
-Thus, basically what Flunt does is add a list of Notifications to your class and various methods to interact with it.
 
-## 🐍 Python Version
+[English Version](./README_EN.md)
 
-- [Python 3.10](https://www.python.org/)
 
-## ➡️ How to use
+Flunt te auxilia a implementar Domain Notification Pattern em sua aplicação para centralizar erros e mudanças em determinadas ações e entidades.
 
-### 🔧 Installation
+Flunt surgiu de duas necessidades: implementar o Domain Notification Pattern para substituir exceções no nível de domínio da aplicação e reduzir a quantidade de IFs (complexidade) usando uma abordagem baseada em contratos.
+
+Assim, basicamente o que o Flunt faz é adicionar uma lista de Notificações à sua classe e vários métodos para interagir com ela.
+
+## ➡️ Como usar
+
+### 🔧 Instalação
 
 ````bash
 pip install flunt
@@ -32,67 +38,67 @@ pip install flunt
 from flunt.notifiable import Notifiable
 from flunt.notification import Notification
 
-class Name(Notifiable):
-    def __init__(self, name):
+class Nome(Notifiable):
+    def __init__(self, nome):
         super().__init__()
 
-        if len(name) > 3:
+        if len(nome) > 3:
             self.add_notification(
-                Notification(field='name', message='invalid name')
+                Notification(field='nome', message='nome inválido')
             )
 
-        self._name = name
+        self._nome = nome
 ````
 
 ### 📜 Contract
 ````python
-"""Module Value Objects."""
+"""Módulo Objetos de Valor."""
 from flunt.notifiable import Notifiable
 from flunt.contract import Contract
 
 
-class Name(Notifiable):
-    """Class Value Object Name."""
+class Nome(Notifiable):
+    """Classe Objeto de Valor Nome."""
 
-    def __init__(self, first_name, last_name):
-        """Found 'Constructor'."""
+    def __init__(self, primeiro_nome, ultimo_nome):
+        """Encontrar 'Construtor'."""
         super().__init__()
-        self.first_name = first_name
-        self.last_name = last_name
+        self.primeiro_nome = primeiro_nome
+        self.ultimo_nome = ultimo_nome
         self.add_notifications(
             Contract()
-            .requires(self.first_name, 'first name')
-            .requires(self.last_name, 'last name')
+            .requires(self.primeiro_nome, 'primeiro nome')
+            .requires(self.ultimo_nome, 'último nome')
             .is_greater_than(
-                value=self.first_name,
+                value=self.primeiro_nome,
                 comparer=3,
-                key="first_name",
+                key="primeiro_nome",
                 message="Mínimo de 3 caracteres",
             )
             .is_greater_than(
-                value=self.last_name,
+                value=self.ultimo_nome,
                 comparer=3,
-                key="last_name",
+                key="ultimo_nome",
                 message="Mínimo de 3 caracteres",
             )
             .get_notifications()
         )
 
 
-nome = Name('Emerson', 'Delatorre')
+nome = Nome('Emerson', 'Delatorre')
 if not nome.is_valid():
     for notification in nome.get_notifications():
         print(notification)
 
 ````
 
-## 📄 License
+## 📄 Licença
 
-This project contains the MIT license. See the file [LICENSE](LICENSE).
+Este projeto contém a licença MIT. Consulte o arquivo [LICENSE](LICENSE).
 
 ## Mods
-* [Flunt for C# (Original)](https://github.com/andrebaltieri/Flunt)
+* [Flunt para C# (Original)](https://github.com/andrebaltieri/Flunt)
 * [Flunt.Br](https://github.com/lira92/flunt.br)
-* [Flunt for Java](https://github.com/carlosbritojun/jflunt)
-* [Flunt for JavaScript](https://github.com/jhonesgoncal/flunt)
-* [Flunt for PHP](https://github.com/matheusbloise/flunt-php)
+* [Flunt para Java](https://github.com/carlosbritojun/jflunt)
+* [Flunt para JavaScript](https://github.com/jhonesgoncal/flunt)
+* [Flunt para PHP](https://github.com/matheusbloise/flunt-php)
