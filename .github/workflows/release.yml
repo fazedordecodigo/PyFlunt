@@ -43,8 +43,8 @@ jobs:
       id: create_release
       uses: joutvhu/create-release@v1
       with:
-        tag_name: "v$LITELLM_VERSION"
-        name: "Release v$LITELLM_VERSION"
+        tag_name: "v2.0.0"
+        name: "Release v2.0.0"
         body: |
           # What's Changed
           - Yml correction for library release and publication and general improvements. by fazedordecodigo in #34
