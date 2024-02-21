@@ -8,18 +8,39 @@ homepage = "https://github.com/Delatorrea/PyFlunt"
 documentation = "https://github.com/Delatorrea/PyFlunt"
 license = "MIT"
 keywords = [
+  "notifications",
+  "python",
+  "ddd",
+  "python3",
+  "validations",
+  "notification",
+  "ddd-patterns",
+  "ddd-architecture",
+  "validation-library",
+  "class-validator",
+  "fluentvalidation",
+  "class-validation",
   "flunt",
   "domain-notification",
-  "validation",
-  "notification"
+  "class-validator-cpf"
 ]
 classifiers = [
-  "Topic :: Utilities",
-  "Topic :: Software Development",
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12"
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business",
+  "Topic :: Utilities",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Internationalization",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Natural Language :: English",
+  "Natural Language :: Portuguese",
+  "Natural Language :: Portuguese (Brazilian)"
 ]
 readme = "./README.md"
 
@@ -98,7 +119,7 @@ tox = "tox -e py"
 pre-commit = "pre-commit run --all-files"
 lint = ["_ruff-check", "lint-check", "_ruff-format", "_mypy"]
 lint-check = "ruff check"
-poetry-export-dev = "poetry export -f requirements.txt --output requirements_dev.txt"
+export-dev = "poetry export -f requirements.txt --output requirements_dev.txt  --with dev"
 
 _ruff-check = "poetry run ruff check --select I --fix ."
 _ruff-format = "poetry run ruff format ."
