@@ -16,6 +16,7 @@ keywords = [
 classifiers = [
   "Topic :: Utilities",
   "Topic :: Software Development",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12"
@@ -27,14 +28,13 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = ">=3.10 <4.0"
+python = ">=3.9 <4.0"
 poetry = "^1.7.1"
 typing-extensions = "^4.9.0"
-coverage = "^7.4.1"
 
 [tool.poetry.group.dev.dependencies]
 faker = "^23.1.0"
-pytest = "^8.0.0"
+pytest = "^8.0.1"
 pytest-cov = "^4.1.0"
 ipdb = "^0.13.13"
 ipykernel = "^6.29.2"
@@ -44,6 +44,7 @@ pre-commit = "^3.6.1"
 pre-commit-hooks = "^4.5.0"
 mypy = "^1.8.0"
 tox = "*"
+coverage = "^7.4.1"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
