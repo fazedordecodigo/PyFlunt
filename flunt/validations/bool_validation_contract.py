@@ -14,10 +14,10 @@ class BoolValidationContract(Notifiable):
 	Methods:
 	-------
 	is_false(value: bool, key: str, message: str) -> self:
-	    Checks if the provided boolean value is False and adds a notification if it is True.
+	        Checks if the provided boolean value is False and adds a notification if it is True.
 
 	is_true(value: bool, key: str, message: str) -> self:
-	    Checks if the provided boolean value is True and adds a notification if it is False.
+	        Checks if the provided boolean value is True and adds a notification if it is False.
 
 	"""
 
@@ -28,16 +28,16 @@ class BoolValidationContract(Notifiable):
 		Parameters
 		----------
 		`value`: bool
-		    The boolean value to be checked.
+		The boolean value to be checked.
 		`key`: str
-		    The key or identifier associated with the notification.
+		The key or identifier associated with the notification.
 		`message`: str
-		    The message of the notification to be added.
+		The message of the notification to be added.
 
 		Returns:
 		-------
 		`Self`
-		    The current instance of the class.
+		The current instance of the class.
 
 		Notes:
 		-----
@@ -49,7 +49,7 @@ class BoolValidationContract(Notifiable):
 		--------
 		```python
 		obj = Contract()
-		      .is_false(False, "BoolCheck", "Value should return true")
+		              .is_false(False, "BoolCheck", "Value should return true")
 		obj.is_valid # True
 		```
 
@@ -66,16 +66,16 @@ class BoolValidationContract(Notifiable):
 		Parameters
 		----------
 		`value`: bool
-		    The boolean value to be checked.
+		The boolean value to be checked.
 		`key`: str
-		    The key or identifier associated with the notification.
+		The key or identifier associated with the notification.
 		`message`: str
-		    The message of the notification to be added.
+		The message of the notification to be added.
 
 		Returns:
 		-------
 		`Self`
-		    The current instance of the class.
+		The current instance of the class.
 
 		Notes:
 		-----
@@ -87,7 +87,7 @@ class BoolValidationContract(Notifiable):
 		--------
 		```python
 		obj = Contract()
-		      .is_true(True, "BoolCheck", "Value should return true")
+		              .is_true(True, "BoolCheck", "Value should return true")
 		obj.is_valid # True
 		```
 
