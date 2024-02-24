@@ -1,11 +1,12 @@
-PORTUGUÊS | [ENGLISH](./README_EN.md)
+PORTUGUÊS | [ENGLISH](README_EN)
 
 # 🐍 PyFlunt: Domain Notification Pattern
 
-Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET) desenvolvido por @andrebaltieri
+Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
 [![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://matrix.to/#/#pyflunt:gitter.im)
 
 
@@ -90,6 +91,14 @@ if not nome.is_valid():
         print(notification)
 
 ````
+
+## Contribuindo
+
+Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](CONTRIBUTING)
+
+## Registro de Alterações
+
+Consulte nosso registro de alterações no link a seguir: [CHANGELOG](CHANGELOG)
 
 ## 📄 Licença
 

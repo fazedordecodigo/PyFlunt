@@ -1,24 +1,27 @@
-ENGLISH | [PORTUGUÊS](./README.md)
+ENGLISH | [PORTUGUÊS](README)
 
 # 🐍 PyFlunt: Domain Notification Pattern
 
-Python implementation of Domain Notification Pattern inspired by [Flunt](https://github.com/andrebaltieri/flunt) (.NET) developed by @andrebaltieri
+Python implementation of Domain Notification Pattern inspired by [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
-[![PyPI Latest Release](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
+[![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
-[![Linters](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/linters.yml)
-[![Realease](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/realease.yml)
-[![Publish](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml/badge.svg)](https://github.com/fazedordecodigo/PyFlunt/actions/workflows/publish.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://matrix.to/#/#pyflunt:gitter.im)
+
+
+[![Avaliação de Segurança](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Avaliação de Confiabilidade](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Avaliação de Manutenibilidade](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Vulnerabilidades](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
 
 Flunt is a way to implement a notification pattern in your application to centralize errors and changes in certain actions and entities.
 
 Flunt was born out of two needs: implementing the Domain Notification Pattern to replace domain-level exceptions in the application and reducing the amount of IFs (complexity) by using a contract-based approach.
 
 Thus, basically what Flunt does is add a list of Notifications to your class and various methods to interact with it.
-
-## 🐍 Python Version
-
-- [Python 3.10](https://www.python.org/)
 
 ## ➡️ How to use
 
@@ -87,6 +90,13 @@ if not nome.is_valid():
         print(notification)
 
 ````
+## Contributing
+
+Please refer to our DevGuide at the following link: [CONTRIBUTING](CONTRIBUTING_EN)
+
+## Changelog
+
+Please refer to our changelog at the following link: [CHANGELOG](CHANGELOG_EN)
 
 ## 📄 License
 
