@@ -1,3 +1,5 @@
+PORTUGUÊS | [ENGLISH](./README_EN.md)
+
 # 🐍 PyFlunt: Domain Notification Pattern
 
 Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET) desenvolvido por @andrebaltieri
@@ -13,9 +15,6 @@ Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flu
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
 [![Vulnerabilidades](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=fazedordecodigo_PyFlunt&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=fazedordecodigo_PyFlunt)
-
-
-[English Version](./README_EN.md)
 
 
 Flunt te auxilia a implementar Domain Notification Pattern em sua aplicação para centralizar erros e mudanças em determinadas ações e entidades.
