@@ -39,6 +39,11 @@ jobs:
     - name: Display version
       run: echo "Current version is $LITELLM_VERSION"
 
+    - name: Bump version and push tag
+      uses: laputansoft/github-tag-action@v4.6
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tag: "v2.1.0"
     - name: Create Release
       id: create_release
       uses: joutvhu/create-release@v1
