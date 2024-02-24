@@ -214,11 +214,11 @@ Here you will find how to release a new production version of brutils:
 
 ### Create the Issue
 
-For the creation of the issue, you can use the feature template, with the name of the issue being `Release v<version>`. [Example](https://github.com/fazedordecodigo/pyflunt/issues/322)
+For the creation of the issue, you can use the feature template, with the name of the issue being `Release v<version>`. [Example](https://github.com/fazedordecodigo/pyflunt/issues/49)
 
 ### Create a Branch
 
-The name of the branch created for the release is related to the number of the Issue, as shown in [this example](https://github.com/fazedordecodigo/pyflunt/pull/326)
+The name of the branch created for the release is related to the number of the Issue, as shown in [this example](https://github.com/fazedordecodigo/pyflunt/pull/50)
 
 ### 2. Create a Release PR
 
@@ -248,7 +248,7 @@ Edit the `release.yml` file at `line 46` with the new version (ex: `v2.0.0`),
 
 Create a PR with the name `Release v<version>` containing the two changes above. In the description of the Pull Request, add the changed changelog section.
 
-[Release PR Example](https://github.com/fazedordecodigo/pyflunt/pull/326) #TODO ADD REAL EXAMPLE
+[Release PR Example](https://github.com/fazedordecodigo/pyflunt/pull/50)
 
 #### Merge the PR
 

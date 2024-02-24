@@ -218,11 +218,11 @@ Aqui você encontrará como lançar uma nova versão em produção do brutils:
 
 ### Crie a Issue
 
-Para a criação da issue, pode ser utilizado o template de feature, sendo o nome da issue `Release v<versão>`. [Exemplo](https://github.com/fazedordecodigo/pyflunt/issues/322)
+Para a criação da issue, pode ser utilizado o template de feature, sendo o nome da issue `Release v<versão>`. [Exemplo](https://github.com/fazedordecodigo/pyflunt/issues/49)
 
 ### Crie uma Branch
 
-O nome da branch criada para o release é relacionado ao número da Issue, como mostra [este exemplo](https://github.com/fazedordecodigo/pyflunt/pull/326)
+O nome da branch criada para o release é relacionado ao número da Issue, como mostra [este exemplo](https://github.com/fazedordecodigo/pyflunt/pull/50)
 
 ### 2. Criar um Release PR
 
@@ -250,7 +250,7 @@ Edite o arquivo `release.yml` na `linha 46` com a nova versão (ex: `v2.0.0`),
 
 Crie um PR com o nome `Release v<versão>` contendo as duas alterações acima. Na descrição da Pull Request, adicione o trecho do changelog alterado.
 
-[Exemplo de Release PR](https://github.com/fazedordecodigo/pyflunt/pull/326) #TODO ADICIONAR EXEMPLO REAL
+[Exemplo de Release PR](https://github.com/fazedordecodigo/pyflunt/pull/50)
 
 #### Faça o Merge do PR
 
