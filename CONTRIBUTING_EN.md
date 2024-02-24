@@ -1,3 +1,5 @@
+ENGLISH | [PORTUGUÊS](./CONTRIBUTING.md)
+
 # Contributing
 
 Thank you for dedicating your time to contribute! 🙇‍♀️🙇‍♂️ All help is welcome!
