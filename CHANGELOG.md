@@ -11,16 +11,16 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 - Corrigido bug que impedia rodar no python v3.9 [#36](https://github.com/fazedordecodigo/PyFlunt/issues/36)
 
-- Adicionado CONTRIBUTING em PT-BR e EN [#39](https://github.com/fazedordecodigo/PyFlunt/issues/39) ok
-- Adicionado CODE_OF_CONDUCT em PT-BR e EN [#40](https://github.com/fazedordecodigo/PyFlunt/issues/40) ok
-- Adicionado README em PT-BR [#41](https://github.com/fazedordecodigo/PyFlunt/issues/41) ok
+- Adicionado CONTRIBUTING em PT-BR e EN [#39](https://github.com/fazedordecodigo/PyFlunt/issues/39)
+- Adicionado CODE_OF_CONDUCT em PT-BR e EN [#40](https://github.com/fazedordecodigo/PyFlunt/issues/40)
+- Adicionado README em PT-BR [#41](https://github.com/fazedordecodigo/PyFlunt/issues/41)
 - Adicionado CHANGELOG em PT-BR e EN [#42](https://github.com/fazedordecodigo/PyFlunt/issues/42)
-- Adicionado SECURITY em PT-BR e EN [#43](https://github.com/fazedordecodigo/PyFlunt/issues/43) OK
-- Adicionado FUNDING [#44](https://github.com/fazedordecodigo/PyFlunt/issues/44) ok
+- Adicionado SECURITY em PT-BR e EN [#43](https://github.com/fazedordecodigo/PyFlunt/issues/43)
+- Adicionado FUNDING [#44](https://github.com/fazedordecodigo/PyFlunt/issues/44)
 - Adicionado Pull Request Template em PT-BR [#45](https://github.com/fazedordecodigo/PyFlunt/issues/45)
 - Adicionado Issue Template Bug Report em PT-BR [#46](https://github.com/fazedordecodigo/PyFlunt/issues/46)
 - Adicionado Issue Template Feature Report em PT-BR [#47](https://github.com/fazedordecodigo/PyFlunt/issues/47)
-- Adicionado Issue Template Vulnerability Report em PT-BR [#48](https://github.com/fazedordecodigo/PyFlunt/issues/48) ok
+- Adicionado Issue Template Vulnerability Report em PT-BR [#48](https://github.com/fazedordecodigo/PyFlunt/issues/48)
 
 
 ## [2.0.0] - 2024-02-13
