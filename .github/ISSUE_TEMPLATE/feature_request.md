@@ -1,20 +1,20 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: "[FEATURE]"
-labels: enhancement
+name: "Nova Funcionalidade"
+about: Sugestão de uma nova funcionalidade
+title: ''
+labels: feature
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Seu pedido de recurso está relacionado a um problema? Por favor, descreva.**
+Uma descrição clara e concisa do que é o problema. Por exemplo: "Fico sempre frustrado quando [...]"
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Descreva a solução que você gostaria**
+Uma descrição clara e concisa do que você deseja que aconteça.
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**Descreva alternativas que você considerou**
+Uma descrição clara e concisa de quaisquer soluções ou recursos alternativos que você tenha considerado.
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Contexto adicional**
+Adicione qualquer outro contexto ou capturas de tela sobre o pedido de recurso aqui.

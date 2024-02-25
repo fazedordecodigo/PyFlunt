@@ -12,3 +12,7 @@ __pycache__/
 *.pyc
 appsettings.json
 .coverage
+.ruff_cache
+.tool-versions
+.tox
+coverage.xml

@@ -1,31 +1,27 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: "[BUG]"
+name: "Reportar um bug"
+about: Reporte um bug, nos ajude a melhorar!
+title: ''
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Descrição do problema**
+Uma descrição clara e concisa do que é o erro.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Para Reproduzir**
+Passos para reproduzir o comportamento:
+1. Chamar o utilitário '...'
+2. Passando o parâmetro '....'
+3. Ver o erro
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Comportamento esperado**
+Uma descrição clara e concisa do que você esperava que acontecesse.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Desktop (por favor, forneça as seguintes informações):**
+ - Sistema Operacional: [por exemplo, Linux]
+ - Versão do PyFlunt: [por exemplo, 2.0.0]
 
-**Desktop (please complete the following information):**
- - OS: [e.g. Linux]
- - Python Version [e.g. 3.12]
-
-**Additional context**
-Add any other context about the problem here.
+**Contexto adicional**
+Adicione qualquer outro contexto sobre o problema aqui.
