@@ -84,7 +84,7 @@ Install dependencies:
 
 ```shell
 $ poetry install
-$ poetry pre-commit
+$ poetry pre-commit-install
 ```
 
 ## Using Locally

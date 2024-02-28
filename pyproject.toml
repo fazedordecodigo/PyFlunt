@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Flunt"
-version = "2.1.0"
+version = "2.1.1"
 description = "Python implementation of Domain Notification Pattern inspired by Flunt (.NET)"
 authors = ["Emerson Delatorre <38289677+Delatorrea@users.noreply.github.com>"]
 repository = "https://github.com/Delatorrea/PyFlunt"
@@ -114,7 +114,8 @@ test = "pytest"
 test-verbose = "pytest -vv"
 test-cov = "pytest --doctest-modules --cov=. --cov-report=html"
 tox = "tox -e py"
-pre-commit = "pre-commit run --all-files"
+pre-commit-install = "pre-commit install"
+pre-commit-run = "pre-commit run --all-files"
 lint = ["_ruff-check", "lint-check", "_ruff-format", "_mypy"]
 lint-check = "ruff check"
 export-dev = "poetry export -f requirements.txt --output requirements_dev.txt  --with dev"

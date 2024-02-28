@@ -13,13 +13,6 @@ ENGLISH | [PORTUGUÊS](./SECURITY.md)
 
 ## Reporting a Vulnerability
 
-To report a vulnerability, open an "issue" on GitHub using the provided security template. To do this, follow these steps:
+To report a vulnerability, send an email to `contato@delatorre.dev` with all the necessary details in the vulnerability report.
 
-1. Go to the page of your project on GitHub.
-2. Click on the [Issues](https://github.com/fazedordecodigo/PyFlunt/issues).
-3. Then, click on the "New issue" button.
-4. Select the appropriate security template, which should be available for you to choose.
-5. Fill in the mandatory fields in the security template, including details about the found vulnerability, how it can be reproduced, and any additional relevant information.
-6. After filling in all the necessary details, click on "Submit new issue" to submit the vulnerability report.
-
-Once the issue is opened, the team responsible for the project's security will be notified and can begin assessing and addressing the reported vulnerability.
+After sending your email, the project's security team will be notified and can begin evaluating and addressing the reported vulnerability.
