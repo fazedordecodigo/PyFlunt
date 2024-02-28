@@ -1,4 +1,4 @@
-ENGLISH | [PORTUGUÊS](./SECURITY.md)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/SECURITY.md)
 
 # Security Policy
 

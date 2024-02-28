@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](./CHANGELOG_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/CHANGELOG_EN.md)
 
 # Registro de Alterações
 
@@ -8,7 +8,6 @@ O formato é baseado em [Mantenha um Registro de Alterações](https://keepachan
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Não Lançado]
-- Adicionar validação de GUID [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
 - Adicionar mensagens padronizadas em PT-BR e EN [#18](https://github.com/fazedordecodigo/PyFlunt/issues/18)
 - Adicionar validação de DateTime [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
 - Adicionar validação de Números [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
@@ -17,6 +16,14 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de Objetos [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+
+## [2.2.0] - 2024-xx-xx
+### Adicionado
+- Validação de GUID [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
+
+### Corrigido
+- Links do README quebrados [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+
 
 ## [2.1.1] - 2024-02-27
 ### Corrigido

@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](./CONTRIBUTING_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/CONTRIBUTING_EN.md)
 
 # Contribuindo
 
@@ -92,7 +92,7 @@ $ poetry pre-commit-install
 
 ## Utilizando Localmente
 
-Agora você pode usá-lo [da mesma forma descrita no arquivo README.md](/README.md#utilização).
+Agora você pode usá-lo [da mesma forma descrita no arquivo README.md](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md#utilização).
 
 ## Testes
 

@@ -1,11 +1,11 @@
-PORTUGUÊS | [ENGLISH](./README_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/README_EN.md)
 
 # 🐍 PyFlunt: Domain Notification Pattern
 
 Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
 [![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
-[![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
+[![Downloads](https://static.pepy.tech/badge/flunt/month)](https://pepy.tech/project/flunt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Discord](https://img.shields.io/discord/1211477389830393866?logo=discord&label=Discord&color=5865F2&logoColor=white)](https://discord.gg/HNwFHQWX)
 
@@ -94,15 +94,15 @@ if not nome.is_valid():
 
 ## Contribuindo
 
-Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](./CONTRIBUTING.md)
+Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/CONTRIBUTING.md)
 
 ## Registro de Alterações
 
-Consulte nosso registro de alterações no link a seguir: [CHANGELOG](./CHANGELOG.md)
+Consulte nosso registro de alterações no link a seguir: [CHANGELOG](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/CHANGELOG.md)
 
 ## 📄 Licença
 
-Este projeto contém a licença MIT. Consulte o arquivo [LICENSE](./LICENSE).
+Este projeto contém a licença MIT. Consulte o arquivo [LICENSE](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/LICENSE).
 
 ## Mods
 * [Flunt para C# (Original)](https://github.com/andrebaltieri/Flunt)

@@ -1,4 +1,4 @@
-ENGLISH | [PORTUGUÊS](./CHANGELOG.md)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/CHANGELOG.md)
 
 # Changelog
 
