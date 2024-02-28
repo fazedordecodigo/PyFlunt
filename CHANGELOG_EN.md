@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 - Add Regex validation [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Add URL validation [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 
+## [2.1.1] - 2024-02-27
+### Fixed
+- Broken README links [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+- Commands for pre-commit execution script [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+- Communication method for reporting a vulnerability [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+
 ## [2.1.0] - 2024-02-24
 ### Added
 - CONTRIBUTING in PT-BR and EN [#39](https://github.com/fazedordecodigo/PyFlunt/issues/39)
@@ -73,9 +79,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 <br>
 <br>
 
-[2.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/0.2.0...v2.0.0)
+[2.1.1](https://github.com/fazedordecodigo/PyFlunt/compare/v2.1.0...v2.1.1)
 
-[1.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/0.2.0...v)
+[2.1.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.0.0...v2.1.0)
+
+[2.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/v1.0.0...v2.0.0)
+
+[1.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/0.2.0...v1.0.0)
 
 [0.2.0](https://github.com/fazedordecodigo/PyFlunt/compare/0.1.1...0.2.0)
 

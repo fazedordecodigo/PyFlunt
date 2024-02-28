@@ -43,23 +43,14 @@ jobs:
       id: create_release
       uses: joutvhu/create-release@v1
       with:
-        tag_name: v2.1.0
-        name: Release v2.1.0
+        tag_name: v2.1.1
+        name: Release v2.1.1
         body: |
-          ## Adicionado
-          - CONTRIBUTING em PT-BR e EN por @fazedordecodigo em #39
-          - CODE_OF_CONDUCT em PT-BR e EN por @fazedordecodigo em #40
-          - README em PT-BR por @fazedordecodigo em #41
-          - CHANGELOG em PT-BR e EN por @fazedordecodigo em #42
-          - SECURITY em PT-BR e EN por @fazedordecodigo em #43
-          - FUNDING por @fazedordecodigo em #44
-          - Pull Request Template em PT-BR por @fazedordecodigo em #45
-          - Issue Template Bug Report em PT-BR por @fazedordecodigo em #46
-          - Issue Template Feature Report em PT-BR por @fazedordecodigo em #47
-          - Issue Template Vulnerability Report em PT-BR por @fazedordecodigo em #48
-
-          ## Corrigido
-          - Bug que impedia rodar no python v3.9 por @fazedordecodigo em #36
+          ## [2.1.1] - 2024-02-27
+          ### Corrigido
+          - Links do README quebrados por @fazedordecodigo em #53
+          - Comandos para script de execução do pre-commit por @fazedordecodigo em #53
+          - Forma de comunicação para Reportar uma Vulnerabilidade por @fazedordecodigo em #53
         draft: false
         prerelease: false
       env:
