@@ -5,7 +5,6 @@ from flunt.validations.contract import Contract
 
 fake = Faker()
 
-
 @pytest.mark.parametrize(
 	'input,expect',
 	[
