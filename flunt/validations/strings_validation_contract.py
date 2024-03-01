@@ -282,7 +282,7 @@ class StringValidationContract(Notifiable):
 		```
 
 		"""
-		if value.find(comparer) > -1:
+		if value.find(comparer) == -1:
 			self.add_notification(Notification(key, message))
 
 		return self
@@ -322,7 +322,7 @@ class StringValidationContract(Notifiable):
 		```
 
 		"""
-		if value.find(comparer) == -1:
+		if value.find(comparer) > -1:
 			self.add_notification(Notification(key, message))
 
 		return self
