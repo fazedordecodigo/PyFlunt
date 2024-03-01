@@ -5,6 +5,7 @@ from typing_extensions import Self
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 from flunt.validations.bool_validation_contract import BoolValidationContract
+from flunt.validations.commons_validation_contract import CommonsValidationContract
 from flunt.validations.credit_card_validation_contract import (
 	CreditCardValidationContract,
 )
@@ -17,10 +18,11 @@ class Contract(
 	EmailValidationContract,
 	BoolValidationContract,
 	CreditCardValidationContract,
+	CommonsValidationContract,
 	Notifiable,
 ):
 	"""
-	Class repesents a contract for validating data..
+	Class represents a contract for validating data..
 
 	Parameters:
 	-----------
