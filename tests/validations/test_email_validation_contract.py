@@ -1,9 +1,11 @@
+import pytest
 from flunt.validations.contract import Contract
 
-message = 'Custom message here'
+@pytest.fixture()
+def message():
+    yield 'Custom message here'
 
-
-def test_should_be_valid_when_correct_email(entity_mock):
+def test_should_be_valid_when_correct_email(entity_mock, message):
 	contract = (
 		Contract()
 		.requires(entity_mock.email_valid, 'Email', message)
@@ -13,7 +15,7 @@ def test_should_be_valid_when_correct_email(entity_mock):
 	assert len(contract.get_notifications()) == 0
 
 
-def test_should_return_a_once_notification_when_email_is_invalid(entity_mock):
+def test_should_return_a_once_notification_when_email_is_invalid(entity_mock, message):
 	contract = (
 		Contract()
 		.requires(entity_mock.email_invalid, 'Email', message)
