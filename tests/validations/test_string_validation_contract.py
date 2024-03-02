@@ -134,3 +134,13 @@ def test_should_be_invalid_and_return_once_notification_when_contains_a_search_s
 	contract = StringValidationContract().not_contains(entity_mock.first_name, "any", key, message)
 	assert contract.is_valid is False
 	assert len(contract.get_notifications()) == 1
+
+
+def test_should_be_valid_and_not_return_notification_when_value_is_between():
+	contract = StringValidationContract().is_between("any_text", 1, 10, "test", "any_message")
+	assert contract.is_valid 
+
+
+def test_should_be_invalid_and_return_once_notification_when_value_is_not_between():
+	contract = StringValidationContract().is_between("any_text", 10, 20, "test", "any_message")
+	assert contract.is_valid is False 
