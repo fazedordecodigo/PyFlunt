@@ -1,5 +1,10 @@
 """Module Contract."""
 
+from decimal import Decimal
+from struct import Struct
+from typing import Callable, Iterable, Tuple, Union, overload
+from uuid import UUID
+
 from typing_extensions import Self
 
 from flunt.notifications.notifiable import Notifiable
@@ -38,13 +43,89 @@ class Contract(
 
 	"""
 
-	def requires(self, value, key: str, message: str) -> Self:
+	@overload
+	def requires(self, value: Tuple, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: Struct, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: set, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: bool, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: dict, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: list, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: Iterable, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: Callable, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: int, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: str, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: Decimal, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: float, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: UUID, key: str, message: str):
+		...
+
+	@overload
+	def requires(self, value: object, key: str, message: str):
+		...
+
+	def requires(
+		self,
+		value: Union[
+			str,
+			int,
+			list,
+			bool,
+			Decimal,
+			float,
+			UUID,
+			dict,
+			object,
+			set,
+			Struct,
+			Tuple,
+			Iterable,
+			Callable,
+		],
+		key: str,
+		message: str,
+	) -> Self:
 		"""
 		Check if the given value is empty and adds a notification if it is.
 
 		Parameters:
 		-----------
-		`value`
+		`value`: [bool | str | float | int | Tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The value to be checked.
 		`key`: str
 		    The key or identifier associated with the notification.
@@ -70,10 +151,7 @@ class Contract(
 		```
 
 		"""
-		if value is None:
-			self.add_notification(Notification(key, message))
-
-		if not value:
+		if not value and not isinstance(value, bool):
 			self.add_notification(Notification(key, message))
 
 		return self
