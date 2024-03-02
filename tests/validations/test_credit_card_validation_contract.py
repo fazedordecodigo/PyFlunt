@@ -1,7 +1,7 @@
 import pytest
 from faker import Faker
 
-from flunt.validations.contract import Contract
+from flunt.validations.credit_card_validation_contract import CreditCardValidationContract
 
 fake = Faker()
 
@@ -16,7 +16,7 @@ fake = Faker()
 def test_should_not_receive_a_notification_when_the_credit_card_number_is_valid(
 	input, expect
 ):
-	contract = Contract().is_credit_card(
+	contract = CreditCardValidationContract().is_credit_card(
 		input, 'CreditCard', 'Value should return a valid Credit Card Number'
 	)
 	assert len(contract.get_notifications()) == expect
@@ -34,7 +34,7 @@ def test_should_not_receive_a_notification_when_the_credit_card_number_is_valid(
 def test_should_receive_a_notification_when_the_credit_card_number_is_invalid(
 	input, expect
 ):
-	contract = Contract().is_credit_card(
+	contract = CreditCardValidationContract().is_credit_card(
 		input, 'CreditCard', 'Value should return a valid Credit Card Number'
 	)
 	assert len(contract.get_notifications()) == expect
