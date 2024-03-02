@@ -101,7 +101,7 @@ class CommonsValidationContract(Notifiable):
 
 		return self
 
-	def are_equals(self, value: str, comparer: str, key: str, message: str) -> Self:
+	def are_equals(self, value, comparer, key: str, message: str) -> Self:
 		"""
 		Check if two string values are equal and adds a notification if they are not equal.
 
