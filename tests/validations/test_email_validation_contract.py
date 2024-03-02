@@ -1,5 +1,5 @@
 import pytest
-from flunt.validations.contract import Contract
+from flunt.validations.email_validation_contract import EmailValidationContract
 
 @pytest.fixture()
 def message():
@@ -7,8 +7,7 @@ def message():
 
 def test_should_be_valid_when_correct_email(entity_mock, message):
 	contract = (
-		Contract()
-		.requires(entity_mock.email_valid, 'Email', message)
+		EmailValidationContract()
 		.is_email(entity_mock.email_valid, 'email', message)
 	)
 	assert contract.is_valid
@@ -17,8 +16,7 @@ def test_should_be_valid_when_correct_email(entity_mock, message):
 
 def test_should_return_a_once_notification_when_email_is_invalid(entity_mock, message):
 	contract = (
-		Contract()
-		.requires(entity_mock.email_invalid, 'Email', message)
+		EmailValidationContract()
 		.is_email(entity_mock.email_invalid, 'email', message)
 	)
 	assert len(contract.get_notifications()) == 1
