@@ -34,18 +34,18 @@ class Contract(
 
 	Methods:
 	-------
-	- requires(value: str, key: str, message: str): Checks if the given value is empty and adds a notification if it is.
+	- requires(value, key: str, message: str): Checks if the given value is empty and adds a notification if it is.
 
 	"""
 
-	def requires(self, value: str, key: str, message: str) -> Self:
+	def requires(self, value, key: str, message: str) -> Self:
 		"""
 		Check if the given value is empty and adds a notification if it is.
 
 		Parameters:
 		-----------
-		`value`: str
-		    The string value to be checked.
+		`value`
+		    The value to be checked.
 		`key`: str
 		    The key or identifier associated with the notification.
 		`message`: str
@@ -65,15 +65,14 @@ class Contract(
 		Examples:
 		--------
 		```python
-		contract = (
-		    Contract().requires(
-		        '', 'key', 'message'
-		    )
-		)
+		contract = Contract().requires('', 'key', 'message')
 		contract.is_valid  # False
 		```
 
 		"""
+		if value is None:
+			self.add_notification(Notification(key, message))
+
 		if not value:
 			self.add_notification(Notification(key, message))
 
