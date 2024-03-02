@@ -61,7 +61,7 @@ def test_should_return_false_when_are_equals_receives_two_values_are_not_equal_r
     contract =  CommonsValidationContract()
     contract.are_equals(input, expected, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20))
 
-    assert contract.is_valid == False
+    assert contract.is_valid is False
 
 @pytest.mark.parametrize(
 	'input',
@@ -88,7 +88,7 @@ def test_should_return_true_when_are_not_equals_receives_two_values_are_equal_re
     contract =  CommonsValidationContract()
     contract.are_not_equals(input, input, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20))
 
-    assert contract.is_valid == False
+    assert contract.is_valid is False
 
 @pytest.mark.parametrize(
 	'input,expected',
@@ -129,7 +129,7 @@ def test_should_return_false_when_is_none_receives_value_is_not_none():
     contract =  CommonsValidationContract()
     contract.is_none(fake.text(max_nb_chars=10), fake.text(max_nb_chars=10), fake.text(max_nb_chars=20))
 
-    assert contract.is_valid == False
+    assert contract.is_valid is False
 
 def test_should_return_true_when_is_not_none_receives_value_is_not_none():
     contract =  CommonsValidationContract()
@@ -141,4 +141,4 @@ def test_should_return_false_when_is_not_none_receives_value_is_none():
     contract =  CommonsValidationContract()
     contract.is_not_none(None, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20))
 
-    assert contract.is_valid == False
+    assert contract.is_valid is False
