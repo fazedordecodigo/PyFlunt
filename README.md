@@ -5,6 +5,7 @@ PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/READ
 Implementação Python inspirada no [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
 [![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
+[![python](https://img.shields.io/pypi/pyversions/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://static.pepy.tech/badge/flunt/month)](https://pepy.tech/project/flunt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Discord](https://img.shields.io/discord/1211477389830393866?logo=discord&label=Discord&color=5865F2&logoColor=white)](https://discord.gg/HNwFHQWX)

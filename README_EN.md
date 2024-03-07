@@ -5,6 +5,7 @@ ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/READ
 Python implementation of Domain Notification Pattern inspired by [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
 [![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
+[![python](https://img.shields.io/pypi/pyversions/flunt.svg)](https://pypi.org/project/flunt/)
 [![Downloads](https://static.pepy.tech/badge/flunt/month)](https://pepy.tech/project/flunt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://matrix.to/#/#pyflunt:gitter.im)
