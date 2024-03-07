@@ -52,18 +52,18 @@ build-backend = "poetry.core.masonry.api"
 python = ">=3.9 <4.0"
 poetry = "^1.7.1"
 typing-extensions = "^4.9.0"
+deprecated = "^1.2.14"
 
 [tool.poetry.group.dev.dependencies]
 faker = "^23.1.0"
 pytest = "^8.0.1"
 pytest-cov = "^4.1.0"
 ruff = "^0.2.1"
-poethepoet = "^0.24.4"
 pre-commit = "^3.6.1"
 pre-commit-hooks = "^4.5.0"
 mypy = "^1.8.0"
 tox = "*"
-coverage = "^7.4.1"
+poethepoet = "^0.25.0"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
@@ -106,20 +106,23 @@ ignore = [
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [tool.poe]
 poetry_command = ""
 
 [tool.poe.tasks]
 test = "pytest"
 test-verbose = "pytest -vv"
-test-cov = "pytest --doctest-modules --cov=. --cov-report=html"
+test-cov = "pytest --cov=flunt --cov-report=html"
 tox = "tox -e py"
 pre-commit-install = "pre-commit install"
-pre-commit-run = "pre-commit run --all-files"
+pre-commit-run = "pre-commit run --all-files --show-diff-on-failure"
 lint = ["_ruff-check", "lint-check", "_ruff-format", "_mypy"]
 lint-check = "ruff check"
 export-dev = "poetry export -f requirements.txt --output requirements_dev.txt  --with dev"
 
 _ruff-check = "poetry run ruff check --select I --fix ."
 _ruff-format = "poetry run ruff format ."
-_mypy = "poetry run mypy ."
+_mypy = "poetry run mypy flunt tests"
