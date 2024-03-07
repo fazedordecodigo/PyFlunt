@@ -35,14 +35,6 @@ repos:
       "-o",
       "./requirements/requirements_dev.txt",
     ]
-  - id: poetry-export
-    args: [
-      "-f",
-      "requirements.txt",
-      "-o",
-      "./requirements/requirements.txt",
-    ]
-  - id: poetry-install
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.3.0
