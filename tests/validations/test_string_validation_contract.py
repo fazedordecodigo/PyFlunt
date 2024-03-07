@@ -1,4 +1,3 @@
-
 import pytest
 from tests.mocks.entity.sample_entity import SampleEntity
 from flunt.validations.strings_validation_contract import StringValidationContract
@@ -138,9 +137,9 @@ def test_should_be_invalid_and_return_once_notification_when_contains_a_search_s
 
 def test_should_be_valid_and_not_return_notification_when_value_is_between():
 	contract = StringValidationContract().is_between("any_text", 1, 10, "test", "any_message")
-	assert contract.is_valid 
+	assert contract.is_valid
 
 
 def test_should_be_invalid_and_return_once_notification_when_value_is_not_between():
 	contract = StringValidationContract().is_between("any_text", 10, 20, "test", "any_message")
-	assert contract.is_valid is False 
+	assert contract.is_valid is False
