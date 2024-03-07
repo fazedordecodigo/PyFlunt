@@ -1,8 +1,9 @@
 """Module Contract."""
 
+from collections.abc import Iterable
 from decimal import Decimal
 from struct import Struct
-from typing import Callable, Iterable, Tuple, Union, overload
+from typing import Callable, Union, overload
 from uuid import UUID
 
 from typing_extensions import Self
@@ -44,7 +45,7 @@ class Contract(
 	"""
 
 	@overload
-	def requires(self, value: Tuple, key: str, message: str):
+	def requires(self, value: tuple, key: str, message: str):
 		...
 
 	@overload
@@ -113,7 +114,7 @@ class Contract(
 			object,
 			set,
 			Struct,
-			Tuple,
+			tuple,
 			Iterable,
 			Callable,
 		],
