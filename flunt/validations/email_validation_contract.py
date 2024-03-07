@@ -1,8 +1,9 @@
 """Module Email Validation Contract."""
 
 import re
+from typing import Union
 
-from typing_extensions import Self, Union
+from typing_extensions import Self
 
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
