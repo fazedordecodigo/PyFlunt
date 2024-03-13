@@ -17,12 +17,16 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 
-## [2.2.0] - 2024-xx-xx
+## [2.2.0] - 2024-03-13
 ### Adicionado
-- Validação de GUID [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
+- Validação UUID aplicando Duck Typing [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
+- Novos cenários de teste unitários
 
 ### Corrigido
 - Links do README quebrados [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+- Bug em `requires` que retornava falso positivo ao receber o valor booleano `False`.
+- Reescrita dos testes unitários existentes.
+
 
 
 ## [2.1.1] - 2024-02-27
@@ -84,6 +88,8 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 <br>
 <br>
 <br>
+
+[2.2.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.1.1...v2.2.0)
 
 [2.1.1](https://github.com/fazedordecodigo/PyFlunt/compare/v2.1.0...v2.1.1)
 
