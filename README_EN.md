@@ -1,11 +1,12 @@
-ENGLISH | [PORTUGUÊS](README)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md)
 
 # 🐍 PyFlunt: Domain Notification Pattern
 
 Python implementation of Domain Notification Pattern inspired by [Flunt](https://github.com/andrebaltieri/flunt) (.NET)
 
 [![Último Lançamento no PyPI](https://img.shields.io/pypi/v/flunt.svg)](https://pypi.org/project/flunt/)
-[![Downloads](https://pepy.tech/badge/flunt)](https://pepy.tech/project/flunt)
+[![python](https://img.shields.io/pypi/pyversions/flunt.svg)](https://pypi.org/project/flunt/)
+[![Downloads](https://static.pepy.tech/badge/flunt/month)](https://pepy.tech/project/flunt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://matrix.to/#/#pyflunt:gitter.im)
 
@@ -34,8 +35,8 @@ pip install flunt
 ### 🔔 Notifiable
 
 ````python
-from flunt.notifiable import Notifiable
-from flunt.notification import Notification
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 class Name(Notifiable):
     def __init__(self, name):
@@ -52,8 +53,8 @@ class Name(Notifiable):
 ### 📜 Contract
 ````python
 """Module Value Objects."""
-from flunt.notifiable import Notifiable
-from flunt.contract import Contract
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 
 class Name(Notifiable):
@@ -92,15 +93,15 @@ if not nome.is_valid():
 ````
 ## Contributing
 
-Please refer to our DevGuide at the following link: [CONTRIBUTING](CONTRIBUTING_EN)
+Please refer to our DevGuide at the following link: [CONTRIBUTING](https://github.com/fazedordecodigo/PyFlunt/blob/main/CONTRIBUTING_EN.md)
 
 ## Changelog
 
-Please refer to our changelog at the following link: [CHANGELOG](CHANGELOG_EN)
+Please refer to our changelog at the following link: [CHANGELOG](https://github.com/fazedordecodigo/PyFlunt/blob/main/CHANGELOG_EN.md)
 
 ## 📄 License
 
-This project contains the MIT license. See the file [LICENSE](LICENSE).
+This project contains the MIT license. See the file [LICENSE](https://github.com/fazedordecodigo/PyFlunt/blob/main/LICENSE.md).
 
 ## Mods
 * [Flunt for C# (Original)](https://github.com/andrebaltieri/Flunt)

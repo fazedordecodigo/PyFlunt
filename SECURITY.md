@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](./SECURITY_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/SECURITY_EN.md)
 
 # Política de Segurança
 
@@ -6,6 +6,9 @@ PORTUGUÊS | [ENGLISH](./SECURITY_EN.md)
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 2.2.0   | :white_check_mark: |
+| 2.1.1   | :white_check_mark: |
+| 2.1.0   | :white_check_mark: |
 | 2.0.0   | :white_check_mark: |
 | 1.0.0   | :x:                |
 | 0.2.0   | :x:                |

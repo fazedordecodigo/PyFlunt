@@ -1,4 +1,4 @@
-ENGLISH | [PORTUGUÊS](./CHANGELOG.md)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/CHANGELOG.md)
 
 # Changelog
 
@@ -8,7 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0
 and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Add GUID validation [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
 - Add standardized messages in PT-BR and EN [#18](https://github.com/fazedordecodigo/PyFlunt/issues/18)
 - Add DateTime validation [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
 - Add Numbers validation [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
@@ -17,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 - Add Objects validation [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Add Regex validation [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Add URL validation [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+
+## [2.2.0] - 2024-03-13
+### Added
+- Applied Duck Typing for UUID validation [#11](https://github.com/fazedordecodigo/PyFlunt/issues/11)
+- New unit test scenarios
+
+### Fixed
+- Fixed broken links in the README [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
+- Fixed bug in `requires` that returned a false positive when receiving the boolean value `False`.
+- Rewrote existing unit tests.
 
 ## [2.1.1] - 2024-02-27
 ### Fixed
@@ -39,7 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 
 ### Fixed
 - Bug that prevented running on Python v3.9 [#36](https://github.com/fazedordecodigo/PyFlunt/issues/36)
-
 
 ## [2.0.0] - 2024-02-13
 ### Added

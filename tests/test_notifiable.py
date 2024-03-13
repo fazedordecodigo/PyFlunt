@@ -3,8 +3,6 @@ from tests.mocks.value_objects.vo import Name
 
 def test_quando_nome_possuir_mais_que_2_e_menos_que_51_caracteres_deve_ser_valido():
 	nome = Name('Emerson', 'Delatorre')
-	for notificacao in nome.get_notifications():
-		print(notificacao.message)
 	assert nome.is_valid
 
 

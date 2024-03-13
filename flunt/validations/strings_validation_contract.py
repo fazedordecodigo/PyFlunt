@@ -24,11 +24,7 @@ class StringValidationContract(Notifiable):
 	- is_lower_or_equals_than(value, comparer, key, message): Checks if the length of a string value is lower or equal to a given number.
 	- is_greater_than(value, comparer, key, message): Checks if the length of a string value is greater than a given number.
 	- is_greater_or_equals_than(value, comparer, key, message): Checks if the length of a string value is greater or equal to a given number.
-	- is_none(value, key, message): Checks if a string value is None.
-	- is_not_none(value, key, message): Checks if a string value is not None.
 	- is_not_none_or_white_space(value, key, message): Checks if a string value is not None or whitespace.
-	- are_equals(value, comparer, key, message): Checks if two string values are equal.
-	- are_not_equals(value, comparer, key, message): Checks if two string values are not equal.
 	- contains(value, comparer, key, message): Checks if a string contains a specific substring.
 	- not_contains(value, comparer, key, message): Checks if a string does not contain a specific substring.
 	- is_between(value, min, max, key, message): Checks if the length of a string is between a minimum and maximum value.
@@ -213,80 +209,6 @@ class StringValidationContract(Notifiable):
 
 		return self
 
-	def is_none(self, value: str, key: str, message: str) -> Self:
-		"""
-		Check if a string value is not None and adds a notification if it is.
-
-		Parameters
-		----------
-		`value`: str
-		    The string value to be checked.
-		`key`: str
-		    The key or identifier associated with the check.
-		`message`: str
-		    The notification message to be added if the value is None.
-
-		Returns:
-		-------
-		`self`
-		    The current instance with potential notifications added.
-
-		Notes:
-		-----
-		- If the `value` is not None, no notification is added.
-		- If the `value` is None, a notification is added to the current instance with the provided `key` and `message`.
-
-		Examples:
-		--------
-		```python
-		obj = Contract()
-		      .is_none("Hello", "ValueCheck", "Value should not be None")
-		obj.is_valid
-		```
-
-		"""
-		if value is not None:
-			self.add_notification(Notification(key, message))
-
-		return self
-
-	def is_not_none(self, value: str, key: str, message: str) -> Self:
-		"""
-		Check if a string value is not None and adds a notification if it is.
-
-		Parameters
-		----------
-		`value`: str
-		    The string value to be checked.
-		`key`: str
-		    The key or identifier associated with the check.
-		`message`: str
-		    The notification message to be added if the value is None.
-
-		Returns:
-		-------
-		`self`
-		    The current instance with potential notifications added.
-
-		Notes:
-		-----
-		- If the `value` is None, a notification is added to the current instance with the provided `key` and `message`.
-		- If the `value` is not None, no notification is added.
-
-		Examples:
-		--------
-		```python
-		obj = Contract()
-		      .is_not_none("Hello", "ValueCheck", "Value should not be None")
-		obj.is_valid
-		```
-
-		"""
-		if value is None:
-			self.add_notification(Notification(key, message))
-
-		return self
-
 	def is_not_none_or_white_space(self, value: str, key: str, message: str) -> Self:
 		"""
 		Check if a string value is not None or whitespace and adds a notification if it is.
@@ -321,84 +243,6 @@ class StringValidationContract(Notifiable):
 
 		"""
 		if value is None or value.isspace():
-			self.add_notification(Notification(key, message))
-
-		return self
-
-	def are_equals(self, value: str, comparer: str, key: str, message: str) -> Self:
-		"""
-		Check if two string values are equal and adds a notification if they are not equal.
-
-		Parameters
-		----------
-		`value`: str
-		    The first string value to compare.
-		`comparer`: str
-		    The second string value to compare with the first value.
-		`key`: str
-		    The key or identifier associated with the comparison.
-		`message`: str
-		    The notification message to be added if the values are not equal.
-
-		Returns:
-		-------
-		`self`
-		    The current instance with potential notifications added.
-
-		Notes:
-		-----
-		- If the `value` is not equal to `comparer`, a notification is added to the current instance
-		with the provided `key` and `message`. Otherwise, no notification is added.
-
-		Examples:
-		--------
-		```python
-		obj = Contract()
-		      .are_equals("Hello", "Hello", "Comparison", "Values should be equal")
-		obj.is_valid
-		```
-
-		"""
-		if value != comparer:
-			self.add_notification(Notification(key, message))
-
-		return self
-
-	def are_not_equals(self, value: str, comparer: str, key: str, message: str) -> Self:
-		"""
-		Require two strings are not equals.
-
-		Parameters
-		----------
-		`value`: str
-		    The value to be compared.
-		`comparer`: str
-		    The value to compare with `value`.
-		`key`: str
-		    The key or identifier related to the comparison.
-		`message`: str
-		    The notification message in case of equal values.
-
-		Returns:
-		-------
-		`self`
-		    The current instance with potential notifications added.
-
-		Notes:
-		-----
-		- If the `value` is equal to `comparer`, a notification is added to the current instance
-		with the provided `key` and `message`. Otherwise, no notification is added.
-
-		Examples:
-		--------
-		```python
-		obj = Contract()
-		      .are_not_equals("Hello", "World", "Comparison", "Values should not be equal")
-		obj.is_valid
-		```
-
-		"""
-		if value == comparer:
 			self.add_notification(Notification(key, message))
 
 		return self
@@ -438,7 +282,7 @@ class StringValidationContract(Notifiable):
 		```
 
 		"""
-		if value.find(comparer) > -1:
+		if value.find(comparer) == -1:
 			self.add_notification(Notification(key, message))
 
 		return self
@@ -478,7 +322,7 @@ class StringValidationContract(Notifiable):
 		```
 
 		"""
-		if value.find(comparer) == -1:
+		if value.find(comparer) > -1:
 			self.add_notification(Notification(key, message))
 
 		return self
