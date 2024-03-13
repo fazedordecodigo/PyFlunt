@@ -36,8 +36,8 @@ pip install flunt
 ### 🔔 Notifiable
 
 ````python
-from flunt.notifiable import Notifiable
-from flunt.notification import Notification
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 class Nome(Notifiable):
     def __init__(self, nome):
@@ -54,8 +54,8 @@ class Nome(Notifiable):
 ### 📜 Contract
 ````python
 """Módulo Objetos de Valor."""
-from flunt.notifiable import Notifiable
-from flunt.contract import Contract
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
 
 
 class Nome(Notifiable):
