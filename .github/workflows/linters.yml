@@ -20,7 +20,7 @@ jobs:
         run: python -m pip install --upgrade pip
 
       - name: Instala dependências
-        run: python -m pip install -r requirements_dev.txt
+        run: python -m pip install -r ./requirements/requirements_dev.txt
 
       - name: Executa Ruff
         run: python -m ruff check
