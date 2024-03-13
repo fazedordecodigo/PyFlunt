@@ -126,7 +126,7 @@ class Contract(
 
 		Parameters:
 		-----------
-		`value`: [bool | str | float | int | Tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
+		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
 		    The value to be checked.
 		`key`: str
 		    The key or identifier associated with the notification.
