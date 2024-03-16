@@ -45,59 +45,59 @@ class Contract(
 	"""
 
 	@overload
-	def requires(self, value: tuple, key: str, message: str):
+	def requires(self, value: tuple, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Struct, key: str, message: str):
+	def requires(self, value: Struct, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: set, key: str, message: str):
+	def requires(self, value: set, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: bool, key: str, message: str):
+	def requires(self, value: bool, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: dict, key: str, message: str):
+	def requires(self, value: dict, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: list, key: str, message: str):
+	def requires(self, value: list, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Iterable, key: str, message: str):
+	def requires(self, value: Iterable, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Callable, key: str, message: str):
+	def requires(self, value: Callable, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: int, key: str, message: str):
+	def requires(self, value: int, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: str, key: str, message: str):
+	def requires(self, value: str, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Decimal, key: str, message: str):
+	def requires(self, value: Decimal, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: float, key: str, message: str):
+	def requires(self, value: float, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: UUID, key: str, message: str):
+	def requires(self, value: UUID, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: object, key: str, message: str):
+	def requires(self, value: object, key: str, message: str) -> Self:
 		...
 
 	def requires(
