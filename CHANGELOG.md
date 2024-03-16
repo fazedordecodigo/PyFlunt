@@ -12,10 +12,18 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de DateTime [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
 - Adicionar validação de Números [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
 - Adicionar validação de documentos [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
-- Adicionar validação de Listas [#30](https://github.com/fazedordecodigo/PyFlunt/issues/30)
 - Adicionar validação de Objetos [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+- Adicionar Result Pattner [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+
+## [2.3.0] - 2024-03-xx
+### Adicionado
+- Validação de Listas [#30](https://github.com/fazedordecodigo/PyFlunt/issues/30)
+
+### Corrigido
+- Falta de tipagem de retorno nos overloads de Requires [#59](https://github.com/fazedordecodigo/PyFlunt/issues/59)
+- Pipeline Linters com path quebrado para o requirements.txt [#60](https://github.com/fazedordecodigo/PyFlunt/issues/60)
 
 ## [2.2.0] - 2024-03-13
 ### Adicionado
