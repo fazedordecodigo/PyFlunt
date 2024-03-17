@@ -74,7 +74,13 @@ mkdocstrings-python = "^1.8.0"
 sample = "samples.flunt_sample:main"
 
 [tool.pytest.ini_options]
-addopts = "--doctest-modules"
+python_files = "test*.py"
+python_classes = "Test"
+python_functions = "test"
+addopts = "--tb=native"
+console_output_style = "classic"
+junit_duration_report = "call"
+filterwarnings = "ignore::RuntimeWarning"
 
 [tool.ruff]
 line-length = 88
