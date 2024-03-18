@@ -15,3 +15,4 @@ class SampleEntity(Notification):
 		self.email_invalid = 'any'
 		self.first_name = 'any_first_name'
 		self.last_name = 'any_last_name'
+		self.full_name = self.first_name + ' ' + self.last_name
