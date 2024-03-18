@@ -220,8 +220,8 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_e
 		(fake.pytuple(nb_elements=range_one_to_nineteen, variable_nb_elements=False), range_one_to_nineteen, range_twenty_to_fifty)
 	],
 )
-def test_should_be_valid_and_not_return_notification_when_value_is_between(input, min, max):
-	contract = CollectionsValidationContract().is_between(input, min, max, "test", "any_message")
+def test_should_be_valid_and_not_return_notification_when_value_is_between(input, min, max, key, message):
+	contract = CollectionsValidationContract().is_between(input, min, max, key, message)
 	assert contract.is_valid
 
 
@@ -236,6 +236,6 @@ def test_should_be_valid_and_not_return_notification_when_value_is_between(input
 		(fake.pytuple(nb_elements=range_one_to_nineteen, variable_nb_elements=False), range_twenty_to_fifty, range_fiftyone_to_onehundred)
 	],
 )
-def test_should_be_invalid_and_return_once_notification_when_value_is_not_between(input, min, max):
-	contract = CollectionsValidationContract().is_between(input, min, max, "test", "any_message")
+def test_should_be_invalid_and_return_once_notification_when_value_is_not_between(input, min, max, key, message):
+	contract = CollectionsValidationContract().is_between(input, min, max, key, message)
 	assert contract.is_valid is False
