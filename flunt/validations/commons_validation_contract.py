@@ -26,10 +26,10 @@ class CommonsValidationContract(Notifiable):
 
 	Methods:
 	-------
-	- is_none(value: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if a value is None.
-	- is_not_none(value: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if a value is not None.
-	- are_equals(value: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], comparer: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if two values are equal.
-	- are_not_equals(value: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], comparer: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if two values are not equal.
+	- is_none(value: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if a value is None.
+	- is_not_none(value: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if a value is not None.
+	- are_equals(value: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], comparer: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if two values are equal.
+	- are_not_equals(value: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], comparer: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct], key: str, message: str): Checks if two values are not equal.
 
 	"""
 
@@ -115,7 +115,7 @@ class CommonsValidationContract(Notifiable):
 
 		Parameters
 		----------
-		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`value`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The value to be checked.
 		`key`: str
 		    The key or identifier associated with the check.
@@ -228,7 +228,7 @@ class CommonsValidationContract(Notifiable):
 
 		Parameters
 		----------
-		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`value`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The value to be checked.
 		`key`: str
 		    The key or identifier associated with the check.
@@ -367,9 +367,9 @@ class CommonsValidationContract(Notifiable):
 
 		Parameters
 		----------
-		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`value`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The first value to compare.
-		`comparer`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`comparer`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The second value to compare with the first value.
 		`key`: str
 		    The key or identifier associated with the comparison.
@@ -520,9 +520,9 @@ class CommonsValidationContract(Notifiable):
 
 		Parameters
 		----------
-		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`value`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The value to be compared.
-		`comparer`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+		`comparer`: [bool | str | float | int | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct]
 		    The value to compare with `value`.
 		`key`: str
 		    The key or identifier related to the comparison.

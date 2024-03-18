@@ -11,6 +11,9 @@ from typing_extensions import Self
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 from flunt.validations.bool_validation_contract import BoolValidationContract
+from flunt.validations.collections_validation_contract import (
+	CollectionsValidationContract,
+)
 from flunt.validations.commons_validation_contract import CommonsValidationContract
 from flunt.validations.credit_card_validation_contract import (
 	CreditCardValidationContract,
@@ -25,6 +28,7 @@ class Contract(
 	BoolValidationContract,
 	CreditCardValidationContract,
 	CommonsValidationContract,
+	CollectionsValidationContract,
 	Notifiable,
 ):
 	"""
@@ -45,59 +49,59 @@ class Contract(
 	"""
 
 	@overload
-	def requires(self, value: tuple, key: str, message: str):
+	def requires(self, value: tuple, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Struct, key: str, message: str):
+	def requires(self, value: Struct, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: set, key: str, message: str):
+	def requires(self, value: set, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: bool, key: str, message: str):
+	def requires(self, value: bool, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: dict, key: str, message: str):
+	def requires(self, value: dict, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: list, key: str, message: str):
+	def requires(self, value: list, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Iterable, key: str, message: str):
+	def requires(self, value: Iterable, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Callable, key: str, message: str):
+	def requires(self, value: Callable, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: int, key: str, message: str):
+	def requires(self, value: int, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: str, key: str, message: str):
+	def requires(self, value: str, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Decimal, key: str, message: str):
+	def requires(self, value: Decimal, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: float, key: str, message: str):
+	def requires(self, value: float, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: UUID, key: str, message: str):
+	def requires(self, value: UUID, key: str, message: str) -> Self:
 		...
 
 	@overload
-	def requires(self, value: object, key: str, message: str):
+	def requires(self, value: object, key: str, message: str) -> Self:
 		...
 
 	def requires(
