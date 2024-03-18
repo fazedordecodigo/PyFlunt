@@ -35,25 +35,25 @@ def test_should_be_invalid_and_return_once_notification_when_white_space(key, me
 	assert len(contract.get_notifications()) == 1
 
 
-def test_should_be_valid_and_not_return_notification_when_contains_a_search_string(key, message):
-	contract = StringValidationContract().contains("Alberto Leão", "Leão", key, message)
+def test_should_be_valid_and_not_return_notification_when_contains_a_search_string(entity_mock: SampleEntity, key, message):
+	contract = StringValidationContract().contains(entity_mock.full_name, entity_mock.last_name, key, message)
 	assert contract.is_valid
 	assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_not_contains_a_search_string(key, message):
-	contract = StringValidationContract().contains("Alberto Leão", "Vitor", key, message)
+def test_should_be_invalid_and_return_once_notification_when_not_contains_a_search_string(entity_mock: SampleEntity, key, message):
+	contract = StringValidationContract().contains(entity_mock.full_name, "Vitor", key, message)
 	assert contract.is_valid is False
 	assert len(contract.get_notifications()) == 1
 
 
-def test_should_be_valid_and_not_return_notification_when_not_contains_a_search_string(key, message):
-	contract = StringValidationContract().not_contains("Alberto Leão", "Vitor", key, message)
+def test_should_be_valid_and_not_return_notification_when_not_contains_a_search_string(entity_mock: SampleEntity, key, message):
+	contract = StringValidationContract().not_contains(entity_mock.full_name, "Vitor", key, message)
 	assert contract.is_valid
 	assert len(contract.get_notifications()) == 0
 
 
-def test_should_be_invalid_and_return_once_notification_when_contains_a_search_string(key, message):
-	contract = StringValidationContract().not_contains("Alberto Leão", "Leão", key, message)
+def test_should_be_invalid_and_return_once_notification_when_contains_a_search_string(entity_mock: SampleEntity, key, message):
+	contract = StringValidationContract().not_contains(entity_mock.full_name, entity_mock.last_name, key, message)
 	assert contract.is_valid is False
 	assert len(contract.get_notifications()) == 1
