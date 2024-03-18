@@ -61,3 +61,98 @@ class StringValidationContract(Notifiable):
 			self.add_notification(Notification(key, message))
 
 		return self
+
+
+	def contains(
+			self,
+			value: str,
+			comparer: str,
+			key: str,
+			message: str
+		) -> Self:
+		"""
+		Check if a string value contains another string and adds a notification if it does.
+
+		Parameters
+		----------
+		`value`: str
+		    The string value to be checked.
+		`comparer`: str
+		    The string to search for within the value.
+		`key`: str
+		    The key or identifier associated with the check.
+		`message`: str
+		    The notification message to be added if the value contains the comparer.
+
+		Returns:
+		-------
+		`self`
+		    The current instance with potential notifications added.
+
+		Notes:
+		-----
+		- If the `value` contains the `comparer` string, a notification is added to the current instance
+		with the provided `key` and `message`.
+		- If the `value` does not contain the `comparer` string, no notification is added.
+
+		Examples:
+		--------
+		```python
+		obj = Contract()
+		      .contains("Hello, world!", "world", "ContainsCheck", "Value should contain 'world'")
+		obj.is_valid
+		```
+
+		"""
+		if value.find(comparer) == -1:
+			self.add_notification(Notification(key, message))
+			return self
+
+		return self
+
+
+	def not_contains(
+			self,
+			value: str,
+			comparer:str,
+			key: str,
+			message: str
+		) -> Self:
+		"""
+		Check if a string value does not contain a specified string and adds a notification if it does.
+
+		Parameters
+		----------
+		`value`: str
+		    The string value to be checked.
+		`comparer`: str
+		    The string to search for in the value.
+		`key`: str
+		    The key or identifier associated with the check.
+		`message`: str
+		    The notification message to be added if the value contains the comparer.
+
+		Returns:
+		-------
+		`self`
+		    The current instance with potential notifications added.
+
+		Notes:
+		-----
+		- If the `value` does not contain the `comparer` string, no notification is added.
+		- If the `value` contains the `comparer` string, a notification is added to the current instance
+		with the provided `key` and `message`.
+
+		Examples:
+		--------
+		```python
+		obj = Contract()
+		      .not_contains("Hello", "World", "Comparison", "Value should not contain 'World'")
+		obj.is_valid
+		```
+
+		"""
+		if value.find(comparer) != -1:
+			self.add_notification(Notification(key, message))
+			return self
+		return self
