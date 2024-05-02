@@ -9,20 +9,21 @@ class Notifiable(Notification):
 
 	This class extends Notification and provides methods for managing notifications.
 
-	Attributes:
+	Attributes
 	----------
 	notifications: list[Notification]
-	    A list of notifications.
+		A list of notifications.
 	is_valid: bool
-	    A boolean indicating if there are any notifications.
+		A boolean indicating if there are any notifications.
 
-	Methods:
+	Methods
 	-------
 	- get_notification_instance
 	- add_notifications
 	- add_notification
 	- get_notifications
 	- clear
+
 	"""
 
 	def __init__(self) -> None:
@@ -34,17 +35,18 @@ class Notifiable(Notification):
 		"""
 		Return the list of notifications.
 
-		Returns:
+		Returns
 		-------
 		`list[Notification]`
-		    A list of notifications.
+			A list of notifications.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.notifications  # []
 		```
+
 		"""
 		return self._notifications
 
@@ -53,17 +55,18 @@ class Notifiable(Notification):
 		"""
 		Check if there are any notifications.
 
-		Returns:
+		Returns
 		-------
 		`bool`
-		    True if there are no notifications, False otherwise.
+			True if there are no notifications, False otherwise.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.is_valid()  # True
 		```
+
 		"""
 		return not self._notifications
 
@@ -71,27 +74,28 @@ class Notifiable(Notification):
 		"""
 		Return a new instance of Notification.
 
-		Parameters:
-		-----------
+		Parameters
+		----------
 		`key`: str
-		    The key of the notification.
+			The key of the notification.
 		`message`: str
-		    The message of the notification.
+			The message of the notification.
 
-		Returns:
+		Returns
 		-------
 		`Notification`
-		    A new instance of Notification.
+			A new instance of Notification.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.get_notification_instance(
-		    'key', 'message'
+			'key', 'message'
 		)
 		obj.notifications  # [Notification("key", "message")]
 		```
+
 		"""
 		return Notification(key, message)
 
@@ -99,28 +103,29 @@ class Notifiable(Notification):
 		"""
 		Add notifications from a list of contracts to the list of notifications.
 
-		Parameters:
-		-----------
+		Parameters
+		----------
 		`notifications`: list[Notification]
-		    A list of notifications to be added.
+			A list of notifications to be added.
 
-		Returns:
+		Returns
 		-------
 		`None`
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.add_notifications(
-		    [
-		        Notification(
-		            'key', 'message'
-		        )
-		    ]
+			[
+				Notification(
+					'key', 'message'
+				)
+			]
 		)
 		obj.notifications  # [Notification("key", "message")]
 		```
+
 		"""
 		self._notifications.extend(notifications)
 
@@ -128,26 +133,27 @@ class Notifiable(Notification):
 		"""
 		Add a single notification to the list of notifications.
 
-		Parameters:
-		-----------
+		Parameters
+		----------
 		`notification`: Notification
-		    The notification to be added.
+			The notification to be added.
 
-		Returns:
+		Returns
 		-------
 		`None`
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.add_notification(
-		    Notification(
-		        'key', 'message'
-		    )
+			Notification(
+				'key', 'message'
+			)
 		)
 		obj.notifications  # [Notification("key", "message")]
 		```
+
 		"""
 		self._notifications.append(notification)
 
@@ -155,17 +161,18 @@ class Notifiable(Notification):
 		"""
 		Return the list of notifications.
 
-		Returns:
+		Returns
 		-------
 		`list[Notification]`
-		    A list of notifications.
+			A list of notifications.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.get_notifications()  # []
 		```
+
 		"""
 		return self._notifications
 
@@ -173,32 +180,34 @@ class Notifiable(Notification):
 		"""
 		Clear the list of notifications.
 
-		Returns:
+		Returns
 		-------
 		`None`
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
 		obj.clear()  # []
 		```
+
 		"""
 		self._notifications.clear()
 
-	def __str__(self) -> str:
+	def __repr__(self) -> str:
 		"""
 		Return a string representation of the list of notifications.
 
-		Returns:
+		Returns
 		-------
 		`str`
-		    A string representation of the list of notifications.
+			A string representation of the list of notifications.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Notifiable()
-		obj.__str__()
+		repr(obj)  # "[]"
+
 		"""
-		return self._notifications.__str__()
+		return repr(self._notifications)
