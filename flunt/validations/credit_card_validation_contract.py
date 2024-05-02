@@ -4,6 +4,7 @@ import re
 
 from typing_extensions import Self
 
+from flunt.constants.messages import IS_NOT_CREDIT_CARD
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
@@ -16,42 +17,42 @@ class CreditCardValidationContract(Notifiable):
 	This class provides methods for validating Credit Card values and adding notifications
 	based on the validation results.
 
-	Methods:
+	Methods
 	-------
-	is_credit_card(self, value: bool, key: str, message: str) -> self:
-	    Checks if the provided str value is a Credt Card Number and adds a notification if it is not True.
+	is_credit_card(self, value: bool, field: str, message: str) -> self:
+		Checks if the provided str value is a Credt Card Number and adds a notification if it is not True.
 
 	"""
 
-	def is_credit_card(self, value: str, key: str, message: str) -> Self:
+	def is_credit_card(self, value: str, field: str, message: str = IS_NOT_CREDIT_CARD) -> Self:
 		"""
 		Check if the provided str value is a Credt Card Number and adds a notification if it is not True.
 
 		Parameters
 		----------
 		`value`: str
-		    The string value to be checked.
-		`key`: str
-		    The key or identifier associated with the notification.
-		`message`: str
-		    The message of the notification to be added.
+			The string value to be checked.
+		`field`: str
+			The field or identifier associated with the notification.
+		`message`: str (optional)
+			The message of the notification to be added.
 
-		Returns:
+		Returns
 		-------
 		`self`
-		    The current instance of the class.
+			The current instance of the class.
 
-		Notes:
+		Notes
 		-----
 		- If the provided `value` is not a Credit Card Number, a `notification` is added
-		to the current instance using the provided `key` and `message`.
+		to the current instance using the provided `field` and `message`.
 		- If the provided `value` is a Credit Card Number, no `notification` is added.
 
-		Examples:
+		Examples
 		--------
 		```python
 		obj = Contract()
-		      .is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
+			.is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
 		obj.is_valid # True
 		```
 
@@ -61,7 +62,7 @@ class CreditCardValidationContract(Notifiable):
 			value,
 			re.IGNORECASE,
 		):
-			self.add_notification(Notification(key, message))
+			self.add_notification(Notification(field, message.format(field)))
 			return self
 
 		even = False
@@ -69,7 +70,7 @@ class CreditCardValidationContract(Notifiable):
 
 		for digit in reversed(value):
 			if not digit.isdigit():
-				self.add_notification(Notification(key, message))
+				self.add_notification(Notification(field, message.format(field)))
 				return self
 
 			val = int(digit) * (2 if even else 1)
@@ -80,6 +81,6 @@ class CreditCardValidationContract(Notifiable):
 				val //= 10
 
 		if checksum % 10 != 0:
-			self.add_notification(Notification(key, message))
+			self.add_notification(Notification(field, message.format(field)))
 
 		return self
