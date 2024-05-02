@@ -8,18 +8,23 @@ from uuid import UUID
 
 from typing_extensions import Self
 
+from flunt.constants.messages import REQUIRED
 from flunt.notifications.notifiable import Notifiable
 from flunt.notifications.notification import Notification
 from flunt.validations.bool_validation_contract import BoolValidationContract
 from flunt.validations.collections_validation_contract import (
 	CollectionsValidationContract,
 )
-from flunt.validations.commons_validation_contract import CommonsValidationContract
+from flunt.validations.commons_validation_contract import (
+	CommonsValidationContract,
+)
 from flunt.validations.credit_card_validation_contract import (
 	CreditCardValidationContract,
 )
 from flunt.validations.email_validation_contract import EmailValidationContract
-from flunt.validations.strings_validation_contract import StringValidationContract
+from flunt.validations.strings_validation_contract import (
+	StringValidationContract,
+)
 
 
 class Contract(
@@ -34,85 +39,80 @@ class Contract(
 	"""
 	Class represents a contract for validating data..
 
-	Parameters:
-	-----------
-	    N/A
-
-	Attributes:
+	Parameters
 	----------
-	    N/A
+		N/A
 
-	Methods:
+	Attributes
+	----------
+		N/A
+
+	Methods
 	-------
-	- requires(value, key: str, message: str): Checks if the given value is empty and adds a notification if it is.
+	- requires(value, field: str, message: str): Checks if the given value is empty and adds a notification if it is.
 
 	"""
 
 	@overload
-	def requires(self, value: tuple, key: str, message: str) -> Self:
+	def requires(self, value: tuple, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Struct, key: str, message: str) -> Self:
+	def requires(self, value: Struct, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: set, key: str, message: str) -> Self:
+	def requires(self, value: set, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: bool, key: str, message: str) -> Self:
+	def requires(self, value: bool, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: dict, key: str, message: str) -> Self:
+	def requires(self, value: dict, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: list, key: str, message: str) -> Self:
+	def requires(self, value: list, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Iterable, key: str, message: str) -> Self:
+	def requires(self, value: Iterable, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Callable, key: str, message: str) -> Self:
+	def requires(self, value: Callable, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: int, key: str, message: str) -> Self:
+	def requires(self, value: str, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: str, key: str, message: str) -> Self:
+	def requires(self, value: Decimal, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: Decimal, key: str, message: str) -> Self:
+	def requires(self, value: float, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: float, key: str, message: str) -> Self:
+	def requires(self, value: UUID, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	@overload
-	def requires(self, value: UUID, key: str, message: str) -> Self:
-		...
-
-	@overload
-	def requires(self, value: object, key: str, message: str) -> Self:
+	def requires(self, value: object, field: str, message: str = REQUIRED) -> Self:
 		...
 
 	def requires(
 		self,
 		value: Union[
 			str,
-			int,
+			float,
 			list,
 			bool,
 			Decimal,
-			float,
 			UUID,
 			dict,
 			object,
@@ -122,41 +122,41 @@ class Contract(
 			Iterable,
 			Callable,
 		],
-		key: str,
-		message: str,
+		field: str,
+		message: str = REQUIRED
 	) -> Self:
 		"""
 		Check if the given value is empty and adds a notification if it is.
 
-		Parameters:
-		-----------
-		`value`: [bool | str | float | int | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
-		    The value to be checked.
-		`key`: str
-		    The key or identifier associated with the notification.
-		`message`: str
-		    The message of the notification to be added.
+		Parameters
+		----------
+		`value`: [bool | str | float | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
+			The value to be checked.
+		`field`: str
+			The field or identifier associated with the notification.
+		`message`: str (optional)
+			The message of the notification to be added.
 
-		Returns:
+		Returns
 		-------
 		`Self`
-		    The current instance of the class.
+			The current instance of the class.
 
-		Notes:
+		Notes
 		-----
 		- If the provided `value` is empty, a `notification` is added to the current
-		instance using the provided `key` and `message`.
+		instance using the provided `field` and `message`.
 		- If the provided `value` is not empty, no `notification` is added.
 
-		Examples:
+		Examples
 		--------
 		```python
-		contract = Contract().requires('', 'key', 'message')
+		contract = Contract().requires('', 'field', 'message')
 		contract.is_valid  # False
 		```
 
 		"""
 		if not value and not isinstance(value, bool):
-			self.add_notification(Notification(key, message))
+			self.add_notification(Notification(field, message.format(field)))
 
 		return self
