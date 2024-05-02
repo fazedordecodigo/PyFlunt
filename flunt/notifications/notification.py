@@ -1,6 +1,5 @@
 """Module Notification."""
 
-
 class Notification:
 	"""Class Notification."""
 
@@ -9,7 +8,6 @@ class Notification:
 		self.field: str = field
 		self.message: str = message
 
-	def __str__(self):
-		"""Print object string."""
-		string = '{}field: {}, message: {}{}'
-		return string.format('{', self.field, self.message, '}')
+	def __repr__(self):
+		"""Representation object string."""
+		return f"{{ field: {self.field}, message: {self.message} }}"
