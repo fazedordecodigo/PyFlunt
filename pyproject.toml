@@ -64,6 +64,7 @@ pre-commit-hooks = "^4.5.0"
 mypy = "^1.8.0"
 tox = "*"
 poethepoet = "^0.25.0"
+ipykernel = "^6.29.4"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
@@ -74,6 +75,9 @@ mkdocstrings-python = "^1.8.0"
 sample = "samples.flunt_sample:main"
 
 [tool.pytest.ini_options]
+pythonpath = [
+  "flunt"
+]
 python_files = "test*.py"
 python_classes = "Test"
 python_functions = "test"
@@ -83,21 +87,46 @@ junit_duration_report = "call"
 filterwarnings = "ignore::RuntimeWarning"
 
 [tool.ruff]
-line-length = 88
+line-length = 79
 indent-width = 4
-extend-exclude = ["tests"]
+target-version = "py39"
+fix = true
 
 [tool.ruff.format]
-quote-style = "single"
-indent-style = "tab"
-docstring-code-format = false
-docstring-code-line-length = 30
+docstring-code-format = true
 
 [tool.ruff.lint]
-extend-select = [
-  "D",   # pydocstyle,
-  "I",   # isort
-  "B",   # flake8-bugbear
+unfixable = []
+select = [
+  "F",              # pyflakes
+  "E", "W", "D",    # pycodestyle
+  "I",              # isort
+  "N",              # flake8-naming
+  "UP",             # pyupgrade
+  "YTT",            # flake8 2020
+  "ASYNC",          # flake8-async
+  "B",              # flake8-bugbear
+  "C4",             # flake8-comprehensions
+  "DTZ",            # flake8-datatimez
+  "T10",            # flake8-debugger
+  "LOG",            # flake8-logging
+  "G",              # flake8-logging-format
+  "PIE",            # flake8-pie
+  "T20",            # flake8-print
+  "PYI",            # flake8-pyi
+  "PT",             # flake8-pytest-style
+  "Q",              # flake8-quotes
+  "RSE",            # flake8-raise
+  "RET",            # flake8-return
+  "SLF",            # flake8-self
+  "SLOT",           # flake8-slots
+  "TID",            # flake8-tidy-imports
+  "TCH",            # flake8-type-checking
+  "INT",            # flake8-gettext
+  "ARG",            # flake8-unused-arguments
+  "PTH",            # flake8-use-pathlib
+  "TD",             # flake8-todos
+  "PL",             # pylint
 ]
 ignore = [
   "D100",
@@ -106,11 +135,13 @@ ignore = [
   "D206",
   "D212",
   "D417",
-  "E501"
+  "E501",
+  "G004",
+  "TD004",
+  "TD003",
+  "W191",
+  "PLE1205"
 ]
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"
 
 [tool.mypy]
 ignore_missing_imports = true
