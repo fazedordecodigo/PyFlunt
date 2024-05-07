@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/CODE_OF_CONDUCT_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CODE_OF_CONDUCT_EN.md)
 
 # Código de Conduta do Pacto do Contribuidor
 

@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/CHANGELOG_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CHANGELOG_EN.md)
 
 # Registro de Alterações
 

@@ -1,4 +1,4 @@
-ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/CODE_OF_CONDUCT.md)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CODE_OF_CONDUCT.md)
 
 # Contributor Covenant Code of Conduct
 
