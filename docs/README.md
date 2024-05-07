@@ -87,7 +87,7 @@ class Nome(Notifiable):
 
 
 nome = Nome('Emerson', 'Delatorre')
-if not nome.is_valid():
+if not nome.is_valid:
     for notification in nome.get_notifications():
         print(notification)
 
