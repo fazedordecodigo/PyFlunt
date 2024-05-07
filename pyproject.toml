@@ -42,7 +42,7 @@ classifiers = [
   "Natural Language :: Portuguese",
   "Natural Language :: Portuguese (Brazilian)"
 ]
-readme = "./README.md"
+readme = "./docs/README.md"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -130,6 +130,7 @@ select = [
 ]
 ignore = [
   "D100",
+  "D103",
   "D104",
   "D203",
   "D206",
