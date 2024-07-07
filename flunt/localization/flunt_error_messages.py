@@ -1,5 +1,10 @@
 from flunt.constants import MAX_LENGTH, REQUIRED
 
+IS_URL_ERROR_MESSAGE = lambda key: f"{key} is not a valid URL."
+IS_URL_OR_EMPTY_ERROR_MESSAGE = lambda key: f"{key} is not a valid URL or empty."
+IS_NOT_URL_ERROR_MESSAGE = lambda key: f"{key} is a valid URL."
+IS_NOT_URL_OR_EMPTY_ERROR_MESSAGE = lambda key: f"{key} is a valid URL or empty."
+
 
 def required(field: str):
 	"""
