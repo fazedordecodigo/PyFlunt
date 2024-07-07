@@ -17,6 +17,10 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 - Adicionar Result Pattner [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
 
+## [2.3.1] - 2024-07-07
+### Added
+- Added UrlValidationContract [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+
 ## [2.3.0] - 2024-03-17
 ### Adicionado
 - Validação de Collections [#30](https://github.com/fazedordecodigo/PyFlunt/issues/30)
