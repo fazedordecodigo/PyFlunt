@@ -1,4 +1,4 @@
-ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/CONTRIBUTING.md)
+ENGLISH | [PORTUGUÊS](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CONTRIBUTING.md)
 
 # Contributing
 

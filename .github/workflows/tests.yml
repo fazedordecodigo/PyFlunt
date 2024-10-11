@@ -32,13 +32,3 @@ jobs:
 
       - name: Executa Tox
         run: tox
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=fazedordecodigo_PyFlunt
-            -Dsonar.organization=fazedordecodigo
-            -Dsonar.python.coverage.reportPaths=coverage.xml

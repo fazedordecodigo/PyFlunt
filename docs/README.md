@@ -1,4 +1,4 @@
-PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/README_EN.md)
+PORTUGUÊS | [ENGLISH](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/README_EN.md)
 
 # 🐍 PyFlunt: Domain Notification Pattern
 
@@ -37,17 +37,13 @@ pip install flunt
 
 ````python
 from flunt.notifications.notifiable import Notifiable
-from flunt.validations.contract import Contract
 
 class Nome(Notifiable):
     def __init__(self, nome):
         super().__init__()
 
         if len(nome) > 3:
-            self.add_notification(
-                Notification(field='nome', message='nome inválido')
-            )
-
+            self.add_notification(field='nome', message='nome inválido')
         self._nome = nome
 ````
 
@@ -73,13 +69,13 @@ class Nome(Notifiable):
             .is_greater_than(
                 value=self.primeiro_nome,
                 comparer=3,
-                key="primeiro_nome",
+                field="primeiro_nome",
                 message="Mínimo de 3 caracteres",
             )
             .is_greater_than(
                 value=self.ultimo_nome,
                 comparer=3,
-                key="ultimo_nome",
+                field="ultimo_nome",
                 message="Mínimo de 3 caracteres",
             )
             .get_notifications()
@@ -87,7 +83,7 @@ class Nome(Notifiable):
 
 
 nome = Nome('Emerson', 'Delatorre')
-if not nome.is_valid():
+if not nome.is_valid:
     for notification in nome.get_notifications():
         print(notification)
 
@@ -95,15 +91,15 @@ if not nome.is_valid():
 
 ## Contribuindo
 
-Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/CONTRIBUTING.md)
+Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CONTRIBUTING.md)
 
 ## Registro de Alterações
 
-Consulte nosso registro de alterações no link a seguir: [CHANGELOG](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/CHANGELOG.md)
+Consulte nosso registro de alterações no link a seguir: [CHANGELOG](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CHANGELOG.md)
 
 ## 📄 Licença
 
-Este projeto contém a licença MIT. Consulte o arquivo [LICENSE](https://github.com/fazedordecodigo/PyFlunt/blob/main/README.md/LICENSE).
+Este projeto contém a licença MIT. Consulte o arquivo [LICENSE](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/LICENSE).
 
 ## Mods
 * [Flunt para C# (Original)](https://github.com/andrebaltieri/Flunt)
