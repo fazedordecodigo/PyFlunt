@@ -1,0 +1,29 @@
+name: Pyre
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+    contents: read
+
+jobs:
+  pyre:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run Pyre
+        uses: facebook/pyre-action@v0.0.2
+        with:
+          repo-directory: './'
+          requirements-path: 'requirements_dev.txt'
