@@ -1,4 +1,4 @@
-[tool.poetry]
+[project]
 name = "Flunt"
 version = "2.3.0"
 description = "Python implementation of Domain Notification Pattern inspired by Flunt (.NET)"
@@ -43,35 +43,26 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)"
 ]
 readme = "./docs/README.md"
+requires-python = ">=3.9 <4.0"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+dependencies = [
+  typing-extensions = "^4.9.0"
+  deprecated = "^1.2.14"
+]
 
-[tool.poetry.dependencies]
-python = ">=3.9 <4.0"
-poetry = "^1.7.1"
-typing-extensions = "^4.9.0"
-deprecated = "^1.2.14"
+[tool.uv]
+dev-dependencies = [
+  faker = "^23.1.0"
+  pytest = "^8.0.1"
+  pytest-cov = ">=4.1,<6.0"
+  ruff = ">=0.2.1,<0.8.0"
+  pre-commit = "^3.6.1"
+  pre-commit-hooks = "^4.5.0"
+  mypy = "^1.8.0"
+  tox = "*"
+]
 
-[tool.poetry.group.dev.dependencies]
-faker = "^23.1.0"
-pytest = "^8.0.1"
-pytest-cov = ">=4.1,<6.0"
-ruff = ">=0.2.1,<0.8.0"
-pre-commit = "^3.6.1"
-pre-commit-hooks = "^4.5.0"
-mypy = "^1.8.0"
-tox = "*"
-poethepoet = ">=0.25,<0.30"
-ipykernel = "^6.29.4"
-
-[tool.poetry.group.doc.dependencies]
-mkdocs-material = "^9.5.9"
-mkdocstrings = ">=0.24,<0.27"
-mkdocstrings-python = "^1.8.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 sample = "samples.flunt_sample:main"
 
 [tool.pytest.ini_options]
@@ -146,21 +137,3 @@ ignore = [
 
 [tool.mypy]
 ignore_missing_imports = true
-
-[tool.poe]
-poetry_command = ""
-
-[tool.poe.tasks]
-test = "pytest"
-test-verbose = "pytest -vv"
-test-cov = "pytest --cov=flunt --cov-report=html"
-tox = "tox -e py"
-pre-commit-install = "pre-commit install"
-pre-commit-run = "pre-commit run --all-files --show-diff-on-failure"
-lint = ["_ruff-check", "lint-check", "_ruff-format", "_mypy"]
-lint-check = "ruff check"
-export-dev = "poetry export -f requirements.txt --output requirements_dev.txt  --with dev"
-
-_ruff-check = "poetry run ruff check --select I --fix ."
-_ruff-format = "poetry run ruff format ."
-_mypy = "poetry run mypy flunt tests"
