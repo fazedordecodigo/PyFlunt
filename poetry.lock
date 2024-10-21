@@ -667,17 +667,18 @@ tests = ["asttokens (>=2.1.0)", "coverage", "coverage-enable-subprocess", "ipyth
 
 [[package]]
 name = "faker"
-version = "23.3.0"
+version = "30.8.0"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "Faker-23.3.0-py3-none-any.whl", hash = "sha256:117ce1a2805c1bc5ca753b3dc6f9d567732893b2294b827d3164261ee8f20267"},
-    {file = "Faker-23.3.0.tar.gz", hash = "sha256:458d93580de34403a8dec1e8d5e6be2fee96c4deca63b95d71df7a6a80a690de"},
+    {file = "Faker-30.8.0-py3-none-any.whl", hash = "sha256:4cd0c5ea4bc1e4c902967f6e662f5f5da69f1674d9a94f54e516d27f3c2a6a16"},
+    {file = "faker-30.8.0.tar.gz", hash = "sha256:3608c7fcac2acde0eaa6da28dae97628f18f14d54eaa2a92b96ae006f1621bd7"},
 ]
 
 [package.dependencies]
 python-dateutil = ">=2.4"
+typing-extensions = "*"
 
 [[package]]
 name = "fastjsonschema"
@@ -2841,4 +2842,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9 <4.0"
-content-hash = "29516ef41d0e11e668ccc5b9bf1efce4e64157292cceab0bd4d531b5e2cb333d"
+content-hash = "98fd75e0f0c57170babdf5e74e2422a0b43bb2ea34c20420092daf06598a3f37"
