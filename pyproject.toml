@@ -55,7 +55,7 @@ deprecated = "^1.2.14"
 
 [tool.poetry.group.dev.dependencies]
 poetry = "^1.7.1"
-faker = "^23.1.0"
+faker = ">=23.1,<31.0"
 pytest = "^8.0.1"
 pytest-cov = ">=4.1,<6.0"
 ruff = ">=0.2.1,<0.8.0"
