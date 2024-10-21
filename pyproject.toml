@@ -50,11 +50,11 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
 python = ">=3.9 <4.0"
-poetry = "^1.7.1"
 typing-extensions = "^4.9.0"
 deprecated = "^1.2.14"
 
 [tool.poetry.group.dev.dependencies]
+poetry = "^1.7.1"
 faker = "^23.1.0"
 pytest = "^8.0.1"
 pytest-cov = ">=4.1,<6.0"
