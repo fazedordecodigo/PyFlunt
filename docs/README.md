@@ -42,7 +42,7 @@ class Nome(Notifiable):
     def __init__(self, nome):
         super().__init__()
 
-        if len(nome) > 3:
+        if len(nome) < 3:
             self.add_notification(field='nome', message='nome inválido')
         self._nome = nome
 ````
