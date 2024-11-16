@@ -19,8 +19,8 @@ fake = Faker()
     ],
 )
 def test_should_not_receive_a_notification_when_the_credit_card_number_is_valid(
-    input, expect
-):
+    input: str, expect: int
+) -> None:
     contract = CreditCardValidationContract().is_credit_card(
         input, "CreditCard", "Value should return a valid Credit Card Number"
     )
@@ -37,8 +37,8 @@ def test_should_not_receive_a_notification_when_the_credit_card_number_is_valid(
     ],
 )
 def test_should_receive_a_notification_when_the_credit_card_number_is_invalid(
-    input, expect
-):
+    input: str, expect: int
+) -> None:
     contract = CreditCardValidationContract().is_credit_card(
         input, "CreditCard", "Value should return a valid Credit Card Number"
     )

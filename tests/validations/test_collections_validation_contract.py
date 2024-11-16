@@ -13,18 +13,18 @@ fake = Faker()
 
 
 @pytest.fixture
-def key():
+def key() -> str:
     return "first_name"
 
 
 @pytest.fixture
-def message():
+def message() -> str:
     return "any message"
 
 
 range_one_to_nineteen = randint(1, 19)
 range_twenty_to_fifty = randint(20, 50)
-range_fiftyone_to_hundred = randint(51, 100)
+range_fifty_one_to_hundred = randint(51, 100)
 
 
 @pytest.mark.parametrize(
@@ -63,7 +63,8 @@ range_fiftyone_to_hundred = randint(51, 100)
         ),
     ],
 )
-def test_should_be_valid_when_is_lower_than(value, expect, key, message):
+def test_should_be_valid_when_is_lower_than(
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_lower_than(
         value, expect, key, message
     )
@@ -114,8 +115,7 @@ def test_should_be_valid_when_is_lower_than(value, expect, key, message):
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_not_is_lower_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_lower_than(
         value, expect, key, message
     )
@@ -166,8 +166,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_lower_than(
     ],
 )
 def test_should_be_valid_when_is_lower_or_equals_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_lower_or_equals_than(
         value, expect, key, message
     )
@@ -212,8 +211,7 @@ def test_should_be_valid_when_is_lower_or_equals_than(
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equals_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_lower_or_equals_than(
         value, expect, key, message
     )
@@ -257,7 +255,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_lower_or_equ
         ),
     ],
 )
-def test_should_be_valid_when_is_greater_than(value, expect, key, message):
+def test_should_be_valid_when_is_greater_than(value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_greater_than(
         value, expect, key, message
     )
@@ -308,8 +306,7 @@ def test_should_be_valid_when_is_greater_than(value, expect, key, message):
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_not_is_greater_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_greater_than(
         value, expect, key, message
     )
@@ -360,8 +357,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_than
     ],
 )
 def test_should_be_valid_when_is_greater_or_equals_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_greater_or_equals_than(
         value, expect, key, message
     )
@@ -406,8 +402,8 @@ def test_should_be_valid_when_is_greater_or_equals_than(
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_equals_than(
-    value, expect, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, expect: int, key: str, message: str
+) -> None:
     contract = CollectionsValidationContract().is_greater_or_equals_than(
         value, expect, key, message
     )
@@ -461,8 +457,7 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_or_e
     ],
 )
 def test_should_be_valid_and_not_return_notification_when_value_is_between(
-    value, value_min, value_max, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, value_min: int, value_max: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_between(
         value, value_min, value_max, key, message
     )
@@ -477,46 +472,45 @@ def test_should_be_valid_and_not_return_notification_when_value_is_between(
                 nb_elements=range_one_to_nineteen, variable_nb_elements=False
             ),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
         (
             fake.pyiterable(
                 nb_elements=range_one_to_nineteen, variable_nb_elements=False
             ),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
         (
             fake.pylist(
                 nb_elements=range_one_to_nineteen, variable_nb_elements=False
             ),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
         (
             fake.pyset(
                 nb_elements=range_one_to_nineteen, variable_nb_elements=False
             ),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
         (
             fake.pystr(max_chars=range_one_to_nineteen),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
         (
             fake.pytuple(
                 nb_elements=range_one_to_nineteen, variable_nb_elements=False
             ),
             range_twenty_to_fifty,
-            range_fiftyone_to_hundred,
+            range_fifty_one_to_hundred,
         ),
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_value_is_not_between(
-    value, value_min, value_max, key, message
-):
+    value: str | list | dict | set | tuple | range | bytearray, value_min: int, value_max: int, key:str, message:str) -> None:
     contract = CollectionsValidationContract().is_between(
         value, value_min, value_max, key, message
     )

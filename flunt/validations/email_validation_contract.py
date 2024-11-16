@@ -9,7 +9,7 @@ from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 
 
-def _valid_email(value) -> re.Match[str] | None:
+def _valid_email(value: str) -> re.Match[str] | None:
     """
     Check if the provided value matches the valid email address pattern.
 
