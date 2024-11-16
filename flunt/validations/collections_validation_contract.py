@@ -1,8 +1,7 @@
 """Module Contract."""
+from __future__ import annotations
 
-from typing import Union, overload
-
-from typing_extensions import Self
+from typing import Self, Union, overload
 
 from flunt.notifications.notifiable import Notifiable
 
@@ -75,7 +74,7 @@ class CollectionsValidationContract(Notifiable):
 
     def is_lower_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: str | list | dict | set | tuple | range | bytearray,
         comparer: int,
         field: str,
         message: str,
@@ -169,7 +168,7 @@ class CollectionsValidationContract(Notifiable):
 
     def is_lower_or_equals_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: str | list | dict | set | tuple | range | bytearray,
         comparer: int,
         field: str,
         message: str,
@@ -263,7 +262,7 @@ class CollectionsValidationContract(Notifiable):
 
     def is_greater_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: str | list | dict | set | tuple | range | bytearray,
         comparer: int,
         field: str,
         message: str,
@@ -357,7 +356,7 @@ class CollectionsValidationContract(Notifiable):
 
     def is_greater_or_equals_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: str | list | dict | set | tuple | range | bytearray,
         comparer: int,
         field: str,
         message: str,
@@ -449,9 +448,9 @@ class CollectionsValidationContract(Notifiable):
     ) -> Self:
         ...
 
-    def is_between(  # noqa: PLR0913
+    def is_between(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: str | list | dict | set | tuple | range | bytearray,
         min: int,
         max: int,
         field: str,

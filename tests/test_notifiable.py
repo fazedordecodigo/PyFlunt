@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from tests.mocks.value_objects.vo import Name
 
 

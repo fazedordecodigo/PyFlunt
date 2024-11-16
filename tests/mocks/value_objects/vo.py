@@ -1,4 +1,5 @@
 """Module Value Objects."""
+from __future__ import annotations
 
 from flunt.notifications.notifiable import Notifiable
 from flunt.validations.contract import Contract

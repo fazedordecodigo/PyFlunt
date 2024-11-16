@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 REQUIRED = "The field {0} is required"
 MAX_LENGTH = "The field {0} must be less than {1} characters"
 MIN_LENGTH = "The field {0} must be at least {1} characters"

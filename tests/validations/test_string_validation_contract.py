@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 from flunt.validations.strings_validation_contract import (

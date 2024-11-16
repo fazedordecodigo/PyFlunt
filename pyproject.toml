@@ -1,12 +1,12 @@
 [project]
 name = "Flunt"
-version = "2.3.0"
+version = "3.0.0"
 description = "Python implementation of Domain Notification Pattern inspired by Flunt (.NET)"
-authors = ["Emerson Delatorre <38289677+fazedordecodigo@users.noreply.github.com>"]
-repository = "https://github.com/fazedordecodigo/PyFlunt"
-homepage = "https://github.com/fazedordecodigo/PyFlunt"
-documentation = "https://github.com/fazedordecodigo/PyFlunt"
+authors = [ {name = "Emerson Delatorre", email = "contato@delatorre.dev" }]
+maintainers = [ {name = "Emerson Delatorre", email = "contato@delatorre.dev" }]
 license = "MIT"
+readme = "./docs/README.md"
+requires-python = ">=3.10"
 keywords = [
   "notifications",
   "python",
@@ -29,10 +29,10 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Office/Business",
   "Topic :: Utilities",
   "Topic :: Software Development",
@@ -42,32 +42,52 @@ classifiers = [
   "Natural Language :: Portuguese",
   "Natural Language :: Portuguese (Brazilian)"
 ]
-readme = "./docs/README.md"
-requires-python = ">=3.9"
+dependencies = []
 
-dependencies = [
-  "typing-extensions = ^4.9.0",
-  "deprecated = ^1.2.14"
-]
+[project.urls]
+Repository = "https://github.com/fazedordecodigo/PyFlunt"
+Documentation = "https://github.com/fazedordecodigo/PyFlunt"
+Homepage = "https://github.com/fazedordecodigo/PyFlunt"
+Changelog = "https://github.com/fazedordecodigo/PyFlunt/releases"
+Tracker = "https://github.com/fazedordecodigo/PyFlunt/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-  "faker>=23.1.0",
-  "pytest>=8.0.1",
-  "pytest-cov>=4.1,<6.0",
-  "ruff>=0.2.1,<0.8.0",
-  "pre-commit>=3.6.1",
-  "pre-commit-hooks>=4.5.0",
-  "mypy>=1.8.0"
+  { include-group = "lint" },
+  { include-group = "pkg-meta" },
+  { include-group = "test" },
+  { include-group = "type" },
 ]
+
+test = [
+  "faker>=33.0.0",
+  "pytest>=8.3.3",
+  "pytest-cov>=6.0.0",
+  "tox>=4.23.2",
+  "tox-uv>=1.16.0",
+]
+
+type = [ "mypy>=1.13.0", { include-group = "test" } ]
+
+lint = [
+  "ruff>=0.7.4",
+  "pre-commit>=4.0.1",
+  "pre-commit-hooks>=5.0.0",
+  "pre-commit-uv>=4.1.4"
+]
+
+pkg-meta = [ "uv>=0.5.2" ]
 
 [project.scripts]
 sample = "samples.flunt_sample:main"
 
 [tool.pytest.ini_options]
-pythonpath = [
-  "flunt"
-]
+pythonpath = ["flunt"]
+testpaths = ["tests"]
 python_files = "test*.py"
 python_classes = "Test"
 python_functions = "test"
@@ -76,14 +96,23 @@ console_output_style = "classic"
 junit_duration_report = "call"
 filterwarnings = "ignore::RuntimeWarning"
 
+[tool.coverage.report]
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+source = ["flunt"]
+
 [tool.ruff]
 line-length = 79
 indent-width = 4
-target-version = "py39"
+target-version = "py310"
 fix = true
 
 [tool.ruff.format]
 docstring-code-format = true
+docstring-code-line-length = 59
+preview = true
 
 [tool.ruff.lint]
 unfixable = []
@@ -117,22 +146,44 @@ select = [
   "PTH",            # flake8-use-pathlib
   "TD",             # flake8-todos
   "PL",             # pylint
+  "UP",             # pyupgrade
+  "RUF",            # ruff
+  "TRY",            # tryceratops
 ]
 ignore = [
-  "D100",
-  "D103",
-  "D104",
-  "D203",
-  "D206",
-  "D212",
-  "D417",
-  "E501",
-  "G004",
-  "TD004",
-  "TD003",
-  "W191",
-  "PLE1205"
+  "D100",           # Missing docstring in public module
+  "D103",           # Missing docstring in public function
+  "D104",           # Missing docstring in public package
+  "D203",           # 1 blank line required before class docstring
+  "D206",           # 1 blank line required before class docstring
+  "D212",           # Multi-line docstring summary should start at the first line
+  "D417",           # Missing argument descriptions in the docstring
+  "E501",           # Line too long
+  "G004",           # Logging statement uses string formatting
+  "TD004",          # Found TODO in code
+  "TD003",          # Found FIXME in code
+  "W191",           # Indentation contains tabs
+  "PLE1205"         # Use of the `print` function
 ]
 
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+  "S101",          # Use of `assert` detected
+  "S603"           # Use of `assertRaises` detected
+]
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
 [tool.mypy]
-ignore_missing_imports = true
+files = ['flunt']
+check_untyped_defs = true
+disallow_untyped_defs = true
+disallow_any_unimported = true
+no_implicit_optional = true
+show_error_codes = true
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.uv]
+cache-keys = [ { file = "pyproject.toml" }, { git = true } ]

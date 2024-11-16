@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pytest
 
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns

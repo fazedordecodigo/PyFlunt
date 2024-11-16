@@ -1,4 +1,5 @@
 """Module Flunt Regex Patterns."""
+from __future__ import annotations
 
 REGEX_EMAIL = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
 REGEX_PASSPORT = r"^(?!^0+$)[a-zA-Z0-9]{3,20}$"
