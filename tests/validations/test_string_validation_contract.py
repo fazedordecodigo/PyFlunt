@@ -36,9 +36,9 @@ def test_should_be_invalid_and_return_once_notification_when_is_none(
     key: str, message: str
 ) -> None:
     contract = StringValidationContract().is_not_none_or_white_space(
-        None,
+        None, # type: ignore
         key,
-        message,  # type: ignore
+        message,
     )
     assert contract.is_valid is False
     assert len(contract.get_notifications()) == 1
