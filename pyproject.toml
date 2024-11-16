@@ -66,9 +66,7 @@ dev = [
 test = [
   "faker>=33.0.0",
   "pytest>=8.3.3",
-  "pytest-cov>=6.0.0",
-  "tox>=4.23.2",
-  "tox-uv>=1.16.0",
+  "pytest-cov>=6.0.0"
 ]
 
 type = [ "mypy>=1.13.0", { include-group = "test" } ]
