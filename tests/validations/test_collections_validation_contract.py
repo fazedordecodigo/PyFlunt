@@ -10,12 +10,12 @@ from flunt.validations.collections_validation_contract import (
 fake = Faker()
 
 
-@pytest.fixture()
+@pytest.fixture
 def key():
     return "first_name"
 
 
-@pytest.fixture()
+@pytest.fixture
 def message():
     return "any message"
 

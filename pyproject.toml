@@ -43,23 +43,22 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)"
 ]
 readme = "./docs/README.md"
-requires-python = ">=3.9 <4.0"
+requires-python = ">=3.9"
 
 dependencies = [
   "typing-extensions = ^4.9.0",
   "deprecated = ^1.2.14"
 ]
 
-[tool.uv]
-dev-dependencies = [
-  "faker >=23.1.0",
-  "pytest >=8.0.1",
-  "pytest-cov >=4.1,<6.0",
-  "ruff >=0.2.1,<0.8.0",
-  "pre-commit >=3.6.1",
-  "pre-commit-hooks >=4.5.0",
-  "mypy >=1.8.0",
-  "tox =*"
+[dependency-groups]
+dev = [
+  "faker>=23.1.0",
+  "pytest>=8.0.1",
+  "pytest-cov>=4.1,<6.0",
+  "ruff>=0.2.1,<0.8.0",
+  "pre-commit>=3.6.1",
+  "pre-commit-hooks>=4.5.0",
+  "mypy>=1.8.0"
 ]
 
 [project.scripts]

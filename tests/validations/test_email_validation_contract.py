@@ -3,7 +3,7 @@ import pytest
 from flunt.validations.email_validation_contract import EmailValidationContract
 
 
-@pytest.fixture()
+@pytest.fixture
 def message():
     return "Custom message here"
 

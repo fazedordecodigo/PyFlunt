@@ -3,7 +3,7 @@ import pytest
 from flunt.validations.bool_validation_contract import BoolValidationContract
 
 
-@pytest.fixture()
+@pytest.fixture
 def message():
     return "Custom message here"
 

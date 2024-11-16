@@ -6,12 +6,12 @@ from flunt.validations.strings_validation_contract import (
 from tests.mocks.entity.sample_entity import SampleEntity
 
 
-@pytest.fixture()
+@pytest.fixture
 def key():
     return "first_name"
 
 
-@pytest.fixture()
+@pytest.fixture
 def message():
     return "any message"
 
