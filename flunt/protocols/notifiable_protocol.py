@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-from flunt.notifications.notification import Notification
-from flunt.protocols.notifiable_protocol import NotifiableProtocol
+from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from flunt.notifications.notification import Notification
 
 
-class Notifiable(NotifiableProtocol):
+class NotifiableProtocol(ABC):
     """
     A class representing an object that can be notified.
 
@@ -29,11 +32,12 @@ class Notifiable(NotifiableProtocol):
 
     """
 
+    @abstractmethod
     def __init__(self) -> None:
         """Initialize the list of notifications."""
-        self._notifications: list[Notification] = []
 
     @property
+    @abstractmethod
     def notifications(self) -> list[Notification]:
         """
         Return the list of notifications.
@@ -51,9 +55,9 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        return self._notifications
 
     @property
+    @abstractmethod
     def is_valid(self) -> bool:
         """
         Check if there are any notifications.
@@ -71,8 +75,8 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        return not self._notifications
 
+    @abstractmethod
     def add_notifications(self, notifications: list[Notification]) -> None:
         """
         Add notifications from a list of contracts to the list of notifications.
@@ -95,8 +99,8 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        self._notifications.extend(notifications)
 
+    @abstractmethod
     def add_notification(self, field: str, message: str) -> None:
         """
         Add a single notification to the list of notifications.
@@ -119,8 +123,8 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        self._notifications.append(Notification(field, message))
 
+    @abstractmethod
     def get_notifications(self) -> list[Notification]:
         """
         Return the list of notifications.
@@ -138,8 +142,8 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        return self._notifications
 
+    @abstractmethod
     def clear(self) -> None:
         """
         Clear the list of notifications.
@@ -156,8 +160,8 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        self._notifications.clear()
 
+    @abstractmethod
     def __repr__(self) -> str:
         """
         Return a string representation of the list of notifications.
@@ -175,4 +179,3 @@ class Notifiable(NotifiableProtocol):
         ```
 
         """
-        return repr(self._notifications)
