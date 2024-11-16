@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import re
+from typing import TYPE_CHECKING
 
 import pytest
 from faker import Faker
 
-from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
+if TYPE_CHECKING:
+    from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 
 fake = Faker("pt_BR")
 
