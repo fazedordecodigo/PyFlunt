@@ -3,7 +3,7 @@ default_language_version:
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.5.0
+  rev: v5.0.0
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
@@ -16,28 +16,22 @@ repos:
       - "--fix=lf"
 
 - repo: https://github.com/asottile/pyupgrade
-  rev: v3.15.1
+  rev: v3.19.0
   hooks:
     - id: pyupgrade
       args: ["--py39-plus"]
 
-- repo: https://github.com/python-poetry/poetry
-  rev: 1.8.0
+- repo: https://github.com/astral-sh/uv-pre-commit
+  # uv version.
+  rev: 0.5.2
   hooks:
-  - id: poetry-check
-  - id: poetry-lock
-  - id: poetry-export
-    args: [
-      "--with",
-      "dev",
-      "-f",
-      "requirements.txt",
-      "-o",
-      "./requirements/requirements_dev.txt",
-    ]
+    # Compile requirements
+    - id: pip-compile
+      args: [requirements-dev.in, -o, requirements-dev.txt]
+      files: ^requirements-dev\.(in|txt)$
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.3.0
+  rev: v0.7.4
   hooks:
   - id: ruff
     args:
