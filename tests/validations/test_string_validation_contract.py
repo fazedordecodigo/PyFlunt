@@ -36,7 +36,7 @@ def test_should_be_invalid_and_return_once_notification_when_is_none(
     key: str, message: str
 ) -> None:
     contract = StringValidationContract().is_not_none_or_white_space(
-        None, # type: ignore
+        None,  # type: ignore
         key,
         message,
     )
