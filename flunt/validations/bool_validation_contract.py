@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Self
 
+from flunt.constants.messages import IS_FALSE, IS_TRUE
 from flunt.notifications.notifiable import Notifiable
 
 
@@ -23,7 +24,7 @@ class BoolValidationContract(Notifiable):
 
     """
 
-    def is_false(self, value: bool, key: str, message: str) -> Self:
+    def is_false(self, value: bool, key: str, message: str = IS_FALSE) -> Self:
         """
         Check if the provided boolean value is False and adds a notification if it is True.
 
@@ -60,7 +61,7 @@ class BoolValidationContract(Notifiable):
             self.add_notification(key, message)
         return self
 
-    def is_true(self, value: bool, key: str, message: str) -> Self:
+    def is_true(self, value: bool, key: str, message: str = IS_TRUE) -> Self:
         """
         Check if the provided boolean value is True and adds a notification if it is True.
 
