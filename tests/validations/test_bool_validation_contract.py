@@ -15,14 +15,18 @@ def message() -> str:
     return "Custom message here"
 
 
-def test_should_be_valid_when_is_true(entity_mock: SampleEntity, message: Literal["Custom message here"]) -> None:
+def test_should_be_valid_when_is_true(
+    entity_mock: SampleEntity, message: Literal["Custom message here"]
+) -> None:
     contract = BoolValidationContract().is_true(
         entity_mock.bool_true_property, "Bool", message
     )
     assert contract.is_valid
 
 
-def test_should_be_valid_when_is_false(entity_mock: SampleEntity, message: Literal["Custom message here"]) -> None:
+def test_should_be_valid_when_is_false(
+    entity_mock: SampleEntity, message: Literal["Custom message here"]
+) -> None:
     contract = BoolValidationContract().is_false(
         entity_mock.bool_false_property, "Bool", message
     )

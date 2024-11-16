@@ -39,7 +39,19 @@ fake = Faker()
     ],
 )
 def test_should_be_valid_and_not_return_notification_when_required_is_not_none(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct,
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = Contract().requires(
         input, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20)
@@ -55,7 +67,19 @@ def test_should_be_valid_and_not_return_notification_when_required_is_not_none(
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_required_is_none_or_empty(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct,
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = Contract().requires(
         input, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20)

@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Self, overload
@@ -34,64 +35,62 @@ class CommonsValidationContract(Notifiable):
     """
 
     @overload
-    def is_none(self, value: tuple, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: tuple, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: Struct, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: Struct, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: set, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: set, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: bool, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: bool, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: dict, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: dict, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: list, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: list, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: Iterable, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: Iterable, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: Callable, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: Callable, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: int, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: int, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: str, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: str, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: Decimal, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: Decimal, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: float, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: float, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: UUID, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: UUID, key: str, message: str) -> Self: ...
 
     @overload
-    def is_none(self, value: object, key: str, message: str) -> Self:
-        ...
+    def is_none(self, value: object, key: str, message: str) -> Self: ...
 
     def is_none(
         self,
-        value: str | Decimal | list | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        value: str
+        | Decimal
+        | list
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -131,64 +130,62 @@ class CommonsValidationContract(Notifiable):
         return self
 
     @overload
-    def is_not_none(self, value: tuple, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: tuple, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: Struct, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: Struct, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: set, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: set, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: bool, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: bool, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: dict, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: dict, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: list, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: list, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: Iterable, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: Iterable, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: Callable, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: Callable, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: int, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: int, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: str, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: str, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: Decimal, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: Decimal, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: float, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: float, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: UUID, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: UUID, key: str, message: str) -> Self: ...
 
     @overload
-    def is_not_none(self, value: object, key: str, message: str) -> Self:
-        ...
+    def is_not_none(self, value: object, key: str, message: str) -> Self: ...
 
     def is_not_none(
         self,
-        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        value: str
+        | list
+        | Decimal
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -230,91 +227,101 @@ class CommonsValidationContract(Notifiable):
     @overload
     def are_equals(
         self, value: tuple, comparer: tuple, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: Struct, comparer: Struct, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: set, comparer: set, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: bool, comparer: bool, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: dict, comparer: dict, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: list, comparer: list, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: Iterable, comparer: Iterable, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: Callable, comparer: Callable, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: int, comparer: int, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: str, comparer: str, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: Decimal, comparer: Decimal, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: float, comparer: float, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: UUID, comparer: UUID, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_equals(
         self, value: object, comparer: object, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def are_equals(
         self,
-        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
-        comparer: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        value: str
+        | list
+        | Decimal
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
+        comparer: str
+        | list
+        | Decimal
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -358,91 +365,101 @@ class CommonsValidationContract(Notifiable):
     @overload
     def are_not_equals(
         self, value: tuple, comparer: tuple, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: Struct, comparer: Struct, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: set, comparer: set, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: bool, comparer: bool, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: dict, comparer: dict, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: list, comparer: list, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: Iterable, comparer: Iterable, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: Callable, comparer: Callable, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: int, comparer: int, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: str, comparer: str, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: Decimal, comparer: Decimal, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: float, comparer: float, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: UUID, comparer: UUID, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def are_not_equals(
         self, value: object, comparer: object, key: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def are_not_equals(
         self,
-        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
-        comparer: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        value: str
+        | list
+        | Decimal
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
+        comparer: str
+        | list
+        | Decimal
+        | float
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable
+        | bool,
         key: str,
         message: str,
     ) -> Self:

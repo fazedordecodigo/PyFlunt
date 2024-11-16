@@ -40,7 +40,19 @@ fake = Faker()
     ],
 )
 def test_should_return_true_when_are_equals_receives_two_values_are_equal_regardless_of_the_type(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = CommonsValidationContract()
     contract.are_equals(
@@ -74,8 +86,32 @@ def test_should_return_true_when_are_equals_receives_two_values_are_equal_regard
     ],
 )
 def test_should_return_false_when_are_equals_receives_two_values_are_not_equal_regardless_of_the_type(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct,
-    expected: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
+    expected: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = CommonsValidationContract()
     contract.are_equals(
@@ -107,7 +143,19 @@ def test_should_return_false_when_are_equals_receives_two_values_are_not_equal_r
     ],
 )
 def test_should_return_true_when_are_not_equals_receives_two_values_are_equal_regardless_of_the_type(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = CommonsValidationContract()
     contract.are_not_equals(
@@ -141,8 +189,32 @@ def test_should_return_true_when_are_not_equals_receives_two_values_are_equal_re
     ],
 )
 def test_should_return_true_when_are_not_equals_receives_two_values_are_not_equal_regardless_of_the_type(
-    input: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct,
-    expected: bool | str | float | tuple | set | list | Iterable | dict | Callable | Decimal | UUID | object | Struct
+    input: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
+    expected: bool
+    | str
+    | float
+    | tuple
+    | set
+    | list
+    | Iterable
+    | dict
+    | Callable
+    | Decimal
+    | UUID
+    | object
+    | Struct,
 ) -> None:
     contract = CommonsValidationContract()
     contract.are_not_equals(
@@ -172,7 +244,9 @@ def test_should_return_false_when_is_none_receives_value_is_not_none() -> None:
     assert contract.is_valid is False
 
 
-def test_should_return_true_when_is_not_none_receives_value_is_not_none() -> None:
+def test_should_return_true_when_is_not_none_receives_value_is_not_none() -> (
+    None
+):
     contract = CommonsValidationContract()
     contract.is_not_none(
         fake.text(max_nb_chars=10),

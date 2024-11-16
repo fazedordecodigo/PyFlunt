@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from __future__ import annotations
 
 from typing import Self, overload
@@ -33,44 +34,37 @@ class CollectionsValidationContract(Notifiable):
     @overload
     def is_lower_than(
         self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_than(
         self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def is_lower_than(
         self,
@@ -127,44 +121,37 @@ class CollectionsValidationContract(Notifiable):
     @overload
     def is_lower_or_equals_than(
         self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_lower_or_equals_than(
         self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def is_lower_or_equals_than(
         self,
@@ -221,44 +208,37 @@ class CollectionsValidationContract(Notifiable):
     @overload
     def is_greater_than(
         self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_than(
         self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def is_greater_than(
         self,
@@ -315,44 +295,37 @@ class CollectionsValidationContract(Notifiable):
     @overload
     def is_greater_or_equals_than(
         self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_greater_or_equals_than(
         self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def is_greater_or_equals_than(
         self,
@@ -409,44 +382,37 @@ class CollectionsValidationContract(Notifiable):
     @overload
     def is_between(
         self, value: bytearray, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: range, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: tuple, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: set, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: dict, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: list, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def is_between(
         self, value: str, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def is_between(
         self,

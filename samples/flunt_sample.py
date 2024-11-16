@@ -1,4 +1,5 @@
 """Module Value Objects."""
+
 from __future__ import annotations
 
 import logging

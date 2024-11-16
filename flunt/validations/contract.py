@@ -1,4 +1,5 @@
 """Module Contract."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Self, overload
@@ -56,84 +57,83 @@ class Contract(
     @overload
     def requires(
         self, value: tuple, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: Struct, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: set, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: bool, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: dict, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: list, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: Iterable, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: Callable, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: str, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: Decimal, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: float, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: UUID, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     @overload
     def requires(
         self, value: object, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    ) -> Self: ...
 
     def requires(
         self,
-        value: str | float | list | bool | Decimal | UUID | dict | object | set | Struct | tuple | Iterable | Callable,
+        value: str
+        | float
+        | list
+        | bool
+        | Decimal
+        | UUID
+        | dict
+        | object
+        | set
+        | Struct
+        | tuple
+        | Iterable
+        | Callable,
         field: str,
         message: str = REQUIRED,
     ) -> Self:
