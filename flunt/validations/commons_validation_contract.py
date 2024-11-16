@@ -1,15 +1,15 @@
 """Module Contract."""
 from __future__ import annotations
 
-from collections.abc import Iterable
-from decimal import Decimal
-from struct import Struct
-from typing import Callable, Union, overload
-from uuid import UUID
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Self, overload
 
 from flunt.notifications.notifiable import Notifiable
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Iterable
+    from decimal import Decimal
+    from struct import Struct
+    from uuid import UUID
 
 
 class CommonsValidationContract(Notifiable):
@@ -91,21 +91,7 @@ class CommonsValidationContract(Notifiable):
 
     def is_none(
         self,
-        value: Union[
-            str,
-            Decimal,
-            list,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
+        value: str | Decimal | list | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -202,21 +188,7 @@ class CommonsValidationContract(Notifiable):
 
     def is_not_none(
         self,
-        value: Union[
-            str,
-            list,
-            Decimal,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
+        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -341,36 +313,8 @@ class CommonsValidationContract(Notifiable):
 
     def are_equals(
         self,
-        value: Union[
-            str,
-            list,
-            Decimal,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
-        comparer: Union[
-            str,
-            list,
-            Decimal,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
+        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        comparer: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
         key: str,
         message: str,
     ) -> Self:
@@ -497,36 +441,8 @@ class CommonsValidationContract(Notifiable):
 
     def are_not_equals(
         self,
-        value: Union[
-            str,
-            list,
-            Decimal,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
-        comparer: Union[
-            str,
-            list,
-            Decimal,
-            float,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-            bool,
-        ],
+        value: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
+        comparer: str | list | Decimal | float | UUID | dict | object | set | Struct | tuple | Iterable | Callable | bool,
         key: str,
         message: str,
     ) -> Self:

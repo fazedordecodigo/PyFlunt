@@ -2,8 +2,7 @@
 from __future__ import annotations
 
 import re
-
-from typing_extensions import Self
+from typing import Self
 
 from flunt.constants.messages import IS_NOT_CREDIT_CARD
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
@@ -20,7 +19,7 @@ class CreditCardValidationContract(Notifiable):
     Methods
     -------
     is_credit_card(self, value: bool, field: str, message: str) -> self:
-            Checks if the provided str value is a Credt Card Number and adds a notification if it is not True.
+            Checks if the provided str value is a Credit Card Number and adds a notification if it is not True.
 
     """
 
@@ -28,7 +27,7 @@ class CreditCardValidationContract(Notifiable):
         self, value: str, field: str, message: str = IS_NOT_CREDIT_CARD
     ) -> Self:
         """
-        Check if the provided str value is a Credt Card Number and adds a notification if it is not True.
+        Check if the provided str value is a Credit Card Number and adds a notification if it is not True.
 
         Parameters
         ----------

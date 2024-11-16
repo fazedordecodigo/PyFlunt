@@ -1,13 +1,7 @@
 """Module Contract."""
 from __future__ import annotations
 
-from collections.abc import Iterable
-from decimal import Decimal
-from struct import Struct
-from typing import Callable, Union, overload
-from uuid import UUID
-
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Self, overload
 
 from flunt.constants.messages import REQUIRED
 from flunt.notifications.notifiable import Notifiable
@@ -25,6 +19,12 @@ from flunt.validations.email_validation_contract import EmailValidationContract
 from flunt.validations.strings_validation_contract import (
     StringValidationContract,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Callable, Iterable
+    from decimal import Decimal
+    from struct import Struct
+    from uuid import UUID
 
 
 class Contract(
@@ -133,21 +133,7 @@ class Contract(
 
     def requires(
         self,
-        value: Union[
-            str,
-            float,
-            list,
-            bool,
-            Decimal,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-        ],
+        value: str | float | list | bool | Decimal | UUID | dict | object | set | Struct | tuple | Iterable | Callable,
         field: str,
         message: str = REQUIRED,
     ) -> Self:

@@ -2,16 +2,14 @@
 from __future__ import annotations
 
 import re
-from typing import Union
-
-from typing_extensions import Self
+from typing import Self
 
 from flunt.constants.messages import IS_EMAIL, IS_NOT_EMAIL
 from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 from flunt.notifications.notifiable import Notifiable
 
 
-def _valid_email(value) -> Union[re.Match[str], None]:
+def _valid_email(value) -> re.Match[str] | None:
     """
     Check if the provided value matches the valid email address pattern.
 

@@ -1,7 +1,7 @@
 """Module Contract."""
 from __future__ import annotations
 
-from typing import Self, Union, overload
+from typing import Self, overload
 
 from flunt.notifications.notifiable import Notifiable
 
