@@ -20,7 +20,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ## [2.3.1] - 2024-12-16
 ### Adicionado
-- Refactoração para `get_pattern` em `CreditCardValidationContract` e `EmailValidationContract`.
+- Refatoração para `get_pattern` em `CreditCardValidationContract` e `EmailValidationContract`.
 
 ### Corrigido
 - Garantindo que os padrões regex retornem dados válidos para validações.

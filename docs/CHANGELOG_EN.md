@@ -16,6 +16,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 - Add Objects validation [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Add Regex validation [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Add URL validation [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+- Refactor `FluntRegexPatterns` [#129](https://github.com/fazedordecodigo/PyFlunt/issues/129)
+
+## [2.3.1] - 2024-12-16
+### Added
+- Refactor to use `get_pattern` in `CreditCardValidationContract` and `EmailValidationContract`.
+
+### Fixed
+- Ensure regex patterns return valid data for validations.
+- Refactor `FluntRegexPatterns` [#129](https://github.com/fazedordecodigo/PyFlunt/issues/129)
 
 ## [2.2.0] - 2024-03-13
 ### Added
