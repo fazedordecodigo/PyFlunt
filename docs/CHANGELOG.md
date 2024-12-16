@@ -16,6 +16,15 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 - Adicionar Result Pattner [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+- Refatorar FluntRegexPatterns [#129](https://github.com/fazedordecodigo/PyFlux/issues/129)
+
+## [2.3.1] - 2024-12-16
+### Adicionado
+- Refactoração para `get_pattern` em `CreditCardValidationContract` e `EmailValidationContract`.
+
+### Corrigido
+- Garantindo que os padrões regex retornem dados válidos para validações.
+- Refatorar FluntRegexPatterns [#129](https://github.com/fazedordecodigo/PyFlux/issues/129)
 
 ## [2.3.0] - 2024-03-17
 ### Adicionado
