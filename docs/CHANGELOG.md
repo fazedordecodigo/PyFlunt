@@ -15,7 +15,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de Objetos [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
-- Adicionar Result Pattner [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+- Adicionar Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
 - Refatorar FluntRegexPatterns [#129](https://github.com/fazedordecodigo/PyFlux/issues/129)
 
 ## [2.3.1] - 2024-12-16
