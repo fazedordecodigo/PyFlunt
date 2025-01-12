@@ -1,4 +1,5 @@
 """Module Flunt Regex Patterns."""
+from __future__ import annotations
 
 REGEX_PATTERNS = {
     "email": r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
