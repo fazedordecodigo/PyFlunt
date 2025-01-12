@@ -20,7 +20,7 @@ class CreditCardValidationContract(Notifiable):
     Methods
     -------
     is_credit_card(self, value: bool, field: str, message: str) -> self:
-            Checks if the provided str value is a Credit Card Number and adds a notification if it is not True.
+        Checks if the provided str value is a Credit Card Number and adds a notification if it is not True.
 
     """
 
@@ -33,16 +33,16 @@ class CreditCardValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str
-                The string value to be checked.
+            The string value to be checked.
         `field`: str
-                The field or identifier associated with the notification.
+            The field or identifier associated with the notification.
         `message`: str (optional)
-                The message of the notification to be added.
+            The message of the notification to be added.
 
         Returns
         -------
         `self`
-                The current instance of the class.
+            The current instance of the class.
 
         Notes
         -----
@@ -54,14 +54,14 @@ class CreditCardValidationContract(Notifiable):
         --------
         ```python
         obj = Contract()
-                .is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
+            .is_credit_card("5432.5678.3234.2343", "CreditCard", "Value should return a valid Credit Card Number")
         obj.is_valid # True
         ```
 
         """
         only_number_pattern = get_pattern("only_numbers")
-        
-        if not re.match(
+
+        if only_number_pattern is None or not re.match(
             only_number_pattern,
             value,
             re.IGNORECASE,
