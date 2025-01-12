@@ -2,9 +2,19 @@
 
 from __future__ import annotations
 
-from typing import Self, overload
+from typing import TYPE_CHECKING, Self
 
+from flunt.constants.messages import (
+    GREATER_OR_EQUALS_THAN,
+    GREATER_THAN,
+    IS_BETWEEN,
+    LOWER_OR_EQUALS_THAN,
+    LOWER_THAN,
+)
 from flunt.notifications.notifiable import Notifiable
+
+if TYPE_CHECKING:
+    from collections.abc import Sized
 
 
 class CollectionsValidationContract(Notifiable):
@@ -25,53 +35,16 @@ class CollectionsValidationContract(Notifiable):
     - is_lower_or_equals_than(value, comparer, field, message): Checks if the length of a collection value is lower or equal to a given number.
     - is_greater_than(value, comparer, field, message): Checks if the length of a collection value is greater than a given number.
     - is_greater_or_equals_than(value, comparer, field, message): Checks if the length of a collection value is greater or equal to a given number.
-    - contains(value, comparer, field, message): Checks if a collection contains a specific collection.
-    - not_contains(value, comparer, field, message): Checks if a collection does not contain a specific collection.
     - is_between(value, min, max, field, message): Checks if the length of a collection is between a minimum and maximum value.
 
     """
 
-    @overload
-    def is_lower_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self: ...
-
     def is_lower_than(
         self,
-        value: str | list | dict | set | tuple | range | bytearray,
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = LOWER_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is lower than a given number and adds a notification if it's greater.
@@ -111,54 +84,22 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, "Value is not Sized")
             return self
+
+        if message is LOWER_THAN:
+            message = LOWER_THAN.format(field, comparer)
 
         if len(value) >= comparer:
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_lower_or_equals_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self: ...
-
     def is_lower_or_equals_than(
         self,
-        value: str | list | dict | set | tuple | range | bytearray,
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = LOWER_OR_EQUALS_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is lower or equal to a given number and adds a notification if it exceeds.
@@ -198,54 +139,22 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, "Value is not Sized")
             return self
+
+        if message is LOWER_OR_EQUALS_THAN:
+            message = LOWER_OR_EQUALS_THAN.format(field, comparer)
 
         if len(value) > comparer:
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_greater_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self: ...
-
     def is_greater_than(
         self,
-        value: str | list | dict | set | tuple | range | bytearray,
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = GREATER_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is greater than a given number and adds a notification if it's smaller.
@@ -285,54 +194,22 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, "Value is not Sized")
             return self
+
+        if message is GREATER_THAN:
+            message = GREATER_THAN.format(field, comparer)
 
         if len(value) <= comparer:
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_greater_or_equals_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self: ...
-
     def is_greater_or_equals_than(
         self,
-        value: str | list | dict | set | tuple | range | bytearray,
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = GREATER_OR_EQUALS_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is greater than or equal to a given number and adds a notification if it's smaller.
@@ -372,55 +249,23 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, "Value is not Sized")
             return self
+
+        if message is GREATER_OR_EQUALS_THAN:
+            message = GREATER_OR_EQUALS_THAN.format(field, comparer)
 
         if len(value) < comparer:
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_between(
-        self, value: bytearray, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: range, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: tuple, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: set, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: dict, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: list, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
-    @overload
-    def is_between(
-        self, value: str, min: int, max: int, field: str, message: str
-    ) -> Self: ...
-
     def is_between(
         self,
-        value: str | list | dict | set | tuple | range | bytearray,
+        value: Sized,
         min: int,
         max: int,
         field: str,
-        message: str,
+        message: str = IS_BETWEEN
     ) -> Self:
         """
         Require a collection value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
@@ -453,8 +298,13 @@ class CollectionsValidationContract(Notifiable):
         Examples
         --------
         ```python
-        obj = Contract()
-                        .is_between("Hello", 3, 6, "LengthCheck", "Value length should be between 3 and 6")
+        obj = Contract().is_between(
+            "Hello",
+            3,
+            6,
+            "LengthCheck",
+            "Value length should be between 3 and 6",
+        )
         obj.is_valid
         ```
 
@@ -466,6 +316,9 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is a not collection")
             return self
 
-        if len(value) < min or len(value) > max:
+        if message is IS_BETWEEN:
+            message = IS_BETWEEN.format(field, min, max)
+
+        if not min <= len(value) <= max:
             self.add_notification(field, message)
         return self

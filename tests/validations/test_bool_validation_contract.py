@@ -58,7 +58,7 @@ def test_should_return_a_standard_message_when_is_true_is_invalid(
     contract = BoolValidationContract().is_true(
         entity_mock.bool_false_property, "Bool"
     )
-    assert contract.get_notifications()[0].message == IS_TRUE
+    assert contract.get_notifications()[0].message == IS_TRUE.format("Bool")
 
 
 def test_should_return_a_standard_message_when_is_false_is_invalid(
@@ -67,4 +67,4 @@ def test_should_return_a_standard_message_when_is_false_is_invalid(
     contract = BoolValidationContract().is_false(
         entity_mock.bool_true_property, "Bool"
     )
-    assert contract.get_notifications()[0].message == IS_FALSE
+    assert contract.get_notifications()[0].message == IS_FALSE.format("Bool")

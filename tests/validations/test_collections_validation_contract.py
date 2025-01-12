@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Sized
 from random import randint
 
 import pytest
@@ -547,13 +548,11 @@ def test_should_be_valid_and_not_return_notification_when_value_is_between(
     ],
 )
 def test_should_be_invalid_and_return_once_notification_when_value_is_not_between(
-    value: str | list | dict | set | tuple | range | bytearray,
+    value: Sized,
     value_min: int,
     value_max: int,
-    key: str,
-    message: str,
 ) -> None:
     contract = CollectionsValidationContract().is_between(
-        value, value_min, value_max, key, message
+        value, value_min, value_max, "key"
     )
-    assert contract.is_valid is False
+    assert len(contract.get_notifications()) == 1
