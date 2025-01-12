@@ -52,18 +52,18 @@ class CollectionsValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
+            The collection value to compare.
         `comparer`: int
-                The maximum length allowed for the value.
+            The maximum length allowed for the value.
         `field`: str
-                The field or identifier associated with the comparison.
+            The field or identifier associated with the comparison.
         `message`: str
-                The notification message to be added if the length exceeds the comparer.
+            The notification message to be added if the length exceeds the comparer.
 
         Returns
         -------
         `self`
-                The current instance with potential notifications added.
+             The current instance with potential notifications added.
 
         Notes
         -----
@@ -75,7 +75,7 @@ class CollectionsValidationContract(Notifiable):
         --------
         ```python
         obj = Contract()
-                        .is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+                .is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
         obj.is_valid
         ```
 
@@ -107,18 +107,18 @@ class CollectionsValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
+            The collection value to compare.
         `comparer`: int
-                The maximum length allowed for the value.
+            The maximum length allowed for the value.
         `field`: str
-                The field or identifier associated with the comparison.
+            The field or identifier associated with the comparison.
         `message`: str
-                The notification message to be added if the length exceeds the comparer.
+            The notification message to be added if the length exceeds the comparer.
 
         Returns
         -------
         `self`
-                The current instance with potential notifications added.
+            The current instance with potential notifications added.
 
         Notes
         -----
@@ -130,7 +130,7 @@ class CollectionsValidationContract(Notifiable):
         --------
         ```python
         obj = Contract()
-                        .is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
+                .is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
         obj.is_valid
         ```
 
@@ -162,18 +162,18 @@ class CollectionsValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
+            The collection value to compare.
         `comparer`: int
-                The minimum length required for the value.
+            The minimum length required for the value.
         `field`: str
-                The field or identifier associated with the comparison.
+            The field or identifier associated with the comparison.
         `message`: str
-                The notification message to be added if the length is smaller than the comparer.
+            The notification message to be added if the length is smaller than the comparer.
 
         Returns
         -------
         `self`
-                The current instance with potential notifications added.
+            The current instance with potential notifications added.
 
         Notes
         -----
@@ -185,7 +185,7 @@ class CollectionsValidationContract(Notifiable):
         --------
         ```python
         obj = Contract()
-                .is_greater_than("Hello", 3, "LengthCheck", "Value should have a length greater than 3")
+            .is_greater_than("Hello", 3, "LengthCheck", "Value should have a length greater than 3")
         obj.is_valid
         ```
 
@@ -217,18 +217,18 @@ class CollectionsValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
+            The collection value to compare.
         `comparer`: int
-                The minimum length required for the value.
+            The minimum length required for the value.
         `field`: str
-                The field or identifier associated with the comparison.
+            The field or identifier associated with the comparison.
         `message`: str
-                The notification message to be added if the length is smaller than the comparer.
+            The notification message to be added if the length is smaller than the comparer.
 
         Returns
         -------
         `self`
-                The current instance with potential notifications added.
+            The current instance with potential notifications added.
 
         Notes
         -----
@@ -240,7 +240,7 @@ class CollectionsValidationContract(Notifiable):
         --------
         ```python
         obj = Contract()
-                .is_greater_or_equals_than("Hello", 3, "LengthCheck", "Value should have a length greater than or equal to 3")
+            .is_greater_or_equals_than("Hello", 3, "LengthCheck", "Value should have a length greater than or equal to 3")
         obj.is_valid
         ```
 
@@ -273,20 +273,20 @@ class CollectionsValidationContract(Notifiable):
         Parameters
         ----------
         `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to be checked.
+            The collection value to be checked.
         `min`: int
-                The minimum allowed length for the value.
+            The minimum allowed length for the value.
         `max`: int
-                The maximum allowed length for the value.
+            The maximum allowed length for the value.
         `field`: str
-                The field or identifier associated with the length check.
+            The field or identifier associated with the length check.
         `message`: str
-                The notification message to be added if the length is outside the range.
+            The notification message to be added if the length is outside the range.
 
         Returns
         -------
         `self`
-                The current instance with potential notifications added.
+            The current instance with potential notifications added.
 
         Notes
         -----
