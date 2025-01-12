@@ -17,10 +17,10 @@ class BoolValidationContract(Notifiable):
     Methods
     -------
     is_false(value: bool, field: str, message: str) -> self:
-            Checks if the provided boolean value is False and adds a notification if it is True.
+        Checks if the provided boolean value is False and adds a notification if it is True.
 
     is_true(value: bool, field: str, message: str) -> self:
-            Checks if the provided boolean value is True and adds a notification if it is False.
+        Checks if the provided boolean value is True and adds a notification if it is False.
 
     """
 
@@ -42,7 +42,7 @@ class BoolValidationContract(Notifiable):
         Returns
         -------
         `Self`
-        The current instance of the class.
+                The current instance of the class.
 
         Notes
         -----
@@ -61,7 +61,7 @@ class BoolValidationContract(Notifiable):
         """
         if message is IS_FALSE:
             message = IS_FALSE.format(field)
-        
+
         if value:
             self.add_notification(field, message)
         return self
