@@ -6,7 +6,7 @@ import re
 from typing import Self
 
 from flunt.constants.messages import IS_NOT_CREDIT_CARD
-from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
+from flunt.localization.flunt_regex_patterns import get_pattern
 from flunt.notifications.notifiable import Notifiable
 
 
@@ -59,8 +59,10 @@ class CreditCardValidationContract(Notifiable):
         ```
 
         """
+        only_number_pattern = get_pattern("only_numbers")
+        
         if not re.match(
-            FluntRegexPatterns().only_number_regex_pattern,
+            only_number_pattern,
             value,
             re.IGNORECASE,
         ):

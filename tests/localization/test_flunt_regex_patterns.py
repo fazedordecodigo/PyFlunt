@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING
-
 import pytest
+from flunt.localization.flunt_regex_patterns import get_pattern
+
 from faker import Faker
 
 if TYPE_CHECKING:
     from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
 
 fake = Faker("pt_BR")
-
 
 @pytest.mark.parametrize(
     ("value", "expect"),
@@ -20,10 +19,9 @@ fake = Faker("pt_BR")
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_email_address(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.email_regex_pattern, value)
+def test_should_identify_a_valid_email_address(value, expect):
+    regex = get_pattern("email")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -36,10 +34,9 @@ def test_should_identify_a_valid_email_address(
         (fake.cnpj(), False),
     ],
 )
-def test_should_identify_a_valid_cpf(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.cpf_regex_pattern, value)
+def test_should_identify_a_valid_cpf(value, expect):
+    regex = get_pattern("cpf")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -52,10 +49,9 @@ def test_should_identify_a_valid_cpf(
         (fake.cpf(), False),
     ],
 )
-def test_should_identify_a_valid_cnpj(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.cnpj_regex_pattern, value)
+def test_should_identify_a_valid_cnpj(value, expect):
+    regex = get_pattern("cnpj")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -67,10 +63,9 @@ def test_should_identify_a_valid_cnpj(
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_url(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.url_regex_pattern, value)
+def test_should_identify_a_valid_url(value, expect):
+    regex = get_pattern("url")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -83,10 +78,9 @@ def test_should_identify_a_valid_url(
         (fake.ipv4_public(), False),
     ],
 )
-def test_should_identify_only_numbers(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.only_number_regex_pattern, value)
+def test_should_identify_only_numbers(value, expect):
+    regex = get_pattern("only_numbers")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -99,10 +93,9 @@ def test_should_identify_only_numbers(
         ("", False),
     ],
 )
-def test_should_identify_letters_and_numbers(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.only_letters_and_numbers_regex_pattern, value)
+def test_should_identify_letters_and_numbers(value, expect):
+    regex = get_pattern("only_letters_and_numbers")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
 
@@ -113,8 +106,7 @@ def test_should_identify_letters_and_numbers(
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_passport(
-    regex: FluntRegexPatterns, value: str, expect: bool
-) -> None:
-    result = re.match(regex.passport_regex_pattern, value)
+def test_should_identify_a_valid_passport(value, expect):
+    regex = get_pattern("passport")
+    result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
