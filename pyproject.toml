@@ -41,7 +41,8 @@ classifiers = [
   "Natural Language :: Portuguese",
   "Natural Language :: Portuguese (Brazilian)"
 ]
-dependencies = []
+
+dependencies = [ ]
 
 [project.urls]
 Repository = "https://github.com/fazedordecodigo/PyFlunt"
@@ -56,28 +57,29 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-  { include-group = "lint" },
+  { include-group = "linter" },
   { include-group = "pkg-meta" },
   { include-group = "test" },
   { include-group = "type" },
 ]
 
 test = [
-  "faker>=33.0.0",
-  "pytest>=8.3.3",
-  "pytest-cov>=6.0.0"
+  "faker>=35.2.0",
+  "pytest>=8.3.4",
+  "pytest-cov>=6.0.0",
+  "tox>=4.24.1",
 ]
 
-type = [ "mypy>=1.13.0", { include-group = "test" } ]
+type = [ "mypy>=1.15.0", { include-group = "test" } ]
 
-lint = [
-  "ruff>=0.7.4",
-  "pre-commit>=4.0.1",
+linter = [
+  "ruff>=0.9.6",
+  "pre-commit>=4.1.0",
   "pre-commit-hooks>=5.0.0",
   "pre-commit-uv>=4.1.4"
 ]
 
-pkg-meta = [ "uv>=0.5.2" ]
+pkg-meta = [ "uv>=0.5.30" ]
 
 [project.scripts]
 sample = "samples.flunt_sample:main"
@@ -168,9 +170,6 @@ ignore = [
   "S101",          # Use of `assert` detected
   "S603"           # Use of `assertRaises` detected
 ]
-
-[tool.ruff.lint.isort]
-required-imports = ["from __future__ import annotations"]
 
 [tool.mypy]
 files = ['flunt']
