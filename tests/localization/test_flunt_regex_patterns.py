@@ -1,15 +1,17 @@
 from __future__ import annotations
 
 import re
-import pytest
-from flunt.localization.flunt_regex_patterns import get_pattern
 
+import pytest
 from faker import Faker
 
+from flunt.localization.flunt_regex_patterns import get_pattern
+
 if TYPE_CHECKING:
-    from flunt.localization.flunt_regex_patterns import FluntRegexPatterns
+    pass
 
 fake = Faker("pt_BR")
+
 
 @pytest.mark.parametrize(
     ("value", "expect"),

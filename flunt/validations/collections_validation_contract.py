@@ -265,7 +265,7 @@ class CollectionsValidationContract(Notifiable):
         min: int,
         max: int,
         field: str,
-        message: str = IS_BETWEEN
+        message: str = IS_BETWEEN,
     ) -> Self:
         """
         Require a collection value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.

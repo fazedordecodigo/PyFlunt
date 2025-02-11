@@ -42,7 +42,8 @@ classifiers = [
   "Natural Language :: Portuguese (Brazilian)"
 ]
 
-dependencies = [ ]
+dependencies = []
+
 
 [project.urls]
 Repository = "https://github.com/fazedordecodigo/PyFlunt"
@@ -67,7 +68,6 @@ test = [
   "faker>=35.2.0",
   "pytest>=8.3.4",
   "pytest-cov>=6.0.0",
-  "tox>=4.24.1",
 ]
 
 type = [ "mypy>=1.15.0", { include-group = "test" } ]
