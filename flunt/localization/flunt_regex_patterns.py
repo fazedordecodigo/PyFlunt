@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import re
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -24,10 +23,6 @@ REGEX_PATTERNS = {
 def get_pattern(name: str) -> str | Pattern[str]:
     """Retrieve a regex pattern by its name."""
     value = REGEX_PATTERNS.get(name)
-    return converter_para_pattern(value)
-
-
-def converter_para_pattern(valor: str | None) -> str | Pattern[str]:
-    if valor is None:
+    if value is None:
         return ""
-    return re.compile(valor)
+    return value

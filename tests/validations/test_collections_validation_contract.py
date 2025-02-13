@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from random import randint
+from typing import TYPE_CHECKING
 
 import pytest
 from faker import Faker
@@ -8,6 +9,9 @@ from faker import Faker
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Sized
 
 fake = Faker()
 
