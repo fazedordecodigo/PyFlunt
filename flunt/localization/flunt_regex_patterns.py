@@ -2,6 +2,12 @@
 
 from __future__ import annotations
 
+import re
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from re import Pattern
+
 REGEX_PATTERNS = {
     "email": r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",
     "passport": r"^(?!^0+$)[a-zA-Z0-9]{3,20}$",
@@ -15,6 +21,13 @@ REGEX_PATTERNS = {
 }
 
 
-def get_pattern(name: str) -> str | None:
+def get_pattern(name: str) -> str | Pattern[str]:
     """Retrieve a regex pattern by its name."""
-    return REGEX_PATTERNS.get(name)
+    value = REGEX_PATTERNS.get(name)
+    return converter_para_pattern(value)
+
+
+def converter_para_pattern(valor: str | None) -> str | Pattern[str]:
+    if valor is None:
+        return ""
+    return re.compile(valor)

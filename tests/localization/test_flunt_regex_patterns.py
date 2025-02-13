@@ -7,9 +7,6 @@ from faker import Faker
 
 from flunt.localization.flunt_regex_patterns import get_pattern
 
-if TYPE_CHECKING:
-    pass
-
 fake = Faker("pt_BR")
 
 
