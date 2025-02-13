@@ -18,7 +18,9 @@ fake = Faker("pt_BR")
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_email_address(value, expect):
+def test_should_identify_a_valid_email_address(
+    value: str, expect: bool
+) -> None:
     regex = get_pattern("email")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -33,7 +35,7 @@ def test_should_identify_a_valid_email_address(value, expect):
         (fake.cnpj(), False),
     ],
 )
-def test_should_identify_a_valid_cpf(value, expect):
+def test_should_identify_a_valid_cpf(value: str, expect: bool) -> None:
     regex = get_pattern("cpf")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -48,7 +50,7 @@ def test_should_identify_a_valid_cpf(value, expect):
         (fake.cpf(), False),
     ],
 )
-def test_should_identify_a_valid_cnpj(value, expect):
+def test_should_identify_a_valid_cnpj(value: str, expect: bool) -> None:
     regex = get_pattern("cnpj")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -62,7 +64,7 @@ def test_should_identify_a_valid_cnpj(value, expect):
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_url(value, expect):
+def test_should_identify_a_valid_url(value: str, expect: bool) -> None:
     regex = get_pattern("url")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -77,7 +79,7 @@ def test_should_identify_a_valid_url(value, expect):
         (fake.ipv4_public(), False),
     ],
 )
-def test_should_identify_only_numbers(value, expect):
+def test_should_identify_only_numbers(value: str, expect: bool) -> None:
     regex = get_pattern("only_numbers")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -92,7 +94,7 @@ def test_should_identify_only_numbers(value, expect):
         ("", False),
     ],
 )
-def test_should_identify_letters_and_numbers(value, expect):
+def test_should_identify_letters_and_numbers(value: str, expect: bool) -> None:
     regex = get_pattern("only_letters_and_numbers")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
@@ -105,7 +107,7 @@ def test_should_identify_letters_and_numbers(value, expect):
         (fake.name(), False),
     ],
 )
-def test_should_identify_a_valid_passport(value, expect):
+def test_should_identify_a_valid_passport(value: str, expect: bool) -> None:
     regex = get_pattern("passport")
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
