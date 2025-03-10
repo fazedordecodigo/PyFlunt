@@ -68,7 +68,7 @@ ipykernel = "^6.29.4"
 
 [tool.poetry.group.doc.dependencies]
 mkdocs-material = "^9.5.9"
-mkdocstrings = ">=0.24,<0.28"
+mkdocstrings = ">=0.24,<0.29"
 mkdocstrings-python = "^1.8.0"
 
 [tool.poetry.scripts]
