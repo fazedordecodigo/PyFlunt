@@ -24,7 +24,6 @@ class NotifiableProtocol(ABC):
 
     Methods
     -------
-    - get_notification_instance
     - add_notifications
     - add_notification
     - get_notifications
@@ -157,25 +156,6 @@ class NotifiableProtocol(ABC):
         ```python
         obj = Notifiable()
         obj.clear()  # []
-        ```
-
-        """
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        """
-        Return a string representation of the list of notifications.
-
-        Returns
-        -------
-        `str`
-                A string representation of the list of notifications.
-
-        Examples
-        --------
-        ```python
-        obj = Notifiable()
-        repr(obj)  # "[]"
         ```
 
         """
