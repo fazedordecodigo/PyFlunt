@@ -46,7 +46,17 @@ jobs:
 
       - name: SonarCloud Scan
         if: matrix.env == '3.13' && matrix.os == 'ubuntu-latest'
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          projectBaseDir: app/src
+          args: >
+            -Dsonar.organization=fazedordecodigo
+            -Dsonar.projectKey=fazedordecodigo_PyFlunt
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=flunt/
+            -Dsonar.tests=tests/
+            -Dsonar.test.exclusions=tests/**
+            -Dsonar.verbose=false
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
