@@ -68,7 +68,7 @@ class Pessoa(Notifiable):
         self.primeiro_nome = primeiro_nome
         self.ultimo_nome = ultimo_nome
         self.email = email
-        
+
         # Criando um contrato de validação
         contract = (
             Contract()
@@ -89,7 +89,7 @@ class Pessoa(Notifiable):
             )
             .is_email(self.email, "email", "E-mail inválido")
         )
-        
+
         # Adicionando as notificações do contrato à entidade
         self.add_notifications(contract.get_notifications())
 

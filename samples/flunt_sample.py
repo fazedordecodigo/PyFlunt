@@ -11,7 +11,9 @@ from flunt.validations.contract import Contract
 class Pessoa(Notifiable):
     """Classe Objeto de Valor Pessoa."""
 
-    def __init__(self, primeiro_nome: str, ultimo_nome: str, email: str) -> None:
+    def __init__(
+        self, primeiro_nome: str, ultimo_nome: str, email: str
+    ) -> None:
         """Construtor da classe."""
         super().__init__()
         self.primeiro_nome = primeiro_nome
@@ -21,8 +23,12 @@ class Pessoa(Notifiable):
         # Criando um contrato de validação
         contract = (
             Contract()
-            .requires(self.primeiro_nome, "primeiro nome", "Nome é obrigatório")
-            .requires(self.ultimo_nome, "ultimo nome", "Sobrenome é obrigatório")
+            .requires(
+                self.primeiro_nome, "primeiro nome", "Nome é obrigatório"
+            )
+            .requires(
+                self.ultimo_nome, "ultimo nome", "Sobrenome é obrigatório"
+            )
             .requires(self.email, "email", "E-mail é obrigatório")
             .is_lower_than(
                 self.primeiro_nome,
@@ -38,7 +44,7 @@ class Pessoa(Notifiable):
             )
             .is_email(self.email, "email", "E-mail inválido")
         )
-        
+
         # Adicionando as notificações do contrato à entidade
         self.add_notifications(contract.get_notifications())
 
