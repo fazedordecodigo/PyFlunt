@@ -1,4 +1,4 @@
-"""Module Value Objects."""
+"""Módulo de exemplo com Objetos de Valor."""
 
 from __future__ import annotations
 
@@ -9,45 +9,50 @@ from flunt.validations.contract import Contract
 
 
 class Pessoa(Notifiable):
-    """Class Value Object Name."""
+    """Classe Objeto de Valor Pessoa."""
 
-    def __init__(self, first_name: str, last_name: str, email: str) -> None:
-        """Found 'Constructor'."""
+    def __init__(self, primeiro_nome: str, ultimo_nome: str, email: str) -> None:
+        """Construtor da classe."""
         super().__init__()
-        self.first_name = first_name
-        self.last_name = last_name
+        self.primeiro_nome = primeiro_nome
+        self.ultimo_nome = ultimo_nome
         self.email = email
 
-        self.contract = (
+        # Criando um contrato de validação
+        contract = (
             Contract()
-            .requires(self.first_name, "first name", "Nome é obrigatório")
-            .requires(self.last_name, "last name", "Sobrenome é obrigatório")
-            .requires(self.email, "e-mail", "E-mail é obrigatório")
+            .requires(self.primeiro_nome, "primeiro nome", "Nome é obrigatório")
+            .requires(self.ultimo_nome, "ultimo nome", "Sobrenome é obrigatório")
+            .requires(self.email, "email", "E-mail é obrigatório")
             .is_lower_than(
-                self.first_name,
+                self.primeiro_nome,
                 3,
-                "first_name",
-                "Mínimo de 3 caracteres",
+                "primeiro_nome",
+                "Nome deve ter no mínimo 3 caracteres",
             )
             .is_lower_than(
-                self.last_name,
+                self.ultimo_nome,
                 3,
-                "last_name",
-                "Mínimo de 3 caracteres",
+                "ultimo_nome",
+                "Sobrenome deve ter no mínimo 3 caracteres",
             )
-            .is_email(self.email, "email", "email errado")
+            .is_email(self.email, "email", "E-mail inválido")
         )
-        self.add_notifications(self.contract.get_notifications())
+        
+        # Adicionando as notificações do contrato à entidade
+        self.add_notifications(contract.get_notifications())
 
 
 def main() -> None:
-    """Run the main function."""
-    nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
-    if not nome.is_valid:
-        logging.info(nome.get_notifications())
+    """Função principal de exemplo."""
+    pessoa = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
+    if not pessoa.is_valid:
+        for notification in pessoa.get_notifications():
+            logging.info(notification)
     else:
-        logging.info("Validado com sucesso")
+        logging.info("Validado com sucesso!")
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     main()
