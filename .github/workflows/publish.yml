@@ -11,16 +11,18 @@ jobs:
     - name: Realiza o checkout
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+        cache-dependency-glob: "pyproject.toml"
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Instala Poetry
-      run: curl -sSL https://install.python-poetry.org | python3 -
-
-    - name: Instala dependências
-      run: poetry install --no-dev
+    - name: Install dependencies
+      run: uv sync
 
     - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v2.0
-      with:
-        pypi_token: ${{ secrets.TOKEN_PYPI_PYFLUNT }}
+      run: uv build
+
+    - name: Publish to pypi
+      run: uv publish --token ${{ secrets.TOKEN_PYPI_PYFLUNT }}

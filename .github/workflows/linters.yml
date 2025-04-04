@@ -2,8 +2,7 @@ name: Linters
 run-name: ${{ github.actor }} execute Linters 🚀
 on:
   pull_request:
-
-  workflow_dispatch:
+    types: [opened, synchronize, reopened]
 
 jobs:
   steps:
