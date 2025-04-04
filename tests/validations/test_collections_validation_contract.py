@@ -604,69 +604,91 @@ def test_should_not_return_a_message_when_value_is_none_in_is_between() -> (
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_return_a_message_when_value_is_not_sized_in_is_greater_or_equals_than() -> (
-    None
-):
+def test_should_return_a_message_when_value_is_not_sized_in_is_greater_or_equals_than(
+    entity_mock: SampleEntity,
+) -> None:
     contract = CollectionsValidationContract().is_greater_or_equals_than(
-        True, 1, 2, "key"
-    )  # type: ignore[arg-type]
+        True,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
     assert contract.get_notifications()[0].message == IS_NOT_SIZED
 
 
-def test_should_not_return_a_message_when_value_is_none_in_is_greater_or_equals_than() -> (
-    None
-):
+def test_should_not_return_a_message_when_value_is_none_in_is_greater_or_equals_than(
+    entity_mock: SampleEntity,
+) -> None:
     contract = CollectionsValidationContract().is_greater_or_equals_than(
-        None, 1, 2, "key"
-    )  # type: ignore[arg-type]
+        None,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_return_a_message_when_value_is_not_sized_in_is_greater_than() -> (
-    None
-):
+def test_should_return_a_message_when_value_is_not_sized_in_is_greater_than(
+    entity_mock: SampleEntity,
+) -> None:
     contract = CollectionsValidationContract().is_greater_than(
-        True, 1, 2, "key"
-    )  # type: ignore[arg-type]
+        True,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
     assert contract.get_notifications()[0].message == IS_NOT_SIZED
 
 
-def test_should_not_return_a_message_when_value_is_none_in_is_greater_than() -> (
-    None
-):
+def test_should_not_return_a_message_when_value_is_none_in_is_greater_than(
+    entity_mock: SampleEntity,
+) -> None:
     contract = CollectionsValidationContract().is_greater_than(
-        None, 1, 2, "key"
-    )  # type: ignore[arg-type]
+        None,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
     assert len(contract.get_notifications()) == 0
 
 
-def test_should_return_a_message_when_value_is_not_sized_in_is_lower_than() -> (
-    None
-):
-    contract = CollectionsValidationContract().is_lower_than(True, 1, 2, "key")  # type: ignore[arg-type]
-    assert contract.get_notifications()[0].message == IS_NOT_SIZED
-
-
-def test_should_not_return_a_message_when_value_is_none_in_is_lower_than() -> (
-    None
-):
-    contract = CollectionsValidationContract().is_lower_than(None, 1, 2, "key")  # type: ignore[arg-type]
-    assert len(contract.get_notifications()) == 0
-
-
-def test_should_return_a_message_when_value_is_not_sized_in_is_lower_or_equals_than() -> (
-    None
-):
-    contract = CollectionsValidationContract().is_lower_or_equals_than(
-        True, 1, 2, "key"
+def test_should_return_a_message_when_value_is_not_sized_in_is_lower_than(
+    entity_mock: SampleEntity,
+) -> None:
+    contract = CollectionsValidationContract().is_lower_than(
+        True, 1, entity_mock.full_name, "key"
     )  # type: ignore[arg-type]
     assert contract.get_notifications()[0].message == IS_NOT_SIZED
 
 
-def test_should_not_return_a_message_when_value_is_none_in_is_lower_or_equals_than() -> (
-    None
-):
-    contract = CollectionsValidationContract().is_lower_or_equals_than(
-        None, 1, 2, "key"
+def test_should_not_return_a_message_when_value_is_none_in_is_lower_than(
+    entity_mock: SampleEntity,
+) -> None:
+    contract = CollectionsValidationContract().is_lower_than(
+        None, 1, entity_mock.full_name, "key"
     )  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_return_a_message_when_value_is_not_sized_in_is_lower_or_equals_than(
+    entity_mock: SampleEntity,
+) -> None:
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        True,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
+    assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_lower_or_equals_than(
+    entity_mock: SampleEntity,
+) -> None:
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        None,
+        1,
+        entity_mock.full_name,
+        "key",  # type: ignore[arg-type]
+    )
     assert len(contract.get_notifications()) == 0
