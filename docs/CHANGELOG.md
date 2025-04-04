@@ -8,7 +8,6 @@ O formato é baseado em [Mantenha um Registro de Alterações](https://keepachan
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Não Lançado]
-- Adicionar mensagens padronizadas em PT-BR e EN [#18](https://github.com/fazedordecodigo/PyFlunt/issues/18)
 - Adicionar validação de DateTime [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
 - Adicionar validação de Números [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
 - Adicionar validação de documentos [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
@@ -16,7 +15,31 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 - Adicionar Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+
+## [3.0.0] - 2025-04-04
+### Adicionado
+- Implementação do `uv` em substituição ao Poetry para gerenciamento de dependências
+- Suporte melhorado para mensagens em português brasileiro e internacionalização
+- Adição de tipos genéricos `StringType` e retorno `Self` para melhor tipagem
+- Nova constante `IS_NOT_SIZED` para melhorar mensagens de erro em validações
+- Otimização de memória na classe `Notifiable` com uso de `__slots__`
+- Melhorias nas validações de coleções e strings
+- Testes mais abrangentes para todas as funções de validação
+- Atualização dos workflows para suporte a múltiplas versões do Python (3.11, 3.12, 3.13)
 - Refatorar FluntRegexPatterns [#129](https://github.com/fazedordecodigo/PyFlux/issues/129)
+- Adicionar mensagens padronizadas em PT-BR e EN [#18](https://github.com/fazedordecodigo/PyFlunt/issues/18)
+
+### Modificado
+- Requer Python 3.11 ou superior (anteriormente suportava 3.9+)
+- Refatoração da classe `CollectionsValidationContract` para melhor verificação de objetos
+- Alteração do tipo de parâmetro das funções `contains` e `not_contains` para `StringType`
+- Renomeação de campos no exemplo `Pessoa` de `first_name`/`last_name` para `primeiro_nome`/`ultimo_nome`
+
+### Corrigido
+- Correção no tratamento de valores `None` nas validações de coleções
+- Tratamento adequado para objetos que não implementam o protocolo `Sized`
+- Corrigida a formatação de strings nos testes de notificação
+
 
 ## [2.3.1] - 2024-12-16
 ### Adicionado
@@ -43,8 +66,6 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Links do README quebrados [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
 - Bug em `requires` que retornava falso positivo ao receber o valor booleano `False`.
 - Reescrita dos testes unitários existentes.
-
-
 
 ## [2.1.1] - 2024-02-27
 ### Corrigido
