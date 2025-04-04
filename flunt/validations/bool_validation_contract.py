@@ -9,38 +9,6 @@ from flunt.notifications.notifiable import Notifiable
 
 BoolType: TypeAlias = bool | int | str
 
-def _to_bool(value: BoolType) -> bool:
-    """
-    Convert a value to boolean.
-
-    Args:
-        value: The value to convert
-
-    Returns:
-        The boolean representation of the value
-
-    Example:
-        >>> _to_bool(True)
-        True
-        >>> _to_bool(1)
-        True
-        >>> _to_bool("true")
-        True
-        >>> _to_bool(False)
-        False
-        >>> _to_bool(0)
-        False
-        >>> _to_bool("false")
-        False
-
-    """
-    if isinstance(value, bool):
-        return value
-    if isinstance(value, int):
-        return bool(value)
-    if isinstance(value, str):
-        return value.lower() in ("true", "1", "yes", "on")
-    return False
 
 class BoolValidationContract(Notifiable):
     """
@@ -53,6 +21,40 @@ class BoolValidationContract(Notifiable):
         __slots__: Defines allowed attributes for memory optimization
 
     """
+
+    def __to_bool(self, value: BoolType) -> bool:
+        """
+        Convert a value to boolean.
+
+        Args:
+            value: The value to convert
+
+        Returns:
+            The boolean representation of the value
+
+        Example:
+            >>> __to_bool(True)
+            True
+            >>> _to_bool(1)
+            True
+            >>> __to_bool("true")
+            True
+            >>> __to_bool(False)
+            False
+            >>> __to_bool(0)
+            False
+            >>> __to_bool("false")
+            False
+
+        """
+        self.__value = value
+        if isinstance(self.__value, bool):
+            return self.__value
+        if isinstance(self.__value, int):
+            return bool(self.__value)
+        if isinstance(self.__value, str):
+            return self.__value.lower() in ("true", "1", "yes", "on")
+        return False
 
     def is_false(
         self, value: BoolType, field: str, message: str = IS_FALSE
@@ -83,7 +85,7 @@ class BoolValidationContract(Notifiable):
         if message is IS_FALSE:
             message = IS_FALSE.format(field)
 
-        if _to_bool(value):
+        if self.__to_bool(value):
             self.add_notification(field, message)
         return self
 
@@ -115,6 +117,6 @@ class BoolValidationContract(Notifiable):
         """
         if message is IS_TRUE:
             message = IS_TRUE.format(field)
-        if not _to_bool(value):
+        if not self.__to_bool(value):
             self.add_notification(field, message)
         return self
