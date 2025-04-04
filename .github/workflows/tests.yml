@@ -36,7 +36,7 @@ jobs:
         run: echo "$USERPROFILE/.local/bin" >> $GITHUB_PATH
 
       - name: Install tox
-        run: uv tool install tox --with tox-uv --with tox-gh
+        run: uv tool install tox --with tox-uv
 
       - name: Install Python
         run: uv python install --python-preference only-managed ${{ matrix.env }}
