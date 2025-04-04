@@ -8,6 +8,7 @@ from flunt.constants.messages import (
     GREATER_OR_EQUALS_THAN,
     GREATER_THAN,
     IS_BETWEEN,
+    IS_NOT_SIZED,
     LOWER_OR_EQUALS_THAN,
     LOWER_THAN,
 )
@@ -66,7 +67,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not Sized")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) >= comparer:
@@ -113,7 +114,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not Sized")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) > comparer:
@@ -160,7 +161,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not Sized")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) <= comparer:
@@ -207,7 +208,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not Sized")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) < comparer:
@@ -262,7 +263,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is a not collection")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if not min <= len(value) <= max:
