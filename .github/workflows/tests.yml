@@ -48,7 +48,7 @@ jobs:
         if: matrix.env == '3.13' && matrix.os == 'ubuntu-latest'
         uses: SonarSource/sonarqube-scan-action@v5
         with:
-          projectBaseDir: app/src
+          projectBaseDir: flunt
           args: >
             -Dsonar.organization=fazedordecodigo
             -Dsonar.projectKey=fazedordecodigo_PyFlunt
@@ -56,7 +56,6 @@ jobs:
             -Dsonar.sources=flunt/
             -Dsonar.tests=tests/
             -Dsonar.test.exclusions=tests/**
-            -Dsonar.verbose=false
+            -Dsonar.verbose=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
