@@ -698,9 +698,6 @@ def test_should_not_return_a_message_when_value_is_none_in_is_lower_or_equals_th
     assert len(contract.get_notifications()) == 0
 
 
-# Testes adicionais para verificar mensagens padrão
-
-
 def test_should_return_a_standard_message_when_not_is_lower_than() -> None:
     value = "abcdef"  # tamanho 6
     comparer = 5
@@ -754,7 +751,6 @@ def test_should_return_a_standard_message_when_not_is_greater_or_equals_than() -
 
 
 def test_should_use_custom_message_in_is_lower_than() -> None:
-    """Testa se a mensagem personalizada é usada corretamente em is_lower_than."""
     message = "Mensagem personalizada"
     contract = CollectionsValidationContract().is_lower_than(
         "abcdef",  # tamanho 6
@@ -766,7 +762,6 @@ def test_should_use_custom_message_in_is_lower_than() -> None:
 
 
 def test_should_use_custom_message_in_is_lower_or_equals_than() -> None:
-    """Testa se a mensagem personalizada é usada corretamente em is_lower_or_equals_than."""
     message = "Mensagem personalizada"
     contract = CollectionsValidationContract().is_lower_or_equals_than(
         "abcdef",  # tamanho 6
@@ -778,7 +773,6 @@ def test_should_use_custom_message_in_is_lower_or_equals_than() -> None:
 
 
 def test_should_use_custom_message_in_is_greater_than() -> None:
-    """Testa se a mensagem personalizada é usada corretamente em is_greater_than."""
     message = "Mensagem personalizada"
     contract = CollectionsValidationContract().is_greater_than(
         "abc",  # tamanho 3
@@ -790,7 +784,6 @@ def test_should_use_custom_message_in_is_greater_than() -> None:
 
 
 def test_should_use_custom_message_in_is_greater_or_equals_than() -> None:
-    """Testa se a mensagem personalizada é usada corretamente em is_greater_or_equals_than."""
     message = "Mensagem personalizada"
     contract = CollectionsValidationContract().is_greater_or_equals_than(
         "abc",  # tamanho 3
@@ -802,21 +795,15 @@ def test_should_use_custom_message_in_is_greater_or_equals_than() -> None:
 
 
 def test_should_use_same_format_message_in_is_between() -> None:
-    """Testa se uma mensagem usando o mesmo formato da padrão é formatada corretamente."""
-    # Usando a mesma constante (objeto) IS_BETWEEN, mas simulando um valor diferente
-    # para testar o branch em que message is IS_BETWEEN é True mas a mensagem
-    # precisa ser formatada
     field = "campo"
     min_value = 10
     max_value = 20
 
-    # Criando uma string com o mesmo formato que IS_BETWEEN
     test_value = "abc"  # tamanho 3
     contract = CollectionsValidationContract().is_between(
         test_value, min_value, max_value, field, IS_BETWEEN
     )
 
-    # Verificando se a mensagem foi formatada corretamente
     assert contract.get_notifications()[0].message == IS_BETWEEN.format(
         field, min_value, max_value
     )
