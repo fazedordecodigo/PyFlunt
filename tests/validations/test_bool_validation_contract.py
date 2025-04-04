@@ -68,3 +68,21 @@ def test_should_return_a_standard_message_when_is_false_is_invalid(
         entity_mock.bool_true_property, "Bool"
     )
     assert contract.get_notifications()[0].message == IS_FALSE.format("Bool")
+
+
+def test_should_return_a_custom_message_when_is_true_is_invalid(
+    entity_mock: SampleEntity, message: str
+) -> None:
+    contract = BoolValidationContract().is_true(
+        entity_mock.bool_false_property, "Bool", message
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_return_a_custom_message_when_is_false_is_invalid(
+    entity_mock: SampleEntity, message: str
+) -> None:
+    contract = BoolValidationContract().is_false(
+        entity_mock.bool_true_property, "Bool", message
+    )
+    assert contract.get_notifications()[0].message == message

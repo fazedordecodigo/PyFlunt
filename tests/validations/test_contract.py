@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from uuid import UUID, uuid4
 
 import pytest
@@ -38,23 +38,11 @@ fake = Faker()
         uuid4(),
     ],
 )
-def test_should_be_valid_and_not_return_notification_when_required_is_not_none(
-    input: bool
-    | str
-    | float
-    | tuple
-    | set
-    | list
-    | Iterable
-    | dict
-    | Callable
-    | Decimal
-    | UUID
-    | object
-    | Struct,
-) -> None:
+def test_should_be_valid_and_not_return_notification_when_required_is_not_none(input: Any) -> None:
     contract = Contract().requires(
-        input, fake.text(max_nb_chars=10), fake.text(max_nb_chars=20)
+        input,
+        fake.text(max_nb_chars=10),
+        fake.text(max_nb_chars=20),
     )
     assert contract.is_valid
 

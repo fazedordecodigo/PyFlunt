@@ -6,12 +6,15 @@ from typing import TYPE_CHECKING
 import pytest
 from faker import Faker
 
+from flunt.constants.messages import IS_BETWEEN
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
 )
 
 if TYPE_CHECKING:
     from collections.abc import Sized
+
+    from tests.mocks.entity.sample_entity import SampleEntity
 
 fake = Faker()
 
@@ -559,3 +562,22 @@ def test_should_be_invalid_and_return_once_notification_when_value_is_not_betwee
         value, value_min, value_max, "key"
     )
     assert len(contract.get_notifications()) == 1
+
+
+def test_should_return_a_custom_message_when_value_is_not_between(
+    entity_mock: SampleEntity,
+) -> None:
+    message = "any message"
+    contract = CollectionsValidationContract().is_between(
+        entity_mock.collection_property, 1, 2, "key", message
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_return_a_standard_message_when_value_is_not_between(
+    entity_mock: SampleEntity,
+) -> None:
+    contract = CollectionsValidationContract().is_between(
+        entity_mock.full_name, 1, 10, "key"
+    )
+    assert contract.get_notifications()[0].message == IS_BETWEEN.format("key", 1, 10)
