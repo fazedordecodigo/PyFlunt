@@ -35,6 +35,8 @@ pip install flunt
 
 ### 🔔 Notifiable
 
+O `Notifiable` é a classe base que fornece funcionalidades para armazenar e gerenciar notificações:
+
 ````python
 from flunt.notifications.notifiable import Notifiable
 
@@ -42,51 +44,63 @@ class Nome(Notifiable):
     def __init__(self, nome):
         super().__init__()
 
-        if len(nome) > 3:
-            self.add_notification(field='nome', message='nome inválido')
+        if len(nome) < 3:
+            self.add_notification(field='nome', message='Nome deve ter pelo menos 3 caracteres')
         self._nome = nome
 ````
 
 ### 📜 Contract
+
+O `Contract` fornece métodos para validações encadeadas:
+
 ````python
-"""Módulo Objetos de Valor."""
+"""Módulo de exemplo com Objetos de Valor."""
 from flunt.notifications.notifiable import Notifiable
 from flunt.validations.contract import Contract
 
 
-class Nome(Notifiable):
-    """Classe Objeto de Valor Nome."""
+class Pessoa(Notifiable):
+    """Classe Objeto de Valor Pessoa."""
 
-    def __init__(self, primeiro_nome, ultimo_nome):
-        """Encontrar 'Construtor'."""
+    def __init__(self, primeiro_nome, ultimo_nome, email):
+        """Construtor da classe."""
         super().__init__()
         self.primeiro_nome = primeiro_nome
         self.ultimo_nome = ultimo_nome
-        self.add_notifications(
+        self.email = email
+        
+        # Criando um contrato de validação
+        contract = (
             Contract()
-            .requires(self.primeiro_nome, 'primeiro nome')
-            .requires(self.ultimo_nome, 'último nome')
-            .is_greater_than(
-                value=self.primeiro_nome,
-                comparer=3,
-                field="primeiro_nome",
-                message="Mínimo de 3 caracteres",
+            .requires(self.primeiro_nome, "primeiro nome", "Nome é obrigatório")
+            .requires(self.ultimo_nome, "ultimo nome", "Sobrenome é obrigatório")
+            .requires(self.email, "email", "E-mail é obrigatório")
+            .is_lower_than(
+                self.primeiro_nome,
+                3,
+                "primeiro_nome",
+                "Nome deve ter no mínimo 3 caracteres",
             )
-            .is_greater_than(
-                value=self.ultimo_nome,
-                comparer=3,
-                field="ultimo_nome",
-                message="Mínimo de 3 caracteres",
+            .is_lower_than(
+                self.ultimo_nome,
+                3,
+                "ultimo_nome",
+                "Sobrenome deve ter no mínimo 3 caracteres",
             )
-            .get_notifications()
+            .is_email(self.email, "email", "E-mail inválido")
         )
+        
+        # Adicionando as notificações do contrato à entidade
+        self.add_notifications(contract.get_notifications())
 
 
-nome = Nome('Emerson', 'Delatorre')
-if not nome.is_valid:
-    for notification in nome.get_notifications():
+# Exemplo de uso
+pessoa = Pessoa("Alfredo", "Biscoito", "alfredo@biscoito.com")
+if not pessoa.is_valid:
+    for notification in pessoa.get_notifications():
         print(notification)
-
+else:
+    print("Validado com sucesso!")
 ````
 
 ## Contribuindo
