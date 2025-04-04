@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Self, TypeVar
 
+from flunt.constants.messages import EQUALS, IS_NONE, NOT_EQUALS, REQUIRED
 from flunt.notifications.notifiable import Notifiable
 
 # Tipo genérico para qualquer valor
@@ -22,14 +23,15 @@ class CommonsValidationContract(Notifiable):
 
     """
 
-    def is_none(self, value: T, key: str, message: str) -> Self:
+    def is_none(self, value: T, field: str, message: str = IS_NONE) -> Self:
         """
         Check if value is not None and adds a notification if it is.
 
         Args:
             value: The value to be checked.
-            key: The key or identifier associated with the check.
+            field: The field or identifier associated with the check.
             message: The notification message to be added if the value is None.
+                    If not provided, a default message will be used.
 
         Returns:
             The current instance with potential notifications added.
@@ -42,17 +44,20 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value is not None:
-            self.add_notification(key, message)
+            if message is IS_NONE:
+                message = IS_NONE.format(field)
+            self.add_notification(field, message)
         return self
 
-    def is_not_none(self, value: T, key: str, message: str) -> Self:
+    def is_not_none(self, value: T, field: str, message: str = REQUIRED) -> Self:
         """
         Check if a value is not None and adds a notification if it is.
 
         Args:
             value: The value to be checked.
-            key: The key or identifier associated with the check.
+            field: The field or identifier associated with the check.
             message: The notification message to be added if the value is None.
+                    If not provided, a default message will be used.
 
         Returns:
             The current instance with potential notifications added.
@@ -65,18 +70,21 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value is None:
-            self.add_notification(key, message)
+            if message is REQUIRED:
+                message = REQUIRED.format(field)
+            self.add_notification(field, message)
         return self
 
-    def are_equals(self, value: T, comparer: T, key: str, message: str) -> Self:
+    def are_equals(self, value: T, comparer: T, field: str, message: str = EQUALS) -> Self:
         """
         Check if two values are equal and adds a notification if they are not equal.
 
         Args:
             value: The first value to compare.
             comparer: The second value to compare with the first value.
-            key: The key or identifier associated with the comparison.
+            field: The field or identifier associated with the comparison.
             message: The notification message to be added if the values are not equal.
+                    If not provided, a default message will be used.
 
         Returns:
             The current instance with potential notifications added.
@@ -89,18 +97,21 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value != comparer:
-            self.add_notification(key, message)
+            if message is EQUALS:
+                message = EQUALS.format(field, comparer)
+            self.add_notification(field, message)
         return self
 
-    def are_not_equals(self, value: T, comparer: T, key: str, message: str) -> Self:
+    def are_not_equals(self, value: T, comparer: T, field: str, message: str = NOT_EQUALS) -> Self:
         """
         Require two values are not equals.
 
         Args:
             value: The value to be compared.
             comparer: The value to compare with `value`.
-            key: The key or identifier related to the comparison.
+            field: The field or identifier related to the comparison.
             message: The notification message in case of equal values.
+                    If not provided, a default message will be used.
 
         Returns:
             The current instance with potential notifications added.
@@ -113,5 +124,7 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value == comparer:
-            self.add_notification(key, message)
+            if message is NOT_EQUALS:
+                message = NOT_EQUALS.format(field, comparer)
+            self.add_notification(field, message)
         return self
