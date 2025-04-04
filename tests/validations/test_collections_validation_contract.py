@@ -588,5 +588,5 @@ def test_should_return_a_standard_message_when_value_is_not_between(
 
 
 def test_should_return_a_message_when_value_is_not_sized() -> None:
-    contract = CollectionsValidationContract().is_between(True, 1, 2, "key")
+    contract = CollectionsValidationContract().is_between(True, 1, 2, "key")  # type: ignore[arg-type]
     assert contract.get_notifications()[0].message == IS_NOT_SIZED
