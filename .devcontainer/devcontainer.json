@@ -22,7 +22,9 @@
                 "charliermarsh.ruff",
                 "esbenp.prettier-vscode",
                 "usernamehw.errorlens",
-                "2gua.rainbow-brackets"
+                "visualstudioexptteam.vscodeintellicode",
+                "visualstudioexptteam.intellicode-api-usage-examples",
+                "visualstudioexptteam.vscodeintellicode-completions"
             ]
         }
     },

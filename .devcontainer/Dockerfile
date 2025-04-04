@@ -62,6 +62,17 @@ RUN git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
     ~/.fzf/install --all
 
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Adicionar binários Rust ao PATH
+ENV PATH="/home/vscode/.cargo/bin:${PATH}"
+ENV RUSTUP_HOME=/home/vscode/.rustup
+ENV CARGO_HOME=/home/vscode/.cargo
+
+# Instalar EZA
+RUN . "$HOME/.cargo/env" && cargo install eza
+
 # Instalar plugins do ZSH
 RUN mkdir -p ~/.zsh && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions && \
@@ -80,6 +91,7 @@ RUN echo 'export GPG_TTY=$(tty)' >> ~/.zshrc && \
     echo 'ZSH_THEME="spaceship"' >> ~/.zshrc && \
     echo '' >> ~/.zshrc && \
     echo '#plugins:' >> ~/.zshrc && \
+    echo 'source ~/.cargo/env' >> ~/.zshrc && \
     echo 'source ~/.oh-my-zsh/oh-my-zsh.sh' >> ~/.zshrc && \
     echo 'source ~/.local/bin/env' >> ~/.zshrc && \
     echo 'source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc && \
@@ -120,4 +132,6 @@ RUN echo 'export GPG_TTY=$(tty)' >> ~/.zshrc && \
     echo 'alias ls="eza -la"' >> ~/.zshrc
 
 # Configurar o PATH permanentemente
-ENV PATH="/home/vscode/.local/bin:$PATH " 
+ENV PATH="/home/vscode/.local/bin:$PATH"
+
+# ... rest of the file remains unchanged ...
