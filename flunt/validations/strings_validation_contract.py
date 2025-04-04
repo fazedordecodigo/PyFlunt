@@ -61,7 +61,7 @@ class StringValidationContract(Notifiable):
         return self
 
     def contains(
-        self, value: str, comparer: str, field: str, message: str = CONTAINS
+        self, value: StringType, comparer: str, field: str, message: str = CONTAINS
     ) -> Self:
         """
         Check if a string contains another string.
@@ -92,7 +92,7 @@ class StringValidationContract(Notifiable):
 
     def not_contains(
         self,
-        value: str,
+        value: StringType,
         comparer: str,
         field: str,
         message: str = NOT_CONTAINS,
