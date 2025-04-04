@@ -1,5 +1,5 @@
 name: Tests
-run-name: ${{ github.actor }} execute Linters 🚀
+run-name: ${{ github.actor }} execute Tests
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -48,7 +48,6 @@ jobs:
         if: matrix.env == '3.13' && matrix.os == 'ubuntu-latest'
         uses: SonarSource/sonarqube-scan-action@v5
         with:
-          projectBaseDir: flunt
           args: >
             -Dsonar.organization=fazedordecodigo
             -Dsonar.projectKey=fazedordecodigo_PyFlunt
