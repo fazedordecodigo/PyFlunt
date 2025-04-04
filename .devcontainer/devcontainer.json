@@ -1,0 +1,39 @@
+{
+    "name": "PyFlunt",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-python.vscode-pylance",
+                "ms-vscode.makefile-tools",
+                "ms-azuretools.vscode-docker",
+                "ms-python.mypy-type-checker",
+                "eamodio.gitlens",
+                "yzhang.markdown-all-in-one",
+                "alefragnani.project-manager",
+                "natqe.reload",
+                "vscode-icons-team.vscode-icons",
+                "redhat.vscode-yaml",
+                "dracula-theme.theme-dracula",
+                "gitlab.gitlab-workflow",
+                "postman.postman-for-vscode",
+                "charliermarsh.ruff",
+                "esbenp.prettier-vscode",
+                "usernamehw.errorlens",
+                "visualstudioexptteam.vscodeintellicode",
+                "visualstudioexptteam.intellicode-api-usage-examples",
+                "visualstudioexptteam.vscodeintellicode-completions"
+            ]
+        }
+    },
+    "remoteUser": "vscode",
+    "mounts": [
+        {
+            "source": "/home/fedora/.ssh",
+            "target": "/home/vscode/.ssh",
+            "type": "bind"
+        }
+    ]
+}

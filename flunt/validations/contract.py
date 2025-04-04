@@ -1,16 +1,14 @@
 """Module Contract."""
 
-from collections.abc import Iterable
-from decimal import Decimal
-from struct import Struct
-from typing import Callable, Union, overload
-from uuid import UUID
+from __future__ import annotations
 
-from typing_extensions import Self
+from typing import Self, TypeVar
 
 from flunt.constants.messages import REQUIRED
 from flunt.notifications.notifiable import Notifiable
-from flunt.validations.bool_validation_contract import BoolValidationContract
+from flunt.validations.bool_validation_contract import (
+    BoolValidationContract,
+)
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
 )
@@ -20,167 +18,65 @@ from flunt.validations.commons_validation_contract import (
 from flunt.validations.credit_card_validation_contract import (
     CreditCardValidationContract,
 )
-from flunt.validations.email_validation_contract import EmailValidationContract
+from flunt.validations.email_validation_contract import (
+    EmailValidationContract,
+)
 from flunt.validations.strings_validation_contract import (
     StringValidationContract,
 )
 
+# Tipo genérico para qualquer valor
+T = TypeVar("T")
+
 
 class Contract(
-    StringValidationContract,
-    EmailValidationContract,
     BoolValidationContract,
-    CreditCardValidationContract,
-    CommonsValidationContract,
     CollectionsValidationContract,
+    CommonsValidationContract,
+    CreditCardValidationContract,
+    EmailValidationContract,
+    StringValidationContract,
     Notifiable,
 ):
     """
-    Class represents a contract for validating data..
+    Contract for validating data.
 
-    Parameters
-    ----------
-            N/A
-
-    Attributes
-    ----------
-            N/A
-
-    Methods
-    -------
-    - requires(value, field: str, message: str): Checks if the given value is empty and adds a notification if it is.
-
+    This class provides a comprehensive set of validation methods through
+    multiple inheritance from specialized validation mixins.
     """
 
-    @overload
-    def requires(
-        self, value: tuple, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: Struct, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: set, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: bool, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: dict, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: list, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: Iterable, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: Callable, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: str, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: Decimal, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: float, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: UUID, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
-
-    @overload
-    def requires(
-        self, value: object, field: str, message: str = REQUIRED
-    ) -> Self:
-        ...
+    def __init__(self) -> None:
+        """Initialize the contract with all validation components."""
+        super().__init__()
 
     def requires(
         self,
-        value: Union[
-            str,
-            float,
-            list,
-            bool,
-            Decimal,
-            UUID,
-            dict,
-            object,
-            set,
-            Struct,
-            tuple,
-            Iterable,
-            Callable,
-        ],
+        value: T,
         field: str,
         message: str = REQUIRED,
     ) -> Self:
         """
-        Check if the given value is empty and adds a notification if it is.
+        Check if a value is empty and add a notification if it is.
 
-        Parameters
-        ----------
-        `value`: [bool | str | float | Tuple | Set | List | Iterable | Dict | Callable | Decimal | UUID | object | Struct]
-                The value to be checked.
-        `field`: str
-                The field or identifier associated with the notification.
-        `message`: str (optional)
-                The message of the notification to be added.
+        Args:
+            value: The value to check
+            field: Field identifier for the notification
+            message: Optional custom message
 
-        Returns
-        -------
-        `Self`
-                The current instance of the class.
+        Returns:
+            Self for method chaining
 
-        Notes
-        -----
-        - If the provided `value` is empty, a `notification` is added to the current
-        instance using the provided `field` and `message`.
-        - If the provided `value` is not empty, no `notification` is added.
-
-        Examples
-        --------
-        ```python
-        contract = Contract().requires("", "field", "message")
-        contract.is_valid  # False
-        ```
+        Examples:
+            >>> contract = Contract()
+            >>> contract.requires("", "name")
+            >>> contract.is_valid  # False
+            >>> contract.requires(0, "age", "Age must be greater than 0")
+            >>> contract.is_valid  # False
 
         """
-        if not value and not isinstance(value, bool):
-            self.add_notification(field, message.format(field))
+        if not value and not isinstance(value, bool | int | float):
+            if message is REQUIRED:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self

@@ -1,506 +1,274 @@
 """Module Contract."""
 
-from typing import Union, overload
+from __future__ import annotations
 
-from typing_extensions import Self
+from typing import TYPE_CHECKING, Self
 
+from flunt.constants.messages import (
+    GREATER_OR_EQUALS_THAN,
+    GREATER_THAN,
+    IS_BETWEEN,
+    IS_NOT_SIZED,
+    LOWER_OR_EQUALS_THAN,
+    LOWER_THAN,
+)
 from flunt.notifications.notifiable import Notifiable
+
+if TYPE_CHECKING:
+    from collections.abc import Sized
 
 
 class CollectionsValidationContract(Notifiable):
     """
     Class for validating values and adding notifications based on various comparisons.
 
-    Parameters
-    ----------
-            N/A
+    This class provides methods for validating collection lengths and adding
+    notifications based on various comparison criteria.
 
-    Attributes
-    ----------
-            N/A
-
-    Methods
-    -------
-    - is_lower_than(value, comparer, field, message): Checks if the length of a collection value is lower than a given number.
-    - is_lower_or_equals_than(value, comparer, field, message): Checks if the length of a collection value is lower or equal to a given number.
-    - is_greater_than(value, comparer, field, message): Checks if the length of a collection value is greater than a given number.
-    - is_greater_or_equals_than(value, comparer, field, message): Checks if the length of a collection value is greater or equal to a given number.
-    - contains(value, comparer, field, message): Checks if a collection contains a specific collection.
-    - not_contains(value, comparer, field, message): Checks if a collection does not contain a specific collection.
-    - is_between(value, min, max, field, message): Checks if the length of a collection is between a minimum and maximum value.
+    Attributes:
+        None
 
     """
 
-    @overload
-    def is_lower_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
     def is_lower_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = LOWER_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is lower than a given number and adds a notification if it's greater.
 
-        Parameters
-        ----------
-        `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
-        `comparer`: int
-                The maximum length allowed for the value.
-        `field`: str
-                The field or identifier associated with the comparison.
-        `message`: str
-                The notification message to be added if the length exceeds the comparer.
+        Args:
+            value (Sized): The collection value to compare (str, list, dict, set, tuple, range, bytearray).
+            comparer (int): The maximum length allowed for the value.
+            field (str): The field or identifier associated with the comparison.
+            message (str, optional): The notification message to be added if the length exceeds the comparer.
+                Defaults to LOWER_THAN.
 
-        Returns
-        -------
-        `self`
-                The current instance with potential notifications added.
+        Returns:
+            Self: The current instance with potential notifications added.
 
-        Notes
-        -----
-        - If the `value` is an empty string or None, no notification is added.
-        - If the length of `value` is greater than `comparer`, a notification is added to the current instance
-        with the provided `field` and `message`.
+        Note:
+            - If the `value` is an empty string or None, no notification is added.
+            - If the length of `value` is greater than `comparer`, a notification is added to the current instance
+              with the provided `field` and `message`.
 
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                        .is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
-        obj.is_valid
-        ```
+        Example:
+            ```python
+            obj = Contract()
+                    .is_lower_than("Hello", 10, "LengthCheck", "Value should have a length less than 10")
+            obj.is_valid
+            ```
 
         """
         if not value:
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) >= comparer:
+            if message is LOWER_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_lower_or_equals_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_lower_or_equals_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
     def is_lower_or_equals_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = LOWER_OR_EQUALS_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is lower or equal to a given number and adds a notification if it exceeds.
 
-        Parameters
-        ----------
-        `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
-        `comparer`: int
-                The maximum length allowed for the value.
-        `field`: str
-                The field or identifier associated with the comparison.
-        `message`: str
-                The notification message to be added if the length exceeds the comparer.
+        Args:
+            value (Sized): The collection value to compare (str, list, dict, set, tuple, range, bytearray).
+            comparer (int): The maximum length allowed for the value.
+            field (str): The field or identifier associated with the comparison.
+            message (str, optional): The notification message to be added if the length exceeds the comparer.
+                Defaults to LOWER_OR_EQUALS_THAN.
 
-        Returns
-        -------
-        `self`
-                The current instance with potential notifications added.
+        Returns:
+            Self: The current instance with potential notifications added.
 
-        Notes
-        -----
-        - If the `value` is an empty string or None, no notification is added.
-        - If the length of `value` is greater than or equal to `comparer`, a notification is added to the current instance
-        with the provided `field` and `message`.
+        Note:
+            - If the `value` is an empty string or None, no notification is added.
+            - If the length of `value` is greater than or equal to `comparer`, a notification is added to the current instance
+              with the provided `field` and `message`.
 
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                        .is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
-        obj.is_valid
-        ```
+        Example:
+            ```python
+            obj = Contract()
+                    .is_lower_or_equals_than("Hello", 10, "LengthCheck", "Value should have a length less than or equal to 10")
+            obj.is_valid
+            ```
 
         """
         if not value:
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) > comparer:
+            if message is LOWER_OR_EQUALS_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_greater_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
     def is_greater_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = GREATER_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is greater than a given number and adds a notification if it's smaller.
 
-        Parameters
-        ----------
-        `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
-        `comparer`: int
-                The minimum length required for the value.
-        `field`: str
-                The field or identifier associated with the comparison.
-        `message`: str
-                The notification message to be added if the length is smaller than the comparer.
+        Args:
+            value (Sized): The collection value to compare (str, list, dict, set, tuple, range, bytearray).
+            comparer (int): The minimum length required for the value.
+            field (str): The field or identifier associated with the comparison.
+            message (str, optional): The notification message to be added if the length is smaller than the comparer.
+                Defaults to GREATER_THAN.
 
-        Returns
-        -------
-        `self`
-                The current instance with potential notifications added.
+        Returns:
+            Self: The current instance with potential notifications added.
 
-        Notes
-        -----
-        - If the `value` is an empty string or None, no notification is added.
-        - If the length of `value` is smaller than `comparer`, a notification is added to the current instance
-        with the provided `field` and `message`.
+        Note:
+            - If the `value` is an empty string or None, no notification is added.
+            - If the length of `value` is smaller than `comparer`, a notification is added to the current instance
+              with the provided `field` and `message`.
 
-        Examples
-        --------
-        ```python
-        obj = Contract()
+        Example:
+            ```python
+            obj = Contract()
                 .is_greater_than("Hello", 3, "LengthCheck", "Value should have a length greater than 3")
-        obj.is_valid
-        ```
+            obj.is_valid
+            ```
 
         """
         if not value:
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) <= comparer:
+            if message is GREATER_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
-    @overload
-    def is_greater_or_equals_than(
-        self, value: bytearray, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: range, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: tuple, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: set, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: dict, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: list, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_greater_or_equals_than(
-        self, value: str, comparer: int, field: str, message: str
-    ) -> Self:
-        ...
-
     def is_greater_or_equals_than(
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: Sized,
         comparer: int,
         field: str,
-        message: str,
+        message: str = GREATER_OR_EQUALS_THAN,
     ) -> Self:
         """
         Check if the length of a collection value is greater than or equal to a given number and adds a notification if it's smaller.
 
-        Parameters
-        ----------
-        `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to compare.
-        `comparer`: int
-                The minimum length required for the value.
-        `field`: str
-                The field or identifier associated with the comparison.
-        `message`: str
-                The notification message to be added if the length is smaller than the comparer.
+        Args:
+            value (Sized): The collection value to compare (str, list, dict, set, tuple, range, bytearray).
+            comparer (int): The minimum length required for the value.
+            field (str): The field or identifier associated with the comparison.
+            message (str, optional): The notification message to be added if the length is smaller than the comparer.
+                Defaults to GREATER_OR_EQUALS_THAN.
 
-        Returns
-        -------
-        `self`
-                The current instance with potential notifications added.
+        Returns:
+            Self: The current instance with potential notifications added.
 
-        Notes
-        -----
-        - If the `value` is an empty string or None, no notification is added.
-        - If the length of `value` is smaller than or equal to `comparer`, a notification is added to the current instance
-        with the provided `field` and `message`.
+        Note:
+            - If the `value` is an empty string or None, no notification is added.
+            - If the length of `value` is smaller than or equal to `comparer`, a notification is added to the current instance
+              with the provided `field` and `message`.
 
         Example:
-        --------
-        ```python
-        obj = Contract()
+            ```python
+            obj = Contract()
                 .is_greater_or_equals_than("Hello", 3, "LengthCheck", "Value should have a length greater than or equal to 3")
-        obj.is_valid
-        ```
+            obj.is_valid
+            ```
 
         """
         if not value:
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is not iterable")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
         if len(value) < comparer:
+            if message is GREATER_OR_EQUALS_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
-    @overload
     def is_between(
-        self, value: bytearray, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: range, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: tuple, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: set, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: dict, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: list, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    @overload
-    def is_between(
-        self, value: str, min: int, max: int, field: str, message: str
-    ) -> Self:
-        ...
-
-    def is_between(  # noqa: PLR0913
         self,
-        value: Union[str, list, dict, set, tuple, range, bytearray],
+        value: Sized,
         min: int,
         max: int,
         field: str,
-        message: str,
+        message: str = IS_BETWEEN,
     ) -> Self:
         """
-        Require a collection value to have a length between a minimum and maximum value (inclusive), and adds a notification if the length is outside the specified range.
+        Require a collection value to have a length between a minimum and maximum value (inclusive).
 
-        Parameters
-        ----------
-        `value`: str | list | dict | set | tuple | range | bytearray
-                The collection value to be checked.
-        `min`: int
-                The minimum allowed length for the value.
-        `max`: int
-                The maximum allowed length for the value.
-        `field`: str
-                The field or identifier associated with the length check.
-        `message`: str
-                The notification message to be added if the length is outside the range.
+        Args:
+            value (Sized): The collection value to be checked (str, list, dict, set, tuple, range, bytearray).
+            min (int): The minimum allowed length for the value.
+            max (int): The maximum allowed length for the value.
+            field (str): The field or identifier associated with the length check.
+            message (str, optional): The notification message to be added if the length is outside the range.
+                Defaults to IS_BETWEEN.
 
-        Returns
-        -------
-        `self`
-                The current instance with potential notifications added.
+        Returns:
+            Self: The current instance with potential notifications added.
 
-        Notes
-        -----
-        - If the `value` is empty, the function returns the current instance without adding any notifications.
-        - If the `value` is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
-        - If the length of `value` is less than `min` or greater than `max`, a notification is added to the current instance
-        with the provided `field` and `message`.
+        Note:
+            - If the `value` is empty, the function returns the current instance without adding any notifications.
+            - If the `value` is None or consists only of whitespace characters, the function returns the current instance without adding any notifications.
+            - If the length of `value` is less than `min` or greater than `max`, a notification is added to the current instance
+              with the provided `field` and `message`.
 
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                        .is_between("Hello", 3, 6, "LengthCheck", "Value length should be between 3 and 6")
-        obj.is_valid
-        ```
+        Example:
+            ```python
+            obj = Contract().is_between(
+                "Hello",
+                3,
+                6,
+                "LengthCheck",
+                "Value length should be between 3 and 6",
+            )
+            obj.is_valid
+            ```
 
         """
         if not value:
             return self
 
         if not hasattr(value, "__iter__"):
-            self.add_notification(field, "Value is a not collection")
+            self.add_notification(field, IS_NOT_SIZED)
             return self
 
-        if len(value) < min or len(value) > max:
+        if not min <= len(value) <= max:
+            if message is IS_BETWEEN:
+                self.add_notification(field, message.format(field, min, max))
+                return self
             self.add_notification(field, message)
         return self

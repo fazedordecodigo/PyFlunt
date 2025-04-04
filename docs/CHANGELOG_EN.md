@@ -8,14 +8,47 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0
 and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Add Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+
+## [3.0.0] - 2025-04-04
+### Added
+- Implementation of `uv` to replace Poetry for dependency management
+- Improved support for Brazilian Portuguese messages and internationalization
+- Addition of generic types `StringType` and `Self` return for better typing
+- New constant `IS_NOT_SIZED` to improve error messages in validations
+- Memory optimization in the `Notifiable` class with the use of `__slots__`
+- Improvements in collection and string validations
+- More comprehensive tests for all validation functions
+- Workflow update for multiple Python versions support (3.11, 3.12, 3.13)
+- Refactor FluntRegexPatterns [#129](https://github.com/fazedordecodigo/PyFlux/issues/129)
 - Add standardized messages in PT-BR and EN [#18](https://github.com/fazedordecodigo/PyFlunt/issues/18)
-- Add DateTime validation [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
-- Add Numbers validation [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
-- Add documents validation [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
-- Add Lists validation [#30](https://github.com/fazedordecodigo/PyFlunt/issues/30)
-- Add Objects validation [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
-- Add Regex validation [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
-- Add URL validation [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+
+### Changed
+- Requires Python 3.11 or higher (previously supported 3.9+)
+- Refactoring of the `CollectionsValidationContract` class for better object verification
+- Parameter type change for `contains` and `not_contains` functions to `StringType`
+- Renamed fields in the `Pessoa` example from `first_name`/`last_name` to `primeiro_nome`/`ultimo_nome`
+
+### Fixed
+- Fixed handling of `None` values in collection validations
+- Proper handling for objects that do not implement the `Sized` protocol
+- Fixed string formatting in notification tests
+
+## [2.3.1] - 2024-12-16
+### Added
+- Refactor to use `get_pattern` in `CreditCardValidationContract` and `EmailValidationContract`.
+
+### Fixed
+- Ensure regex patterns return valid data for validations.
+- Refactor `FluntRegexPatterns` [#129](https://github.com/fazedordecodigo/PyFlunt/issues/129)
+
+## [2.3.0] - 2024-03-17
+### Added
+- Collections validation [#30](https://github.com/fazedordecodigo/PyFlunt/issues/30)
+
+### Fixed
+- Lack of return typing in Requires overloads [#59](https://github.com/fazedordecodigo/PyFlunt/issues/59)
+- Pipeline Linters with broken path for requirements.txt [#60](https://github.com/fazedordecodigo/PyFlunt/issues/60)
 
 ## [2.2.0] - 2024-03-13
 ### Added
@@ -25,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 ### Fixed
 - Fixed broken links in the README [#53](https://github.com/fazedordecodigo/PyFlunt/issues/53)
 - Fixed bug in `requires` that returned a false positive when receiving the boolean value `False`.
-- Rewrote existing unit tests.
+- Rewritten existing unit tests.
 
 ## [2.1.1] - 2024-02-27
 ### Fixed
@@ -86,6 +119,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 <br>
 <br>
 <br>
+
+[3.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.3.1...v3.0.0)
+
+[2.3.1](https://github.com/fazedordecodigo/PyFlunt/compare/v2.3.0...v2.3.1)
+
+[2.3.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.2.0...v2.3.0)
+
+[2.2.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.1.1...v2.2.0)
 
 [2.1.1](https://github.com/fazedordecodigo/PyFlunt/compare/v2.1.0...v2.1.1)
 
