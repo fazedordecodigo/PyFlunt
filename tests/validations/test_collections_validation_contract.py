@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from random import randint
+from random import Random
 from typing import TYPE_CHECKING
 
 import pytest
@@ -17,6 +17,8 @@ if TYPE_CHECKING:
     from tests.mocks.entity.sample_entity import SampleEntity
 
 fake = Faker()
+# Usar um gerador com seed fixo para garantir resultados consistentes nos testes
+random_generator = Random(42)
 
 
 @pytest.fixture
@@ -29,9 +31,11 @@ def message() -> str:
     return "any message"
 
 
-range_one_to_nineteen = randint(1, 19)
-range_twenty_to_fifty = randint(20, 50)
-range_fifty_one_to_hundred = randint(51, 100)
+# Usando o gerador com seed para obter valores determinísticos
+# que serão consistentes em todas as execuções de teste
+range_one_to_nineteen = random_generator.randint(1, 19)
+range_twenty_to_fifty = random_generator.randint(20, 50)
+range_fifty_one_to_hundred = random_generator.randint(51, 100)
 
 
 @pytest.mark.parametrize(
