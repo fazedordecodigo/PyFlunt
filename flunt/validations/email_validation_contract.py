@@ -92,7 +92,10 @@ class EmailValidationContract(Notifiable):
 
         """
         if not _valid_email(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_EMAIL:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self
 
     def is_not_email(
@@ -120,5 +123,8 @@ class EmailValidationContract(Notifiable):
 
         """
         if _valid_email(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_NOT_EMAIL:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self

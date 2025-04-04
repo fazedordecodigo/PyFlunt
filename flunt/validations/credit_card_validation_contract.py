@@ -104,9 +104,15 @@ class CreditCardValidationContract(Notifiable):
 
         pattern = _get_only_numbers_pattern()
         if pattern is None or not pattern.match(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_NOT_CREDIT_CARD:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
             return self
 
         if not _luhn_checksum(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_NOT_CREDIT_CARD:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self

@@ -69,10 +69,10 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-        if message is LOWER_THAN:
-            message = LOWER_THAN.format(field, comparer)
-
         if len(value) >= comparer:
+            if message is LOWER_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
@@ -116,10 +116,11 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-        if message is LOWER_OR_EQUALS_THAN:
-            message = LOWER_OR_EQUALS_THAN.format(field, comparer)
 
         if len(value) > comparer:
+            if message is LOWER_OR_EQUALS_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
@@ -163,10 +164,11 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-        if message is GREATER_THAN:
-            message = GREATER_THAN.format(field, comparer)
 
         if len(value) <= comparer:
+            if message is GREATER_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
@@ -210,10 +212,11 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-        if message is GREATER_OR_EQUALS_THAN:
-            message = GREATER_OR_EQUALS_THAN.format(field, comparer)
 
         if len(value) < comparer:
+            if message is GREATER_OR_EQUALS_THAN:
+                self.add_notification(field, message.format(field, comparer))
+                return self
             self.add_notification(field, message)
         return self
 
@@ -265,9 +268,10 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is a not collection")
             return self
 
-        if message is IS_BETWEEN:
-            message = IS_BETWEEN.format(field, min, max)
 
         if not min <= len(value) <= max:
+            if message is IS_BETWEEN:
+                self.add_notification(field, message.format(field, min, max))
+                return self
             self.add_notification(field, message)
         return self
