@@ -6,7 +6,10 @@ from typing import TYPE_CHECKING
 import pytest
 from faker import Faker
 
-from flunt.constants.messages import IS_BETWEEN, IS_NOT_SIZED
+from flunt.constants.messages import (
+    IS_BETWEEN,
+    IS_NOT_SIZED,
+)
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
 )
@@ -587,6 +590,83 @@ def test_should_return_a_standard_message_when_value_is_not_between(
     )
 
 
-def test_should_return_a_message_when_value_is_not_sized() -> None:
+def test_should_return_a_message_when_value_is_not_sized_in_is_between() -> (
+    None
+):
     contract = CollectionsValidationContract().is_between(True, 1, 2, "key")  # type: ignore[arg-type]
     assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_between() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_between(None, 1, 2, "key")  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_return_a_message_when_value_is_not_sized_in_is_greater_or_equals_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_greater_or_equals_than(
+        True, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_greater_or_equals_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_greater_or_equals_than(
+        None, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_return_a_message_when_value_is_not_sized_in_is_greater_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_greater_than(
+        True, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_greater_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_greater_than(
+        None, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_return_a_message_when_value_is_not_sized_in_is_lower_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_lower_than(True, 1, 2, "key")  # type: ignore[arg-type]
+    assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_lower_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_lower_than(None, 1, 2, "key")  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
+
+
+def test_should_return_a_message_when_value_is_not_sized_in_is_lower_or_equals_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        True, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert contract.get_notifications()[0].message == IS_NOT_SIZED
+
+
+def test_should_not_return_a_message_when_value_is_none_in_is_lower_or_equals_than() -> (
+    None
+):
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        None, 1, 2, "key"
+    )  # type: ignore[arg-type]
+    assert len(contract.get_notifications()) == 0
