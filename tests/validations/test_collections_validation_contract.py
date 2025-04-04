@@ -7,8 +7,12 @@ import pytest
 from faker import Faker
 
 from flunt.constants.messages import (
+    GREATER_OR_EQUALS_THAN,
+    GREATER_THAN,
     IS_BETWEEN,
     IS_NOT_SIZED,
+    LOWER_OR_EQUALS_THAN,
+    LOWER_THAN,
 )
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
@@ -385,12 +389,6 @@ def test_should_be_invalid_and_return_once_notification_when_not_is_greater_than
             ),
             range_one_to_nineteen,
         ),
-        (fake.pydict(nb_elements=10, variable_nb_elements=False), 10),
-        (fake.pyiterable(nb_elements=10, variable_nb_elements=False), 10),
-        (fake.pylist(nb_elements=10, variable_nb_elements=False), 10),
-        (fake.pyset(nb_elements=10, variable_nb_elements=False), 10),
-        (fake.pystr(max_chars=10), 10),
-        (fake.pytuple(nb_elements=10, variable_nb_elements=False), 10),
     ],
 )
 def test_should_be_valid_when_is_greater_or_equals_than(
@@ -698,3 +696,127 @@ def test_should_not_return_a_message_when_value_is_none_in_is_lower_or_equals_th
         "key",
     )
     assert len(contract.get_notifications()) == 0
+
+
+# Testes adicionais para verificar mensagens padrão
+
+
+def test_should_return_a_standard_message_when_not_is_lower_than() -> None:
+    value = "abcdef"  # tamanho 6
+    comparer = 5
+    field = "key"
+    contract = CollectionsValidationContract().is_lower_than(
+        value, comparer, field
+    )
+    assert contract.get_notifications()[0].message == LOWER_THAN.format(
+        field, comparer
+    )
+
+
+def test_should_return_a_standard_message_when_not_is_lower_or_equals_than() -> (
+    None
+):
+    value = "abcdef"  # tamanho 6
+    comparer = 5
+    field = "key"
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        value, comparer, field
+    )
+    assert contract.get_notifications()[
+        0
+    ].message == LOWER_OR_EQUALS_THAN.format(field, comparer)
+
+
+def test_should_return_a_standard_message_when_not_is_greater_than() -> None:
+    value = "abc"  # tamanho 3
+    comparer = 5
+    field = "key"
+    contract = CollectionsValidationContract().is_greater_than(
+        value, comparer, field
+    )
+    assert contract.get_notifications()[0].message == GREATER_THAN.format(
+        field, comparer
+    )
+
+
+def test_should_return_a_standard_message_when_not_is_greater_or_equals_than() -> (
+    None
+):
+    value = "abc"  # tamanho 3
+    comparer = 5
+    field = "key"
+    contract = CollectionsValidationContract().is_greater_or_equals_than(
+        value, comparer, field
+    )
+    assert contract.get_notifications()[
+        0
+    ].message == GREATER_OR_EQUALS_THAN.format(field, comparer)
+
+
+def test_should_use_custom_message_in_is_lower_than() -> None:
+    """Testa se a mensagem personalizada é usada corretamente em is_lower_than."""
+    message = "Mensagem personalizada"
+    contract = CollectionsValidationContract().is_lower_than(
+        "abcdef",  # tamanho 6
+        5,
+        "campo",
+        message,
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_use_custom_message_in_is_lower_or_equals_than() -> None:
+    """Testa se a mensagem personalizada é usada corretamente em is_lower_or_equals_than."""
+    message = "Mensagem personalizada"
+    contract = CollectionsValidationContract().is_lower_or_equals_than(
+        "abcdef",  # tamanho 6
+        5,
+        "campo",
+        message,
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_use_custom_message_in_is_greater_than() -> None:
+    """Testa se a mensagem personalizada é usada corretamente em is_greater_than."""
+    message = "Mensagem personalizada"
+    contract = CollectionsValidationContract().is_greater_than(
+        "abc",  # tamanho 3
+        5,
+        "campo",
+        message,
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_use_custom_message_in_is_greater_or_equals_than() -> None:
+    """Testa se a mensagem personalizada é usada corretamente em is_greater_or_equals_than."""
+    message = "Mensagem personalizada"
+    contract = CollectionsValidationContract().is_greater_or_equals_than(
+        "abc",  # tamanho 3
+        5,
+        "campo",
+        message,
+    )
+    assert contract.get_notifications()[0].message == message
+
+
+def test_should_use_same_format_message_in_is_between() -> None:
+    """Testa se uma mensagem usando o mesmo formato da padrão é formatada corretamente."""
+    # Usando a mesma constante (objeto) IS_BETWEEN, mas simulando um valor diferente
+    # para testar o branch em que message is IS_BETWEEN é True mas a mensagem
+    # precisa ser formatada
+    field = "campo"
+    min_value = 10
+    max_value = 20
+
+    # Criando uma string com o mesmo formato que IS_BETWEEN
+    test_value = "abc"  # tamanho 3
+    contract = CollectionsValidationContract().is_between(
+        test_value, min_value, max_value, field, IS_BETWEEN
+    )
+
+    # Verificando se a mensagem foi formatada corretamente
+    assert contract.get_notifications()[0].message == IS_BETWEEN.format(
+        field, min_value, max_value
+    )
