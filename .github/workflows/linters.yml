@@ -12,17 +12,16 @@ jobs:
       - name: Realiza o checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-
-      - name: Atualiza Pip
-        run: python -m pip install --upgrade pip
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: 3.11
 
       - name: Instala dependências
-        run: python -m pip install ruff mypy
+        run: uv add ruff mypy
 
       - name: Executa Ruff
-        run: python -m ruff check
+        run: uv run ruff check
 
       - name: Executa Mypy
-        run: python -m mypy .
+        run: uv run mypy .
