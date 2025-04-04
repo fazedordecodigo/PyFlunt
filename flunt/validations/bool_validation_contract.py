@@ -1,96 +1,123 @@
 """Module Contract."""
 
-from typing_extensions import Self
+from __future__ import annotations
 
+from typing import Self, TypeAlias
+
+from flunt.constants.messages import IS_FALSE, IS_TRUE
 from flunt.notifications.notifiable import Notifiable
+
+BoolType: TypeAlias = bool | int | str
 
 
 class BoolValidationContract(Notifiable):
     """
-    Bool Validation Contract.
+    Contract for validating boolean values.
 
-    This class provides methods for validating boolean values and adding notifications based on the validation results.
+    This class provides methods for validating boolean values and adding notifications
+    based on validation results.
 
-    Methods
-    -------
-    is_false(value: bool, key: str, message: str) -> self:
-            Checks if the provided boolean value is False and adds a notification if it is True.
-
-    is_true(value: bool, key: str, message: str) -> self:
-            Checks if the provided boolean value is True and adds a notification if it is False.
+    Attributes:
+        __slots__: Defines allowed attributes for memory optimization
 
     """
 
-    def is_false(self, value: bool, key: str, message: str) -> Self:
+    def __to_bool(self, value: BoolType) -> bool:
         """
-        Check if the provided boolean value is False and adds a notification if it is True.
+        Convert a value to boolean.
 
-        Parameters
-        ----------
-        `value`: bool
-                The boolean value to be checked.
-        `key`: str
-                The key or identifier associated with the notification.
-        `message`: str
-                The message of the notification to be added.
+        Args:
+            value: The value to convert
 
-        Returns
-        -------
-        `Self`
-        The current instance of the class.
+        Returns:
+            The boolean representation of the value
 
-        Notes
-        -----
-        - If the provided `value` is ``True``, a notification is added to the current
-        instance using the provided `key` and `message`.
-        - If the provided `value` is ``False``, no notification is added.
-
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                .is_false(False, "BoolCheck", "Value should return true")
-        obj.is_valid # True
-        ```
+        Example:
+            >>> __to_bool(True)
+            True
+            >>> _to_bool(1)
+            True
+            >>> __to_bool("true")
+            True
+            >>> __to_bool(False)
+            False
+            >>> __to_bool(0)
+            False
+            >>> __to_bool("false")
+            False
 
         """
-        if value:
-            self.add_notification(key, message)
+        self.__value = value
+        if isinstance(self.__value, bool):
+            return self.__value
+        if isinstance(self.__value, int):
+            return bool(self.__value)
+        if isinstance(self.__value, str):
+            return self.__value.lower() in ("true", "1", "yes", "on")
+        return False
+
+    def is_false(
+        self, value: BoolType, field: str, message: str = IS_FALSE
+    ) -> Self:
+        """
+        Check if a value is False.
+
+        Args:
+            value: The value to check (can be bool, int, or str)
+            field: Field identifier for the notification
+            message: Optional custom message
+
+        Returns:
+            Self for method chaining
+
+        Example:
+            >>> contract = BoolValidationContract()
+            >>> contract.is_false(True, "active")
+            >>> contract.is_valid  # False
+            >>> contract.is_false(False, "active")
+            >>> contract.is_valid  # True
+            >>> contract.is_false(1, "active")
+            >>> contract.is_valid  # False
+            >>> contract.is_false("true", "active")
+            >>> contract.is_valid  # False
+
+        """
+        if self.__to_bool(value):
+            if message is IS_FALSE:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self
 
-    def is_true(self, value: bool, key: str, message: str) -> Self:
+    def is_true(
+        self, value: BoolType, field: str, message: str = IS_TRUE
+    ) -> Self:
         """
-        Check if the provided boolean value is True and adds a notification if it is True.
+        Check if a value is True.
 
-        Parameters
-        ----------
-        `value`: bool
-                The boolean value to be checked.
-        `key`: str
-                The key or identifier associated with the notification.
-        `message`: str
-                The message of the notification to be added.
+        Args:
+            value: The value to check (can be bool, int, or str)
+            field: Field identifier for the notification
+            message: Optional custom message
 
-        Returns
-        -------
-        `Self`
-        The current instance of the class.
+        Returns:
+            Self for method chaining
 
-        Notes
-        -----
-        - If the provided `value` is ``False``, a notification is added to the current
-        instance using the provided `key` and `message`.
-        - If the provided `value` is ``True``, no notification is added.
-
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                .is_true(True, "BoolCheck", "Value should return true")
-        obj.is_valid # True
-        ```
+        Example:
+            >>> contract = BoolValidationContract()
+            >>> contract.is_true(False, "active")
+            >>> contract.is_valid  # False
+            >>> contract.is_true(True, "active")
+            >>> contract.is_valid  # True
+            >>> contract.is_true(0, "active")
+            >>> contract.is_valid  # False
+            >>> contract.is_true("false", "active")
+            >>> contract.is_valid  # False
 
         """
-        if not value:
-            self.add_notification(key, message)
+        if not self.__to_bool(value):
+            if message is IS_TRUE:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self

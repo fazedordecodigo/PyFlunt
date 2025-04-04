@@ -1,133 +1,133 @@
 """Module Email Validation Contract."""
 
-import re
-from typing import Union
+from __future__ import annotations
 
-from typing_extensions import Self
+import re
+from functools import lru_cache
+from re import Pattern
+from typing import Self, TypeAlias
 
 from flunt.constants.messages import IS_EMAIL, IS_NOT_EMAIL
 from flunt.localization.flunt_regex_patterns import get_pattern
 from flunt.notifications.notifiable import Notifiable
 
+EmailType: TypeAlias = str | None
 
-def _valid_email(value) -> Union[re.Match[str], None]:
+
+@lru_cache(maxsize=1)
+def _get_email_pattern() -> Pattern[str] | None:
     """
-    Check if the provided value matches the valid email address pattern.
+    Get the email validation pattern with caching.
 
-    Parameters
-    ----------
-    `value`: str
-            The value to be checked as an email address.
-
-    Returns
-    -------
-    `(Match[str] | None)`
+    Returns:
+        The regex pattern for email validation or None if not available
 
     """
-    email_pattern = get_pattern("email")
-    
-    return re.match(
-        email_pattern,
-        value,
-        re.IGNORECASE,
-    )
+    pattern = get_pattern("email")
+    if pattern is None:
+        return None
+    return re.compile(pattern, re.IGNORECASE)
+
+
+def _valid_email(value: EmailType) -> bool:
+    """
+    Check if a string matches a valid email pattern.
+
+    Args:
+        value: The string to check as an email address
+
+    Returns:
+        True if valid email, False otherwise
+
+    Example:
+        >>> _valid_email("user@example.com")
+        True
+        >>> _valid_email("invalid-email")
+        False
+        >>> _valid_email(None)
+        False
+
+    """
+    if not isinstance(value, str):
+        return False
+
+    pattern = _get_email_pattern()
+    if pattern is None:
+        return False
+
+    return bool(pattern.match(value))
 
 
 class EmailValidationContract(Notifiable):
     """
-    Email Validation Contract.
+    Contract for validating email addresses.
 
-    This class provides methods for validating email addresses and adding notifications based on the validation results.
+    This class provides methods for validating email addresses and adding notifications
+    based on validation results.
 
-    Methods
-    -------
-    is_email(value: str, field: str, message: str) -> self:
-            Checks if the provided value is a valid email address and adds a notification if it is not.
-
-    is_not_email(value: str, field: str, message: str) -> self:
-            Checks if the provided value is not a valid email address and adds a notification if it is.
-
-    Notes
-    -----
-    The validity of the email address is determined by the internal method `_valid_email`.
+    Attributes:
+        __slots__: Define os atributos permitidos para otimização de memória
 
     """
 
     def is_email(
-        self, value: str, field: str, message: str = IS_EMAIL
+        self, value: EmailType, field: str, message: str = IS_EMAIL
     ) -> Self:
         """
-        Check if the provided value is a valid email address and adds a notification if it is not.
+        Check if a string is a valid email address.
 
-        Parameters
-        ----------
-        `value`: str
-                The value to be checked as an email address.
-        `field`: str
-                The field or identifier associated with the notification.
-        `message`: str (optional)
-                The message of the notification to be added.
+        Args:
+            value: The string to check as an email address
+            field: Field identifier for the notification
+            message: Optional custom message
 
-        Returns
-        -------
-        `self`
-                The current instance of the class.
+        Returns:
+            Self for method chaining
 
-        Notes
-        -----
-        - The validity of the email address is determined by the internal method `_valid_email`.
-        - If the provided `value` is not a valid email address, a `notification` is added to the current instance
-        using the provided field and message.
-        - If the provided `value` is a valid email address, no `notification` is added.
-
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                .is_email("example@example.com", "EmailCheck", "Please enter a valid email address")
-        obj.is_valid # True
-        ```
+        Example:
+            >>> contract = EmailValidationContract()
+            >>> contract.is_email("invalid-email", "email")
+            >>> contract.is_valid  # False
+            >>> contract.is_email("user@example.com", "email")
+            >>> contract.is_valid  # True
+            >>> contract.is_email(None, "email")
+            >>> contract.is_valid  # False
 
         """
         if not _valid_email(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_EMAIL:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self
 
     def is_not_email(
-        self, value: str, field: str, message: str = IS_NOT_EMAIL
+        self, value: EmailType, field: str, message: str = IS_NOT_EMAIL
     ) -> Self:
         """
-        Check if the provided value is not a valid email address and adds a notification if it is.
+        Check if a string is not a valid email address.
 
-        Parameters
-        ----------
-        `value`: str
-                The value to be checked as an email address.
-        `field`:str
-                The field or identifier associated with the notification.
-        `message`: str (optional)
-                The message of the notification to be added.
+        Args:
+            value: The string to check as an email address
+            field: Field identifier for the notification
+            message: Optional custom message
 
-        Returns
-        -------
-        `self`
-                The current instance of the class.
+        Returns:
+            Self for method chaining
 
-        Notes
-        -----
-        - If the provided `value` matches the valid email address pattern, a `notification`
-        is added to the current instance using the provided `field` and `message`.
-        - If the provided `value` does not match the valid email address pattern, no `notification` is added.
-
-        Examples
-        --------
-        ```python
-        obj = Contract()
-                .is_not_email("example@example.com", "EmailCheck", "Value should not be a valid email address")
-        obj.is_valid # False
-        ```
+        Example:
+            >>> contract = EmailValidationContract()
+            >>> contract.is_not_email("user@example.com", "email")
+            >>> contract.is_valid  # False
+            >>> contract.is_not_email("invalid-email", "email")
+            >>> contract.is_valid  # True
+            >>> contract.is_not_email(None, "email")
+            >>> contract.is_valid  # True
 
         """
         if _valid_email(value):
-            self.add_notification(field, message.format(field))
+            if message is IS_NOT_EMAIL:
+                self.add_notification(field, message.format(field))
+                return self
+            self.add_notification(field, message)
         return self
