@@ -11,7 +11,7 @@ from flunt.validations.contract import Contract
 class Pessoa(Notifiable):
     """Class Value Object Name."""
 
-    def __init__(self, first_name, last_name, email):
+    def __init__(self, first_name: str, last_name: str, email: str) -> None:
         """Found 'Constructor'."""
         super().__init__()
         self.first_name = first_name
@@ -40,7 +40,7 @@ class Pessoa(Notifiable):
         self.add_notifications(self.contract.get_notifications())
 
 
-def main():
+def main() -> None:
     """Run the main function."""
     nome = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
     if not nome.is_valid:
