@@ -580,4 +580,6 @@ def test_should_return_a_standard_message_when_value_is_not_between(
     contract = CollectionsValidationContract().is_between(
         entity_mock.full_name, 1, 10, "key"
     )
-    assert contract.get_notifications()[0].message == IS_BETWEEN.format("key", 1, 10)
+    assert contract.get_notifications()[0].message == IS_BETWEEN.format(
+        "key", 1, 10
+    )

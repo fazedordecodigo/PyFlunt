@@ -28,6 +28,7 @@ from flunt.validations.strings_validation_contract import (
 # Tipo genérico para qualquer valor
 T = TypeVar("T")
 
+
 class Contract(
     BoolValidationContract,
     CollectionsValidationContract,
@@ -35,7 +36,7 @@ class Contract(
     CreditCardValidationContract,
     EmailValidationContract,
     StringValidationContract,
-    Notifiable
+    Notifiable,
 ):
     """
     Contract for validating data.

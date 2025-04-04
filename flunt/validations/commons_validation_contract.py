@@ -38,7 +38,9 @@ class CommonsValidationContract(Notifiable):
 
         Examples:
             ```python
-            obj = Contract().is_none("Hello", "ValueCheck", "Value should not be None")
+            obj = Contract().is_none(
+                "Hello", "ValueCheck", "Value should not be None"
+            )
             obj.is_valid
             ```
 
@@ -50,7 +52,9 @@ class CommonsValidationContract(Notifiable):
             self.add_notification(field, message)
         return self
 
-    def is_not_none(self, value: T, field: str, message: str = REQUIRED) -> Self:
+    def is_not_none(
+        self, value: T, field: str, message: str = REQUIRED
+    ) -> Self:
         """
         Check if a value is not None and adds a notification if it is.
 
@@ -65,7 +69,9 @@ class CommonsValidationContract(Notifiable):
 
         Examples:
             ```python
-            obj = Contract().is_not_none(None, "ValueCheck", "Value should not be None")
+            obj = Contract().is_not_none(
+                None, "ValueCheck", "Value should not be None"
+            )
             obj.is_valid
             ```
 
@@ -77,7 +83,9 @@ class CommonsValidationContract(Notifiable):
             self.add_notification(field, message)
         return self
 
-    def are_equals(self, value: T, comparer: T, field: str, message: str = EQUALS) -> Self:
+    def are_equals(
+        self, value: T, comparer: T, field: str, message: str = EQUALS
+    ) -> Self:
         """
         Check if two values are equal and adds a notification if they are not equal.
 
@@ -93,7 +101,12 @@ class CommonsValidationContract(Notifiable):
 
         Examples:
             ```python
-            obj = Contract().are_equals("Hello", "Hello", "Comparison", "Values should be equal")
+            obj = Contract().are_equals(
+                "Hello",
+                "Hello",
+                "Comparison",
+                "Values should be equal",
+            )
             obj.is_valid
             ```
 
@@ -105,7 +118,9 @@ class CommonsValidationContract(Notifiable):
             self.add_notification(field, message)
         return self
 
-    def are_not_equals(self, value: T, comparer: T, field: str, message: str = NOT_EQUALS) -> Self:
+    def are_not_equals(
+        self, value: T, comparer: T, field: str, message: str = NOT_EQUALS
+    ) -> Self:
         """
         Require two values are not equals.
 
@@ -121,7 +136,12 @@ class CommonsValidationContract(Notifiable):
 
         Examples:
             ```python
-            obj = Contract().are_not_equals("Hello", "World", "Comparison", "Values should not be equal")
+            obj = Contract().are_not_equals(
+                "Hello",
+                "World",
+                "Comparison",
+                "Values should not be equal",
+            )
             obj.is_valid
             ```
 

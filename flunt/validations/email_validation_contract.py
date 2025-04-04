@@ -13,6 +13,7 @@ from flunt.notifications.notifiable import Notifiable
 
 EmailType: TypeAlias = str | None
 
+
 @lru_cache(maxsize=1)
 def _get_email_pattern() -> Pattern[str] | None:
     """
@@ -26,6 +27,7 @@ def _get_email_pattern() -> Pattern[str] | None:
     if pattern is None:
         return None
     return re.compile(pattern, re.IGNORECASE)
+
 
 def _valid_email(value: EmailType) -> bool:
     """
@@ -54,6 +56,7 @@ def _valid_email(value: EmailType) -> bool:
         return False
 
     return bool(pattern.match(value))
+
 
 class EmailValidationContract(Notifiable):
     """

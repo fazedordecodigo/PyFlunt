@@ -116,7 +116,6 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-
         if len(value) > comparer:
             if message is LOWER_OR_EQUALS_THAN:
                 self.add_notification(field, message.format(field, comparer))
@@ -164,7 +163,6 @@ class CollectionsValidationContract(Notifiable):
             self.add_notification(field, "Value is not Sized")
             return self
 
-
         if len(value) <= comparer:
             if message is GREATER_THAN:
                 self.add_notification(field, message.format(field, comparer))
@@ -211,7 +209,6 @@ class CollectionsValidationContract(Notifiable):
         if not hasattr(value, "__iter__"):
             self.add_notification(field, "Value is not Sized")
             return self
-
 
         if len(value) < comparer:
             if message is GREATER_OR_EQUALS_THAN:
@@ -267,7 +264,6 @@ class CollectionsValidationContract(Notifiable):
         if not hasattr(value, "__iter__"):
             self.add_notification(field, "Value is a not collection")
             return self
-
 
         if not min <= len(value) <= max:
             if message is IS_BETWEEN:

@@ -13,6 +13,7 @@ from flunt.notifications.notifiable import Notifiable
 
 StringType: TypeAlias = str | None
 
+
 class StringValidationContract(Notifiable):
     """
     Contract for validating string values.
@@ -26,7 +27,10 @@ class StringValidationContract(Notifiable):
     """
 
     def is_not_none_or_white_space(
-        self, value: StringType, field: str, message: str = IS_NOT_NONE_OR_WHITESPACE
+        self,
+        value: StringType,
+        field: str,
+        message: str = IS_NOT_NONE_OR_WHITESPACE,
     ) -> Self:
         """
         Check if a string value is not None or whitespace.

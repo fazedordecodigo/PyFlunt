@@ -38,7 +38,9 @@ fake = Faker()
         uuid4(),
     ],
 )
-def test_should_be_valid_and_not_return_notification_when_required_is_not_none(input: Any) -> None:
+def test_should_be_valid_and_not_return_notification_when_required_is_not_none(
+    input: Any,
+) -> None:
     contract = Contract().requires(
         input,
         fake.text(max_nb_chars=10),

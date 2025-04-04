@@ -13,6 +13,7 @@ from flunt.notifications.notifiable import Notifiable
 
 CreditCardType: TypeAlias = str | None
 
+
 @lru_cache(maxsize=1)
 def _get_only_numbers_pattern() -> Pattern[str] | None:
     """
@@ -26,6 +27,7 @@ def _get_only_numbers_pattern() -> Pattern[str] | None:
     if pattern is None:
         return None
     return re.compile(pattern, re.IGNORECASE)
+
 
 def _luhn_checksum(value: str) -> bool:
     """
@@ -60,6 +62,7 @@ def _luhn_checksum(value: str) -> bool:
 
     return checksum % 10 == 0
 
+
 class CreditCardValidationContract(Notifiable):
     """
     Contract for validating credit card numbers.
@@ -73,7 +76,10 @@ class CreditCardValidationContract(Notifiable):
     """
 
     def is_credit_card(
-        self, value: CreditCardType, field: str, message: str = IS_NOT_CREDIT_CARD
+        self,
+        value: CreditCardType,
+        field: str,
+        message: str = IS_NOT_CREDIT_CARD,
     ) -> Self:
         """
         Check if a string is a valid credit card number using Luhn algorithm.
