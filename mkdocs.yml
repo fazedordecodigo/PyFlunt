@@ -1,12 +1,62 @@
-site_name: PyFlunt
-repo_url: https://github.com/fazedordecodigo/PyFlunt
-repo_name: PyFlunt
-edit_uri: tree/main/docs
+# mkdocs.yml
+
+site_name: Pyflunt
+site_description: 'Uma biblioteca Python para validações de domínio fluentes, baseada no Domain Notification Pattern.'
+site_author: 'Fazedordecodigo'
+site_url: 'https://fazedordecodigo.github.io/PyFlunt/' # Substitua pela URL final do seu site
+
+repo_url: 'https://github.com/fazedordecodigo/PyFlunt'
+repo_name: 'fazedordecodigo/PyFlunt'
+
+# Theme
 theme:
-  material
+  name: material
+  language: pt
+  palette:
+    # Palette toggle for light vs dark mode
+    - scheme: default
+      primary: 'blue'
+      accent: 'light blue'
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: 'blue'
+      accent: 'light blue'
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.tabs.link
 
+# Extensions
 markdown_extensions:
-  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - toc:
+      permalink: true
 
-extra_css:
-  - stylesheets/extra.css
+# Navigation
+nav:
+  - 'Início': 'index.md'
+  - 'Guia de Início Rápido': 'getting-started.md'
+  - 'Validações':
+    - 'Visão Geral': 'validations/index.md'
+    - 'Strings e Gerais': 'validations/string.md'
+    - 'Numéricas': 'validations/numeric.md'
+    - 'Formatos': 'validations/format.md'
+    - 'Booleanas': 'validations/boolean.md'
+    - 'Documentos Brasileiros': 'validations/brazilian_docs.md'
+  - 'Referência da API': 'api-reference.md'
+  - 'Sobre o Padrão': 'about.md'
