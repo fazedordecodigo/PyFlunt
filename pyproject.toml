@@ -80,6 +80,11 @@ linter = [
 ]
 
 pkg-meta = [ "uv>=0.5.30" ]
+doc = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.14",
+    "pymdown-extensions>=10.15",
+]
 
 [project.scripts]
 sample = "samples.flunt_sample:main"
