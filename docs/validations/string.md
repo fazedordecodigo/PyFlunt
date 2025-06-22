@@ -12,7 +12,7 @@ contract.is_not_none_or_white_space(nome, "Nome", "O nome não deve ser nulo ou 
 ```
 
 **Parameters**:
-    
+
 - *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - Valor a ser verificado.
 - *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo a ser verificado.
 - *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Por padrão é retornada uma mensagem em Inglês. Caso deseje personalizar basta passar a mensagem desejada.

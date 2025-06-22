@@ -3,7 +3,7 @@
 site_name: Pyflunt
 site_description: 'Uma biblioteca Python para validações de domínio fluentes, baseada no Domain Notification Pattern.'
 site_author: 'Fazedordecodigo'
-site_url: 'https://fazedordecodigo.github.io/PyFlunt/' # Substitua pela URL final do seu site
+site_url: 'https://fazedordecodigo.github.io/PyFlunt/'
 
 repo_url: 'https://github.com/fazedordecodigo/PyFlunt'
 repo_name: 'fazedordecodigo/PyFlunt'

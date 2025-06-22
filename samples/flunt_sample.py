@@ -1,4 +1,5 @@
 """Módulo de exemplo com Objetos de Valor."""
+
 from __future__ import annotations
 
 import logging
@@ -12,7 +13,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),
-    ]
+    ],
 )
 
 
@@ -24,9 +25,11 @@ def time_me(function):
         start = time.time()
         r = function(*arg)
         end = time.time()
-        logging.info(f"{function.__name__} ({(end-start)*1000:0.3f} ms)")
+        logging.info(f"{function.__name__} ({(end - start) * 1000:0.3f} ms)")
         return r
+
     return wrap
+
 
 class Pessoa(Notifiable):
     """Classe Objeto de Valor Pessoa."""
@@ -46,16 +49,8 @@ class Pessoa(Notifiable):
             .requires(self.primeiro_nome, "primeiro nome")
             .requires(self.ultimo_nome, "ultimo nome")
             .requires(self.email, "email", "E-mail é obrigatório")
-            .is_lower_than(
-                self.primeiro_nome,
-                50,
-                "primeiro_nome"
-            )
-            .is_lower_than(
-                self.ultimo_nome,
-                50,
-                "ultimo_nome"
-            )
+            .is_lower_than(self.primeiro_nome, 50, "primeiro_nome")
+            .is_lower_than(self.ultimo_nome, 50, "ultimo_nome")
             .is_greater_or_equals_than(self.primeiro_nome, 3, "primeiro_nome")
             .is_greater_or_equals_than(self.ultimo_nome, 3, "ultimo_nome")
             .is_email(self.email, "email", "E-mail é obrigatório")
@@ -65,6 +60,7 @@ class Pessoa(Notifiable):
         # Adicionando as notificações do contrato à entidade
         self.add_notifications(contract.get_notifications())
 
+
 @time_me
 def main() -> None:
     """Função principal de exemplo."""
@@ -72,6 +68,7 @@ def main() -> None:
     for _i in range(1_000_000):
         if pessoa.is_valid:
             pass
+
 
 if __name__ == "__main__":
     main()

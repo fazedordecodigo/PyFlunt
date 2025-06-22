@@ -1,11 +1,11 @@
 [project]
 name = "Flunt"
-version = "3.0.0"
+version = "3.0.1"
 description = "Python implementation of Domain Notification Pattern inspired by Flunt (.NET)"
 authors = [ {name = "Emerson Delatorre", email = "contato@delatorre.dev" }]
 maintainers = [ {name = "Emerson Delatorre", email = "contato@delatorre.dev" }]
 license = "MIT"
-readme = "./docs/README.md"
+readme = "README.md"
 requires-python = ">=3.11"
 keywords = [
   "notifications",

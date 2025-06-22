@@ -6,7 +6,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),
-    ]
+    ],
 )
 
 
@@ -18,9 +18,11 @@ def time_me(function):
         start = time.time()
         r = function(*arg)
         end = time.time()
-        log.info(f"{function.__name__} ({(end-start)*1000:0.3f} ms)")
+        log.info(f"{function.__name__} ({(end - start) * 1000:0.3f} ms)")
         return r
+
     return wrap
+
 
 # Not Existing
 @time_me
@@ -32,6 +34,7 @@ def with_try(iterations):
         except:  # noqa: E722
             pass
 
+
 @time_me
 def with_try_exc(iterations):
     d = {"somekey": 123}
@@ -40,6 +43,7 @@ def with_try_exc(iterations):
             d["notexist"]
         except Exception as e:  # noqa: F841
             pass
+
 
 @time_me
 def without_try(iterations):
@@ -50,6 +54,7 @@ def without_try(iterations):
         else:
             pass
 
+
 @time_me
 def without_try_not(iterations):
     d = {"somekey": 123}
@@ -58,6 +63,7 @@ def without_try_not(iterations):
             pass
         else:
             pass
+
 
 # Existing
 @time_me
@@ -69,11 +75,13 @@ def exists_with_try(iterations):
         except:  # noqa: E722
             pass
 
+
 @time_me
 def exists_unsafe(iterations):
     d = {"somekey": 123}
     for _i in range(iterations):
         d["somekey"]
+
 
 # @time_me
 # def exists_with_try_exc(iterations):
@@ -84,6 +92,7 @@ def exists_unsafe(iterations):
 #         except Exception:
 #             pass
 
+
 @time_me
 def exists_without_try(iterations):
     d = {"somekey": 123}
@@ -93,6 +102,7 @@ def exists_without_try(iterations):
         else:
             pass
 
+
 @time_me
 def exists_without_try_not(iterations):
     d = {"somekey": 123}
@@ -101,6 +111,7 @@ def exists_without_try_not(iterations):
             pass
         else:
             d["somekey"]
+
 
 # log.info("The case where the key does not exist:\n")
 # log.info("100 iterations:")
