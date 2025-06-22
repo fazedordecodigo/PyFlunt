@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Self, TypeAlias
+from typing import Self
 
 from flunt.constants.messages import (
     CONTAINS,
@@ -10,8 +10,6 @@ from flunt.constants.messages import (
     NOT_CONTAINS,
 )
 from flunt.notifications.notifiable import Notifiable
-
-StringType: TypeAlias = str | None
 
 
 class StringValidationContract(Notifiable):
@@ -28,7 +26,7 @@ class StringValidationContract(Notifiable):
 
     def is_not_none_or_white_space(
         self,
-        value: StringType,
+        value: str | None,
         field: str,
         message: str = IS_NOT_NONE_OR_WHITESPACE,
     ) -> Self:
@@ -62,7 +60,7 @@ class StringValidationContract(Notifiable):
 
     def contains(
         self,
-        value: StringType,
+        value: str | None,
         comparer: str,
         field: str,
         message: str = CONTAINS,
@@ -96,7 +94,7 @@ class StringValidationContract(Notifiable):
 
     def not_contains(
         self,
-        value: StringType,
+        value: str | None,
         comparer: str,
         field: str,
         message: str = NOT_CONTAINS,

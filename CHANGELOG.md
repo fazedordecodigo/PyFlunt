@@ -16,6 +16,17 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 - Adicionar Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
 
+## [3.0.1] - 2025-06-22
+### Adicionado
+- Adicionada documentação detalhada com introdução, guia de início rápido, referência da API e exemplos de uso ([#docs])
+- Adicionados exemplos de benchmarking e logging em samples para uso e comparação de performance de dicionários
+
+### Modificado
+- N/A
+
+### Corrigido
+- N/A
+
 ## [3.0.0] - 2025-04-04
 ### Adicionado
 - Implementação do `uv` em substituição ao Poetry para gerenciamento de dependências
