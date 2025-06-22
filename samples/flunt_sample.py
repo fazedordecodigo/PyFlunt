@@ -3,9 +3,32 @@
 from __future__ import annotations
 
 import logging
+import time
 
 from flunt.notifications.notifiable import Notifiable
 from flunt.validations.contract import Contract
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.StreamHandler(),
+    ],
+)
+
+
+logging.getLogger(__name__)
+
+
+def time_me(function):  # type: ignore
+    def wrap(*arg):  # type: ignore
+        start = time.time()
+        r = function(*arg)
+        end = time.time()
+        logging.info(f"{function.__name__} ({(end - start) * 1000:0.3f} ms)")
+        return r
+
+    return wrap
 
 
 class Pessoa(Notifiable):
@@ -23,25 +46,14 @@ class Pessoa(Notifiable):
         # Criando um contrato de validação
         contract = (
             Contract()
-            .requires(
-                self.primeiro_nome, "primeiro nome", "Nome é obrigatório"
-            )
-            .requires(
-                self.ultimo_nome, "ultimo nome", "Sobrenome é obrigatório"
-            )
+            .requires(self.primeiro_nome, "primeiro nome")
+            .requires(self.ultimo_nome, "ultimo nome")
             .requires(self.email, "email", "E-mail é obrigatório")
-            .is_lower_than(
-                self.primeiro_nome,
-                3,
-                "primeiro_nome",
-                "Nome deve ter no mínimo 3 caracteres",
-            )
-            .is_lower_than(
-                self.ultimo_nome,
-                3,
-                "ultimo_nome",
-                "Sobrenome deve ter no mínimo 3 caracteres",
-            )
+            .is_lower_than(self.primeiro_nome, 50, "primeiro_nome")
+            .is_lower_than(self.ultimo_nome, 50, "ultimo_nome")
+            .is_greater_or_equals_than(self.primeiro_nome, 3, "primeiro_nome")
+            .is_greater_or_equals_than(self.ultimo_nome, 3, "ultimo_nome")
+            .is_email(self.email, "email", "E-mail é obrigatório")
             .is_email(self.email, "email", "E-mail inválido")
         )
 
@@ -49,16 +61,14 @@ class Pessoa(Notifiable):
         self.add_notifications(contract.get_notifications())
 
 
+@time_me
 def main() -> None:
     """Função principal de exemplo."""
-    pessoa = Pessoa("Emerson", "Delatorre", "emerson@delatorre.dev")
-    if not pessoa.is_valid:
-        for notification in pessoa.get_notifications():
-            logging.info(notification)
-    else:
-        logging.info("Validado com sucesso!")
+    pessoa = Pessoa("Em", "Delatorre", "contato@delatorre.dev")
+    for _i in range(1_000_000):
+        if pessoa.is_valid:
+            pass
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     main()
