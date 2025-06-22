@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 ## [Unreleased]
 - Add Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
 
+## [3.0.1] - 2025-06-22
+### Added
+- Added detailed documentation with introduction, getting started guide, API reference, and usage examples ([#docs])
+- Added benchmarking and logging examples in samples for usage and performance comparison of dictionaries
+
+### Changed
+- N/A
+
+### Fixed
+- N/A
+
 ## [3.0.0] - 2025-04-04
 ### Added
 - Implementation of `uv` to replace Poetry for dependency management
