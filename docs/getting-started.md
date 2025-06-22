@@ -34,7 +34,7 @@ class Pet:
         contract = (
             Contract()
             .requires(self.nome, "Nome", "O nome do pet é obrigatório.")
-            .has_min_len(self.nome, 2, "Nome", "O nome do pet deve ter no mínimo 2 caracteres.")
+            .is_lower_than(nome, 50, "Nome", "O nome do pet deve ser menor que 50 caracteres")
             .is_greater_than(self.idade, 0, "Idade", "A idade do pet deve ser maior que zero.")
         )
         # Você pode adicionar as notificações ao seu objeto de domínio
@@ -65,7 +65,6 @@ Saída:
 Pet inválido é válido? False
 Notificações de erro:
 - Campo: 'Nome', Mensagem: 'O nome do pet é obrigatório.'
-- Campo: 'Nome', Mensagem: 'O nome do pet deve ter no mínimo 2 caracteres.'
 - Campo: 'Idade', Mensagem: 'A idade do pet deve ser maior que zero.'
 ```
 

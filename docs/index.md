@@ -29,7 +29,7 @@ def registrar_usuario(nome, email):
     contract = (
         Contract()
         .requires(nome, "Nome", "O nome é obrigatório")
-        .has_min_len(nome, 3, "Nome", "O nome deve ter pelo menos 3 caracteres")
+        .is_lower_than(nome, 50, "Nome", "O nome deve ser menor que 50 caracteres")
         .is_email(email, "Email", "O e-mail fornecido não é válido")
     )
 
