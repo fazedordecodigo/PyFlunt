@@ -17,11 +17,11 @@ logging.basicConfig(
 )
 
 
-logging = logging.getLogger(__name__)
+logging.getLogger(__name__)
 
 
-def time_me(function):
-    def wrap(*arg):
+def time_me(function):  # type: ignore
+    def wrap(*arg):  # type: ignore
         start = time.time()
         r = function(*arg)
         end = time.time()
