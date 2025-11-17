@@ -360,10 +360,6 @@ class Usuario(Notifiable):
 
 As seguintes validações estão planejadas para versões futuras:
 
-- ⏳ **DateTime**: Validações de data e hora
-- ⏳ **Números**: Validações de valores numéricos diretos (int, float)
-- ⏳ **CPF/CNPJ**: Validação completa com dígitos verificadores
-- ⏳ **URL**: Validação de URLs
 - ⏳ **Regex**: Validação com regex customizado
 - ⏳ **Objetos**: Validações de objetos complexos
 
