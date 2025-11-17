@@ -4,9 +4,6 @@ from __future__ import annotations
 
 
 from flunt.validations.contract import Contract
-from flunt.validations.numeric_validation_contract import (
-    NumericValidationContract,
-)
 
 
 class TestIsGreaterThanNumber:
