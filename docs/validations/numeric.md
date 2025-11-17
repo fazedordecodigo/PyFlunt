@@ -1,51 +1,18 @@
 # Validações Numéricas
 
-Estas validações são usadas para verificar o tamanho de coleções (strings, listas, dicionários, tuplas, etc.) através de comparações numéricas.
+Estas validações são usadas para verificar valores numéricos (`int`, `float`) diretamente, como se um número é positivo, negativo, maior que outro, ou está dentro de um intervalo.
 
 !!! note "Importante"
-    Atualmente, estas validações operam sobre o **tamanho** (length) de coleções, não sobre valores numéricos diretos. Para validar o comprimento de uma string, lista, ou qualquer objeto que implemente `__len__`, use os métodos abaixo.
+    Estas validações operam sobre **valores numéricos** (int, float), não sobre o tamanho de coleções. Para validar o comprimento de uma string, lista, ou qualquer objeto que implemente `__len__`, utilize as validações de coleção.
 
 ---
 
-## is_lower_than(*value, comparer, field, message=LOWER_THAN*)
+## is_greater_than_number(*value, comparer, field, message=GREATER_THAN*)
 
-Verifica se o tamanho de uma coleção é **menor que** um valor especificado.
-
-```python
-contract.is_lower_than(nome, 50, "nome", "O nome deve ter menos de 50 caracteres")
-```
-
-**Parâmetros**:
-
-- *value ([Sized](https://docs.python.org/3/library/typing.html#typing.Sized))* - Coleção a ser verificada (str, list, dict, set, tuple, etc.).
-- *comparer ([int](https://docs.python.org/3/library/functions.html#int))* - Valor máximo permitido (exclusivo).
-- *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo a ser verificado.
-- *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
-  - *LOWER_THAN* = "The field {0} must have less than {1} items"
-
-**Exemplo**:
+Verifica se um valor numérico é **maior que** um valor especificado.
 
 ```python
-from flunt.validations.contract import Contract
-
-# Validar tamanho de string
-contract = Contract()
-contract.is_lower_than("João", 10, "nome", "Nome muito longo")
-# ✅ Válido: len("João") = 4 < 10
-
-# Validar tamanho de lista
-items = [1, 2, 3]
-contract.is_lower_than(items, 5, "items", "Muitos itens")
-# ✅ Válido: len(items) = 3 < 5
-```
-
------
-
-## is_lower_or_equals_than(*value, comparer, field, message=LOWER_OR_EQUALS_THAN*)
-
-Verifica se o tamanho de uma coleção é **menor ou igual a** um valor especificado.
-
-```python
+contract.is_greater_than_number(10, 5, "idade", "A idade deve ser maior que 5")
 contract.is_lower_or_equals_than(senha, 20, "senha", "A senha deve ter no máximo 20 caracteres")
 ```
 
