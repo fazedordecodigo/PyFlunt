@@ -106,7 +106,7 @@ contract.is_credit_card(numero_cartao, "cartao", "Cartão de crédito inválido"
 - *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - String contendo apenas números do cartão.
 - *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo a ser verificado.
 - *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
-  - *IS_NOT_CREDIT_CARD* = "The field {0} is not a valid credit card number"
+  - *IS_NOT_CREDIT_CARD* = "The field {0} must not be a valid Credit Card"
 
 **Algoritmo de Luhn**:
 
