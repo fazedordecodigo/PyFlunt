@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-
 from flunt.validations.contract import Contract
 
 
