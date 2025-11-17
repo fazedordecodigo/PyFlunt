@@ -61,7 +61,7 @@ contract.is_cnpj("11.222.333/0001-81", "cnpj", "CNPJ inválido")
 - *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - CNPJ a ser validado (com ou sem formatação).
 - *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo.
 - *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
-  - *IS_NOT_CNPJ* = "The field {0} must not be a valid CNPJ"
+  - *IS_NOT_CNPJ* = "The field {0} is not a valid CNPJ"
 
 **Validações realizadas**:
 1. ✅ Formato correto (14 dígitos)
