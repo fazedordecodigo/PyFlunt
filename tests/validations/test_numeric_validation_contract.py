@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
 
 from flunt.validations.contract import Contract
 from flunt.validations.numeric_validation_contract import (
