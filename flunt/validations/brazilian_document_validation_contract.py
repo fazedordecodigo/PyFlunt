@@ -7,6 +7,11 @@ from typing import Self
 from flunt.constants.messages import IS_NOT_CNPJ, IS_NOT_CPF
 from flunt.notifications.notifiable import Notifiable
 
+# Brazilian document constants
+CPF_LENGTH = 11
+CNPJ_LENGTH = 14
+MAX_CHECKSUM_DIGIT = 10
+
 
 def _only_digits(value: str | None) -> str:
     """
@@ -52,7 +57,7 @@ def _validate_cpf(cpf: str | None) -> bool:
     cpf_clean = _only_digits(cpf)
 
     # CPF must have exactly 11 digits
-    if len(cpf_clean) != 11:
+    if len(cpf_clean) != CPF_LENGTH:
         return False
 
     # Reject known invalid CPFs (all same digits)
@@ -115,7 +120,7 @@ def _validate_cnpj(cnpj: str | None) -> bool:
     cnpj_clean = _only_digits(cnpj)
 
     # CNPJ must have exactly 14 digits
-    if len(cnpj_clean) != 14:
+    if len(cnpj_clean) != CNPJ_LENGTH:
         return False
 
     # Reject known invalid CNPJs (all same digits)
@@ -139,7 +144,7 @@ def _validate_cnpj(cnpj: str | None) -> bool:
         int(cnpj_clean[i]) * weights_first[i] for i in range(12)
     )
     first_digit = 11 - (sum_first % 11)
-    first_digit = 0 if first_digit >= 10 else first_digit
+    first_digit = 0 if first_digit >= MAX_CHECKSUM_DIGIT else first_digit
 
     if int(cnpj_clean[12]) != first_digit:
         return False
@@ -150,7 +155,7 @@ def _validate_cnpj(cnpj: str | None) -> bool:
         int(cnpj_clean[i]) * weights_second[i] for i in range(13)
     )
     second_digit = 11 - (sum_second % 11)
-    second_digit = 0 if second_digit >= 10 else second_digit
+    second_digit = 0 if second_digit >= MAX_CHECKSUM_DIGIT else second_digit
 
     if int(cnpj_clean[13]) != second_digit:
         return False

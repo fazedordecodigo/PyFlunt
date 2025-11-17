@@ -2,10 +2,21 @@
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import UTC, date, datetime
 from typing import Self
 
 from flunt.notifications.notifiable import Notifiable
+
+
+def _get_today() -> date:
+    """
+    Get today's date in UTC timezone.
+
+    Returns:
+        Today's date
+
+    """
+    return datetime.now(tz=UTC).date()
 
 
 class DateTimeValidationContract(Notifiable):
@@ -143,14 +154,13 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # True
 
         """
-        today = datetime.now().date() if isinstance(value, datetime) else date.today()
-
         if value is None:
             self.add_notification(field, message.format(field))
             return self
 
         # Convert datetime to date for comparison
         value_date = value.date() if isinstance(value, datetime) else value
+        today = _get_today()
 
         if value_date >= today:
             self.add_notification(field, message.format(field))
@@ -182,14 +192,13 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # True
 
         """
-        today = datetime.now().date() if isinstance(value, datetime) else date.today()
-
         if value is None:
             self.add_notification(field, message.format(field))
             return self
 
         # Convert datetime to date for comparison
         value_date = value.date() if isinstance(value, datetime) else value
+        today = _get_today()
 
         if value_date <= today:
             self.add_notification(field, message.format(field))
@@ -220,14 +229,13 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # True
 
         """
-        today = datetime.now().date() if isinstance(value, datetime) else date.today()
-
         if value is None:
             self.add_notification(field, message.format(field))
             return self
 
         # Convert datetime to date for comparison
         value_date = value.date() if isinstance(value, datetime) else value
+        today = _get_today()
 
         if value_date != today:
             self.add_notification(field, message.format(field))
