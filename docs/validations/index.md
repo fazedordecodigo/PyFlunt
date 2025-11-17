@@ -132,13 +132,18 @@ contract.is_false(bloqueado, "bloqueado", "Usuário não pode estar bloqueado")
 Validações específicas para documentos brasileiros.
 
 !!! success "Validação Completa"
-    Agora valida **formato** e **dígitos verificadores** para CPF e CNPJ.
+    Agora a validação de CPF e CNPJ verifica **formato** e **dígitos verificadores** (validação completa).
 
-**Padrões regex disponíveis:**
-- CPF: `^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$`
-- CNPJ: `^\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}$`
+**Validação completa disponível:**
+- Use os métodos `is_cpf()` e `is_cnpj()` para validar CPF e CNPJ com verificação dos dígitos verificadores.
 
-**Exemplo:**
+**Exemplo de validação completa:**
+```python
+from flunt.localization.brazilian_document_validation_contract import BrazilianDocumentValidationContract
+
+contract = BrazilianDocumentValidationContract()
+contract.is_cpf("123.456.789-09", "cpf", "CPF inválido")
+contract.is_cnpj("12.345.678/0001-95", "cnpj", "CNPJ inválido")
 ```python
 from flunt.localization.flunt_regex_patterns import get_pattern
 import re
