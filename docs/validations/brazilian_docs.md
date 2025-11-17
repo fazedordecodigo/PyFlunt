@@ -1,15 +1,143 @@
 # Validações de Documentos Brasileiros
 
-PyFlunt oferece suporte para validação de documentos brasileiros, com foco em CPF e CNPJ.
+PyFlunt oferece suporte completo para validação de documentos brasileiros, com foco em CPF e CNPJ.
 
-!!! warning "Funcionalidade em Desenvolvimento"
-    Atualmente, as validações de CPF e CNPJ verificam apenas o **formato** (quantidade de dígitos e caracteres especiais), mas **não validam os dígitos verificadores**. A validação completa está planejada para uma próxima versão ([#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)).
+!!! success "Validação Completa Implementada"
+    O PyFlunt agora valida **formato E dígitos verificadores** de CPF e CNPJ! A implementação completa garante que apenas documentos brasileiros válidos sejam aceitos.
 
 ---
 
-## Padrões Regex Disponíveis
+## Validação Completa de CPF e CNPJ
 
-Atualmente, o PyFlunt fornece padrões regex para validação de formato:
+### is_cpf(*value, field, message=IS_NOT_CPF*)
+
+Valida se uma string é um CPF válido com verificação completa de dígitos verificadores.
+
+```python
+from flunt.validations.contract import Contract
+
+contract = Contract().is_cpf("123.456.789-09", "cpf", "CPF inválido")
+```
+
+**Parâmetros**:
+
+- *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - CPF a ser validado (com ou sem formatação).
+- *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo.
+- *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
+  - *IS_NOT_CPF* = "The field {0} must not be a valid CPF"
+
+**Validações realizadas**:
+1. ✅ Formato correto (11 dígitos)
+2. ✅ Rejeita números sequenciais (111.111.111-11, 000.000.000-00, etc.)
+3. ✅ Valida primeiro dígito verificador
+4. ✅ Valida segundo dígito verificador
+5. ✅ Aceita com ou sem formatação
+
+**Exemplos válidos**:
+```python
+contract.is_cpf("123.456.789-09", "cpf")  # ✅ Formatado
+contract.is_cpf("12345678909", "cpf")      # ✅ Sem formatação
+```
+
+**Exemplos inválidos** (todos serão rejeitados):
+```python
+contract.is_cpf("111.111.111-11", "cpf")  # ❌ Sequencial
+contract.is_cpf("000.000.000-00", "cpf")  # ❌ Todos zeros
+contract.is_cpf("123.456.789-00", "cpf")  # ❌ Dígito verificador inválido
+```
+
+---
+
+### is_cnpj(*value, field, message=IS_NOT_CNPJ*)
+
+Valida se uma string é um CNPJ válido com verificação completa de dígitos verificadores.
+
+```python
+contract.is_cnpj("11.222.333/0001-81", "cnpj", "CNPJ inválido")
+```
+
+**Parâmetros**:
+
+- *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - CNPJ a ser validado (com ou sem formatação).
+- *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo.
+- *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
+  - *IS_NOT_CNPJ* = "The field {0} must not be a valid CNPJ"
+
+**Validações realizadas**:
+1. ✅ Formato correto (14 dígitos)
+2. ✅ Rejeita números sequenciais (11.111.111/1111-11, etc.)
+3. ✅ Valida primeiro dígito verificador
+4. ✅ Valida segundo dígito verificador
+5. ✅ Aceita com ou sem formatação
+
+**Exemplos válidos**:
+```python
+contract.is_cnpj("11.222.333/0001-81", "cnpj")  # ✅ Formatado
+contract.is_cnpj("11222333000181", "cnpj")       # ✅ Sem formatação
+```
+
+**Exemplos inválidos** (todos serão rejeitados):
+```python
+contract.is_cnpj("11.111.111/1111-11", "cnpj")  # ❌ Sequencial
+contract.is_cnpj("00.000.000/0000-00", "cnpj")  # ❌ Todos zeros
+contract.is_cnpj("11.222.333/0001-00", "cnpj")  # ❌ Dígito verificador inválido
+```
+
+---
+
+## Exemplo Completo
+
+```python
+from flunt.notifications.notifiable import Notifiable
+from flunt.validations.contract import Contract
+
+class CadastroPessoa(Notifiable):
+    def __init__(self, nome, cpf, cnpj=None):
+        super().__init__()
+        self.nome = nome
+        self.cpf = cpf
+        self.cnpj = cnpj
+
+        contract = (
+            Contract()
+            .requires(self.nome, "nome", "Nome é obrigatório")
+            .is_cpf(self.cpf, "cpf", "CPF inválido")
+        )
+
+        # Se for empresa, valida CNPJ
+        if self.cnpj:
+            contract.is_cnpj(self.cnpj, "cnpj", "CNPJ inválido")
+
+        self.add_notifications(contract.get_notifications())
+
+# Pessoa Física
+pessoa = CadastroPessoa(
+    nome="João Silva",
+    cpf="123.456.789-09"  # CPF válido
+)
+
+if pessoa.is_valid:
+    print("✅ Cadastro válido!")
+
+# Empresa
+empresa = CadastroPessoa(
+    nome="Empresa XYZ LTDA",
+    cpf="111.444.777-35",      # CPF do responsável
+    cnpj="11.222.333/0001-81"  # CNPJ da empresa
+)
+
+if empresa.is_valid:
+    print("✅ Empresa cadastrada com sucesso!")
+else:
+    for notification in empresa.get_notifications():
+        print(f"❌ [{notification.field}] {notification.message}")
+```
+
+---
+
+## Padrões Regex Disponíveis (Avançado)
+
+Além das validações completas acima, o PyFlunt também fornece padrões regex para casos avançados:
 
 ### CPF (Cadastro de Pessoa Física)
 
@@ -73,222 +201,46 @@ else:
 
 ---
 
-## Limitações Atuais
+## Algoritmo de Validação
 
-!!! danger "Importante: Validação Incompleta"
-    **A validação atual NÃO verifica os dígitos verificadores!**
-
-    Isso significa que documentos com formato correto mas dígitos inválidos passarão pela validação:
-
-    ```python
-    # ❌ Estes CPFs/CNPJs INVÁLIDOS passariam na validação atual:
-    "111.111.111-11"  # CPF sequencial (inválido)
-    "000.000.000-00"  # CPF com zeros (inválido)
-    "12.345.678/0001-00"  # CNPJ com dígitos verificadores errados
-    ```
-
-### Por que isso importa?
-
-Os dígitos verificadores são calculados através de um algoritmo específico e servem para:
-
-1. **Detectar erros de digitação**
-2. **Validar autenticidade** do documento
-3. **Prevenir números sequenciais** inválidos
-
-Sem essa validação, seu sistema pode aceitar documentos falsos ou inválidos.
+O PyFlunt implementa os algoritmos oficiais de validação de CPF e CNPJ:
 
 ---
 
-## Validação Temporária (Workaround)
+### Validação de CPF
 
-Enquanto a validação completa não está implementada, você pode usar bibliotecas externas:
+**Passos do algoritmo**:
+1. Remove formatação (mantém apenas dígitos)
+2. Verifica se tem exatamente 11 dígitos
+3. Rejeita sequências conhecidas (111.111.111-11, 000.000.000-00, etc.)
+4. Calcula o primeiro dígito verificador
+5. Calcula o segundo dígito verificador
+6. Compara com os dígitos fornecidos
 
-### Opção 1: Usando `validate-docbr`
+**Fórmula dos dígitos verificadores**:
+- Primeiro dígito: `(soma * 10 % 11) % 10`
+- Segundo dígito: `(soma * 10 % 11) % 10`
 
-```bash
-pip install validate-docbr
-```
+### Validação de CNPJ
 
-```python
-from flunt.notifications.notifiable import Notifiable
-from flunt.validations.contract import Contract
-from validate_docbr import CPF, CNPJ
-
-class PessoaBrasileira(Notifiable):
-    def __init__(self, cpf, cnpj=None):
-        super().__init__()
-        self.cpf = cpf
-        self.cnpj = cnpj
-
-        # Validadores externos
-        cpf_validator = CPF()
-        cnpj_validator = CNPJ()
-
-        # Contract do PyFlunt
-        contract = Contract()
-
-        # Validar CPF (com dígitos verificadores)
-        if self.cpf and not cpf_validator.validate(self.cpf):
-            contract.add_notification("cpf", "CPF inválido")
-
-        # Validar CNPJ (se fornecido)
-        if self.cnpj and not cnpj_validator.validate(self.cnpj):
-            contract.add_notification("cnpj", "CNPJ inválido")
-
-        self.add_notifications(contract.get_notifications())
-
-# Uso
-pessoa = PessoaBrasileira(cpf="123.456.789-10")  # CPF inválido
-if not pessoa.is_valid:
-    for notification in pessoa.get_notifications():
-        print(f"❌ {notification.message}")
-```
-
-### Opção 2: Implementação Manual
-
-```python
-from flunt.notifications.notifiable import Notifiable
-from flunt.validations.contract import Contract
-
-def validar_cpf(cpf: str) -> bool:
-    """Valida CPF com dígitos verificadores."""
-    # Remove formatação
-    cpf = ''.join(filter(str.isdigit, cpf))
-
-    # CPF deve ter 11 dígitos
-    if len(cpf) != 11:
-        return False
-
-    # CPFs conhecidos como inválidos
-    if cpf in [
-        '00000000000', '11111111111', '22222222222',
-        '33333333333', '44444444444', '55555555555',
-        '66666666666', '77777777777', '88888888888',
-        '99999999999'
-    ]:
-        return False
-
-    # Validar primeiro dígito verificador
-    soma = sum(int(cpf[i]) * (10 - i) for i in range(9))
-    digito1 = (soma * 10 % 11) % 10
-
-    if int(cpf[9]) != digito1:
-        return False
-
-    # Validar segundo dígito verificador
-    soma = sum(int(cpf[i]) * (11 - i) for i in range(10))
-    digito2 = (soma * 10 % 11) % 10
-
-    if int(cpf[10]) != digito2:
-        return False
-
-    return True
-
-
-def validar_cnpj(cnpj: str) -> bool:
-    """Valida CNPJ com dígitos verificadores."""
-    # Remove formatação
-    cnpj = ''.join(filter(str.isdigit, cnpj))
-
-    # CNPJ deve ter 14 dígitos
-    if len(cnpj) != 14:
-        return False
-
-    # CNPJs conhecidos como inválidos
-    if cnpj in [
-        '00000000000000', '11111111111111', '22222222222222',
-        '33333333333333', '44444444444444', '55555555555555',
-        '66666666666666', '77777777777777', '88888888888888',
-        '99999999999999'
-    ]:
-        return False
-
-    # Validar primeiro dígito verificador
-    pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    soma = sum(int(cnpj[i]) * pesos1[i] for i in range(12))
-    digito1 = 11 - (soma % 11)
-    digito1 = 0 if digito1 >= 10 else digito1
-
-    if int(cnpj[12]) != digito1:
-        return False
-
-    # Validar segundo dígito verificador
-    pesos2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    soma = sum(int(cnpj[i]) * pesos2[i] for i in range(13))
-    digito2 = 11 - (soma % 11)
-    digito2 = 0 if digito2 >= 10 else digito2
-
-    if int(cnpj[13]) != digito2:
-        return False
-
-    return True
-
-
-class Empresa(Notifiable):
-    """Exemplo de uso com validação manual."""
-
-    def __init__(self, cnpj, cpf_responsavel):
-        super().__init__()
-        self.cnpj = cnpj
-        self.cpf_responsavel = cpf_responsavel
-
-        contract = Contract()
-
-        # Validar CNPJ
-        if not validar_cnpj(self.cnpj):
-            contract.add_notification("cnpj", "CNPJ inválido")
-
-        # Validar CPF do responsável
-        if not validar_cpf(self.cpf_responsavel):
-            contract.add_notification("cpf_responsavel", "CPF do responsável inválido")
-
-        self.add_notifications(contract.get_notifications())
-
-
-# Teste
-empresa = Empresa(
-    cnpj="11.222.333/0001-81",  # CNPJ válido
-    cpf_responsavel="111.111.111-11"  # CPF inválido (sequencial)
-)
-
-if not empresa.is_valid:
-    for notification in empresa.get_notifications():
-        print(f"❌ [{notification.field}] {notification.message}")
-```
+**Passos do algoritmo**:
+1. Remove formatação (mantém apenas dígitos)
+2. Verifica se tem exatamente 14 dígitos
+3. Rejeita sequências conhecidas
+4. Calcula o primeiro dígito verificador com pesos [5,4,3,2,9,8,7,6,5,4,3,2]
+5. Calcula o segundo dígito verificador com pesos [6,5,4,3,2,9,8,7,6,5,4,3,2]
+6. Compara com os dígitos fornecidos
 
 ---
 
-## Roadmap - Próxima Versão
+## Funcionalidades Implementadas
 
-A próxima versão do PyFlunt incluirá métodos nativos para validação completa:
-
-```python
-# 🚀 API planejada para próxima versão
-from flunt.validations.contract import Contract
-
-contract = (
-    Contract()
-    # Validar CPF com dígitos verificadores
-    .is_cpf(cpf, "cpf", "CPF inválido")
-
-    # Validar CNPJ com dígitos verificadores
-    .is_cnpj(cnpj, "cnpj", "CNPJ inválido")
-
-    # Validar CPF ou CNPJ
-    .is_cpf_or_cnpj(documento, "documento", "Documento inválido")
-)
-```
-
-**Funcionalidades planejadas**:
-
-- ✅ Validação de formato (já existe)
-- ⏳ Validação de dígitos verificadores
-- ⏳ Rejeição de números sequenciais (`111.111.111-11`)
-- ⏳ Rejeição de números conhecidos como inválidos
-- ⏳ Suporte para formatado e não formatado
-- ⏳ Máscaras automáticas (formatação)
-
-Acompanhe o progresso: [Issue #29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
+- ✅ Validação de formato (aceita com ou sem formatação)
+- ✅ Validação de dígitos verificadores
+- ✅ Rejeição de números sequenciais (111.111.111-11, etc.)
+- ✅ Rejeição de números conhecidos como inválidos
+- ✅ Suporte para CPF/CNPJ formatado e não formatado
+- ✅ Mensagens de erro personalizáveis
 
 ---
 
@@ -351,9 +303,9 @@ cnpj_pattern = get_pattern("cnpj")
 
 ## Contribuindo
 
-Quer ajudar a implementar validações completas de CPF/CNPJ? Confira:
+Quer ajudar a implementar validações de outros documentos brasileiros? Confira:
 
-- 📋 [Issue #29 - Validação de Documentos](https://github.com/fazedordecodigo/PyFlunt/issues/29)
+- 📋 [Issues do Projeto](https://github.com/fazedordecodigo/PyFlunt/issues)
 - 📖 [Guia de Contribuição](https://github.com/fazedordecodigo/PyFlunt/blob/main/CONTRIBUTING.md)
 
 Sua contribuição é muito bem-vinda! 🇧🇷

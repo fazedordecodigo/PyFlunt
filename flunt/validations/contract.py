@@ -9,6 +9,9 @@ from flunt.notifications.notifiable import Notifiable
 from flunt.validations.bool_validation_contract import (
     BoolValidationContract,
 )
+from flunt.validations.brazilian_document_validation_contract import (
+    BrazilianDocumentValidationContract,
+)
 from flunt.validations.collections_validation_contract import (
     CollectionsValidationContract,
 )
@@ -18,12 +21,19 @@ from flunt.validations.commons_validation_contract import (
 from flunt.validations.credit_card_validation_contract import (
     CreditCardValidationContract,
 )
+from flunt.validations.datetime_validation_contract import (
+    DateTimeValidationContract,
+)
 from flunt.validations.email_validation_contract import (
     EmailValidationContract,
+)
+from flunt.validations.numeric_validation_contract import (
+    NumericValidationContract,
 )
 from flunt.validations.strings_validation_contract import (
     StringValidationContract,
 )
+from flunt.validations.url_validation_contract import URLValidationContract
 
 # Tipo genérico para qualquer valor
 T = TypeVar("T")
@@ -31,11 +41,15 @@ T = TypeVar("T")
 
 class Contract(
     BoolValidationContract,
+    BrazilianDocumentValidationContract,
     CollectionsValidationContract,
     CommonsValidationContract,
     CreditCardValidationContract,
+    DateTimeValidationContract,
     EmailValidationContract,
+    NumericValidationContract,
     StringValidationContract,
+    URLValidationContract,
     Notifiable,
 ):
     """
