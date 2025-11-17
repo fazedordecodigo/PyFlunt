@@ -193,7 +193,7 @@ class CadastroUsuario(Notifiable):
                     "Você deve aceitar os termos de uso")
 
             # Comparações
-            .is_greater_or_equals_than(self.idade, 18, "idade",
+            .is_greater_or_equals_than_number(self.idade, 18, "idade",
                                        "Você deve ter pelo menos 18 anos")
         )
 
