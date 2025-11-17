@@ -24,7 +24,7 @@ contract = Contract().is_cpf("123.456.789-09", "cpf", "CPF inválido")
 - *value ([str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/reference/datamodel.html#none))* - CPF a ser validado (com ou sem formatação).
 - *field ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Nome do campo.
 - *message ([str](https://docs.python.org/3/library/stdtypes.html#str))* - Opcional. Mensagem personalizada.
-  - *IS_NOT_CPF* = "The field {0} must not be a valid CPF"
+  - *IS_NOT_CPF* = "The field {0} is not a valid CPF"
 
 **Validações realizadas**:
 1. ✅ Formato correto (11 dígitos)
