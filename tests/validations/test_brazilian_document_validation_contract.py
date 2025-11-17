@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-from flunt.validations.brazilian_document_validation_contract import (
-    BrazilianDocumentValidationContract,
-)
+# from flunt.validations.brazilian_document_validation_contract import (
+#     BrazilianDocumentValidationContract,
+# )
 from flunt.validations.contract import Contract
 
 
