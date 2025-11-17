@@ -131,8 +131,8 @@ contract.is_false(bloqueado, "bloqueado", "Usuário não pode estar bloqueado")
 
 Validações específicas para documentos brasileiros.
 
-!!! warning "Em Desenvolvimento"
-    Atualmente valida apenas **formato** (não valida dígitos verificadores). Validação completa planejada para próxima versão.
+!!! success "Validação Completa"
+    Agora valida **formato** e **dígitos verificadores** para CPF e CNPJ.
 
 **Padrões regex disponíveis:**
 - CPF: `^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$`
