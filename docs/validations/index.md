@@ -132,13 +132,25 @@ contract.is_false(bloqueado, "bloqueado", "Usuário não pode estar bloqueado")
 Validações específicas para documentos brasileiros.
 
 !!! success "Validação Completa"
-    Agora valida **formato** e **dígitos verificadores** para CPF e CNPJ.
+    Agora a validação de CPF e CNPJ verifica **formato** e **dígitos verificadores** (validação completa).
 
-**Padrões regex disponíveis:**
+**Validação completa disponível:**
+- Use os métodos `is_cpf()` e `is_cnpj()` para validar CPF e CNPJ com verificação dos dígitos verificadores.
+
+**Exemplo de validação completa:**
+```python
+from flunt.validations.brazilian_document_validation_contract import BrazilianDocumentValidationContract
+
+contract = BrazilianDocumentValidationContract()
+contract.is_cpf("123.456.789-09", "cpf", "CPF inválido")
+contract.is_cnpj("12.345.678/0001-95", "cnpj", "CNPJ inválido")
+```
+
+**Validação de formato (regex) ainda disponível:**
 - CPF: `^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$`
 - CNPJ: `^\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}$`
 
-**Exemplo:**
+**Exemplo de validação de formato:**
 ```python
 from flunt.localization.flunt_regex_patterns import get_pattern
 import re
@@ -188,8 +200,8 @@ class CadastroUsuario(Notifiable):
                     "Você deve aceitar os termos de uso")
 
             # Comparações
-            .is_greater_or_equals_than(self.idade, 18, "idade",
-                                       "Você deve ter pelo menos 18 anos")
+            .is_greater_or_equals_than_number(self.idade, 18, "idade",
+                                               "Você deve ter pelo menos 18 anos")
         )
 
         self.add_notifications(contract.get_notifications())
