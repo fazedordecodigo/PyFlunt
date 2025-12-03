@@ -12,7 +12,7 @@ Estas validações são usadas para verificar valores numéricos (`int`, `float`
 Verifica se um valor numérico é **maior que** um valor especificado.
 
 ```python
-contract.is_greater_than_number(10, 5, "idade", "A idade deve ser maior que 5")
+contract.is_greater_than_number(25, 18, "idade", "A idade deve ser maior que 18")
 ```
 
 **Parâmetros**:
@@ -28,9 +28,12 @@ contract.is_greater_than_number(10, 5, "idade", "A idade deve ser maior que 5")
 ```python
 from flunt.validations.numeric_validation_contract import NumericValidationContract
 
-contract = NumericValidationContract()
-contract.is_greater_than_number(10, 5, "idade", "A idade deve ser maior que 5")
-# ✅ Válido: 10 > 5
+contract = Contract()
+contract.is_greater_than_number(25, 18, "idade", "A idade deve ser maior que 18")
+# ✅ Válido: 25 > 18
+
+contract.is_greater_than_number(15, 18, "idade", "A idade deve ser maior que 18")
+# ❌ Inválido: 15 não é maior que 18
 ```
 
 -----
@@ -40,7 +43,7 @@ contract.is_greater_than_number(10, 5, "idade", "A idade deve ser maior que 5")
 Verifica se um valor numérico é **maior ou igual a** um valor especificado.
 
 ```python
-contract.is_greater_or_equals_than_number(18, 18, "idade", "A idade deve ser pelo menos 18")
+contract.is_greater_or_equals_than_number(18, 18, "idade", "Você deve ter pelo menos 18 anos")
 ```
 
 **Parâmetros**:
@@ -54,9 +57,12 @@ contract.is_greater_or_equals_than_number(18, 18, "idade", "A idade deve ser pel
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_greater_or_equals_than_number(18, 18, "idade", "Deve ter pelo menos 18 anos")
+contract = Contract()
+contract.is_greater_or_equals_than_number(18, 18, "idade", "Você deve ter pelo menos 18 anos")
 # ✅ Válido: 18 >= 18
+
+contract.is_greater_or_equals_than_number(17, 18, "idade", "Você deve ter pelo menos 18 anos")
+# ❌ Inválido: 17 não é maior ou igual a 18
 ```
 
 -----
@@ -80,9 +86,12 @@ contract.is_lower_than_number(15, 18, "idade", "A idade deve ser menor que 18")
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_lower_than_number(15, 18, "idade", "Idade deve ser menor que 18")
+contract = Contract()
+contract.is_lower_than_number(15, 18, "idade", "A idade deve ser menor que 18")
 # ✅ Válido: 15 < 18
+
+contract.is_lower_than_number(25, 18, "idade", "A idade deve ser menor que 18")
+# ❌ Inválido: 25 não é menor que 18
 ```
 
 -----
@@ -106,9 +115,12 @@ contract.is_lower_or_equals_than_number(18, 18, "idade", "A idade deve ser no m�
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_lower_or_equals_than_number(18, 18, "idade", "Idade deve ser no máximo 18")
+contract = Contract()
+contract.is_lower_or_equals_than_number(18, 18, "idade", "A idade deve ser no máximo 18")
 # ✅ Válido: 18 <= 18
+
+contract.is_lower_or_equals_than_number(19, 18, "idade", "A idade deve ser no máximo 18")
+# ❌ Inválido: 19 não é menor ou igual a 18
 ```
 
 -----
@@ -118,7 +130,7 @@ contract.is_lower_or_equals_than_number(18, 18, "idade", "Idade deve ser no máx
 Verifica se um valor numérico está **entre** dois valores (inclusivo).
 
 ```python
-contract.is_between_numbers(7, 5, 10, "idade", "A idade deve estar entre 5 e 10")
+contract.is_between_numbers(25, 18, 65, "idade", "A idade deve estar entre 18 e 65")
 ```
 
 **Parâmetros**:
@@ -133,19 +145,23 @@ contract.is_between_numbers(7, 5, 10, "idade", "A idade deve estar entre 5 e 10"
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_between_numbers(7, 5, 10, "idade", "A idade deve estar entre 5 e 10")
-# ✅ Válido: 5 <= 7 <= 10
+contract = Contract()
+
+contract.is_between_numbers(25, 18, 65, "idade", "A idade deve estar entre 18 e 65")
+# ✅ Válido: 18 <= 25 <= 65
+
+contract.is_between_numbers(70, 18, 65, "idade", "A idade deve estar entre 18 e 65")
+# ❌ Inválido: 70 não está entre 18 e 65
 ```
 
 -----
 
 ## is_positive(*value, field, message=POSITIVE*)
 
-Verifica se um valor numérico é **positivo**.
+Verifica se um valor numérico é **positivo** (maior que zero).
 
 ```python
-contract.is_positive(7, "saldo", "O saldo deve ser positivo")
+contract.is_positive(10, "saldo", "O saldo deve ser positivo")
 ```
 
 **Parâmetros**:
@@ -158,19 +174,25 @@ contract.is_positive(7, "saldo", "O saldo deve ser positivo")
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_positive(7, "saldo", "O saldo deve ser positivo")
-# ✅ Válido: 7 > 0
+contract = Contract()
+contract.is_positive(10, "quantidade", "A quantidade deve ser positiva")
+# ✅ Válido: 10 > 0
+
+contract.is_positive(-5, "quantidade", "A quantidade deve ser positiva")
+# ❌ Inválido: -5 não é positivo
+
+contract.is_positive(0, "quantidade", "A quantidade deve ser positiva")
+# ❌ Inválido: 0 não é positivo
 ```
 
 -----
 
 ## is_negative(*value, field, message=NEGATIVE*)
 
-Verifica se um valor numérico é **negativo**.
+Verifica se um valor numérico é **negativo** (menor que zero).
 
 ```python
-contract.is_negative(-3, "temperatura", "A temperatura deve ser negativa")
+contract.is_negative(-10, "temperatura", "A temperatura deve ser negativa")
 ```
 
 **Parâmetros**:
@@ -183,9 +205,15 @@ contract.is_negative(-3, "temperatura", "A temperatura deve ser negativa")
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
-contract.is_negative(-3, "temperatura", "A temperatura deve ser negativa")
-# ✅ Válido: -3 < 0
+contract = Contract()
+contract.is_negative(-10, "saldo", "O saldo deve ser negativo")
+# ✅ Válido: -10 < 0
+
+contract.is_negative(5, "saldo", "O saldo deve ser negativo")
+# ❌ Inválido: 5 não é negativo
+
+contract.is_negative(0, "saldo", "O saldo deve ser negativo")
+# ❌ Inválido: 0 não é negativo
 ```
 
 -----
@@ -208,16 +236,19 @@ contract.is_zero(0, "contador", "O contador deve ser zero")
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
+contract = Contract()
 contract.is_zero(0, "contador", "O contador deve ser zero")
-# ✅ Válido: 0 == 0
+# ✅ Válido: valor é 0
+
+contract.is_zero(5, "contador", "O contador deve ser zero")
+# ❌ Inválido: 5 não é zero
 ```
 
 -----
 
 ## is_not_zero(*value, field, message=NOT_ZERO*)
 
-Verifica se um valor numérico **não é zero**.
+Verifica se um valor numérico é **diferente de zero**.
 
 ```python
 contract.is_not_zero(5, "divisor", "O divisor não pode ser zero")
@@ -233,9 +264,12 @@ contract.is_not_zero(5, "divisor", "O divisor não pode ser zero")
 **Exemplo**:
 
 ```python
-contract = NumericValidationContract()
+contract = Contract()
 contract.is_not_zero(5, "divisor", "O divisor não pode ser zero")
 # ✅ Válido: 5 != 0
+
+contract.is_not_zero(0, "divisor", "O divisor não pode ser zero")
+# ❌ Inválido: valor é zero
 ```
 
 -----
@@ -247,37 +281,34 @@ from flunt.notifications.notifiable import Notifiable
 from flunt.validations.numeric_validation_contract import NumericValidationContract
 
 class Produto(Notifiable):
-    def __init__(self, preco, desconto, quantidade, estoque_minimo, estoque_maximo):
+    def __init__(self, preco, desconto, quantidade, temperatura_armazenamento):
         super().__init__()
         self.preco = preco
         self.desconto = desconto
         self.quantidade = quantidade
-        self.estoque_minimo = estoque_minimo
-        self.estoque_maximo = estoque_maximo
+        self.temperatura_armazenamento = temperatura_armazenamento
 
         # Criando contrato de validação
         contract = (
-            NumericValidationContract()
-            .is_positive(self.preco, "preco", "O preço deve ser positivo")
+            Contract()
+            .is_positive(self.preco, "preco",
+                        "O preço deve ser positivo")
             .is_between_numbers(self.desconto, 0, 100, "desconto",
-                               "Desconto deve estar entre 0 e 100")
+                               "O desconto deve estar entre 0 e 100")
             .is_greater_than_number(self.quantidade, 0, "quantidade",
-                                   "Quantidade deve ser maior que 0")
-            .is_greater_or_equals_than_number(self.estoque_minimo, 0, "estoque_minimo",
-                                             "Estoque mínimo deve ser pelo menos 0")
-            .is_greater_than_number(self.estoque_maximo, self.estoque_minimo, "estoque_maximo",
-                                   "Estoque máximo deve ser maior que o mínimo")
+                                   "A quantidade deve ser maior que zero")
+            .is_negative(self.temperatura_armazenamento, "temperatura",
+                        "A temperatura de armazenamento deve ser negativa (congelado)")
         )
 
         self.add_notifications(contract.get_notifications())
 
 # Uso
 produto = Produto(
-    preco=99.90,
-    desconto=10,
+    preco=29.99,
+    desconto=15,
     quantidade=50,
-    estoque_minimo=10,
-    estoque_maximo=100
+    temperatura_armazenamento=-18
 )
 
 if produto.is_valid:
@@ -292,10 +323,10 @@ else:
 
 ## Tipos Suportados
 
-Estas validações funcionam com tipos numéricos:
+Estas validações funcionam com os tipos numéricos do Python:
 
 - **Inteiros**: `int`
 - **Ponto flutuante**: `float`
 
 !!! warning "Atenção"
-    Se o valor for `None`, a validação falhará e uma notificação será adicionada. Certifique-se de que os valores numéricos não são `None` antes de validá-los.
+    Se o valor for `None`, a validação falhará e uma notificação será adicionada. Para validar que um campo numérico não é `None`, use as validações de obrigatoriedade antes das validações numéricas.
