@@ -2,19 +2,21 @@
 
 from __future__ import annotations
 
+from typing import ClassVar
+
 import pytest
 
-# from flunt.validations.brazilian_document_validation_contract import (
-#     BrazilianDocumentValidationContract,
-# )
 from flunt.validations.contract import Contract
+
+# Test constants
+EXPECTED_TWO_NOTIFICATIONS = 2
 
 
 class TestCPFValidation:
     """Tests for CPF validation."""
 
     # Valid CPFs (real format with valid check digits)
-    VALID_CPFS = [
+    VALID_CPFS: ClassVar[list[str]] = [
         "123.456.789-09",  # Formatted
         "12345678909",  # Unformatted
         "111.444.777-35",  # Another valid
@@ -22,7 +24,7 @@ class TestCPFValidation:
     ]
 
     # Invalid CPFs
-    INVALID_CPFS = [
+    INVALID_CPFS: ClassVar[list[str | None]] = [
         "111.111.111-11",  # Sequential (all same digits)
         "000.000.000-00",  # All zeros
         "999.999.999-99",  # All nines
@@ -98,14 +100,14 @@ class TestCPFValidation:
         )
 
         assert not contract.is_valid
-        assert len(contract.get_notifications()) == 2
+        assert len(contract.get_notifications()) == EXPECTED_TWO_NOTIFICATIONS
 
 
 class TestCNPJValidation:
     """Tests for CNPJ validation."""
 
     # Valid CNPJs (real format with valid check digits)
-    VALID_CNPJS = [
+    VALID_CNPJS: ClassVar[list[str]] = [
         "11.222.333/0001-81",  # Formatted
         "11222333000181",  # Unformatted
         "11.444.777/0001-61",  # Another valid
@@ -113,7 +115,7 @@ class TestCNPJValidation:
     ]
 
     # Invalid CNPJs
-    INVALID_CNPJS = [
+    INVALID_CNPJS: ClassVar[list[str | None]] = [
         "11.111.111/1111-11",  # Sequential
         "00.000.000/0000-00",  # All zeros
         "99.999.999/9999-99",  # All nines
@@ -191,7 +193,7 @@ class TestCNPJValidation:
         )
 
         assert not contract.is_valid
-        assert len(contract.get_notifications()) == 2
+        assert len(contract.get_notifications()) == EXPECTED_TWO_NOTIFICATIONS
 
 
 class TestBrazilianDocumentValidationContract:
@@ -223,4 +225,4 @@ class TestBrazilianDocumentValidationContract:
         )
 
         assert not contract.is_valid
-        assert len(contract.get_notifications()) == 2
+        assert len(contract.get_notifications()) == EXPECTED_TWO_NOTIFICATIONS

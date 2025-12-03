@@ -18,8 +18,8 @@ class NumericValidationContract(Notifiable):
 
     def is_greater_than_number(
         self,
-        value: int | float | None,
-        comparer: int | float,
+        value: float | None,
+        comparer: float,
         field: str,
         message: str = "The field {0} must be greater than {1}",
     ) -> Self:
@@ -49,8 +49,8 @@ class NumericValidationContract(Notifiable):
 
     def is_greater_or_equals_than_number(
         self,
-        value: int | float | None,
-        comparer: int | float,
+        value: float | None,
+        comparer: float,
         field: str,
         message: str = "The field {0} must be greater than or equal to {1}",
     ) -> Self:
@@ -80,8 +80,8 @@ class NumericValidationContract(Notifiable):
 
     def is_lower_than_number(
         self,
-        value: int | float | None,
-        comparer: int | float,
+        value: float | None,
+        comparer: float,
         field: str,
         message: str = "The field {0} must be lower than {1}",
     ) -> Self:
@@ -111,8 +111,8 @@ class NumericValidationContract(Notifiable):
 
     def is_lower_or_equals_than_number(
         self,
-        value: int | float | None,
-        comparer: int | float,
+        value: float | None,
+        comparer: float,
         field: str,
         message: str = "The field {0} must be lower than or equal to {1}",
     ) -> Self:
@@ -142,9 +142,9 @@ class NumericValidationContract(Notifiable):
 
     def is_between_numbers(
         self,
-        value: int | float | None,
-        min_value: int | float,
-        max_value: int | float,
+        value: float | None,
+        min_value: float,
+        max_value: float,
         field: str,
         message: str = "The field {0} must be between {1} and {2}",
     ) -> Self:
@@ -177,7 +177,7 @@ class NumericValidationContract(Notifiable):
 
     def is_positive(
         self,
-        value: int | float | None,
+        value: float | None,
         field: str,
         message: str = "The field {0} must be positive",
     ) -> Self:
@@ -208,7 +208,7 @@ class NumericValidationContract(Notifiable):
 
     def is_negative(
         self,
-        value: int | float | None,
+        value: float | None,
         field: str,
         message: str = "The field {0} must be negative",
     ) -> Self:
@@ -239,7 +239,7 @@ class NumericValidationContract(Notifiable):
 
     def is_zero(
         self,
-        value: int | float | None,
+        value: float | None,
         field: str,
         message: str = "The field {0} must be zero",
     ) -> Self:
@@ -268,7 +268,7 @@ class NumericValidationContract(Notifiable):
 
     def is_not_zero(
         self,
-        value: int | float | None,
+        value: float | None,
         field: str,
         message: str = "The field {0} must not be zero",
     ) -> Self:

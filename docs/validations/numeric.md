@@ -26,7 +26,7 @@ contract.is_greater_than_number(25, 18, "idade", "A idade deve ser maior que 18"
 **Exemplo**:
 
 ```python
-from flunt.validations.contract import Contract
+from flunt.validations.numeric_validation_contract import NumericValidationContract
 
 contract = Contract()
 contract.is_greater_than_number(25, 18, "idade", "A idade deve ser maior que 18")
@@ -278,7 +278,7 @@ contract.is_not_zero(0, "divisor", "O divisor não pode ser zero")
 
 ```python
 from flunt.notifications.notifiable import Notifiable
-from flunt.validations.contract import Contract
+from flunt.validations.numeric_validation_contract import NumericValidationContract
 
 class Produto(Notifiable):
     def __init__(self, preco, desconto, quantidade, temperatura_armazenamento):
