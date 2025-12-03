@@ -46,7 +46,7 @@ jobs:
 
       - name: SonarCloud Scan
         if: matrix.env == '3.13' && matrix.os == 'ubuntu-latest'
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v6
         with:
           args: >
             -Dsonar.organization=fazedordecodigo
