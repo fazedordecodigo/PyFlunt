@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-
 from flunt.validations.contract import Contract
+
+# Test constants
+EXPECTED_THREE_NOTIFICATIONS = 3
 
 
 class TestIsGreaterThanNumber:
@@ -273,7 +275,7 @@ class TestNumericValidationContract:
         )
 
         assert not contract.is_valid
-        assert len(contract.get_notifications()) == 3
+        assert len(contract.get_notifications()) == EXPECTED_THREE_NOTIFICATIONS
 
     def test_mixed_validations(self) -> None:
         """Test mixing numeric validations with other validations."""
