@@ -1,5 +1,7 @@
 name: Linters
 run-name: ${{ github.actor }} execute Linters 🚀
+permissions:
+  contents: read
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -18,7 +20,7 @@ jobs:
           python-version: 3.11
 
       - name: Instala dependências
-        run: uv add ruff mypy
+        run: uv sync --group linter
 
       - name: Executa Ruff
         run: uv run ruff check

@@ -33,4 +33,5 @@ def with_try_exc(iterations):  # type: ignore
         except Exception as e:  # noqa: F841
             pass
 
+
 with_try_exc(1_000_000)

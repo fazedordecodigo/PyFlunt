@@ -8,7 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0
 and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Add Object Validation [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
+- Add Regex Validation [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
 - Add Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+
+## [3.1.0] - 2025-12-05
+### Added
+- New `NumericValidationContract` to validate numeric values (ranges, limits, and sign) [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
+- New `DateTimeValidationContract` to validate minimum/maximum dates and intervals [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
+- New `UrlValidationContract` for URL validations [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+- New `BrazilianDocumentValidationContract` to validate CPF/CNPJ [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
+- Expanded documentation in `docs/about.md` and new pages in `docs/validations/` (boolean, Brazilian documents, format, numeric)
+- Dedicated tests for the new numeric and Brazilian document validation contracts
+- Python 3.14 support added to the CI test pipeline
+- Additional prompts and guides for automation (Dockerfile, planning, README, repository analysis, tests) and detailed Copilot instructions
+
+### Changed
+- Base validation contract updated to support the new numeric, datetime, and URL scenarios
+
+### Security
+- GitHub Actions workflows adjusted to set explicit permissions and update the SonarQube scan action
 
 ## [3.0.1] - 2025-06-22
 ### Added
@@ -130,6 +149,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/pt-BR/
 <br>
 <br>
 <br>
+
+[3.1.0](https://github.com/fazedordecodigo/PyFlunt/compare/v3.0.1...v3.1.0)
+
+[3.0.1](https://github.com/fazedordecodigo/PyFlunt/compare/v3.0.0...v3.0.1)
 
 [3.0.0](https://github.com/fazedordecodigo/PyFlunt/compare/v2.3.1...v3.0.0)
 

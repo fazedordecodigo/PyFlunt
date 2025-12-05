@@ -1,5 +1,7 @@
 name: Tests
 run-name: ${{ github.actor }} execute Tests
+permissions:
+  contents: read
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -12,6 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         env:
+          - "3.14"
           - "3.13"
           - "3.12"
           - "3.11"
@@ -45,8 +48,8 @@ jobs:
         run: tox r -e py${{ matrix.env }}
 
       - name: SonarCloud Scan
-        if: matrix.env == '3.13' && matrix.os == 'ubuntu-latest'
-        uses: SonarSource/sonarqube-scan-action@v5
+        if: matrix.env == '3.14' && matrix.os == 'ubuntu-latest'
+        uses: SonarSource/sonarqube-scan-action@v6
         with:
           args: >
             -Dsonar.organization=fazedordecodigo
