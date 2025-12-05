@@ -20,12 +20,12 @@ def _get_today() -> date:
 
 
 def _to_date(value: date | datetime) -> date:
-    """Convert a ``date`` or ``datetime`` to ``date`` for safe comparison.
+    """
+    Convert a ``date`` or ``datetime`` to ``date`` for safe comparison.
 
     This helper avoids ``TypeError`` when comparing ``date`` and ``datetime``
     instances by normalizing both operands to ``date``.
     """
-
     return value.date() if isinstance(value, datetime) else value
 
 

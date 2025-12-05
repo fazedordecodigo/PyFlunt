@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from functools import lru_cache
-from re import Pattern, compile, IGNORECASE
+from re import IGNORECASE, Pattern, compile
 from typing import Self, TypeAlias
 
 from flunt.constants.messages import IS_NOT_URL, IS_URL
