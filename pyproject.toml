@@ -9,20 +9,29 @@ readme = "README.md"
 requires-python = ">=3.11"
 keywords = [
   "notifications",
-  "python",
-  "ddd",
-  "python3",
-  "validations",
   "notification",
+  "domain-notification",
+  "domain-notification-pattern",
+  "ddd",
+  "domain-driven-design",
   "ddd-patterns",
   "ddd-architecture",
   "validation-library",
+  "validations",
+  "validation-contracts",
+  "fluent-validation",
+  "notifiable",
+  "cpf",
+  "cnpj",
+  "url-validation",
+  "datetime-validation",
   "class-validator",
   "fluentvalidation",
   "class-validation",
-  "flunt",
-  "domain-notification",
   "class-validator-cpf",
+  "python",
+  "python3",
+  "flunt",
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -32,6 +41,10 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Typing :: Typed",
   "Topic :: Office/Business",
   "Topic :: Utilities",
   "Topic :: Software Development",
@@ -64,19 +77,19 @@ dev = [
   { include-group = "type" },
 ]
 
-test = ["faker>=35.2.0", "pytest>=8.3.4", "pytest-cov>=6.0.0"]
+test = ["faker>=38.2.0", "pytest>=9.0.1", "pytest-cov>=7.0.0"]
 
-type = ["mypy>=1.15.0", { include-group = "test" }]
+type = ["mypy>=1.19.0", { include-group = "test" }]
 
 linter = [
-  "ruff>=0.9.6",
-  "pre-commit>=4.1.0",
-  "pre-commit-hooks>=5.0.0",
-  "pre-commit-uv>=4.1.4",
+  "ruff>=0.14.8",
+  "pre-commit>=4.5.0",
+  "pre-commit-hooks>=6.0.0",
+  "pre-commit-uv>=4.2.0",
 ]
 
-pkg-meta = ["uv>=0.5.30"]
-doc = ["mkdocs>=1.6.1", "mkdocs-material>=9.6.14", "pymdown-extensions>=10.15"]
+pkg-meta = ["uv>=0.9.15"]
+doc = ["mkdocs>=1.6.1", "mkdocs-material>=9.7.0", "pymdown-extensions>=10.17.2"]
 
 [project.scripts]
 sample = "samples.flunt_sample:main"
