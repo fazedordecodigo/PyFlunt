@@ -8,13 +8,24 @@ O formato é baseado em [Mantenha um Registro de Alterações](https://keepachan
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/spec/v2.0.0.html).
 
 ## [Não Lançado]
-- Adicionar validação de DateTime [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
-- Adicionar validação de Números [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
-- Adicionar validação de documentos [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
 - Adicionar validação de Objetos [#31](https://github.com/fazedordecodigo/PyFlunt/issues/31)
 - Adicionar validação de Regex [#32](https://github.com/fazedordecodigo/PyFlunt/issues/32)
-- Adicionar validação de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
 - Adicionar Result Pattern [#61](https://github.com/fazedordecodigo/PyFlunt/issues/61)
+
+## [3.1.0] - 2025-12-05
+### Adicionado
+- Novo `NumericValidationContract` para validar valores numéricos (faixas, limites e sinal) [#28](https://github.com/fazedordecodigo/PyFlunt/issues/28)
+- Novo `DateTimeValidationContract` para validar datas/horas mínimas, máximas e intervalos [#27](https://github.com/fazedordecodigo/PyFlunt/issues/27)
+- Novo `UrlValidationContract` para validações de URL [#33](https://github.com/fazedordecodigo/PyFlunt/issues/33)
+- Novo `BrazilianDocumentValidationContract` para validar CPF/CNPJ [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
+- Documentação expandida em `docs/about.md` e novas páginas em `docs/validations/` (boolean, documentos brasileiros, formato, numérico)
+- Testes dedicados para os novos contratos de validação numérica e de documentos brasileiros
+
+### Modificado
+- Contrato base de validação atualizado para suportar os novos cenários numéricos, de data/hora e URL
+
+### Segurança
+- Ajustados workflows do GitHub Actions para definir permissões explícitas e atualizar o SonarQube scan action
 
 ## [3.0.1] - 2025-06-22
 ### Adicionado
