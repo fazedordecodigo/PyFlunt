@@ -20,6 +20,8 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Novo `BrazilianDocumentValidationContract` para validar CPF/CNPJ [#29](https://github.com/fazedordecodigo/PyFlunt/issues/29)
 - Documentação expandida em `docs/about.md` e novas páginas em `docs/validations/` (boolean, documentos brasileiros, formato, numérico)
 - Testes dedicados para os novos contratos de validação numérica e de documentos brasileiros
+- Suporte a Python 3.14 adicionado ao pipeline de testes (CI)
+- Prompts e guias adicionais para automação (Dockerfile, planejamento, README, análise de repositório, testes) e instruções detalhadas para Copilot
 
 ### Modificado
 - Contrato base de validação atualizado para suportar os novos cenários numéricos, de data/hora e URL
