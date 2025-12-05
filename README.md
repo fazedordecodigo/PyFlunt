@@ -25,6 +25,17 @@ Flunt surgiu de duas necessidades: implementar o Domain Notification Pattern par
 
 Assim, basicamente o que o Flunt faz é adicionar uma lista de Notificações à sua classe e vários métodos para interagir com ela.
 
+### Novos contratos de validação
+
+Além do contrato base, a biblioteca agora inclui contratos especializados para cenários comuns:
+
+- `NumericValidationContract` para valores numéricos (faixas, limites, sinal)
+- `DateTimeValidationContract` para datas/horas (intervalos, mínimos/máximos)
+- `UrlValidationContract` para URLs
+- `BrazilianDocumentValidationContract` para documentos brasileiros (CPF/CNPJ)
+
+Consulte a documentação em `docs/validations/` para exemplos detalhados.
+
 ## ➡️ Como usar
 
 ### 🔧 Instalação
