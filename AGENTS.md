@@ -22,6 +22,10 @@
 - Contratos especializados: `NumericValidationContract` (faixas/limites/sinal), `DateTimeValidationContract` (intervalos min/max), `UrlValidationContract`, `BrazilianDocumentValidationContract` (CPF/CNPJ), além dos existentes de strings, coleções, e-mail, cartão, boolean.
 - Testes de referência: `tests/validations/test_numeric_validation_contract.py`, `test_brazilian_document_validation_contract.py`, demais em `tests/validations/`.
 
+## Infra/CI e automação
+- Pipelines de CI incluem Python 3.14 nos testes.
+- Prompts e guias em `.github/prompts/` e instruções adicionais para Copilot.
+
 ## Organização e pontos de atenção
 - Código público exportado via `flunt/__init__.py`; mantenha compatibilidade de API.
 - Mensagens/regex em `flunt/localization/flunt_regex_patterns.py` e `flunt/constants/messages.py`.
