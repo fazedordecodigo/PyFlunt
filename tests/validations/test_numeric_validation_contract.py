@@ -269,13 +269,13 @@ class TestNumericValidationContract:
             .is_greater_or_equals_than_number(
                 16, 18, "idade", "Deve ser maior de idade"
             )
-            .is_between_numbers(
-                150, 0, 100, "desconto", "Desconto inválido"
-            )
+            .is_between_numbers(150, 0, 100, "desconto", "Desconto inválido")
         )
 
         assert not contract.is_valid
-        assert len(contract.get_notifications()) == EXPECTED_THREE_NOTIFICATIONS
+        assert (
+            len(contract.get_notifications()) == EXPECTED_THREE_NOTIFICATIONS
+        )
 
     def test_mixed_validations(self) -> None:
         """Test mixing numeric validations with other validations."""

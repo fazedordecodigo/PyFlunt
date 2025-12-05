@@ -50,9 +50,13 @@ class DateTimeValidationContract(Notifiable):
         Examples:
             >>> from datetime import date
             >>> contract = DateTimeValidationContract()
-            >>> contract.is_date_after(date(2024, 1, 15), date(2024, 1, 1), "data")
+            >>> contract.is_date_after(
+            ...     date(2024, 1, 15), date(2024, 1, 1), "data"
+            ... )
             >>> contract.is_valid  # True
-            >>> contract.is_date_after(date(2023, 12, 1), date(2024, 1, 1), "data")
+            >>> contract.is_date_after(
+            ...     date(2023, 12, 1), date(2024, 1, 1), "data"
+            ... )
             >>> contract.is_valid  # False
 
         """
@@ -82,9 +86,13 @@ class DateTimeValidationContract(Notifiable):
         Examples:
             >>> from datetime import date
             >>> contract = DateTimeValidationContract()
-            >>> contract.is_date_before(date(2023, 12, 1), date(2024, 1, 1), "data")
+            >>> contract.is_date_before(
+            ...     date(2023, 12, 1), date(2024, 1, 1), "data"
+            ... )
             >>> contract.is_valid  # True
-            >>> contract.is_date_before(date(2024, 1, 15), date(2024, 1, 1), "data")
+            >>> contract.is_date_before(
+            ...     date(2024, 1, 15), date(2024, 1, 1), "data"
+            ... )
             >>> contract.is_valid  # False
 
         """
@@ -120,7 +128,7 @@ class DateTimeValidationContract(Notifiable):
             ...     date(2024, 1, 15),
             ...     date(2024, 1, 1),
             ...     date(2024, 1, 31),
-            ...     "data"
+            ...     "data",
             ... )
             >>> contract.is_valid  # True
 

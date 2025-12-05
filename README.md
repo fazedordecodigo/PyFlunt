@@ -25,7 +25,31 @@ Flunt surgiu de duas necessidades: implementar o Domain Notification Pattern par
 
 Assim, basicamente o que o Flunt faz é adicionar uma lista de Notificações à sua classe e vários métodos para interagir com ela.
 
+## ✨ Destaques
+
+- Compatível com Python 3.11+ e **sem dependências** de runtime.
+- Validações fluentes encadeáveis baseadas no Domain Notification Pattern.
+- Contratos especializados para números, datas/horas, URLs e documentos brasileiros (CPF/CNPJ).
+- Notificações centralizadas via `Notifiable`, evitando ifs espalhados e exceções de domínio.
+- Documentação completa em `docs/` e no site (link abaixo).
+
+### Novos contratos de validação
+
+Além do contrato base, a biblioteca agora inclui contratos especializados para cenários comuns:
+
+- `NumericValidationContract` para valores numéricos (faixas, limites, sinal)
+- `DateTimeValidationContract` para datas/horas (intervalos, mínimos/máximos)
+- `UrlValidationContract` para URLs
+- `BrazilianDocumentValidationContract` para documentos brasileiros (CPF/CNPJ)
+
+Consulte a documentação em `docs/validations/` para exemplos detalhados.
+
 ## ➡️ Como usar
+
+### 🔑 Requisitos
+
+- Python 3.11 ou superior
+- Sem dependências de runtime (ferramentas de dev opcionais: `uv`, `ruff`, `mypy`, `pytest`)
 
 ### 🔧 Instalação
 
@@ -45,7 +69,10 @@ class Nome(Notifiable):
         super().__init__()
 
         if len(nome) < 3:
-            self.add_notification(field='nome', message='Nome deve ter pelo menos 3 caracteres')
+            self.add_notification(
+                field='nome',
+                message='Nome deve ter pelo menos 3 caracteres',
+            )
         self._nome = nome
 ````
 
@@ -106,6 +133,11 @@ else:
 ## Contribuindo
 
 Consulte nosso DevGuide no link a seguir: [CONTRIBUTING](https://github.com/fazedordecodigo/PyFlunt/blob/main/docs/CONTRIBUTING.md)
+
+## 📚 Documentação
+
+- Site (MkDocs): https://fazedordecodigo.github.io/PyFlunt/
+- Arquivos locais: `docs/`
 
 ## Registro de Alterações
 
