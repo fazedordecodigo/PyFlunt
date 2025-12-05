@@ -140,9 +140,7 @@ def _validate_cnpj(cnpj: str | None) -> bool:
 
     # Validate first check digit
     weights_first = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    sum_first = sum(
-        int(cnpj_clean[i]) * weights_first[i] for i in range(12)
-    )
+    sum_first = sum(int(cnpj_clean[i]) * weights_first[i] for i in range(12))
     first_digit = 11 - (sum_first % 11)
     first_digit = 0 if first_digit >= MAX_CHECKSUM_DIGIT else first_digit
 
@@ -151,9 +149,7 @@ def _validate_cnpj(cnpj: str | None) -> bool:
 
     # Validate second check digit
     weights_second = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-    sum_second = sum(
-        int(cnpj_clean[i]) * weights_second[i] for i in range(13)
-    )
+    sum_second = sum(int(cnpj_clean[i]) * weights_second[i] for i in range(13))
     second_digit = 11 - (sum_second % 11)
     second_digit = 0 if second_digit >= MAX_CHECKSUM_DIGIT else second_digit
 
