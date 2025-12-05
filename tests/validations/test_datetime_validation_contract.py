@@ -60,7 +60,7 @@ def test_is_date_after_mixed_types_are_normalized(
     contract: DateTimeValidationContract,
 ) -> None:
     value = date(2023, 1, 2)
-    comparer = datetime(2023, 1, 1, 12, 0, 0)
+    comparer = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     contract.is_date_after(value, comparer, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
@@ -70,7 +70,7 @@ def test_is_date_after_naive_and_aware_are_normalized(
     contract: DateTimeValidationContract,
 ) -> None:
     value = datetime(2023, 1, 2, 12, 0, 0, tzinfo=UTC)
-    comparer = datetime(2023, 1, 3, 12, 0, 0)  # Naive
+    comparer = datetime(2023, 1, 3, 12, 0, 0, tzinfo=UTC).replace(tzinfo=None)
     contract.is_date_after(value, comparer, "field", "message")
     assert contract.is_valid is False
     assert len(contract.notifications) == 1
@@ -123,7 +123,7 @@ def test_is_date_before_mixed_types_are_normalized(
     contract: DateTimeValidationContract,
 ) -> None:
     value = date(2023, 1, 1)
-    comparer = datetime(2023, 1, 2, 12, 0, 0)
+    comparer = datetime(2023, 1, 2, 12, 0, 0, tzinfo=UTC)
     contract.is_date_before(value, comparer, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
@@ -203,8 +203,8 @@ def test_is_date_between_mixed_types_are_normalized(
     contract: DateTimeValidationContract,
 ) -> None:
     start = date(2023, 1, 1)
-    end = datetime(2023, 1, 3, 12, 0, 0)
-    value = datetime(2023, 1, 2, 12, 0, 0)
+    end = datetime(2023, 1, 3, 12, 0, 0, tzinfo=UTC)
+    value = datetime(2023, 1, 2, 12, 0, 0, tzinfo=UTC)
     contract.is_date_between(value, start, end, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
@@ -262,7 +262,7 @@ def test_is_date_in_past_with_datetime(
 ) -> None:
     # Should handle datetime by extracting date()
     mock_get_today.return_value = date(2023, 1, 2)
-    value = datetime(2023, 1, 1, 12, 0, 0)
+    value = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     contract.is_date_in_past(value, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
@@ -320,7 +320,7 @@ def test_is_date_in_future_with_datetime(
 ) -> None:
     # Should handle datetime by extracting date()
     mock_get_today.return_value = date(2023, 1, 1)
-    value = datetime(2023, 1, 2, 12, 0, 0)
+    value = datetime(2023, 1, 2, 12, 0, 0, tzinfo=UTC)
     contract.is_date_in_future(value, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
@@ -367,7 +367,7 @@ def test_is_today_with_datetime(
 ) -> None:
     # Should handle datetime by extracting date()
     mock_get_today.return_value = date(2023, 1, 1)
-    value = datetime(2023, 1, 1, 12, 0, 0)
+    value = datetime(2023, 1, 1, 12, 0, 0, tzinfo=UTC)
     contract.is_today(value, "field", "message")
     assert contract.is_valid
     assert len(contract.notifications) == 0
