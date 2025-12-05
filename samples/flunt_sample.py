@@ -24,9 +24,7 @@ def time_me(function):  # type: ignore
         start = time.time()
         r = function(*arg)
         end = time.time()
-        logger.info(
-            "%s (%0.3f ms)", function.__name__, (end - start) * 1000
-        )
+        logger.info("%s (%0.3f ms)", function.__name__, (end - start) * 1000)
         return r
 
     return wrap

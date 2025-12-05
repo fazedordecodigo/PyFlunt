@@ -18,3 +18,4 @@ appsettings.json
 .tox
 coverage.xml
 Copilot-Processing.md
+.serena/cache/

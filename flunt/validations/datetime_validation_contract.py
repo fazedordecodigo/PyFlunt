@@ -19,6 +19,16 @@ def _get_today() -> date:
     return datetime.now(tz=UTC).date()
 
 
+def _to_date(value: date | datetime) -> date:
+    """
+    Convert a ``date`` or ``datetime`` to ``date`` for safe comparison.
+
+    This helper avoids ``TypeError`` when comparing ``date`` and ``datetime``
+    instances by normalizing both operands to ``date``.
+    """
+    return value.date() if isinstance(value, datetime) else value
+
+
 class DateTimeValidationContract(Notifiable):
     """
     Contract for validating date and datetime values.
@@ -60,8 +70,15 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # False
 
         """
-        if value is None or value <= comparer:
+        if value is None:
             self.add_notification(field, message.format(field, comparer))
+            return self
+
+        value_date = _to_date(value)
+        comparer_date = _to_date(comparer)
+
+        if value_date <= comparer_date:
+            self.add_notification(field, message.format(field, comparer_date))
         return self
 
     def is_date_before(
@@ -96,8 +113,15 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # False
 
         """
-        if value is None or value >= comparer:
+        if value is None:
             self.add_notification(field, message.format(field, comparer))
+            return self
+
+        value_date = _to_date(value)
+        comparer_date = _to_date(comparer)
+
+        if value_date >= comparer_date:
+            self.add_notification(field, message.format(field, comparer_date))
         return self
 
     def is_date_between(
@@ -133,8 +157,18 @@ class DateTimeValidationContract(Notifiable):
             >>> contract.is_valid  # True
 
         """
-        if value is None or not (start <= value <= end):
+        if value is None:
             self.add_notification(field, message.format(field, start, end))
+            return self
+
+        value_date = _to_date(value)
+        start_date = _to_date(start)
+        end_date = _to_date(end)
+
+        if not (start_date <= value_date <= end_date):
+            self.add_notification(
+                field, message.format(field, start_date, end_date)
+            )
         return self
 
     def is_date_in_past(
