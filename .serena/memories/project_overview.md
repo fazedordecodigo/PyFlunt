@@ -1,0 +1,23 @@
+# PyFlunt - visão geral
+- Propósito: biblioteca Python que implementa o Domain Notification Pattern (inspirada no Flunt .NET), fornecendo `Notifiable` e contratos de validação fluent para centralizar notificações/erros no domínio.
+- Público/uso: projetos Python que querem validar entidades/objetos de valor com notificações acumuladas ao invés de exceções.
+- Licença: MIT.
+- Python suportado: >=3.11.
+- Build backend: hatchling.
+- Principais dependências runtime: nenhuma (core sem deps).
+- Principais dependências de dev: uv, pytest, pytest-cov, faker, ruff, mypy, pre-commit, pre-commit-hooks, pre-commit-uv, mkdocs (docs), uv (pkg meta).
+- Estrutura:
+  - `flunt/`: código da lib
+    - `notifications/`: `Notifiable`, `Notification`
+    - `validations/`: contratos (bool, string, numeric, datas, documentos BR, etc.)
+    - `localization/`: padrões/regex
+    - `constants/`: mensagens
+    - `protocols/`: protocolos de notifiable
+  - `tests/`: suíte pytest + mypy
+  - `samples/`: exemplos CLI (script `sample` exposto em `project.scripts`)
+  - `docs/`: mkdocs site
+  - Raiz: `pyproject.toml`, `tox.ini`, changelog, contrib/segurança, README.
+- Entrada/sample: script `sample = "samples.flunt_sample:main"` (roda exemplo de validações), ou `python samples/main.py`.
+- Versionamento: ramo principal `develop` (default), também `main`.
+- Ferramentas de qualidade: ruff (lint/format), mypy (strict-ish), pytest+coverage, pre-commit.
+- CI tox: ambientes `py{311,312,313}` e `pre-commit` usando runner `uv-venv-lock-runner`.
