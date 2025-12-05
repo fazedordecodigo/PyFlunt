@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-import re
 from functools import lru_cache
-from re import Pattern
+from re import Pattern, compile, IGNORECASE
 from typing import Self, TypeAlias
 
 from flunt.constants.messages import IS_NOT_URL, IS_URL
@@ -26,7 +25,7 @@ def _get_url_pattern() -> Pattern[str] | None:
     pattern = get_pattern("url")
     if pattern is None:
         return None
-    return re.compile(pattern, re.IGNORECASE)
+    return compile(pattern, IGNORECASE)
 
 
 def _valid_url(value: URLType) -> bool:
