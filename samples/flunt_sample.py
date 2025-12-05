@@ -16,8 +16,7 @@ logging.basicConfig(
     ],
 )
 
-
-logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def time_me(function):  # type: ignore
@@ -25,7 +24,9 @@ def time_me(function):  # type: ignore
         start = time.time()
         r = function(*arg)
         end = time.time()
-        logging.info(f"{function.__name__} ({(end - start) * 1000:0.3f} ms)")
+        logger.info(
+            "%s (%0.3f ms)", function.__name__, (end - start) * 1000
+        )
         return r
 
     return wrap
