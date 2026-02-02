@@ -89,7 +89,7 @@ class Contract(
 
         """
         if not value and not isinstance(value, bool | int | float):
-            if message is REQUIRED:
+            if message == REQUIRED:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)

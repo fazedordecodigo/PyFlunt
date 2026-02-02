@@ -52,7 +52,7 @@ class StringValidationContract(Notifiable):
 
         """
         if value is None or not str(value).strip():
-            if message is IS_NOT_NONE_OR_WHITESPACE:
+            if message == IS_NOT_NONE_OR_WHITESPACE:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -86,7 +86,7 @@ class StringValidationContract(Notifiable):
 
         """
         if not isinstance(value, str) or comparer not in value:
-            if message is CONTAINS:
+            if message == CONTAINS:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -120,7 +120,7 @@ class StringValidationContract(Notifiable):
 
         """
         if not isinstance(value, str) or comparer in value:
-            if message is NOT_CONTAINS:
+            if message == NOT_CONTAINS:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)

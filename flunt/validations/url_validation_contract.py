@@ -93,7 +93,7 @@ class URLValidationContract(Notifiable):
 
         """
         if not _valid_url(value):
-            if message is IS_URL:
+            if message == IS_URL:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -122,7 +122,7 @@ class URLValidationContract(Notifiable):
 
         """
         if _valid_url(value):
-            if message is IS_NOT_URL:
+            if message == IS_NOT_URL:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
