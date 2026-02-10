@@ -100,6 +100,12 @@ def test_should_identify_letters_and_numbers(value: str, expect: bool) -> None:
     assert isinstance(result, re.Match) is expect
 
 
+def test_should_return_none_for_unknown_pattern() -> None:
+    """Test that get_pattern returns None for an unknown pattern name."""
+    result = get_pattern("non_existent_pattern")
+    assert result is None
+
+
 @pytest.mark.parametrize(
     ("value", "expect"),
     [
