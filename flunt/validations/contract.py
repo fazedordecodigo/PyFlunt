@@ -30,6 +30,9 @@ from flunt.validations.email_validation_contract import (
 from flunt.validations.numeric_validation_contract import (
     NumericValidationContract,
 )
+from flunt.validations.regex_validation_contract import (
+    RegexValidationContract,
+)
 from flunt.validations.strings_validation_contract import (
     StringValidationContract,
 )
@@ -48,6 +51,7 @@ class Contract(
     DateTimeValidationContract,
     EmailValidationContract,
     NumericValidationContract,
+    RegexValidationContract,
     StringValidationContract,
     URLValidationContract,
     Notifiable,
