@@ -46,3 +46,10 @@
 - Não lançar exceções para validações de domínio; use notificações/contratos.
 - Não adicionar dependências de runtime sem necessidade (biblioteca é zero-deps).
 - Evitar alterar largura de linha/estilo fora das regras do Ruff.
+
+## Cursor Cloud specific instructions
+- Este repositório é uma biblioteca pura (zero deps de runtime), não há servidor/serviço de longa duração para subir; a validação é feita por CLI/testes no terminal (sem GUI).
+- O ambiente já traz `uv` no PATH (`~/.local/bin`) e o update script (`uv sync --group dev`) cria o venv `.venv` com todas as ferramentas de dev.
+- Os comandos essenciais do AGENTS.md estão descritos como PowerShell, mas funcionam igualmente no bash da VM. Referência rápida: `uv run ruff check .` e `uv run ruff format --check .` (lint), `uv run mypy flunt tests` (tipos), `uv run pytest` (testes), `uv run sample` (CLI de exemplo).
+- A VM roda Python 3.12 (o `requires-python` é `>=3.11`); não é necessário instalar 3.11 especificamente.
+- Ao demonstrar a funcionalidade central via `Contract`, o método de CPF é `is_cpf(...)` (não `is_valid_cpf`).
