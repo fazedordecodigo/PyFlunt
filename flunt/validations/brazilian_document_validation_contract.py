@@ -196,7 +196,7 @@ class BrazilianDocumentValidationContract(Notifiable):
 
         """
         if not _validate_cpf(value):
-            if message is IS_NOT_CPF:
+            if message == IS_NOT_CPF:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -230,7 +230,7 @@ class BrazilianDocumentValidationContract(Notifiable):
 
         """
         if not _validate_cnpj(value):
-            if message is IS_NOT_CNPJ:
+            if message == IS_NOT_CNPJ:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)

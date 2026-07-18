@@ -83,7 +83,7 @@ class BoolValidationContract(Notifiable):
 
         """
         if self.__to_bool(value):
-            if message is IS_FALSE:
+            if message == IS_FALSE:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -116,7 +116,7 @@ class BoolValidationContract(Notifiable):
 
         """
         if not self.__to_bool(value):
-            if message is IS_TRUE:
+            if message == IS_TRUE:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)

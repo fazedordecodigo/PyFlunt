@@ -71,7 +71,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if len(value) >= comparer:
-            if message is LOWER_THAN:
+            if message == LOWER_THAN:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -118,7 +118,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if len(value) > comparer:
-            if message is LOWER_OR_EQUALS_THAN:
+            if message == LOWER_OR_EQUALS_THAN:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -165,7 +165,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if len(value) <= comparer:
-            if message is GREATER_THAN:
+            if message == GREATER_THAN:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -212,7 +212,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if len(value) < comparer:
-            if message is GREATER_OR_EQUALS_THAN:
+            if message == GREATER_OR_EQUALS_THAN:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -267,7 +267,7 @@ class CollectionsValidationContract(Notifiable):
             return self
 
         if not min <= len(value) <= max:
-            if message is IS_BETWEEN:
+            if message == IS_BETWEEN:
                 self.add_notification(field, message.format(field, min, max))
                 return self
             self.add_notification(field, message)

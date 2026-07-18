@@ -46,7 +46,7 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value is not None:
-            if message is IS_NONE:
+            if message == IS_NONE:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -77,7 +77,7 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value is None:
-            if message is REQUIRED:
+            if message == REQUIRED:
                 self.add_notification(field, message.format(field))
                 return self
             self.add_notification(field, message)
@@ -112,7 +112,7 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value != comparer:
-            if message is EQUALS:
+            if message == EQUALS:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)
@@ -147,7 +147,7 @@ class CommonsValidationContract(Notifiable):
 
         """
         if value == comparer:
-            if message is NOT_EQUALS:
+            if message == NOT_EQUALS:
                 self.add_notification(field, message.format(field, comparer))
                 return self
             self.add_notification(field, message)

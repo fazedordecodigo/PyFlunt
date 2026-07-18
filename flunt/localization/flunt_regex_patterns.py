@@ -20,9 +20,9 @@ REGEX_PATTERNS = {
 }
 
 
-def get_pattern(name: str) -> str | Pattern[str]:
+def get_pattern(name: str) -> str | Pattern[str] | None:
     """Retrieve a regex pattern by its name."""
     value = REGEX_PATTERNS.get(name)
     if value is None:
-        return ""
+        return None
     return value
