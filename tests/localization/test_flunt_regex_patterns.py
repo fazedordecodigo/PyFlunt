@@ -22,6 +22,7 @@ def test_should_identify_a_valid_email_address(
     value: str, expect: bool
 ) -> None:
     regex = get_pattern("email")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -37,6 +38,7 @@ def test_should_identify_a_valid_email_address(
 )
 def test_should_identify_a_valid_cpf(value: str, expect: bool) -> None:
     regex = get_pattern("cpf")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -52,6 +54,7 @@ def test_should_identify_a_valid_cpf(value: str, expect: bool) -> None:
 )
 def test_should_identify_a_valid_cnpj(value: str, expect: bool) -> None:
     regex = get_pattern("cnpj")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -66,6 +69,7 @@ def test_should_identify_a_valid_cnpj(value: str, expect: bool) -> None:
 )
 def test_should_identify_a_valid_url(value: str, expect: bool) -> None:
     regex = get_pattern("url")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -81,6 +85,7 @@ def test_should_identify_a_valid_url(value: str, expect: bool) -> None:
 )
 def test_should_identify_only_numbers(value: str, expect: bool) -> None:
     regex = get_pattern("only_numbers")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -96,6 +101,7 @@ def test_should_identify_only_numbers(value: str, expect: bool) -> None:
 )
 def test_should_identify_letters_and_numbers(value: str, expect: bool) -> None:
     regex = get_pattern("only_letters_and_numbers")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
 
@@ -115,5 +121,6 @@ def test_should_return_none_for_unknown_pattern() -> None:
 )
 def test_should_identify_a_valid_passport(value: str, expect: bool) -> None:
     regex = get_pattern("passport")
+    assert regex is not None
     result = re.match(regex, value)
     assert isinstance(result, re.Match) is expect
