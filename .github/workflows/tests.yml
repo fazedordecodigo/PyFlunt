@@ -45,7 +45,8 @@ jobs:
         run: uv python install --python-preference only-managed ${{ matrix.env }}
 
       - name: Run test suite
-        run: tox r -e py${{ matrix.env }}
+        shell: bash
+        run: tox r -e py$(echo "${{ matrix.env }}" | tr -d '.')
 
       - name: SonarCloud Scan
         if: matrix.env == '3.14' && matrix.os == 'ubuntu-latest'
